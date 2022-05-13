@@ -15,8 +15,8 @@ public class ControleDeAutenticação{
 	private String tokenUsuario = ""; // token que será retornado quando o usuário aceitar a autentiação
 	
 	private static final SpotifyApi acessoApi = new SpotifyApi.Builder()
-			.setClientId("")
-			.setClientSecret("")
+			.setClientId("de6b441011e14346add6404c00b1bed0")
+			.setClientSecret("0d222f0e5aef494c83bd133abbb22903")
 			.setRedirectUri(redirectUri)
 			.build();
 	
