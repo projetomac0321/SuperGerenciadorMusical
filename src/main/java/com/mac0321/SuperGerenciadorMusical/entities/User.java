@@ -5,14 +5,14 @@ import java.util.Objects;
 
 public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	private Long id;
 	private String name;
-	
+
 	public User() {
-		
+
 	}
-	
+
 	public User(Long id, String name) {
 		super();
 		this.id = id;
@@ -22,15 +22,15 @@ public class User implements Serializable {
 	public Long getId() {
 		return id;
 	}
-	
+
 	public void setId(Long id) {
 		this.id = id;
 	}
-	
+
 	public String getName() {
 		return name;
 	}
-	
+
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -51,5 +51,5 @@ public class User implements Serializable {
 		User other = (User) obj;
 		return Objects.equals(id, other.id);
 	}
-	
+
 }

@@ -9,5 +9,5 @@ public class SuperGerenciadorMusicalApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(SuperGerenciadorMusicalApplication.class, args);
 	}
-	
+
 }
