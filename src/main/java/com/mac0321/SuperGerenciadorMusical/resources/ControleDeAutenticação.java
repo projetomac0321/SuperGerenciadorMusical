@@ -1,10 +1,14 @@
 package com.mac0321.SuperGerenciadorMusical.resources;
 
+import java.io.IOException;
 import java.net.URI;
+
 import se.michaelthelin.spotify.SpotifyApi;
 import se.michaelthelin.spotify.SpotifyHttpManager;
+import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 import se.michaelthelin.spotify.requests.authorization.authorization_code.AuthorizationCodeUriRequest;
 
+import org.apache.hc.core5.http.ParseException;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,15 +27,25 @@ public class ControleDeAutenticação{
 			.setRedirectUri(redirectUri)
 			.build();
 	
-	@GetMapping("/")
-	private static void  autorizacaoUsuario() {
+	private  URI autorizacaoUsuario() { // metodo que cria a URI para autorizacao 
 		final AuthorizationCodeUriRequest requisicaoDePermissao = acessoApi.authorizationCodeUri()
 				.scope("playlist-modify-private")
 				.show_dialog(true)
 				.build();
 		
-		final URI uriReqAutorizacao = requisicaoDePermissao.execute(); //retorna a URI pronta para a requisição
+		URI uriReqAutorizacao = requisicaoDePermissao.execute(); //retorna a URI pronta para a requisição
 		
+		return uriReqAutorizacao;
+	}
+	
+	@GetMapping("/")
+	private String performaRequisicaoAutorizacao() throws ParseException, SpotifyWebApiException, IOException {
+		URI stringAutorizacao = autorizacaoUsuario();
+		SpotifyHttpManager interfaceHttpAutorizacao = new SpotifyHttpManager.Builder().build();
+		
+		String executaRequisicao = interfaceHttpAutorizacao.get(stringAutorizacao, null);
+		
+		return executaRequisicao; // URL de retorno com a resposta 
 	}
 		
 	@RequestMapping("/aceito")
