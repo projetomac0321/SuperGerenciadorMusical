@@ -38,12 +38,12 @@ public class ControleDeAutenticação{
 		return uriReqAutorizacao;
 	}
 	
-	@GetMapping("/")
+	@GetMapping("/login")
 	private String performaRequisicaoAutorizacao() throws ParseException, SpotifyWebApiException, IOException {
-		URI stringAutorizacao = autorizacaoUsuario();
+		URI URIAutorizacao = autorizacaoUsuario();
 		SpotifyHttpManager interfaceHttpAutorizacao = new SpotifyHttpManager.Builder().build();
 		
-		String executaRequisicao = interfaceHttpAutorizacao.get(stringAutorizacao, null);
+		String executaRequisicao = interfaceHttpAutorizacao.get(URIAutorizacao, null);
 		
 		return executaRequisicao; // URL de retorno com a resposta 
 	}
