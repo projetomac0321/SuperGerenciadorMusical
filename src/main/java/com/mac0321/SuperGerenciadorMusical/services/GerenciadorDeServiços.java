@@ -1,10 +1,6 @@
 package com.mac0321.SuperGerenciadorMusical.services;
 
-import java.util.NoSuchElementException;
 import java.util.Scanner;
-
-import org.springframework.stereotype.Service;
-
 
 public class GerenciadorDeServiços {
 	private ServiçosDoAplicativo [] serviços;
@@ -12,6 +8,10 @@ public class GerenciadorDeServiços {
 	public GerenciadorDeServiços(String accessToken){
 		this.serviços = new ServiçosDoAplicativo[5];
 		serviços[0] = new CriadorDePlaylist(accessToken);
+		serviços[1] = new RemovedorDePlaylists(accessToken);
+		serviços[2] = new PlaylistsDoUsuárioAtual(accessToken);
+		serviços[3] = new AdicionadorDeMúsicasNumaPlaylist(accessToken);
+		serviços[4] = new RemovedorDeMúsicasNumaPlaylist(accessToken);
 	}
 	
 	public void executaGerenciador() {
@@ -32,13 +32,7 @@ public class GerenciadorDeServiços {
 			}
 			serviços[serviçoDesejado].ExecutaServiço();
 			System.out.println("Caso deseje realizar mais algum serviço digite sim");
-			try{
-				sistemaOperante = sc.next();
-			}
-			catch(NoSuchElementException exception) {
-				System.out.println("quebrou");
-			}
+			sistemaOperante = sc.next();
 		}
-		sc.close();
 	}
 }

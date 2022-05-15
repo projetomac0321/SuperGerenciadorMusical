@@ -31,10 +31,9 @@ public class RemovedorDeMúsicasNumaPlaylist extends ServiçosDoAplicativo {
 		String [] uris;
 		uris = this.buscadorDeMúsicas.buscaListaDeURIsDasMúsicasDesejadas();
 		System.out.println("Digite o nome da playlist que deseja adicionar essas músicas: ");
-		nomeDaPlaylist = sc.next();
+		nomeDaPlaylist = sc.nextLine();
 		playlistID = this.buscadorDeIdDaPlaylist.buscaIDdaPlaylist(nomeDaPlaylist);
 		this.removeMúsicasDaPlaylist(playlistID, uris);
-		sc.close();
 	}
 	
 	public SnapshotResult removeMúsicasDaPlaylist(String playlistID, String [] uris) {

@@ -23,7 +23,7 @@ public class BuscadorDeIdDaPlaylist {
 			playlistID = procuradorDePlaylist.procuraPlaylist(playlistsDoUsuário, nomeDaPlaylist).getId();
 		}
 		catch(NullPointerException exception){
-			System.out.println("Error: " + exception.getMessage());
+			System.out.println("Essa playlist não existe ou não foi possível encontrá-la.");
 		}
 		return playlistID;
 	}

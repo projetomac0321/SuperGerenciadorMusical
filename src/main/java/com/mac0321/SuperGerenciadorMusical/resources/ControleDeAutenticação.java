@@ -32,7 +32,7 @@ public class ControleDeAutenticação{
 		this.autenticador.requisitaTokenAcesso(code);
 		gerenciador = new GerenciadorDeServiços(this.autenticador.getTokenUsuario());
 		gerenciador.executaGerenciador();
-		return "Prosseguir via linha de comando";
+		return "Fim da aplicação.";
 	}
 	
 }

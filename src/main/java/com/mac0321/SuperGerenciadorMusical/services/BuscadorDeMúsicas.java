@@ -29,7 +29,6 @@ public class BuscadorDeMúsicas {
 		System.out.println("Digite o nome da música que você deseja procurar: ");
 		tagDeProcura = sc.next();
 		arrayDeURIs = this.geraArrayDeURIs(this.geraListaDeMúsicasDesejadas(tagDeProcura));
-		sc.close();
 		return arrayDeURIs;
 	}
 	
@@ -38,9 +37,10 @@ public class BuscadorDeMúsicas {
 		try {
 			searchTracksRequest = spotifyApi.searchTracks(tagDeProcura).limit(50).offset(offset).includeExternal("audio").build();
 			músicasBuscadas = searchTracksRequest.execute();
+			System.out.println(músicasBuscadas);
 		} 
-		catch (NullPointerException | IOException | SpotifyWebApiException | ParseException exception) {
-			System.out.println("Error: " + exception.getMessage());
+		catch (IOException | SpotifyWebApiException | ParseException exception) {
+			System.out.println("Busca não retornou resultados.");
 		}
 		return músicasBuscadas;
 	}
@@ -52,11 +52,16 @@ public class BuscadorDeMúsicas {
 		boolean háMúsicasASeremBuscadas = true;
 		while(háMúsicasASeremBuscadas){
 			novasMúsicasBuscadas = this.buscaMúsicas(tagDeProcura, offset);
-			if(novasMúsicasBuscadas == null)
+			try {
+				if(novasMúsicasBuscadas.getItems().length == 0)
+					háMúsicasASeremBuscadas = false;
+				else {
+					offset += 50;
+					listaDeMúsicasBuscadas.add(novasMúsicasBuscadas);
+				}
+			}
+			catch (NullPointerException exception) {
 				háMúsicasASeremBuscadas = false;
-			else {
-				offset += 50;
-				listaDeMúsicasBuscadas.add(novasMúsicasBuscadas);
 			}
 		}
 		return listaDeMúsicasBuscadas;
@@ -64,15 +69,16 @@ public class BuscadorDeMúsicas {
 
 	private String [] geraArrayDeURIs(List<Paging<Track>> listaDeMúsicasBuscadas) {
 		List<String> listaDeURIs = new ArrayList<>();
-		Track [] arrayDeMúsicas;
-		int contador, tamanhoDoArray;
+		String[] arrayDeURIs;
+		int contador;
 		for(Paging<Track> pagingDeMúsicas: listaDeMúsicasBuscadas) {
-			tamanhoDoArray = pagingDeMúsicas.getLimit();
-			arrayDeMúsicas = pagingDeMúsicas.getItems();
-			for(contador = 0; contador < tamanhoDoArray; contador ++) {
-				listaDeURIs.add(arrayDeMúsicas[contador].getUri());
+			for(contador = 0; contador < pagingDeMúsicas.getItems().length; contador ++) {
+				listaDeURIs.add(pagingDeMúsicas.getItems()[contador].getUri());
 			}
 		}
-		return (String[]) listaDeURIs.toArray();
+		arrayDeURIs = new String[listaDeURIs.size()];
+		for (contador = 0; contador < listaDeURIs.size(); contador ++) 
+			arrayDeURIs[contador] = listaDeURIs.get(contador);
+		return arrayDeURIs;
 	}
 }

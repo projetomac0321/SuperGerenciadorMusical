@@ -24,8 +24,13 @@ public class PlaylistsDoUsuárioAtual extends ServiçosDoAplicativo {
 	public void ExecutaServiço() {
 		List<Paging<PlaylistSimplified>> listaDePlaylists;
 		listaDePlaylists = this.buscaListaDePlaylistsDoUsuárioAtual();
-		for(Paging<PlaylistSimplified> conjuntoDePlaylists: listaDePlaylists)
-			System.out.println(conjuntoDePlaylists);	
+		int contador;
+		for(Paging<PlaylistSimplified> conjuntoDePlaylists: listaDePlaylists) {
+			for (contador=0; contador<conjuntoDePlaylists.getTotal(); contador++) {
+				System.out.println(conjuntoDePlaylists.getItems()[contador].getName());
+			}
+		}
+		
 	}
 	
 	public List<Paging<PlaylistSimplified>> buscaListaDePlaylistsDoUsuárioAtual(){
@@ -35,7 +40,7 @@ public class PlaylistsDoUsuárioAtual extends ServiçosDoAplicativo {
 		boolean háPlaylistsASeremListadas = true;
 		while(háPlaylistsASeremListadas) {
 			novasPlaylistsBuscadas = this.buscaPlaylistsDoUsuárioAtual(offset);
-			if(novasPlaylistsBuscadas == null) {
+			if(novasPlaylistsBuscadas.getItems().length == 0) {
 				háPlaylistsASeremListadas = false;
 			}
 			else {

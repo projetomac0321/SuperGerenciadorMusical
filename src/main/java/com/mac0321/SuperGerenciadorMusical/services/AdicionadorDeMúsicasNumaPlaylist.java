@@ -28,10 +28,9 @@ public class AdicionadorDeMúsicasNumaPlaylist extends ServiçosDoAplicativo {
 		String [] uris;
 		uris = this.buscadorDeMúsicas.buscaListaDeURIsDasMúsicasDesejadas();
 		System.out.println("Digite o nome da playlist que deseja adicionar essas músicas: ");
-		nomeDaPlaylist = sc.next();
+		nomeDaPlaylist = sc.nextLine();
 		playlistID = this.buscadorDeIdDaPlaylist.buscaIDdaPlaylist(nomeDaPlaylist);
 		this.adicionaMúsicasNaPlaylist(playlistID, uris);
-		sc.close();
 	}
 	
 	public SnapshotResult adicionaMúsicasNaPlaylist(String playlistId, String [] uris) {

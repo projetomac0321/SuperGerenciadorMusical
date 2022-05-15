@@ -20,14 +20,11 @@ public class ProcuradorDePlaylist {
 	
 	private List<PlaylistSimplified> procuraPossíveisPlaylistsDesejadas(List<Paging<PlaylistSimplified>> listaDePlaylists, String nomeDaPlaylistDesejada){
 		List<PlaylistSimplified> possíveisPlaylistsDesejadas = new ArrayList<>();
-		PlaylistSimplified[] arrayDePlaylists;
-		int tamanhoDoArray, contador;
+		int contador;
 		for(Paging<PlaylistSimplified> pagingDePlaylist: listaDePlaylists) {
-			tamanhoDoArray = pagingDePlaylist.getLimit();
-			arrayDePlaylists = pagingDePlaylist.getItems();
-			for(contador = 0; contador < tamanhoDoArray; contador ++) {
-				if(nomeDaPlaylistDesejada.equals(arrayDePlaylists[contador].getName()))
-					possíveisPlaylistsDesejadas.add(arrayDePlaylists[contador]);
+			for(contador = 0; contador < pagingDePlaylist.getTotal(); contador ++) {
+				if(nomeDaPlaylistDesejada.equals(pagingDePlaylist.getItems()[contador].getName()))
+					possíveisPlaylistsDesejadas.add(pagingDePlaylist.getItems()[contador]);
 			}
 		}
 		return possíveisPlaylistsDesejadas;
@@ -54,10 +51,6 @@ public class ProcuradorDePlaylist {
 		if(possíveisPlaylistsDesejadas.size() == 1) {
 			playlistDesejada = possíveisPlaylistsDesejadas.get(0);
 		}
-		sc.close();	
 		return playlistDesejada;
 	}
-
-
-
 }

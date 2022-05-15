@@ -30,7 +30,6 @@ public class RemovedorDePlaylists extends ServiçosDoAplicativo {
 		nomeDaPlaylist = sc.next();
 		playlistID = this.buscadorDeIdDaPlaylist.buscaIDdaPlaylist(nomeDaPlaylist);
 		this.RemoverPlaylist(playlistID);
-		sc.close();	
 	}
 	
 	private String RemoverPlaylist(String playlistID) {
@@ -41,10 +40,8 @@ public class RemovedorDePlaylists extends ServiçosDoAplicativo {
 	    	System.out.println("Playlist removida com sucesso!");
 		} 
 	    catch (NullPointerException | IOException | SpotifyWebApiException | ParseException exception) {
-	    	System.out.println("Error: " + exception.getMessage());
+	    	System.out.println("Essa playlist não existe ou não foi possível removê-la.");
 	    }
 	    return respostaDaApi;
 	}
-
-
 }

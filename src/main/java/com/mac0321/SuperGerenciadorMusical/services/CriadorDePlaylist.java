@@ -33,23 +33,18 @@ public class CriadorDePlaylist extends ServiçosDoAplicativo {
 		serPública = sc.nextBoolean();
 		System.out.println("Digite a descrição da playlist");
 		descrição = sc.next();
-		playlistCriada = this.criaPlaylist(nomeDaPlaylist, serColaborativa, serPública, descrição);
-		if(playlistCriada == null)
-			System.out.println("Infelizmente, foi impossível de criar a playlist");
-		else
-			System.out.println(playlistCriada);
-		sc.close();
+		this.criaPlaylist(nomeDaPlaylist, serColaborativa, serPública, descrição);
 	}
 	
 	public Playlist criaPlaylist(String nomeDaPlaylist, boolean serColaborativa, boolean serPública, String descrição) {
 		Playlist novaPlaylist = null;
-	
 	    try {
 	    	createPlaylistRequest = spotifyApi.createPlaylist(this.userID, nomeDaPlaylist).collaborative(serColaborativa).public_(serPública).description(descrição).build();
 	        novaPlaylist = createPlaylistRequest.execute();
+	        System.out.println("A playlist foi criada com sucesso.");
 	    }
 	    catch (IOException | SpotifyWebApiException | ParseException exception) {
-	    	System.out.println("Error: " + exception.getMessage());
+	    	System.out.println("Não foi possível criar a playlist");
 	    }
 	    return novaPlaylist;
 	  }
