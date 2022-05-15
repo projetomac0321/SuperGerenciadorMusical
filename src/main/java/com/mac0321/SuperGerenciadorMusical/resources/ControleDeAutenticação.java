@@ -60,10 +60,7 @@ public class ControleDeAutenticação{
 		AuthorizationCodeCredentials credenciaisDeAcessoProntas  = requisicaoDoCodigo.execute();
 		
 		setTokens(credenciaisDeAcessoProntas.getAccessToken(), credenciaisDeAcessoProntas.getRefreshToken());
-		
-		System.out.println(this.tokenUsuario);
-		
-		return "Requisicao aceita pelo usuário, tokens configurados";
+		return "Prosseguir via linha de comando";
 	}
 	
 	public void setTokens(String refreshToken, String accessToken) {
