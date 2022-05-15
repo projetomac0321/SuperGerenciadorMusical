@@ -41,6 +41,4 @@ public class GerenciadorDeServiços {
 		}
 		sc.close();
 	}
-
-
 }
