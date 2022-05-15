@@ -27,9 +27,9 @@ public class CriadorDePlaylist extends ServiçosDoAplicativo {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Digite o nome da playlist: ");
 		nomeDaPlaylist = sc.next();
-		System.out.println("Digite 1 caso a playlist seja coloborativa, digite 0 caso contrário");
+		System.out.println("Digite true caso a playlist seja coloborativa, digite false caso contrário");
 		serColaborativa = sc.nextBoolean();
-		System.out.println("Digite 1 caso a playlist seja pública, digite 0 caso contrário");
+		System.out.println("Digite true caso a playlist seja pública, digite false caso contrário");
 		serPública = sc.nextBoolean();
 		System.out.println("Digite a descrição da playlist");
 		descrição = sc.next();
@@ -43,6 +43,7 @@ public class CriadorDePlaylist extends ServiçosDoAplicativo {
 	
 	public Playlist criaPlaylist(String nomeDaPlaylist, boolean serColaborativa, boolean serPública, String descrição) {
 		Playlist novaPlaylist = null;
+	
 	    try {
 	    	createPlaylistRequest = spotifyApi.createPlaylist(this.userID, nomeDaPlaylist).collaborative(serColaborativa).public_(serPública).description(descrição).build();
 	        novaPlaylist = createPlaylistRequest.execute();

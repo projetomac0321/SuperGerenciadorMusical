@@ -27,7 +27,7 @@ public class Autenticador {
 	 
 	 private URI autorizacaoUsuario(){ // metodo que cria a URI para autorizacao 
 		final AuthorizationCodeUriRequest requisicaoDePermissao = acessoApi.authorizationCodeUri()
-				.scope("playlist-modify-private")
+				.scope("playlist-modify-private playlist-modify-public")	
 				.show_dialog(true)
 				.build();
 			
