@@ -36,7 +36,6 @@ public class BuscadorDeMúsicasDeUmaPlaylist {
 			this.getPlaylistsItemsRequest = spotifyApi.getPlaylistsItems(playlistID).limit(50).offset(offset).additionalTypes("track").build();
 			try {
 				pagingDeURI = this.getPlaylistsItemsRequest.execute();
-				System.out.println(pagingDeURI);
 			}
 			catch (IOException | SpotifyWebApiException | ParseException exception) {
 			      System.out.println("Não foi possível obter as músicas da playlist!");
