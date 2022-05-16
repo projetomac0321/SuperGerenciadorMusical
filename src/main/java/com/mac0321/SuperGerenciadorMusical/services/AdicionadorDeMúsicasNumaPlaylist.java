@@ -11,22 +11,24 @@ import se.michaelthelin.spotify.requests.data.playlists.AddItemsToPlaylistReques
 
 public class AdicionadorDeMúsicasNumaPlaylist extends ServiçosDoAplicativo {
 	private AddItemsToPlaylistRequest addItemsToPlaylistRequest;
-	private BuscadorDeMúsicas buscadorDeMúsicas;
+	private BuscadorDeMúsicasPorTag buscadorDeMúsicasPorTag;
 	private BuscadorDeIdDaPlaylist buscadorDeIdDaPlaylist;
 
 
 	public AdicionadorDeMúsicasNumaPlaylist(String accessToken) {
 		super(accessToken);
-		buscadorDeMúsicas = new BuscadorDeMúsicas(accessToken);
+		buscadorDeMúsicasPorTag = new BuscadorDeMúsicasPorTag(accessToken);
 		buscadorDeIdDaPlaylist = new BuscadorDeIdDaPlaylist(accessToken);
 	}
 	
 	@Override
 	public void ExecutaServiço() {
 		Scanner sc = new Scanner(System.in);
-		String nomeDaPlaylist, playlistID;
+		String nomeDaPlaylist, playlistID, nomeDaMúsica;
 		String [] uris;
-		uris = this.buscadorDeMúsicas.buscaListaDeURIsDasMúsicasDesejadas();
+		System.out.println("Digite a música que deseja adicionar a sua playlist: ");
+		nomeDaMúsica = sc.nextLine();
+		uris = this.buscadorDeMúsicasPorTag.buscaURIsDasMúsicas(nomeDaMúsica);
 		System.out.println("Digite o nome da playlist que deseja adicionar essas músicas: ");
 		nomeDaPlaylist = sc.nextLine();
 		playlistID = this.buscadorDeIdDaPlaylist.buscaIDdaPlaylist(nomeDaPlaylist);

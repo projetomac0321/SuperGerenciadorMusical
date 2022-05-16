@@ -16,11 +16,11 @@ import se.michaelthelin.spotify.requests.data.playlists.RemoveItemsFromPlaylistR
 public class RemovedorDeMúsicasNumaPlaylist extends ServiçosDoAplicativo {
 	private RemoveItemsFromPlaylistRequest removeItemsFromPlaylistRequest;
 	private BuscadorDeIdDaPlaylist buscadorDeIdDaPlaylist;
-	private BuscadorDeMúsicasDeUmaPlaylist buscadorDeMúsicasDeUmaPlaylist;
+	private BuscadorDeMúsicasPorPlaylist buscadorDeMúsicasPorPlaylist;
 	
 	public RemovedorDeMúsicasNumaPlaylist(String accessToken) {
 		super(accessToken);	
-		buscadorDeMúsicasDeUmaPlaylist = new BuscadorDeMúsicasDeUmaPlaylist(accessToken);
+		buscadorDeMúsicasPorPlaylist = new BuscadorDeMúsicasPorPlaylist(accessToken);
 		buscadorDeIdDaPlaylist = new BuscadorDeIdDaPlaylist(accessToken);
 	}
 	
@@ -32,7 +32,7 @@ public class RemovedorDeMúsicasNumaPlaylist extends ServiçosDoAplicativo {
 		System.out.println("Digite o nome da playlist que deseja remover essas músicas: ");
 		nomeDaPlaylist = sc.nextLine();
 		playlistID = this.buscadorDeIdDaPlaylist.buscaIDdaPlaylist(nomeDaPlaylist);
-		uris = this.buscadorDeMúsicasDeUmaPlaylist.buscaMúsicasDeUmaPlaylist(playlistID);
+		uris = this.buscadorDeMúsicasPorPlaylist.buscaURIsDasMúsicas(playlistID);
 		this.removeMúsicasDaPlaylist(playlistID, uris);
 	}
 
