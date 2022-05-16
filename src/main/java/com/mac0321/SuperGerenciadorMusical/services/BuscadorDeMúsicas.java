@@ -35,18 +35,18 @@ public class BuscadorDeMúsicas {
 	private Paging<Track> buscaMúsicas(String tagDeProcura, int offset){
 		Paging<Track> músicasBuscadas = null;
 		try {
-			searchTracksRequest = spotifyApi.searchTracks(tagDeProcura).limit(50).offset(offset).includeExternal("audio").build();
+			searchTracksRequest = spotifyApi.searchTracks(tagDeProcura).limit(5).offset(offset).build();
 			músicasBuscadas = searchTracksRequest.execute();
-			System.out.println(músicasBuscadas);
+			
 		} 
-		catch (IOException | SpotifyWebApiException | ParseException exception) {
-			System.out.println("Busca não retornou resultados.");
-		}
+		catch (IOException | SpotifyWebApiException | ParseException exception) {}
 		return músicasBuscadas;
 	}
 
-	private List<Paging<Track>> geraListaDeMúsicasDesejadas(String tagDeProcura){
-		List<Paging<Track>> listaDeMúsicasBuscadas = new ArrayList<>();
+	private List<Track> geraListaDeMúsicasDesejadas(String tagDeProcura){
+		Scanner sc = new Scanner(System.in);
+		int índiceEscolhido = 0;
+		List<Track> listaDeMúsicasBuscadas = new ArrayList<>();
 		Paging<Track> novasMúsicasBuscadas = null;
 		int offset = 0;
 		boolean háMúsicasASeremBuscadas = true;
@@ -56,29 +56,40 @@ public class BuscadorDeMúsicas {
 				if(novasMúsicasBuscadas.getItems().length == 0)
 					háMúsicasASeremBuscadas = false;
 				else {
-					offset += 50;
-					listaDeMúsicasBuscadas.add(novasMúsicasBuscadas);
+					this.imprimeMúsicas(novasMúsicasBuscadas);
+					System.out.println("Digite na linha abaixo o número dos índices das músicas que deseja adicionar, caso não deseje adicionar nenhuma digite 5");
+					while(índiceEscolhido != 5) {
+						índiceEscolhido = sc.nextInt();
+						if(índiceEscolhido >= 0 && índiceEscolhido < 5)
+							listaDeMúsicasBuscadas.add(novasMúsicasBuscadas.getItems()[índiceEscolhido]);
+					}
+					índiceEscolhido = 0;
+					offset += 5;
+					System.out.println("Digite true, caso deseje buscar mais músicas, digite false caso contrário");
+					háMúsicasASeremBuscadas = sc.nextBoolean();
 				}
 			}
 			catch (NullPointerException exception) {
 				háMúsicasASeremBuscadas = false;
 			}
 		}
+		if(listaDeMúsicasBuscadas.size() == 0)
+			System.out.println("Busca não retornou resultados.");
 		return listaDeMúsicasBuscadas;
 	}
 
-	private String [] geraArrayDeURIs(List<Paging<Track>> listaDeMúsicasBuscadas) {
-		List<String> listaDeURIs = new ArrayList<>();
-		String[] arrayDeURIs;
+	private void imprimeMúsicas(Paging<Track> pagingDeMúsicas) {
 		int contador;
-		for(Paging<Track> pagingDeMúsicas: listaDeMúsicasBuscadas) {
-			for(contador = 0; contador < pagingDeMúsicas.getItems().length; contador ++) {
-				listaDeURIs.add(pagingDeMúsicas.getItems()[contador].getUri());
-			}
-		}
-		arrayDeURIs = new String[listaDeURIs.size()];
-		for (contador = 0; contador < listaDeURIs.size(); contador ++) 
-			arrayDeURIs[contador] = listaDeURIs.get(contador);
+		for(contador = 0; contador < pagingDeMúsicas.getItems().length; contador ++)
+			System.out.println("Índice: " + Integer.toString(contador) + " Nome: " +
+					pagingDeMúsicas.getItems()[contador].getName() + " Album: " + pagingDeMúsicas.getItems()[contador].getAlbum().getName());
+	}
+	
+	private String [] geraArrayDeURIs(List<Track> listaDeMúsicasBuscadas) {
+		String [] arrayDeURIs = new String[listaDeMúsicasBuscadas.size()];
+		int contador;
+		for (contador = 0; contador < listaDeMúsicasBuscadas.size(); contador ++) 
+			arrayDeURIs[contador] = listaDeMúsicasBuscadas.get(contador).getUri();
 		return arrayDeURIs;
 	}
 }
