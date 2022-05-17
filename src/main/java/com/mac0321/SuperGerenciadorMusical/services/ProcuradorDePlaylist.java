@@ -38,7 +38,7 @@ public class ProcuradorDePlaylist {
 			System.out.println("Há mais de uma playlist com esse nome!");
 			System.out.println("Digite o id da playlist desejada entre as mostradas abaixo: ");
 			for(PlaylistSimplified playlist: possíveisPlaylistsDesejadas)
-				System.out.println(playlist);
+				System.out.println(playlist.getName() + ": " + playlist.getId());
 			while(playlistDesejada == null) {
 				playlistID = sc.next();
 				for(PlaylistSimplified playlist: possíveisPlaylistsDesejadas)

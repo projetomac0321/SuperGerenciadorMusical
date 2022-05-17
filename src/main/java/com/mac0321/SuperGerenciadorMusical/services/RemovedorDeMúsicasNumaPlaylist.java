@@ -27,11 +27,13 @@ public class RemovedorDeMúsicasNumaPlaylist extends ServiçosDoAplicativo {
 	@Override
 	public void ExecutaServiço() {
 		Scanner sc = new Scanner(System.in);
-		String nomeDaPlaylist, playlistID;
+		String nomeDaPlaylist, playlistID = null;
 		String [] uris;
-		System.out.println("Digite o nome da playlist que deseja remover essas músicas: ");
-		nomeDaPlaylist = sc.nextLine();
-		playlistID = this.buscadorDeIdDaPlaylist.buscaIDdaPlaylist(nomeDaPlaylist);
+		while (playlistID == null) {
+			System.out.println("Digite o nome da playlist que deseja remover essas músicas: ");
+			nomeDaPlaylist = sc.nextLine();
+			playlistID = this.buscadorDeIdDaPlaylist.buscaIDdaPlaylist(nomeDaPlaylist);
+		}
 		uris = this.buscadorDeMúsicasPorPlaylist.buscaURIsDasMúsicas(playlistID);
 		this.removeMúsicasDaPlaylist(playlistID, uris);
 	}
@@ -43,7 +45,7 @@ public class RemovedorDeMúsicasNumaPlaylist extends ServiçosDoAplicativo {
 		
 	    for(int contador = 0; contador < uris.length; contador ++) {
 	    	if (contador != uris.length - 1)
-	    		urisEmString += "{\"uri\":\"" + uris[contador] + "\"},";
+	    		urisEmString += "{\"uri\":\"" + uris[contador] + "\"}";
 	    	else
 	    		urisEmString += "{\"uri\":\"" + uris[contador] + "\"}";
 	    	System.out.println(uris[contador]);

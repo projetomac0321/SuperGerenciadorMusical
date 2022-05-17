@@ -25,10 +25,12 @@ public class RemovedorDePlaylists extends ServiçosDoAplicativo {
 	@Override
 	public void ExecutaServiço() {
 		Scanner sc = new Scanner(System.in);
-		String nomeDaPlaylist, playlistID;
-		System.out.println("Digite o nome da playlist que deseja excluir: ");
-		nomeDaPlaylist = sc.next();
-		playlistID = this.buscadorDeIdDaPlaylist.buscaIDdaPlaylist(nomeDaPlaylist);
+		String nomeDaPlaylist, playlistID = null;
+		while (playlistID == null) {
+			System.out.println("Digite o nome da playlist que deseja excluir: ");
+			nomeDaPlaylist = sc.next();
+			playlistID = this.buscadorDeIdDaPlaylist.buscaIDdaPlaylist(nomeDaPlaylist);
+		}
 		this.RemoverPlaylist(playlistID);
 	}
 	

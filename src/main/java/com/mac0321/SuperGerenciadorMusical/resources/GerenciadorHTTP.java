@@ -17,7 +17,7 @@ import com.mac0321.SuperGerenciadorMusical.services.GerenciadorDeServiços;
 
 @RestController
 @RequestMapping(value = "/")
-public class ControleDeAutenticação{
+public class GerenciadorHTTP{
 	public Autenticador autenticador = new Autenticador();
 	public GerenciadorDeServiços gerenciador;
 	public String accessToken;
