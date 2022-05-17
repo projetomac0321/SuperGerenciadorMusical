@@ -5,6 +5,8 @@ import java.io.IOException;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 
 import org.apache.hc.core5.http.ParseException;
+import org.springframework.web.bind.MissingServletRequestParameterException;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -33,6 +35,11 @@ public class GerenciadorHTTP{
 		gerenciador = new GerenciadorDeServiços(this.autenticador.getTokenUsuario());
 		gerenciador.executaGerenciador();
 		return "Fim da aplicação.";
+	}
+	
+	@ExceptionHandler(MissingServletRequestParameterException.class)
+	public String handleMissingParams(MissingServletRequestParameterException ex) {
+		return "Permissão negada - não foi possível obter o código";
 	}
 	
 }
