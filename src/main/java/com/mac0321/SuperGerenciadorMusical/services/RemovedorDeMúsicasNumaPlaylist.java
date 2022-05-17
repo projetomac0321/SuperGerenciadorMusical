@@ -38,14 +38,20 @@ public class RemovedorDeMúsicasNumaPlaylist extends ServiçosDoAplicativo {
 
 	private SnapshotResult removeMúsicasDaPlaylist(String playlistID, String [] uris) {
 		SnapshotResult snapshot_id = null;
-		JsonArray músicas = new JsonArray();
-		String teste;
+		JsonArray músicas;
+		String teste, urisEmString = "[";
 		
-	    for(String uri: uris) {
-	    	System.out.println(JsonParser.parseString("[{\"uri\":\"spotify:track:0S86atec73KKaexn67JsDy\"}]").getAsJsonArray().toString());
-	    	músicas.add(JsonParser.parseString("[{\"uri\":\"spotify:track:0S86atec73KKaexn67JsDy\"}]").getAsJsonArray());
-	    }
+	    for(int contador = 0; contador < uris.length; contador ++) {
+	    	if (contador != uris.length - 1)
+	    		urisEmString += "{\"uri\":\"" + uris[contador] + "\"},";
+	    	else
+	    		urisEmString += "{\"uri\":\"" + uris[contador] + "\"}";
+	    	System.out.println(uris[contador]);
+	    } 
+	    urisEmString += "]";
+	    System.out.println(urisEmString);
 		try {
+	    	músicas = JsonParser.parseString(urisEmString).getAsJsonArray();
 	    	removeItemsFromPlaylistRequest = spotifyApi.removeItemsFromPlaylist(playlistID, músicas).build();
 	    	snapshot_id = removeItemsFromPlaylistRequest.execute();
 	    	System.out.println("Músicas removidas com sucesso da playlist");

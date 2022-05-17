@@ -21,7 +21,6 @@ public class CriadorDePlaylist extends ServiçosDoAplicativo {
 
 	@Override
 	public void ExecutaServiço() {
-		Playlist playlistCriada;
 		String nomeDaPlaylist, descrição;
 		boolean serColaborativa, serPública;
 		Scanner sc = new Scanner(System.in);
