@@ -58,7 +58,7 @@ public class PlaylistsDoUsuárioAtual extends ServiçosDoAplicativo {
 			playlistsDoUsuário = getListOfCurrentUsersPlaylistsRequest.execute();
 	    }
 		catch (NullPointerException | IOException | SpotifyWebApiException | ParseException exception) {
-			System.out.println("Error: " + exception.getMessage());
+			System.out.println("Não foi possível encontrar as playlists do usuário");
 	    }
 		return playlistsDoUsuário;
 	}

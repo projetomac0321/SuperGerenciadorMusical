@@ -15,7 +15,6 @@ public class SuperGerenciadorMusicalApplication {
     }
 	public static void main(String[] args) {
 		ConfigurableApplicationContext context = SpringApplication.run(SuperGerenciadorMusicalApplication.class, args);
-		
 	}
 
 }

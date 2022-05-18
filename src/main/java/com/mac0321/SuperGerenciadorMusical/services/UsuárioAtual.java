@@ -24,7 +24,7 @@ public class UsuárioAtual {
 			 user = getCurrentUsersProfileRequest.execute();
 		 } 
 		 catch (IOException | SpotifyWebApiException | ParseException exception) {
-			System.out.println("Error: " + exception.getMessage());
+			System.out.println("Não foi possível encontrar o usuário atualmente logado");
 		 }
 		 return user;
 	 }

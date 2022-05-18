@@ -45,7 +45,7 @@ public class AdicionadorDeMúsicasNumaPlaylist extends ServiçosDoAplicativo {
 			System.out.println("Músicas adicionadas na playlist!");
 	    } 
 		catch (NullPointerException | IOException | SpotifyWebApiException | ParseException exception) {
-			System.out.println("Error: " + exception.getMessage());
+			System.out.println("Não foi possível adicionar as músicas na playlist");
 	    }
 		return snapshot_id;
 	  }
