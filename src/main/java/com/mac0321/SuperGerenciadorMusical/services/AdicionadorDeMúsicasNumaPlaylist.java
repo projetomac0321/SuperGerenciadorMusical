@@ -24,11 +24,13 @@ public class AdicionadorDeMúsicasNumaPlaylist extends ServiçosDoAplicativo {
 	@Override
 	public void ExecutaServiço() {
 		Scanner sc = new Scanner(System.in);
-		String nomeDaPlaylist, playlistID = null, nomeDaMúsica;
+		String nomeDaPlaylist, playlistID = null, nomeDaMúsica, filtro;
 		String [] uris;
 		System.out.println("Digite a música que deseja adicionar a sua playlist: ");
 		nomeDaMúsica = sc.nextLine();
-		uris = this.buscadorDeMúsicasPorTag.buscaURIsDasMúsicas(nomeDaMúsica);
+		System.out.println("Digite o filtro da busca: ");
+		filtro = sc.nextLine();
+		uris = this.buscadorDeMúsicasPorTag.buscaURIsDasMúsicas(nomeDaMúsica, filtro);
 		while (playlistID == null) {
 			System.out.println("Digite o nome da playlist que deseja adicionar essas músicas: ");
 			nomeDaPlaylist = sc.nextLine();
