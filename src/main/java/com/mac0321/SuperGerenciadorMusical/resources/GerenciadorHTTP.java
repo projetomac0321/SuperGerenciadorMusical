@@ -23,9 +23,14 @@ public class GerenciadorHTTP{
 	public Autenticador autenticador = new Autenticador();
 	public GerenciadorDeServiços gerenciador;
 	public String accessToken;
-		
+	
 	@GetMapping("/")
-	private RedirectView teste() throws ParseException, SpotifyWebApiException, IOException {
+	private void teste() {
+		return;
+	}
+		
+	@GetMapping("/autoriza")
+	private RedirectView autoriza() throws ParseException, SpotifyWebApiException, IOException {
 		return this.autenticador.performaRequisicaoAutorizacao();
 	}
 		
@@ -37,10 +42,6 @@ public class GerenciadorHTTP{
 		return "Fim da aplicação.";
 	}
 	
-	@ExceptionHandler(MissingServletRequestParameterException.class)
-	public String handleMissingParams(MissingServletRequestParameterException ex) {
-		return "Permissão negada - não foi possível obter o código";
-	}
 	
 }
 
