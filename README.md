@@ -2,9 +2,10 @@
 
 ## Table of Contents
 1. **[Descrição](#Descrção)**
-    1. **[Requisito 1](#Primeiro-Requisito)**
-2. **[Documentação](#Documentation)**
-3. **[Desenvolvedores](#Desenvolvedores)**
+    1. **[Requisito 1](#Requisito-1)**
+2. **[Execução do Sistema](#Execução-do-Sistema)**
+3. **[Documentação](#Documentation)**
+4. **[Desenvolvedores](#Desenvolvedores)**
 
 ## Descrição
 
@@ -18,6 +19,13 @@ Nosso sistema permite a um usuário a criação, remoção e listagem de playlis
 Para a realização dessa conexão com o spotify utilizamos a [Web API do spotify](https://developer.spotify.com/documentation/web-api/) essa conexão se dá por meio de uma autorização concedida pelo usuário, 
 o fluxo de autorização que utilizamos foi o [Authorization Code Flow](https://developer.spotify.com/documentation/general/guides/authorization/code-flow/).
 Para mais informações sobre o processo de autenticação implementado pelo nosso sistema veja a nossa [Documentação](https://docs.google.com/document/d/1cjTkzrrpy6fLiE7F1ueLTiix-Zb1A35GtyUuEEYnOEE/edit#heading=h.4i59c2ceu1x).
+
+## Execução do Sistema
+
+Devido ao fato de ser a primeira entrega/versão do projeto, nosso sistema não foi implementado com todas as funcionalidades do objetivo da entrega final. 
+Portanto, nosso sistema, nesse primeiro momento, não possui FrontEnd, sendo a interação com o usuário realizada via terminal. 
+Ao executar nosso projeto, o usuário deverá ir para a porta local padrão definida pelo springboot: localhost:8080/ realizar a autorização, e prosseguir para o terminal.   
+É importante ressaltar que nosso projeto está definido como em fase de desenvolvimento na Web Api do Spotify, logo os usuários devem entrar apenas com uma das contas colocadas no DashBoard.  
 
 ## Documentação
 

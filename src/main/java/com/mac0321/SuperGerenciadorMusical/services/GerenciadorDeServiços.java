@@ -18,8 +18,8 @@ public class GerenciadorDeServiços {
 		String sistemaOperante = "sim";
 		int serviçoDesejado;
 		Scanner sc = new Scanner(System.in);
+		System.out.println("Olá usuário! O que você deseja fazer?");
 		while(sistemaOperante.equals("sim")) {
-			System.out.println("Olá usuário! O que você deseja fazer?");
 			System.out.println("Digite 0, caso deseje criar uma playlist");
 			System.out.println("Digite 1, caso deseje remover uma playlist");
 			System.out.println("Digite 2, caso deseje ver suas playlists");
@@ -31,7 +31,7 @@ public class GerenciadorDeServiços {
 				serviçoDesejado = sc.nextInt();
 			}
 			serviços[serviçoDesejado].ExecutaServiço();
-			System.out.println("Caso deseje realizar mais algum serviço digite sim");
+			System.out.println("Caso deseje realizar mais algum serviço digite sim, caso contrário diga não");
 			sistemaOperante = sc.next();
 		}
 	}
