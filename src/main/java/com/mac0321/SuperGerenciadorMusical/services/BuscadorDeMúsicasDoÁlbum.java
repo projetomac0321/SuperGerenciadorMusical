@@ -21,7 +21,7 @@ public class BuscadorDeMúsicasDoÁlbum extends ServiçoDeBusca {
 	public void ExecutaServiço() {
 		Paging<TrackSimplified> trackSimplifiedPaging = null;
 		try {
-			getAlbumsTracksRequest = spotifyApi.getAlbumsTracks(this.tagDeProcura).limit(50).offset(this.offset).build();
+			getAlbumsTracksRequest = this.spotifyApi.getAlbumsTracks(this.tagDeProcura).limit(50).offset(this.offset).build();
 			trackSimplifiedPaging = getAlbumsTracksRequest.execute();
 		} 
 		catch (IOException | SpotifyWebApiException | ParseException exception) {

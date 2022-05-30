@@ -21,7 +21,7 @@ public class BuscadorDeMúsicasDaPlaylist extends ServiçoDeBusca {
 	public void ExecutaServiço() {
 		Paging<PlaylistTrack> playlistTrackPaging;
 		try {
-			getPlaylistsItemsRequest = spotifyApi.getPlaylistsItems(this.tagDeProcura).limit(50).offset(this.offset).build();
+			getPlaylistsItemsRequest = this.spotifyApi.getPlaylistsItems(this.tagDeProcura).limit(50).offset(this.offset).build();
 			playlistTrackPaging = getPlaylistsItemsRequest.execute();
 		} 
 		catch (IOException | SpotifyWebApiException | ParseException exception) {
