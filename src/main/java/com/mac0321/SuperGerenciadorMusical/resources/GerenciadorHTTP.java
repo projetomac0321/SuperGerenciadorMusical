@@ -33,6 +33,11 @@ public class GerenciadorHTTP{
 	private RedirectView autoriza() throws ParseException, SpotifyWebApiException, IOException {
 		return this.autenticador.performaRequisicaoAutorizacao();
 	}
+	
+	@GetMapping("/playlists")
+	private String integra() throws ParseException, SpotifyWebApiException, IOException {
+		return "Hello, world";
+	}
 		
 	@GetMapping("/aceito")
 	private String requisitaTokenAcesso(@RequestParam String code) throws ParseException, SpotifyWebApiException, IOException{
