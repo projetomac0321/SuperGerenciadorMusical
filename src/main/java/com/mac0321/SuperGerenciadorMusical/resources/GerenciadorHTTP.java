@@ -24,11 +24,6 @@ public class GerenciadorHTTP{
 	public GerenciadorDeServiços gerenciador;
 	public String accessToken;
 	
-	@GetMapping("/")
-	private void teste() {
-		return;
-	}
-		
 	@GetMapping("/autoriza")
 	private RedirectView autoriza() throws ParseException, SpotifyWebApiException, IOException {
 		return this.autenticador.performaRequisicaoAutorizacao();
