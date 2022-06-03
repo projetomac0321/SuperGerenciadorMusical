@@ -19,7 +19,7 @@ import se.michaelthelin.spotify.model_objects.specification.Playlist;
 
 @CrossOrigin(origins = "http://localhost:3000/")
 @RestController
-@RequestMapping(value = "/playlists")
+@RequestMapping(value = "/serviços")
 public class GerenciadorDeServiços {
 	String accessToken;
 	public CriadorDePlaylist criadorDePlaylists;
@@ -32,7 +32,7 @@ public class GerenciadorDeServiços {
 	criadorDePlaylists = new CriadorDePlaylist(accessToken);
 	listarPlaylists = new PlaylistDoUsuárioAtual(accessToken );
 	*/
-	@PostMapping("/cria")
+	@PostMapping("/playlist-criar")
 	private Playlist criarPlaylist(@RequestParam String nome, 
 								   @RequestParam boolean serColaborativa, 
 								   @RequestParam boolean serPublica) 
@@ -44,28 +44,28 @@ public class GerenciadorDeServiços {
 		return playlistCriada;
 	}
 	/*
-	@GetMapping("/addmusica")
+	@GetMapping("/playlist-adicionamusica")
 	private void adicionaMusica() throws ParseException, SpotifyWebApiException, IOException {
 		return playListCriada;
 	}
 	*/
 	
 	/*
-	@GetMapping("/lista")
+	@GetMapping("/playlist-listar")
 	private void listaPlaylists() throws ParseException, SpotifyWebApiException, IOException {
 		return playListCriada;
 	}
 	*/
 	
 	/*
-	@GetMapping("/deleta")
+	@GetMapping("/playlist-deleta")
 	private void deletaPlaylist() throws ParseException, SpotifyWebApiException, IOException {
 		return playListCriada;
 	}
 	*/
 	
 	/*
-	@GetMapping("/removemusica")
+	@GetMapping("/playlist-removemusica")
 	private void removeMusica() throws ParseException, SpotifyWebApiException, IOException {
 		return playListCriada;
 	}
