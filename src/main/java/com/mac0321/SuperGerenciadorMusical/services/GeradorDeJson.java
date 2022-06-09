@@ -5,18 +5,19 @@ import com.google.gson.JsonParser;
 
 public class GeradorDeJson {
 
-	public JsonArray uriParaJsonArray(String [] uris) {
+	public JsonArray stringArrayParaJsonArray(String [] array) {
 		JsonArray jsonArray;
 		String jsonEmString = "[";
 		
-	    for(int contador = 0; contador < uris.length; contador ++) {
-	    	if (contador != uris.length - 1)
-	    		jsonEmString += "{\"uri\":\"" + uris[contador] + "\"},";
+	    for(int contador = 0; contador < array.length; contador ++) {
+	    	if (contador != array.length - 1)
+	    		jsonEmString += "{\"uri\":\"" + array[contador] + "\"},";
 	    	else
-	    		jsonEmString += "{\"uri\":\"" + uris[contador] + "\"}";
+	    		jsonEmString += "{\"uri\":\"" + array[contador] + "\"}";
 	    } 
 	    jsonEmString += "]";
 	    jsonArray = JsonParser.parseString(jsonEmString).getAsJsonArray();
 	    return jsonArray;
 	}
+	
 }

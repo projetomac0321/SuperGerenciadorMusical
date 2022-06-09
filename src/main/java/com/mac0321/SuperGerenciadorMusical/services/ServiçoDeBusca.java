@@ -1,22 +1,8 @@
 package com.mac0321.SuperGerenciadorMusical.services;
 
-public abstract class ServiçoDeBusca extends ServiçosDoAplicativo {
+import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 
-	protected String tagDeProcura;
-	protected int offset;
-	
-	ServiçoDeBusca(String accessToken) {
-		super(accessToken);
-		this.tagDeProcura = null;
-		this.offset = 0;
-	}
+public interface ServiçoDeBusca {
 
-	public void setOffset(int offset) {
-		this.offset = offset;
-	}
-
-	public void setTagDeProcura(String tagDeProcura) {
-		this.tagDeProcura = tagDeProcura;
-	}
-
+	public AbstractModelObject executaServiço(String tagDeProcura, int offset);
 }

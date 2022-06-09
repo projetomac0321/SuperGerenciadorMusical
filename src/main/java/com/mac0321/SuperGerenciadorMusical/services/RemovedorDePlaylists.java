@@ -11,31 +11,25 @@ import se.michaelthelin.spotify.requests.data.follow.legacy.UnfollowPlaylistRequ
 public class RemovedorDePlaylists extends ServiçosDoAplicativo {
 	
 	private UnfollowPlaylistRequest unfollowPlaylistRequest;
-	private String userID;
-	private String playlistID;
-
-	public void setPlaylistID(String playlistID) {
-		this.playlistID = playlistID;
-	}
+	private String userID = null;
 
 	public RemovedorDePlaylists(String accessToken) {
 		super(accessToken);
 		UsuárioAtual usuárioAtual = new UsuárioAtual(accessToken);
-		this.userID = usuárioAtual.getUsuárioAtual().getId();
-		this.playlistID = null;
+		this.userID = usuárioAtual.executaServiço().getId();
 	}
 
-	@Override
-	public void executaServiço() {
+	public String executaServiço(String playlistID) {
 		String respostaDaApi = null;
 	    try {
-	    	unfollowPlaylistRequest = spotifyApi.unfollowPlaylist(this.userID,this.playlistID).build();
+	    	unfollowPlaylistRequest = spotifyApi.unfollowPlaylist(this.userID, playlistID).build();
 	    	respostaDaApi = unfollowPlaylistRequest.execute();
 	    	System.out.println("Playlist removida com sucesso!");
 		} 
 	    catch (NullPointerException | IOException | SpotifyWebApiException | ParseException exception) {
 	    	System.out.println("Essa playlist não existe ou não foi possível removê-la.");
 	    }
+	    return respostaDaApi;
 	}
 
 }

@@ -5,34 +5,32 @@ import java.io.IOException;
 import org.apache.hc.core5.http.ParseException;
 
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
+import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 import se.michaelthelin.spotify.model_objects.specification.Paging;
 import se.michaelthelin.spotify.model_objects.specification.Track;
 import se.michaelthelin.spotify.requests.data.search.simplified.SearchTracksRequest;
 
-public class BuscadorDeMúsicasPorTag extends ServiçoDeBusca{
+public class BuscadorDeMúsicasPorTag extends ServiçosDoAplicativo implements ServiçoDeBusca{
 	
 	private SearchTracksRequest searchTracksRequest;
-	private String filter;
 	
 	BuscadorDeMúsicasPorTag(String accessToken){
 		super(accessToken);
 	}
-
-	public void setFilter(String filter) {
-		this.filter = filter;
-	}
 	
+	//include external: filter???
 	@Override
-	public void executaServiço() {
-		Paging<Track> músicasBuscadas = null;
+	public AbstractModelObject executaServiço(String tagDeProcura, int offset) {
+		Paging<Track> músicas_buscadas = null;
 		try {
-			searchTracksRequest = spotifyApi.searchTracks(tagDeProcura).limit(50).offset(this.offset).includeExternal(this.filter).build();
-			músicasBuscadas = searchTracksRequest.execute();
+			searchTracksRequest = spotifyApi.searchTracks(tagDeProcura).limit(50).offset(offset).build();
+			músicas_buscadas = searchTracksRequest.execute();
 			System.out.println("Músicas buscadas com sucesso!");
 		} 
 		catch (IOException | SpotifyWebApiException | ParseException exception) {
 			System.out.println("Não foi possível buscar as músicas desejadas");
 		}
+		return músicas_buscadas;
 	}
 
 }

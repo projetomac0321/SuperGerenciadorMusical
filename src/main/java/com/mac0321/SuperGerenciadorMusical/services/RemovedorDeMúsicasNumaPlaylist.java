@@ -5,11 +5,12 @@ import java.io.IOException;
 import org.apache.hc.core5.http.ParseException;
 
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
+import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 import se.michaelthelin.spotify.model_objects.special.SnapshotResult;
 import se.michaelthelin.spotify.requests.data.playlists.RemoveItemsFromPlaylistRequest;
 
 
-public class RemovedorDeMúsicasNumaPlaylist extends ModificadorDeMúsicasNumaPlaylist {
+public class RemovedorDeMúsicasNumaPlaylist extends ServiçosDoAplicativo implements ServiçoDeModificaçãoDeMúsicasDeUmaPlaylist {
 	
 	private RemoveItemsFromPlaylistRequest removeItemsFromPlaylistRequest;
 	private GeradorDeJson geradorDeJson = new GeradorDeJson();
@@ -19,17 +20,17 @@ public class RemovedorDeMúsicasNumaPlaylist extends ModificadorDeMúsicasNumaPl
 	}
 	
 	@Override
-	public void executaServiço() {
-		SnapshotResult snapshot_id = null;
-		
+	public AbstractModelObject executaServiço(String playlistID, String uris[]) {
+		SnapshotResult snapshot_playlist_id = null;
 		try {
-	    	removeItemsFromPlaylistRequest = spotifyApi.removeItemsFromPlaylist(this.playlistID, this.geradorDeJson.uriParaJsonArray(this.uris)).build();
-	    	snapshot_id = removeItemsFromPlaylistRequest.execute();
+	    	removeItemsFromPlaylistRequest = spotifyApi.removeItemsFromPlaylist(playlistID, this.geradorDeJson.stringArrayParaJsonArray(uris)).build();
+	    	snapshot_playlist_id = removeItemsFromPlaylistRequest.execute();
 	    	System.out.println("Músicas removidas com sucesso da playlist");
 	    } 
 	    catch (NullPointerException | IOException | SpotifyWebApiException | ParseException exception) {
 	    	System.out.println("Não foi possível excluir as músicas da playlist");
 	    }
+		return snapshot_playlist_id;
 	}
 	
 }
