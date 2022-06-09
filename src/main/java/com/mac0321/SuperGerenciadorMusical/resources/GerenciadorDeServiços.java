@@ -9,10 +9,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.view.RedirectView;
-
 import com.mac0321.SuperGerenciadorMusical.services.CriadorDePlaylist;
-import com.mac0321.SuperGerenciadorMusical.services.PlaylistsDoUsuárioAtual;
+import com.mac0321.SuperGerenciadorMusical.services.ProcuradorDePlaylistsDoUsuárioAtual;
 
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 import se.michaelthelin.spotify.model_objects.specification.Playlist;
@@ -23,7 +21,7 @@ import se.michaelthelin.spotify.model_objects.specification.Playlist;
 public class GerenciadorDeServiços {
 	String accessToken;
 	public CriadorDePlaylist criadorDePlaylists;
-	public PlaylistsDoUsuárioAtual listarPlaylists;
+	public ProcuradorDePlaylistsDoUsuárioAtual listarPlaylists;
 	
 	
 	/*
@@ -37,11 +35,7 @@ public class GerenciadorDeServiços {
 								   @RequestParam boolean serColaborativa, 
 								   @RequestParam boolean serPublica) 
 			throws ParseException, SpotifyWebApiException, IOException {
-		
-		Playlist playlistCriada;
-		playlistCriada = this.criadorDePlaylists.criaPlaylist(nome, serColaborativa, serPublica, accessToken);
-		
-		return playlistCriada;
+		return this.criadorDePlaylists.criaPlaylist(nome, serColaborativa, serPublica, accessToken);
 	}
 	/*
 	@GetMapping("/playlist-adicionamusica")

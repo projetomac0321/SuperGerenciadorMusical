@@ -7,8 +7,8 @@ public abstract class ServiçoDeBusca extends ServiçosDoAplicativo {
 	
 	ServiçoDeBusca(String accessToken) {
 		super(accessToken);
-		tagDeProcura = null;
-		offset = 0;
+		this.tagDeProcura = null;
+		this.offset = 0;
 	}
 
 	public void setOffset(int offset) {

@@ -18,7 +18,7 @@ public class BuscadorDeÁlbuns extends ServiçoDeBusca {
 	}
 	
 	@Override
-	public void ExecutaServiço() {
+	public void executaServiço() {
 		Paging<AlbumSimplified> albumSimplifiedPaging = null;
 	    try {
 	    	searchAlbumsRequest = this.spotifyApi.searchAlbums(this.tagDeProcura).limit(50).offset(this.offset).build();

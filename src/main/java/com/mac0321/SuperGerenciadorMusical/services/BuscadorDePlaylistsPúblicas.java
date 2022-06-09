@@ -18,7 +18,7 @@ public class BuscadorDePlaylistsPúblicas extends ServiçoDeBusca {
 	}
 
 	@Override
-	public void ExecutaServiço() {
+	public void executaServiço() {
     	Paging<PlaylistSimplified> playlistSimplifiedPaging = null;
 	    try {
 	    	searchPlaylistsRequest = this.spotifyApi.searchPlaylists(this.tagDeProcura).limit(50).offset(this.offset).build();

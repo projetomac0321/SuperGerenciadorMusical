@@ -18,11 +18,12 @@ public class BuscadorDeMúsicasDaPlaylist extends ServiçoDeBusca {
 	}
 
 	@Override
-	public void ExecutaServiço() {
+	public void executaServiço() {
 		Paging<PlaylistTrack> playlistTrackPaging;
 		try {
 			getPlaylistsItemsRequest = this.spotifyApi.getPlaylistsItems(this.tagDeProcura).limit(50).offset(this.offset).build();
 			playlistTrackPaging = getPlaylistsItemsRequest.execute();
+			System.out.println("Músicas da playlist buscadas com sucesso!");
 		} 
 		catch (IOException | SpotifyWebApiException | ParseException exception) {
 			System.out.println("Impossível de buscar as músicas da playlist");

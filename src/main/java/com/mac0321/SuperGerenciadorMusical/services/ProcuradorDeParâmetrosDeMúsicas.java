@@ -15,11 +15,11 @@ public class ProcuradorDeParâmetrosDeMúsicas extends ServiçosDoAplicativo {
 
 	ProcuradorDeParâmetrosDeMúsicas(String accessToken) {
 		super(accessToken);
-		idsDasMúsicas = null;
+		this.idsDasMúsicas = null;
 	}
 
 	@Override
-	public void ExecutaServiço() {
+	public void executaServiço() {
 		AudioFeatures[] audioFeatures;	
 		try {
 			getAudioFeaturesForSeveralTracksRequest = this.spotifyApi.getAudioFeaturesForSeveralTracks(this.idsDasMúsicas).build();
