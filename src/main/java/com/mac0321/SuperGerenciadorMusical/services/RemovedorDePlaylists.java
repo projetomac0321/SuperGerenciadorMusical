@@ -4,6 +4,8 @@ import java.io.IOException;
 
 import org.apache.hc.core5.http.ParseException;
 
+import com.google.gson.JsonArray;
+
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 import se.michaelthelin.spotify.requests.data.follow.legacy.UnfollowPlaylistRequest;
 
@@ -11,25 +13,24 @@ import se.michaelthelin.spotify.requests.data.follow.legacy.UnfollowPlaylistRequ
 public class RemovedorDePlaylists extends ServiçosDoAplicativo {
 	
 	private UnfollowPlaylistRequest unfollowPlaylistRequest;
-	private String userID = null;
+	private GeradorDeJson geradorDeJson;
 
 	public RemovedorDePlaylists(String accessToken) {
 		super(accessToken);
-		UsuárioAtual usuárioAtual = new UsuárioAtual(accessToken);
-		this.userID = usuárioAtual.executaServiço().getId();
+		geradorDeJson = new GeradorDeJson();
 	}
 
-	public String executaServiço(String playlistID) {
+	public JsonArray executaServiço(String userID, String playlistID) {
 		String respostaDaApi = null;
 	    try {
-	    	unfollowPlaylistRequest = spotifyApi.unfollowPlaylist(this.userID, playlistID).build();
+	    	unfollowPlaylistRequest = spotifyApi.unfollowPlaylist(userID, playlistID).build();
 	    	respostaDaApi = unfollowPlaylistRequest.execute();
 	    	System.out.println("Playlist removida com sucesso!");
 		} 
 	    catch (NullPointerException | IOException | SpotifyWebApiException | ParseException exception) {
 	    	System.out.println("Essa playlist não existe ou não foi possível removê-la.");
 	    }
-	    return respostaDaApi;
+	    return this.geradorDeJson.stringParaJsonArray(respostaDaApi);
 	}
 
 }
