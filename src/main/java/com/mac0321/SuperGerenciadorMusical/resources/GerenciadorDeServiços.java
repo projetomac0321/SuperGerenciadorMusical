@@ -39,7 +39,7 @@ public class GerenciadorDeServiços {
 	}
 	
 	@GetMapping("/autentica")
-	private void autenticacao(String code) throws ParseException, SpotifyWebApiException, IOException {
+	private void autenticacao(@RequestParam String code) throws ParseException, SpotifyWebApiException, IOException {
 		this.autenticador.requisitaTokenAcesso(code);
 		this.acessToken = this.autenticador.getTokenUsuario();
 		
