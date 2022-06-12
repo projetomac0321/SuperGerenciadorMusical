@@ -25,7 +25,7 @@ import se.michaelthelin.spotify.model_objects.specification.PlaylistSimplified;
 
 @CrossOrigin(origins = "http://localhost:3000/")
 @RestController
-@RequestMapping(value = "/serviços")
+@RequestMapping(value = "/servicos")
 public class GerenciadorDeServiços {
 	String acessToken;
 	public Autenticador autenticador = new Autenticador();
@@ -45,6 +45,7 @@ public class GerenciadorDeServiços {
 		
 		criadorDePlaylists = new CriadorDePlaylist(this.acessToken);
 		listadorDePlaylists = new PlaylistsDoUsuárioAtual(this.acessToken);
+
 		return;
 	}
 	

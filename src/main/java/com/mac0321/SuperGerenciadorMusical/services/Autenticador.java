@@ -14,7 +14,7 @@ import se.michaelthelin.spotify.requests.authorization.authorization_code.Author
 
 public class Autenticador {
 	private static final URI redirectUri = SpotifyHttpManager.
-			makeUri("http://localhost:8080/serviços/autentica");
+			makeUri("http://localhost:8080/servicos/autentica");
 	private  String tokenUsuario = "";
 	private  String refreshTokenUsuario = ""; 
 	
