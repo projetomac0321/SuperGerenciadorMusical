@@ -13,16 +13,30 @@ import se.michaelthelin.spotify.requests.authorization.authorization_code.Author
 import se.michaelthelin.spotify.requests.authorization.authorization_code.AuthorizationCodeUriRequest;
 
 public class Autenticador {
-	private static final URI redirectUri = SpotifyHttpManager.
-			makeUri("http://localhost:8080/servicos/autentica");
-	private  String tokenUsuario = "";
-	private  String refreshTokenUsuario = ""; 
 	
-	private static final SpotifyApi acessoApi = new SpotifyApi.Builder()
-			.setClientId("de6b441011e14346add6404c00b1bed0")
-			.setClientSecret("0d222f0e5aef494c83bd133abbb22903")
-			.setRedirectUri(redirectUri)
-			.build();
+	private static Autenticador autenticador;
+	
+	private static URI redirectUri;
+	private  String tokenUsuario;
+	private  String refreshTokenUsuario; 
+	private static SpotifyApi acessoApi;
+	
+	private Autenticador() {
+		redirectUri = SpotifyHttpManager.
+				makeUri("http://localhost:8080/servicos/autentica");
+		acessoApi = new SpotifyApi.Builder()
+				.setClientId("de6b441011e14346add6404c00b1bed0")
+				.setClientSecret("0d222f0e5aef494c83bd133abbb22903")
+				.setRedirectUri(redirectUri)
+				.build();
+	}
+	
+	public static Autenticador criarAutenticador() {
+		if(autenticador == null) {
+			autenticador = new Autenticador();
+		}
+		return autenticador;
+	}
 	 
 	 public URI autorizacaoUsuario(){
 		final AuthorizationCodeUriRequest requisicaoDePermissao = acessoApi.authorizationCodeUri()
@@ -33,18 +47,6 @@ public class Autenticador {
 		URI uriReqAutorizacao = requisicaoDePermissao.execute(); 
 		return uriReqAutorizacao;
 	}
-	
-	 /*
-	  DELEGADO AO FRONT END
-	  
-	public RedirectView performaRequisicaoAutorizacao() throws ParseException, SpotifyWebApiException, IOException {
-		String URLAutorizacao = autorizacaoUsuario().toString();
-		
-		RedirectView redirectView = new RedirectView();
-	    redirectView.setUrl(URLAutorizacao);
-	    return redirectView;
-	}
-	*/
 	 
 	public void requisitaTokenAcesso(String code) throws ParseException, SpotifyWebApiException, IOException {
 		AuthorizationCodeRequest requisicaoDoCodigo = acessoApi.authorizationCode(code).build();
