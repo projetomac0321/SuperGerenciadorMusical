@@ -19,6 +19,7 @@ import com.mac0321.SuperGerenciadorMusical.services.AdicionadorDeMúsicasNumaPla
 import com.mac0321.SuperGerenciadorMusical.services.Autenticador;
 import com.mac0321.SuperGerenciadorMusical.services.CriadorDePlaylist;
 import com.mac0321.SuperGerenciadorMusical.services.ModeloDeRequisiçãoPlaylists;
+import com.mac0321.SuperGerenciadorMusical.services.ProcuradorDePlaylistsDoUsuárioAtual;
 import com.mac0321.SuperGerenciadorMusical.services.RemovedorDeMúsicasNumaPlaylist;
 import com.mac0321.SuperGerenciadorMusical.services.RemovedorDePlaylists;
 
@@ -74,7 +75,7 @@ public class ServiçosComPlaylists {
 		Paging<PlaylistSimplified> playlistsUsuario;
 		
 		listadorDePlaylistsUsuarioAtual = new ProcuradorDePlaylistsDoUsuárioAtual(autenticador.getTokenUsuario());
-		playlistsUsuario = listadorDePlaylistsUsuarioAtual.executaServiço(offset)
+		playlistsUsuario = listadorDePlaylistsUsuarioAtual.executaServiço(offset);
 		
 		if(playlistsUsuario == null) {
 			return new ResponseEntity<String>("Não foi possível listar", HttpStatus.BAD_GATEWAY);
