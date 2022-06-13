@@ -4,13 +4,8 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonParser;
 
 public class GeradorDeJson {
-	
-	public JsonArray stringParaJsonArray(String string) {
-		JsonArray jsonArray = null;
-		return jsonArray;
-	}
 
-	public JsonArray stringArrayParaJsonArray(String [] array) {
+	public JsonArray urisParaJsonArray(String [] array) {
 		JsonArray jsonArray;
 		String jsonEmString = "[";
 		
