@@ -12,27 +12,10 @@ import se.michaelthelin.spotify.requests.data.playlists.CreatePlaylistRequest;
 public class CriadorDePlaylist extends ServiçosDoAplicativo {
 	
 	private CreatePlaylistRequest createPlaylistRequest;
-	private String userID = null;
 
 	public CriadorDePlaylist(String accessToken) {
 		super(accessToken);
-		UsuárioAtual usuárioAtual = new UsuárioAtual(accessToken);
-		this.userID = usuárioAtual.executaServiço().getId();
 	}
-	
-	// JOGA FORA
-	public Playlist criaPlaylist(String nomeDaPlaylist, boolean serColaborativa, boolean serPública, String descrição) {
-		Playlist novaPlaylist = null;
-	    try {
-	    	createPlaylistRequest = spotifyApi.createPlaylist(this.userID, nomeDaPlaylist).collaborative(serColaborativa).public_(serPública).description(descrição).build();
-	        novaPlaylist = createPlaylistRequest.execute();
-	        System.out.println("A playlist foi criada com sucesso.");
-	    }
-	    catch (IOException | SpotifyWebApiException | ParseException exception) {
-	    	System.out.println("Não foi possível criar a playlist");
-	    }
-	    return novaPlaylist;
-	  }
 
 	public AbstractModelObject executaServiço(String userID, String nome_da_playlist, boolean serColaborativa, boolean serPública, String descrição) {
 		Playlist nova_playlist = null;
