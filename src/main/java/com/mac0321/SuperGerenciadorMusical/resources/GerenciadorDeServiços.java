@@ -49,11 +49,11 @@ public class GerenciadorDeServiços {
 		return;
 	}
 	
-	@PostMapping("/playlist-criar")
+	@PostMapping("/playlists-criar")
 	private Playlist criarPlaylist(@RequestParam String nome, 
 								   @RequestParam boolean serColaborativa, 
 								   @RequestParam boolean serPublica,
-								   String descricao) 
+								   @RequestParam String descricao) 
 			throws ParseException, SpotifyWebApiException, IOException {
 		
 		Playlist playlistCriada;
@@ -68,14 +68,14 @@ public class GerenciadorDeServiços {
 	}
 	*/
 	
-	@GetMapping("/playlist-listar")
+	@GetMapping("/playlists-listar")
 	private List<Paging<PlaylistSimplified>> listaPlaylists() throws ParseException, SpotifyWebApiException, IOException {
 		return this.listadorDePlaylists.buscaListaDePlaylistsDoUsuárioAtual();
 	}
 	
 	
 	
-	@PostMapping("/playlist-deletar")
+	@PostMapping("/playlists-deletar")
 	private void deletaPlaylist(@RequestParam String playlistID) throws ParseException, SpotifyWebApiException, IOException {
 		this.removedorDePlaylists.removerPlaylist(playlistID);
 		return;
