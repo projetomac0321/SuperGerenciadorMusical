@@ -1,0 +1,68 @@
+.page {
+    display: flex;
+}
+
+.sidebar {
+    border-right: 1px solid var(--text);
+    height: 100vh;
+    flex: 0.2;
+    background-color: var(--sidebarColor);
+
+    color: var(--text);
+    min-width: 358px;
+}
+
+.sidebarLogo {
+    margin-right:auto;
+    height: 200px;
+    width: 200px;
+    margin: 70px 70px 45px;
+}
+
+.divider {
+    margin-bottom: 40px;
+    color: var(--text);
+}
+
+
+#homeLink, #createLink, #listLink {
+    color: var(--text);
+    height: 100%;
+    cursor: pointer;
+    transition: 350ms color ease-in;
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+#homeLink:hover, #createLink:hover, #listLink:hover {
+    color: var(--hover);
+}
+
+#homeLink.active, #createLink.active, #listLink.active {
+    color: var(--hover);
+}
+
+.symbol {
+    height: 22px;
+    width: 22px;
+    margin-right: 10px;
+}
+
+.links {
+    margin-left: 30px;
+}
+
+.link {
+    text-decoration: none;
+    font-size: 22px;
+}
+
+.body {
+    flex: 0.8;
+    background: linear-gradient(var(--background), var(--black));
+    height: 100vh;
+    color: var(--white);
+    padding: 30px;
+    min-width: 1000px;
+}

@@ -5,11 +5,12 @@ import java.io.IOException;
 import org.apache.hc.core5.http.ParseException;
 
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
+import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 import se.michaelthelin.spotify.model_objects.specification.Paging;
 import se.michaelthelin.spotify.model_objects.specification.PlaylistSimplified;
 import se.michaelthelin.spotify.requests.data.search.simplified.SearchPlaylistsRequest;
 
-public class BuscadorDePlaylistsPúblicas extends ServiçoDeBusca {
+public class BuscadorDePlaylistsPúblicas extends ServiçosDoAplicativo implements ServiçoDeBusca  {
 	
 	private SearchPlaylistsRequest searchPlaylistsRequest;
 	
@@ -18,15 +19,16 @@ public class BuscadorDePlaylistsPúblicas extends ServiçoDeBusca {
 	}
 
 	@Override
-	public void ExecutaServiço() {
-    	Paging<PlaylistSimplified> playlistSimplifiedPaging = null;
+	public AbstractModelObject executaServiço(String tagDeProcura, int offset) {
+    	Paging<PlaylistSimplified> playlists_públicas = null;
 	    try {
-	    	searchPlaylistsRequest = this.spotifyApi.searchPlaylists(this.tagDeProcura).limit(50).offset(this.offset).build();
-	    	playlistSimplifiedPaging = searchPlaylistsRequest.execute();
+	    	searchPlaylistsRequest = this.spotifyApi.searchPlaylists(tagDeProcura).limit(50).offset(offset).build();
+	    	playlists_públicas = searchPlaylistsRequest.execute();
 	    } 
 	    catch (IOException | SpotifyWebApiException | ParseException exception) {
 	      System.out.println("Impossível de buscar mais playlists");
 	    }
+	    return playlists_públicas;
 	}
 
 }

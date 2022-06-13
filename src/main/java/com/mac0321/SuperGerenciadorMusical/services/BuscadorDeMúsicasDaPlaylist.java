@@ -5,11 +5,12 @@ import java.io.IOException;
 import org.apache.hc.core5.http.ParseException;
 
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
+import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 import se.michaelthelin.spotify.model_objects.specification.Paging;
 import se.michaelthelin.spotify.model_objects.specification.PlaylistTrack;
 import se.michaelthelin.spotify.requests.data.playlists.GetPlaylistsItemsRequest;
 
-public class BuscadorDeMúsicasDaPlaylist extends ServiçoDeBusca {
+public class BuscadorDeMúsicasDaPlaylist extends ServiçosDoAplicativo implements ServiçoDeBusca {
 
 	GetPlaylistsItemsRequest getPlaylistsItemsRequest;
 
@@ -18,14 +19,16 @@ public class BuscadorDeMúsicasDaPlaylist extends ServiçoDeBusca {
 	}
 
 	@Override
-	public void ExecutaServiço() {
-		Paging<PlaylistTrack> playlistTrackPaging;
+	public AbstractModelObject executaServiço(String tagDeProcura, int offset) {
+		Paging<PlaylistTrack> músicas_da_playlist = null;
 		try {
-			getPlaylistsItemsRequest = this.spotifyApi.getPlaylistsItems(this.tagDeProcura).limit(50).offset(this.offset).build();
-			playlistTrackPaging = getPlaylistsItemsRequest.execute();
+			getPlaylistsItemsRequest = this.spotifyApi.getPlaylistsItems(tagDeProcura).limit(50).offset(offset).build();
+			músicas_da_playlist = getPlaylistsItemsRequest.execute();
+			System.out.println("Músicas da playlist buscadas com sucesso!");
 		} 
 		catch (IOException | SpotifyWebApiException | ParseException exception) {
 			System.out.println("Impossível de buscar as músicas da playlist");
 		}
+		return músicas_da_playlist;
 	}
 }

@@ -1,0 +1,30 @@
+.songInformation {
+    margin-left: 20px;
+    padding: 20px;
+    display: block;
+    color: var(--white);
+    margin-right: 100px;
+    justify-content: space-between;
+}
+
+.songInformation img {
+    height: 250px;
+    width: 250px;
+    margin-bottom: 30px;
+}
+
+.songInformationText {
+    margin-left: 20px;
+}
+
+.songInformationText h1{
+    font-size: 40px;
+    margin: 3px;
+    color: var(--white);
+}
+
+.songInformationText p{
+    font-size: 20px;
+    margin: 3px;
+    color: var(--gray);
+}

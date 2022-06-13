@@ -1,0 +1,18 @@
+.linkIcon {
+    text-decoration: none;
+    color: var(--white);
+}
+
+.returnIcon {
+    margin-top: 50px;
+    margin-left: 20px;
+    margin-bottom: 60px;
+    height: 30px;
+    width: 30px;
+    align-items: center;
+}
+
+.arrowLeftIcon {
+    height: 20px;
+    width: 20px;
+}

@@ -1,0 +1,98 @@
+.listHeader {
+    margin-top: 80px;
+    margin-left: 100px;
+    margin-right: 80px;
+}
+
+.listHeader h1 {
+    font-size: 22px;
+    margin-bottom: 8px;
+}
+
+.listDivider {
+    color: var(--white);
+}
+
+.list {
+    margin-top: 20px;
+    margin-left: 100px;
+ }
+
+.bodyPlaylists {
+    margin: 20px 30px 0px -30px;
+    overflow: hidden;
+    overflow-y: scroll;
+    height: 60vh;
+}
+
+.playlistRow {
+    margin-left: 20px;
+    padding: 20px;
+    display: flex;
+    color: var(--white);
+    margin-right: 100px;
+    width: 1200px;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    align-items: center;
+}
+
+
+.playlistRow:hover {
+    background-color: var(--rowHover);
+    opacity: 0.8;
+}
+
+.playlistRowText {
+    margin-left: 20px;
+}
+
+.playlistRowText h1{
+    color: var(--white);
+}
+
+.playlistRowText:hover{
+    cursor:pointer;
+}
+
+.trashIcon {
+    cursor: pointer;
+}
+
+.playlistCreate {
+    margin-left: 20px;
+    padding: 20px;
+    display: flex;
+    color: var(--white);
+    margin-right: 100px;
+    width: 1200px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.playlistCreate:hover {
+    background-color: var(--rowHover);
+    opacity: 0.8;
+}
+
+.playlistCreateText {
+    margin-left: 20px;
+}
+
+.playlistCreateText h1{
+    color: var(--gray);
+}
+
+.playlistCreateText:hover{
+    cursor: pointer;
+}
+
+.plusIcon {
+    cursor: pointer;
+    color: var(--gray);
+} 
+
+.navLink {
+    text-decoration-line: none;
+    cursor: default;
+}

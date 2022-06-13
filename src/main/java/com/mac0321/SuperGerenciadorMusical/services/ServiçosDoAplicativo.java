@@ -11,7 +11,5 @@ public abstract class ServiçosDoAplicativo {
 	ServiçosDoAplicativo(String accessToken){
 		spotifyApi = new SpotifyApi.Builder().setAccessToken(accessToken).build();
 	}
-	
-	public abstract void ExecutaServiço();
 
 }
