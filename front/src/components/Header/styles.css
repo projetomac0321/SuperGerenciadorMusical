@@ -20,6 +20,11 @@ div.show .headerRight {
     opacity: 0;
 }
 
+div.search .buttonSearch {
+    visibility: hidden;
+    opacity: 0;
+}
+
 div.headerMid {
     flex: 0.4;
     background-color: var(--white);
@@ -36,9 +41,21 @@ div.headerMid {
 }
 
 .headerRight {
-    margin-right: 140px;
+    margin-right: 180px;
     visibility: visible;
     opacity: 1;
+}
+
+.buttonSearch {
+    visibility: visible;
+    opacity: 1;
+}
+
+.buttonSearch button {
+    height: 30px;
+    width: 50px;
+    border-radius: 15px;
+    margin-top: 0px;
 }
 
 .icon {

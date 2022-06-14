@@ -12,7 +12,7 @@ export function ListPlaylists(){
     
     const fetchUserData = () => {
       axios.get("http://localhost:8080/playlists/listar?offset=0").then(res => {
-        console.log(res.data);
+        setPlaylists(res.data);
       }).catch(err => console.log(err.message));
     }
     

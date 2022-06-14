@@ -23,7 +23,8 @@ public class GerenciadorDeBuscasDeMúsicas {
 	private BuscadorDeMúsicasPorTag buscadorDeMusicaPorTag;
 	
 	@GetMapping("/query-de-procura")
-	private ResponseEntity<Track[]> listarMusicasPorQuery (@RequestParam String tagDeProcura, int offset) {
+	private ResponseEntity<Track[]> listarMusicasPorQuery (@RequestParam String tagDeProcura, 
+			                                               @RequestParam int offset) {
 		buscadorDeMusicaPorTag = new BuscadorDeMúsicasPorTag(autenticador.getTokenUsuario());
 		Paging<Track> pagingDeMusicas;
 		pagingDeMusicas = (Paging<Track>) buscadorDeMusicaPorTag.executaServiço(tagDeProcura, offset);
