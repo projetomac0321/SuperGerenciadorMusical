@@ -77,9 +77,8 @@ public class ServiçosComPlaylists {
 		ArrayList<Playlist> playlistsUsuario = new ArrayList<>();
 		PlaylistSimplified[] respostaAPI;
 		
+		convertePlaylist = new ProcuradorDePlaylist(autenticador.getTokenUsuario());
 		listadorDePlaylistsUsuarioAtual = new ProcuradorDePlaylistsDoUsuárioAtual(autenticador.getTokenUsuario());
-		
-		
 		
 		respostaAPI = listadorDePlaylistsUsuarioAtual.executaServiço(offset).getItems();
 		

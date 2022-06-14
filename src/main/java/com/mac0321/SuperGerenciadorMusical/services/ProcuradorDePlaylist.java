@@ -12,7 +12,7 @@ public class ProcuradorDePlaylist extends ServiçosDoAplicativo {
 
 	private GetPlaylistRequest getPlaylistRequest;
 
-	ProcuradorDePlaylist(String accessToken) {
+	public ProcuradorDePlaylist(String accessToken) {
 		super(accessToken);
 	}
 
