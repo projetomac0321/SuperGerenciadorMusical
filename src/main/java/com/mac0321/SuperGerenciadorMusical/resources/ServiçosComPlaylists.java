@@ -1,6 +1,7 @@
 package com.mac0321.SuperGerenciadorMusical.resources;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import org.apache.hc.core5.http.ParseException;
 import org.springframework.http.HttpStatus;
@@ -8,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +20,7 @@ import com.mac0321.SuperGerenciadorMusical.services.AdicionadorDeMúsicasNumaPla
 import com.mac0321.SuperGerenciadorMusical.services.Autenticador;
 import com.mac0321.SuperGerenciadorMusical.services.CriadorDePlaylist;
 import com.mac0321.SuperGerenciadorMusical.services.ModeloDeRequisiçãoPlaylists;
+import com.mac0321.SuperGerenciadorMusical.services.ProcuradorDePlaylist;
 import com.mac0321.SuperGerenciadorMusical.services.ProcuradorDePlaylistsDoUsuárioAtual;
 import com.mac0321.SuperGerenciadorMusical.services.RemovedorDeMúsicasNumaPlaylist;
 import com.mac0321.SuperGerenciadorMusical.services.RemovedorDePlaylists;
@@ -37,6 +40,7 @@ public class ServiçosComPlaylists {
 	private RemovedorDePlaylists removedorDePlaylists;
 	private AdicionadorDeMúsicasNumaPlaylist adicionadorDeMusicas;
 	private RemovedorDeMúsicasNumaPlaylist removedorDeMusicas;
+	private ProcuradorDePlaylist convertePlaylist;
 	
 	@PostMapping("/criar")
 	private ResponseEntity<Playlist> criarPlaylist(@RequestBody Playlist playlist) 
@@ -55,10 +59,10 @@ public class ServiçosComPlaylists {
 		return new ResponseEntity<Playlist>(playlistCriada, HttpStatus.OK);
 	}
 	
-	@DeleteMapping("/remover")
-	private ResponseEntity<Integer> deletarPlaylist(@RequestBody Playlist deletar){
+	@DeleteMapping("/remover/{id}")
+	private ResponseEntity<Integer> deletarPlaylist(@PathVariable("id") String id){
 		removedorDePlaylists = new RemovedorDePlaylists(autenticador.getTokenUsuario());
-		int resposta = removedorDePlaylists.executaServiço(deletar.getId());
+		int resposta = removedorDePlaylists.executaServiço(id);
 		
 		if(resposta == 0) {
 			return new ResponseEntity<Integer>(resposta, HttpStatus.BAD_GATEWAY);
@@ -68,20 +72,26 @@ public class ServiçosComPlaylists {
 	}
 	
 	@GetMapping("/listar")
-	private ResponseEntity<PlaylistSimplified[]> listarPlaylists(@RequestParam int offset) 
+	private ResponseEntity<ArrayList<Playlist>> listarPlaylists(@RequestParam int offset) 
 			throws ParseException, SpotifyWebApiException, IOException {
-		PlaylistSimplified[] playlistsUsuario;
+		ArrayList<Playlist> playlistsUsuario = new ArrayList<>();
+		PlaylistSimplified[] respostaAPI;
 		
 		listadorDePlaylistsUsuarioAtual = new ProcuradorDePlaylistsDoUsuárioAtual(autenticador.getTokenUsuario());
 		
-		playlistsUsuario = listadorDePlaylistsUsuarioAtual.executaServiço(offset).getItems();
 		
 		
-		if(playlistsUsuario == null) {
-			return new ResponseEntity<PlaylistSimplified[]>(playlistsUsuario, HttpStatus.BAD_GATEWAY);
+		respostaAPI = listadorDePlaylistsUsuarioAtual.executaServiço(offset).getItems();
+		
+		for(int i = 0; i < respostaAPI.length; i++) {
+			playlistsUsuario.add(convertePlaylist.executaServiço(respostaAPI[i].getId()));
 		}
 		
-		return new ResponseEntity<PlaylistSimplified[]>(playlistsUsuario, HttpStatus.OK);
+		if(playlistsUsuario.isEmpty()) {
+			return new ResponseEntity<ArrayList<Playlist>>(playlistsUsuario, HttpStatus.BAD_GATEWAY);
+		}
+		
+		return new ResponseEntity<ArrayList<Playlist>>(playlistsUsuario, HttpStatus.OK);
 	}
 	
 	@PostMapping("/adicionar-musicas")
@@ -109,7 +119,4 @@ public class ServiçosComPlaylists {
 		}
 		return new ResponseEntity<String>("Músicas removidas com sucesso", HttpStatus.OK);
 	}
-	
-	
-	
 }
