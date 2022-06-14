@@ -10,16 +10,16 @@ import se.michaelthelin.spotify.requests.data.users_profile.GetCurrentUsersProfi
 
 public class UsuárioAtual extends ServiçosDoAplicativo {
 	
-	 private final GetCurrentUsersProfileRequest getCurrentUsersProfileRequest;
+	 private GetCurrentUsersProfileRequest getCurrentUsersProfileRequest;
 
 	 UsuárioAtual(String accessToken){
 		 super(accessToken);
-		 this.getCurrentUsersProfileRequest = this.spotifyApi.getCurrentUsersProfile().build();
 	 }
 	 
 	 public User executaServiço(){
 		 User user = null;
 		 try {
+			 this.getCurrentUsersProfileRequest = this.spotifyApi.getCurrentUsersProfile().build();
 			 user = getCurrentUsersProfileRequest.execute();
 			 System.out.println("Usuário atual obtido com sucesso!");
 		 } 
