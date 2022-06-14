@@ -1,7 +1,6 @@
 package com.mac0321.SuperGerenciadorMusical.resources;
 
 import java.io.IOException;
-import java.util.List;
 
 import org.apache.hc.core5.http.ParseException;
 import org.springframework.http.HttpStatus;
@@ -25,10 +24,8 @@ import com.mac0321.SuperGerenciadorMusical.services.RemovedorDePlaylists;
 
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 import se.michaelthelin.spotify.model_objects.specification.Playlist;
-import se.michaelthelin.spotify.model_objects.specification.Paging;
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 import se.michaelthelin.spotify.model_objects.special.SnapshotResult;
-import se.michaelthelin.spotify.model_objects.specification.PlaylistSimplified;
 
 @CrossOrigin(origins = "http://localhost:3000/")
 @RestController
@@ -47,7 +44,7 @@ public class ServiçosComPlaylists {
 		
 		criadorDePlaylists = new CriadorDePlaylist(autenticador.getTokenUsuario());
 		Playlist playlistCriada;
-		playlistCriada = (Playlist) this.criadorDePlaylists.executaServiço(playlist.getOwner().getId(), playlist.getName(), 
+		playlistCriada = (Playlist) this.criadorDePlaylists.executaServiço(playlist.getName(), 
 																playlist.getIsCollaborative(), 
 															    playlist.getIsPublicAccess(), playlist.getDescription());
 		
@@ -61,7 +58,7 @@ public class ServiçosComPlaylists {
 	@DeleteMapping("/remover")
 	private ResponseEntity<Integer> deletarPlaylist(@RequestBody Playlist deletar){
 		removedorDePlaylists = new RemovedorDePlaylists(autenticador.getTokenUsuario());
-		int resposta = removedorDePlaylists.executaServiço(deletar.getId(), deletar.getOwner().getId());
+		int resposta = removedorDePlaylists.executaServiço(deletar.getId());
 		
 		if(resposta == 0) {
 			return new ResponseEntity<Integer>(resposta, HttpStatus.BAD_GATEWAY);
