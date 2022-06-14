@@ -30,13 +30,13 @@ export function CreatePlaylists(){
     }
 
     function createPlaylist(){
-        axios.post("http://localhost:8080/servicos/playlists-criar", {
-          name: playlist,
-          collaborative: !checkColaboration,
-          publicAccess: !checkPrivacy,
-          description: "",
-        }).then(console.log(playlist, !checkColaboration, !checkPrivacy)).catch(err => console.log(err.message));
-      }
+        axios.post("http://localhost:8080/playlists/criar", {
+            name: playlist,
+            collaborative: !checkColaboration,
+            publicAccess: !checkPrivacy,
+            description: "",
+          }).catch(err => console.log(err.message));
+        }
 
     return(
         <div className="create">

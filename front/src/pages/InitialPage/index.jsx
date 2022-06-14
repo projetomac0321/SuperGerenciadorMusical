@@ -9,7 +9,7 @@ export function InitialPage(){
         const [uri, setUri] = useState();
         
         const fetchUri = () => {
-          axios.get("http://localhost:8080/servicos/autorizacao-inicia").then(res => {
+          axios.get("http://localhost:8080/autenticacao/iniciar").then(res => {
             setUri(res.data);
           }).catch(err => console.log(err.message));
         }
