@@ -22,7 +22,7 @@ public class GerenciadorDeBuscasDeMúsicas {
 	private Autenticador autenticador = Autenticador.criarAutenticador();
 	private BuscadorDeMúsicasPorTag buscadorDeMusicaPorTag;
 	
-	@GetMapping("/tag-de-procura")
+	@GetMapping("/query-de-procura")
 	private ResponseEntity<Track[]> listarMusicasPorQuery (@RequestParam String tagDeProcura, int offset) {
 		buscadorDeMusicaPorTag = new BuscadorDeMúsicasPorTag(autenticador.getTokenUsuario());
 		Paging<Track> pagingDeMusicas;
