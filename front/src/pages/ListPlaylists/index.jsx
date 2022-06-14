@@ -11,14 +11,23 @@ export function ListPlaylists(){
     const [playlists, setPlaylists] = useState([]);
     
     const fetchUserData = () => {
-      axios.get("http://localhost:8080/servicos/playlists-listar").then(res => {
-        setPlaylists(res.data[0].items);
+      axios.get("http://localhost:8080/playlists/listar?offset=0").then(res => {
+        console.log(res.data);
       }).catch(err => console.log(err.message));
     }
     
     useEffect(() => {
       fetchUserData();
     }, []);
+
+     const deletePlaylist = (playlistId) => {
+       axios.delete(`http://localhost:8080/playlists/remover/${playlistId}`)
+       .catch(err => console.log(err.message));
+    }
+
+    function handleClick(playlist) {
+      deletePlaylist(playlist);   
+    }
 
     return (
       playlists.map((playlist) => {
@@ -33,7 +42,7 @@ export function ListPlaylists(){
                             <h1>{playlist.name}</h1>
                         </div>
                   </NavLink>
-                  <FiTrash2 className="trashIcon"
+                  <FiTrash2 className="trashIcon" onClick={e => { e.preventDefault(); handleClick(playlist.id)}}
                   />
             </div>
 
