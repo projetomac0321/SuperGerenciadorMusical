@@ -28,7 +28,7 @@ public class BuscadorDeMúsicasPorTag extends ServiçosDoAplicativo implements S
 			System.out.println("Músicas buscadas com sucesso!");
 		} 
 		catch (IOException | SpotifyWebApiException | ParseException exception) {
-			System.out.println("Não foi possível buscar as músicas desejadas");
+			System.out.println("Não foi possível buscar as músicas desejadas" + exception);
 		}
 		return músicas_buscadas;
 	}
