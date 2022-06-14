@@ -47,8 +47,9 @@ public class ServiçosComPlaylists {
 		
 		criadorDePlaylists = new CriadorDePlaylist(autenticador.getTokenUsuario());
 		Playlist playlistCriada;
-		playlistCriada = this.criadorDePlaylists.criaPlaylist(playlist.getName(), playlist.getIsCollaborative(), 
-															  playlist.getIsPublicAccess(), playlist.getDescription());
+		playlistCriada = (Playlist) this.criadorDePlaylists.executaServiço(playlist.getOwner().getId(), playlist.getName(), 
+																playlist.getIsCollaborative(), 
+															    playlist.getIsPublicAccess(), playlist.getDescription());
 		
 		if(playlistCriada == null) {
 			return new ResponseEntity<Playlist>(playlistCriada, HttpStatus.BAD_GATEWAY);
@@ -72,7 +73,7 @@ public class ServiçosComPlaylists {
 	@GetMapping("/listar")
 	private ResponseEntity<String> listarPlaylists(@RequestParam int offset) 
 			throws ParseException, SpotifyWebApiException, IOException {
-		Paging<PlaylistSimplified> playlistsUsuario;
+		AbstractModelObject playlistsUsuario;
 		
 		listadorDePlaylistsUsuarioAtual = new ProcuradorDePlaylistsDoUsuárioAtual(autenticador.getTokenUsuario());
 		playlistsUsuario = listadorDePlaylistsUsuarioAtual.executaServiço(offset);
@@ -89,7 +90,7 @@ public class ServiçosComPlaylists {
 		SnapshotResult musicasAdicionadas;
 		
 		adicionadorDeMusicas = new AdicionadorDeMúsicasNumaPlaylist(autenticador.getTokenUsuario());
-		musicasAdicionadas = adicionadorDeMusicas.executaServiço(musicas.getPlaylistID(), musicas.getUris());
+		musicasAdicionadas = (SnapshotResult) adicionadorDeMusicas.executaServiço(musicas.getPlaylistID(), musicas.getUris());
 		
 		if(musicasAdicionadas == null) {
 			return new ResponseEntity<String>("Não foi possível adicionar músicas", HttpStatus.BAD_GATEWAY);
@@ -102,7 +103,7 @@ public class ServiçosComPlaylists {
 		SnapshotResult musicasRemovidas;
 		
 		removedorDeMusicas = new RemovedorDeMúsicasNumaPlaylist(autenticador.getTokenUsuario());
-		musicasRemovidas = removedorDeMusicas.executaServiço(musicas.getPlaylistID(), musicas.getUris());
+		musicasRemovidas = (SnapshotResult) removedorDeMusicas.executaServiço(musicas.getPlaylistID(), musicas.getUris());
 		
 		if(musicasRemovidas == null) {
 			return new ResponseEntity<String>("Não foi possível remover músicas", HttpStatus.BAD_GATEWAY);
