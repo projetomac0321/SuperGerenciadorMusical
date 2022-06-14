@@ -24,7 +24,7 @@ import com.mac0321.SuperGerenciadorMusical.services.RemovedorDePlaylists;
 
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 import se.michaelthelin.spotify.model_objects.specification.Playlist;
-import se.michaelthelin.spotify.model_objects.AbstractModelObject;
+import se.michaelthelin.spotify.model_objects.specification.PlaylistSimplified;
 import se.michaelthelin.spotify.model_objects.special.SnapshotResult;
 
 @CrossOrigin(origins = "http://localhost:3000/")
@@ -68,18 +68,20 @@ public class ServiçosComPlaylists {
 	}
 	
 	@GetMapping("/listar")
-	private ResponseEntity<String> listarPlaylists(@RequestParam int offset) 
+	private ResponseEntity<PlaylistSimplified[]> listarPlaylists(@RequestParam int offset) 
 			throws ParseException, SpotifyWebApiException, IOException {
-		AbstractModelObject playlistsUsuario;
+		PlaylistSimplified[] playlistsUsuario;
 		
 		listadorDePlaylistsUsuarioAtual = new ProcuradorDePlaylistsDoUsuárioAtual(autenticador.getTokenUsuario());
-		playlistsUsuario = listadorDePlaylistsUsuarioAtual.executaServiço(offset);
+		
+		playlistsUsuario = listadorDePlaylistsUsuarioAtual.executaServiço(offset).getItems();
+		
 		
 		if(playlistsUsuario == null) {
-			return new ResponseEntity<String>("Não foi possível listar", HttpStatus.BAD_GATEWAY);
+			return new ResponseEntity<PlaylistSimplified[]>(playlistsUsuario, HttpStatus.BAD_GATEWAY);
 		}
 		
-		return new ResponseEntity<String>("Foi possível listar", HttpStatus.OK);
+		return new ResponseEntity<PlaylistSimplified[]>(playlistsUsuario, HttpStatus.OK);
 	}
 	
 	@PostMapping("/adicionar-musicas")
