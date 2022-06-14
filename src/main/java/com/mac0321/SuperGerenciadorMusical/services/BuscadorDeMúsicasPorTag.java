@@ -14,7 +14,7 @@ public class BuscadorDeMúsicasPorTag extends ServiçosDoAplicativo implements S
 	
 	private SearchTracksRequest searchTracksRequest;
 	
-	BuscadorDeMúsicasPorTag(String accessToken){
+	public BuscadorDeMúsicasPorTag(String accessToken){
 		super(accessToken);
 	}
 	
