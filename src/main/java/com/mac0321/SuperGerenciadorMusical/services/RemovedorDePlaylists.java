@@ -11,15 +11,18 @@ import se.michaelthelin.spotify.requests.data.follow.legacy.UnfollowPlaylistRequ
 public class RemovedorDePlaylists extends ServiçosDoAplicativo {
 	
 	private UnfollowPlaylistRequest unfollowPlaylistRequest;
+	private String userID = null;
 
 	public RemovedorDePlaylists(String accessToken) {
 		super(accessToken);
+		UsuárioAtual user = new UsuárioAtual(accessToken);
+		userID = user.executaServiço().getId();
 	}
 
-	public int executaServiço(String userID, String playlistID) {
+	public int executaServiço(String playlistID) {
 		int sucesso = 0;
 	    try {
-	    	unfollowPlaylistRequest = spotifyApi.unfollowPlaylist(userID, playlistID).build();
+	    	unfollowPlaylistRequest = spotifyApi.unfollowPlaylist(this.userID, playlistID).build();
 	    	unfollowPlaylistRequest.execute();
 	    	sucesso = 1;
 	    	System.out.println("Playlist removida com sucesso!");
