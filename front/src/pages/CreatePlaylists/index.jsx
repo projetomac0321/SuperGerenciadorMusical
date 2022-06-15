@@ -55,9 +55,9 @@ export function CreatePlaylists(){
                 <div className="title">
                     <strong> Deseja que a playlist seja colaborativa? </strong>
                     <div className="options">
-                        <input onClick={handleCheckCollaborative} checked={!checkColaboration} type="checkbox"/>
+                        <input onChange={handleCheckCollaborative} checked={!checkColaboration} type="checkbox"/>
                         <h3> Sim </h3>
-                        <input onClick={handleCheckNotCollaborative} checked={checkColaboration} type="checkbox"/>
+                        <input onChange={handleCheckNotCollaborative} checked={checkColaboration} type="checkbox"/>
                         <h3> Não </h3>
                     </div>
                 </div>
@@ -65,9 +65,9 @@ export function CreatePlaylists(){
                 <div className="title">
                     <strong> A playlist será: </strong>
                     <div className="options">
-                        <input onClick={handleCheckPublic} checked={!checkPrivacy} type="checkbox"/>
+                        <input onChange={handleCheckPublic} checked={!checkPrivacy} type="checkbox"/>
                         <h3> Pública </h3>
-                        <input onClick={handleCheckNotPublic} checked={checkPrivacy} type="checkbox"/>
+                        <input onChange={handleCheckNotPublic} checked={checkPrivacy} type="checkbox"/>
                         <h3> Privada </h3>
                     </div>
                 </div>
