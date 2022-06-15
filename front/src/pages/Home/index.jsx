@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import './styles.css';
-import { FiSearch, FiX } from 'react-icons/fi';
+import { FiSearch, FiX, FiPlus } from 'react-icons/fi';
 import axios from 'axios';
-import { SongRow } from '../../components/SongRow';
+import { Outlet, NavLink } from 'react-router-dom';
 
 export function Home(){
     const [searchInput, setSearchInput] = useState("");
@@ -11,28 +11,7 @@ export function Home(){
         setActive(!isActive);
     };
     
-    // const [songs, setSongs] = useState([]); 
-    // const [searching, setSearching] = useState(false);
-
-    // function handleSearch(bool){
-    //     setSearching(bool);
-    // }
-
-    // const [offset, setOffset] = useState(0);
-    
-    //     const fetchSearchData = () => {
-    //       if(searchInput != "")
-    //       {
-    //           axios.get(`http://localhost:8080/buscar-musicas/buscar-por-query?query=${searchInput}&offset=${offset}`).then(res => {
-    //               setSongs(res.data);
-    //             }).catch(err => console.log(err.message));
-    //           setOffset(offset + 50);
-    //           handleSearch(true);  
-    //       }
-    //       else handleSearch(false);
-    //     }
-
-    const [albums, setAlbums] = useState([]); 
+    const [data, setData] = useState([]); 
     const [searching, setSearching] = useState(false);
 
     function handleSearch(bool){
@@ -41,19 +20,26 @@ export function Home(){
 
     const [offset, setOffset] = useState(0);
     
-        const fetchSearchAlbumData = () => {
+        const fetchSearchData = () => {
           if(searchInput != "")
           {
-              axios.get(`http://localhost:8080/buscar-musicas/buscar-album?tituloAlbum=${searchInput}&offset=${offset}`).then(res => {
-                  setAlbums(res.data);
+              axios.get(`http://localhost:8080/buscar-musicas/buscar-por-query?query=${searchInput}&offset=${offset}`).then(res => {
+                  setData(res.data);
                 }).catch(err => console.log(err.message));
-            //   setOffset(offset + 50);
-            handleSearch(true);  
+              setOffset(offset + 50);
+              handleSearch(true);  
           }
-          else handleSearch(false);
+          else 
+          {
+            handleSearch(false);
+            setOffset(0);
+          }
         }
 
-       
+
+
+            //   axios.get(`http://localhost:8080/buscar-musicas/buscar-album?tituloAlbum=${searchInput}&offset=${offset}`)
+
     return(
         <div className="home">
             <div className="bodyHeader">
@@ -73,7 +59,7 @@ export function Home(){
                             </div>
 
                             <div className="buttonSearch">
-                                <button onClick={fetchSearchAlbumData}>
+                                <button onClick={fetchSearchData}>
                                     <FiSearch className="icon"/>
                                 </button>
                             </div>
@@ -84,19 +70,34 @@ export function Home(){
 
                 </div>
                 <nav className={searching ? "songsSearch" : "hide songsSearch"}>
-                        {albums.map((album) => ( 
+                        {data.map((result) => ( 
                             <div className="songRowSearch">
-                                        <SongRow
-                                           songName={album.name}
-                                        />
+                                        <div className="songRow">
+                                            <div className="songInfo">
+                                                <div className="songRowText">
+                                                    <h1>{result.name}</h1>
+                                                </div>
+                                            </div>
+                                            <div className="plus">
+                                            <div className="divider">
+                                            </div>
+                                            <NavLink
+                                                    className="navLink"
+                                                    to={`/home/selectplaylist_${result.uri}`}
+                                                >
+                                                    <FiPlus className="plusIcon"/>
+                                                </NavLink>
+                                            </div>
+                                        </div>
                             </div>
                         ))}    
                     <div className="playlistCreate">
-                          <div className="playlistCreateText" onClick={fetchSearchAlbumData}>
-                            <h1>Buscar mais álbuns</h1>
+                          <div className="playlistCreateText" onClick={fetchSearchData}>
+                            <h1>Buscar mais músicas</h1>
                           </div>
                       </div>
                 </nav>
+                        <Outlet/>
         </div>
     );
 }

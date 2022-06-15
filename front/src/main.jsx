@@ -12,6 +12,7 @@ import { Playlist } from './pages/Playlist';
 import { CreatePlaylists } from './pages/CreatePlaylists';
 import { Song } from './pages/Song';
 import { InitialPage } from './pages/InitialPage';
+import { SelectPlaylist } from './pages/SelectPlaylist';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -20,6 +21,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <Route path="/login" element={<InitialPage />}/>
       <Route path="/" element={<App />}>
           <Route path="home" element={<Home />}/>
+            <Route path="home/selectplaylist_:songUri" element={<SelectPlaylist />}/>
           <Route path="listplaylists" element={<ListPlaylists />}/>
             <Route path="listplaylists/playlist_:playlistId" element={<Playlist />}/>
               <Route path="listplaylists/playlist_:playlistId/musica_:songId" element={<Song />}/>

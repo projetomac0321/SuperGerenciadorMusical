@@ -1,0 +1,58 @@
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import './styles.css';
+import { FiCheck } from 'react-icons/fi';
+
+export function SelectPlaylist(){
+    const songUri = window.location.href.split("_").pop();
+
+    function GetPlaylists() {
+    
+        const [playlists, setPlaylists] = useState([]);
+        
+        const fetchUserData = () => {
+          axios.get("http://localhost:8080/playlists/listar?offset=0").then(res => {
+            setPlaylists(res.data);
+          }).catch(err => console.log(err.message));
+        }
+        
+        useEffect(() => {
+          fetchUserData();
+        }, []);
+
+        const addToPlaylist = (playlistId) => {
+            axios.post("http://localhost:8080/playlists/adicionar-musicas", {
+                 playlistID: playlistId,
+                 uris: [songUri],
+            }).catch(err => console.log(err.message));
+        }
+    
+        function handleClick(playlistId) {
+          addToPlaylist(playlistId);   
+        }
+    
+        return (
+          playlists.map((playlist) => {
+             return (
+               <div className="playlistRow"
+                    key={playlist.id}>
+                            <div className="playlistRowText">
+                                <h1>{playlist.name}</h1>
+                            </div>
+                      <FiCheck className="trashIcon" onClick={e => { e.preventDefault(); handleClick(playlist.id)}}
+                      />
+                </div>
+    
+             )
+          })
+          )
+        }
+
+    return(
+        <div>
+            <div className="listaDePlaylists">
+                <GetPlaylists/>
+            </div>
+        </div>
+    )
+}
