@@ -6,10 +6,6 @@ import { Outlet, NavLink } from 'react-router-dom';
 
 export function Home(){
     const [searchInput, setSearchInput] = useState("");
-    const [isActive, setActive] = useState(false);
-    const toggleActive = () => {
-        setActive(!isActive);
-    };
     
     const [data, setData] = useState([]); 
     const [searching, setSearching] = useState(false);
@@ -36,22 +32,14 @@ export function Home(){
           }
         }
 
-
-
-            //   axios.get(`http://localhost:8080/buscar-musicas/buscar-album?tituloAlbum=${searchInput}&offset=${offset}`)
-
     return(
         <div className="home">
             <div className="bodyHeader">
-                            <div className={isActive ? "header show" : "header search"}>
-                            <div className="headerLeft">
-                                <FiX className="icon" onClick={toggleActive}/>
-                            </div>
-
+                            <div className="header show">
                             <div className="headerMid">
                                 <input
                                 id="searchInput"
-                                placeholder="Busque uma música/playlist"
+                                placeholder="Busque uma música"
                                 type="text"
                                 onChange={(e) => setSearchInput(e.target.value)}
                                 />
@@ -62,9 +50,6 @@ export function Home(){
                                 <button onClick={fetchSearchData}>
                                     <FiSearch className="icon"/>
                                 </button>
-                            </div>
-                            <div className="headerRight">
-                                <FiSearch className="icon" onClick={toggleActive}/>
                             </div>
                             </div>
 

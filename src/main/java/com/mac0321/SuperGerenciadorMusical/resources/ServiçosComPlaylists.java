@@ -107,11 +107,12 @@ public class ServiçosComPlaylists {
 	}
 	
 	@DeleteMapping("/remover-musicas")
-	private ResponseEntity<String> removerMusicasNumaPlaylist(@RequestBody ModeloDeRequisiçãoPlaylists musicas){
+	private ResponseEntity<String> removerMusicasNumaPlaylist(@RequestParam String[] uris,
+			                                                  @RequestParam String playlistID){
 		SnapshotResult musicasRemovidas;
 		
 		removedorDeMusicas = new RemovedorDeMúsicasNumaPlaylist(autenticador.getTokenUsuario());
-		musicasRemovidas = (SnapshotResult) removedorDeMusicas.executaServiço(musicas.getPlaylistID(), musicas.getUris());
+		musicasRemovidas = (SnapshotResult) removedorDeMusicas.executaServiço(playlistID, uris);
 		
 		if(musicasRemovidas == null) {
 			return new ResponseEntity<String>("Não foi possível remover músicas", HttpStatus.BAD_GATEWAY);

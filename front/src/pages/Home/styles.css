@@ -10,28 +10,8 @@
 .header {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 30px;
     align-items: center;
-}
-
-div.show .headerMid{
-    visibility: visible;
-    opacity: 1;
-}
-
-div.show .headerLeft {
-    visibility: visible;
-    opacity: 1;
-}
-
-div.show .headerRight {
-    visibility: hidden;
-    opacity: 0;
-}
-
-div.search .buttonSearch {
-    visibility: hidden;
-    opacity: 0;
+    margin: 0px 600px 30px 200px;
 }
 
 div.headerMid {
@@ -39,25 +19,6 @@ div.headerMid {
     background-color: var(--white);
     padding: 10px 30px;
     border-radius: 30px;
-    visibility: hidden;
-    opacity: 0;
-}
-
-.headerLeft {
-    margin-left: 20px;
-    visibility: hidden;
-    opacity: 0;
-}
-
-.headerRight {
-    margin-right: 180px;
-    visibility: visible;
-    opacity: 1;
-}
-
-.buttonSearch {
-    visibility: visible;
-    opacity: 1;
 }
 
 .buttonSearch button {
