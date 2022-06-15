@@ -15,6 +15,7 @@ import com.mac0321.SuperGerenciadorMusical.services.BuscadorDeÁlbuns;
 import se.michaelthelin.spotify.model_objects.specification.AlbumSimplified;
 import se.michaelthelin.spotify.model_objects.specification.Paging;
 import se.michaelthelin.spotify.model_objects.specification.Track;
+import se.michaelthelin.spotify.model_objects.specification.TrackSimplified;
 
 @CrossOrigin(origins = "http://localhost:3000/")
 @RestController
@@ -24,12 +25,21 @@ public class GerenciadorDeBuscasDeMúsicas {
 	private BuscadorDeMúsicasPorTag buscadorDeMusicaPorTag;
 	private BuscadorDeÁlbuns buscadorDeAlbuns;
 
-	@GetMapping("/query-de-procura")
-	private ResponseEntity<Track[]> listarMusicasPorQuery(@RequestParam String tagDeProcura, @RequestParam int offset) {
+	@GetMapping("/buscar-por-query")
+	private ResponseEntity<Track[]> listarMusicasPorQuery(@RequestParam String query, @RequestParam int offset) {
 		buscadorDeMusicaPorTag = new BuscadorDeMúsicasPorTag(autenticador.getTokenUsuario());
 		Paging<Track> pagingDeMusicas;
-		pagingDeMusicas = (Paging<Track>) buscadorDeMusicaPorTag.executaServiço(tagDeProcura, offset);
+		pagingDeMusicas = buscadorDeMusicaPorTag.executaServiço(query, offset);
 		return new ResponseEntity<Track[]>(pagingDeMusicas.getItems(), HttpStatus.OK);
 	}
+	
+	@GetMapping("/buscar-album")
+	private ResponseEntity<AlbumSimplified[]> listarAlbuns (@RequestParam String tituloAlbum, @RequestParam int offset) {
+		buscadorDeAlbuns = new BuscadorDeÁlbuns(autenticador.getTokenUsuario());
+		Paging<AlbumSimplified> pagingDeAlbuns;
+		pagingDeAlbuns = buscadorDeAlbuns.executaServiço(tituloAlbum, offset);
+		return new ResponseEntity<AlbumSimplified[]>(pagingDeAlbuns.getItems(), HttpStatus.OK);
+	}
 
+	
 }

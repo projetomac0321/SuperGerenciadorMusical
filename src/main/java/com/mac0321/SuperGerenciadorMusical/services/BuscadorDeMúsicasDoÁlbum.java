@@ -19,7 +19,7 @@ public class BuscadorDeMúsicasDoÁlbum extends ServiçosDoAplicativo implements
 	}
 
 	@Override
-	public AbstractModelObject executaServiço(String tagDeProcura, int offset){
+	public Paging<TrackSimplified> executaServiço(String tagDeProcura, int offset){
 		Paging<TrackSimplified> músicas_do_álbum = null;
 		try {
 			getAlbumsTracksRequest = this.spotifyApi.getAlbumsTracks(tagDeProcura).limit(50).offset(offset).build();

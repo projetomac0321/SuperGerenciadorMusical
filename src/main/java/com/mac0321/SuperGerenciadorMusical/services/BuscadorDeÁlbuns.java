@@ -14,12 +14,12 @@ public class BuscadorDeÁlbuns extends ServiçosDoAplicativo implements Serviço
 
 	private SearchAlbumsRequest searchAlbumsRequest;
 
-	BuscadorDeÁlbuns(String accessToken) {
+	public BuscadorDeÁlbuns(String accessToken) {
 		super(accessToken);
 	}
 	
 	@Override
-	public AbstractModelObject executaServiço(String tagDeProcura, int offset) {
+	public Paging<AlbumSimplified> executaServiço(String tagDeProcura, int offset) {
 		Paging<AlbumSimplified> album = null;
 	    try {
 	    	searchAlbumsRequest = this.spotifyApi.searchAlbums(tagDeProcura).limit(50).offset(offset).build();
