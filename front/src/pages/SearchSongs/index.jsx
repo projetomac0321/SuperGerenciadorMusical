@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
 import './styles.css';
-import { FiSearch, FiX, FiPlus } from 'react-icons/fi';
+import { FiSearch, FiPlus } from 'react-icons/fi';
 import axios from 'axios';
 import { Outlet, NavLink } from 'react-router-dom';
 
-export function Home(){
+export function SearchSongs(){
     const [searchInput, setSearchInput] = useState("");
     
     const [data, setData] = useState([]); 
@@ -68,7 +68,7 @@ export function Home(){
                                             </div>
                                             <NavLink
                                                     className="navLink"
-                                                    to={`/home/selectplaylist_${result.uri}`}
+                                                    to={`/searchsongs/selectplaylist_${result.uri}`}
                                                 >
                                                     <FiPlus className="plusIcon"/>
                                                 </NavLink>

@@ -3,7 +3,6 @@ import './styles.css';
 import { Outlet, NavLink } from 'react-router-dom';
 import Logo from '../images/gm.png';
 import { FiList, FiPlusSquare } from 'react-icons/fi';
-import { AiFillHome } from "react-icons/ai";
 
 export function App() { 
     return (
@@ -17,11 +16,11 @@ export function App() {
                     <hr className="divider"/>
 
                 <nav className="links">                      
-                    <NavLink id="homeLink"
+                    <NavLink id="searchSongsLink"
                              className="link"      
-                             to="/home">
-                        <AiFillHome className="symbol"/> 
-                        Home
+                             to="/searchsongs">
+                        <FiList className="symbol"/> 
+                        Procurar Músicas
                     </NavLink>
 
                     <NavLink id="listLink"
