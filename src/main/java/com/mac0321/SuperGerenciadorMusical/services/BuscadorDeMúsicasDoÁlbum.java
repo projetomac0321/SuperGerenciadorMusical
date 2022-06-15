@@ -14,7 +14,7 @@ public class BuscadorDeMúsicasDoÁlbum extends ServiçosDoAplicativo implements
 
 	private GetAlbumsTracksRequest getAlbumsTracksRequest;
 	
-	BuscadorDeMúsicasDoÁlbum(String accessToken) {
+	public BuscadorDeMúsicasDoÁlbum(String accessToken) {
 		super(accessToken);
 	}
 
