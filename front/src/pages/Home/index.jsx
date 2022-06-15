@@ -11,7 +11,28 @@ export function Home(){
         setActive(!isActive);
     };
     
-    const [songs, setSongs] = useState([]); 
+    // const [songs, setSongs] = useState([]); 
+    // const [searching, setSearching] = useState(false);
+
+    // function handleSearch(bool){
+    //     setSearching(bool);
+    // }
+
+    // const [offset, setOffset] = useState(0);
+    
+    //     const fetchSearchData = () => {
+    //       if(searchInput != "")
+    //       {
+    //           axios.get(`http://localhost:8080/buscar-musicas/buscar-por-query?query=${searchInput}&offset=${offset}`).then(res => {
+    //               setSongs(res.data);
+    //             }).catch(err => console.log(err.message));
+    //           setOffset(offset + 50);
+    //           handleSearch(true);  
+    //       }
+    //       else handleSearch(false);
+    //     }
+
+    const [albums, setAlbums] = useState([]); 
     const [searching, setSearching] = useState(false);
 
     function handleSearch(bool){
@@ -20,14 +41,14 @@ export function Home(){
 
     const [offset, setOffset] = useState(0);
     
-        const fetchSearchData = () => {
+        const fetchSearchAlbumData = () => {
           if(searchInput != "")
           {
-              axios.get(`http://localhost:8080/buscar-musicas/query-de-procura?tagDeProcura=${searchInput}&offset=${offset}`).then(res => {
-                  setSongs(res.data);
+              axios.get(`http://localhost:8080/buscar-musicas/buscar-album?tituloAlbum=${searchInput}&offset=${offset}`).then(res => {
+                  setAlbums(res.data);
                 }).catch(err => console.log(err.message));
-              setOffset(offset + 50);
-              handleSearch(true);  
+            //   setOffset(offset + 50);
+            handleSearch(true);  
           }
           else handleSearch(false);
         }
@@ -52,7 +73,7 @@ export function Home(){
                             </div>
 
                             <div className="buttonSearch">
-                                <button onClick={fetchSearchData}>
+                                <button onClick={fetchSearchAlbumData}>
                                     <FiSearch className="icon"/>
                                 </button>
                             </div>
@@ -63,16 +84,16 @@ export function Home(){
 
                 </div>
                 <nav className={searching ? "songsSearch" : "hide songsSearch"}>
-                        {songs.map((song) => ( 
+                        {albums.map((album) => ( 
                             <div className="songRowSearch">
                                         <SongRow
-                                           songName={song.name}
+                                           songName={album.name}
                                         />
                             </div>
                         ))}    
                     <div className="playlistCreate">
-                          <div className="playlistCreateText" onClick={fetchSearchData}>
-                            <h1>Buscar mais músicas</h1>
+                          <div className="playlistCreateText" onClick={fetchSearchAlbumData}>
+                            <h1>Buscar mais álbuns</h1>
                           </div>
                       </div>
                 </nav>
