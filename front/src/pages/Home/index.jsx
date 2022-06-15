@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import './styles.css';
 import { FiSearch, FiX } from 'react-icons/fi';
 import axios from 'axios';
+import { SongRow } from '../../components/SongRow';
 
 export function Home(){
     const [searchInput, setSearchInput] = useState("");
@@ -11,11 +12,24 @@ export function Home(){
     };
     
     const [songs, setSongs] = useState([]); 
+    const [searching, setSearching] = useState(false);
+
+    function handleSearch(bool){
+        setSearching(bool);
+    }
+
+    const [offset, setOffset] = useState(0);
     
         const fetchSearchData = () => {
-            axios.get(`http://localhost:8080/buscar-musicas/query-de-procura?tagDeProcura=${searchInput}&offset=0`).then(res => {
-                setSongs(res.data);
-              }).catch(err => console.log(err.message));
+          if(searchInput != "")
+          {
+              axios.get(`http://localhost:8080/buscar-musicas/query-de-procura?tagDeProcura=${searchInput}&offset=${offset}`).then(res => {
+                  setSongs(res.data);
+                }).catch(err => console.log(err.message));
+              setOffset(offset + 50);
+              handleSearch(true);  
+          }
+          else handleSearch(false);
         }
 
        
@@ -48,13 +62,20 @@ export function Home(){
                             </div>
 
                 </div>
-                {songs.map((song) => (
-                    <div className="songRowSearch">
-                                <div className="songRowTextSearch">
-                                    <h1>{song.name}</h1>
-                                </div>
-                    </div>
-                  ))}    
+                <nav className={searching ? "songsSearch" : "hide songsSearch"}>
+                        {songs.map((song) => ( 
+                            <div className="songRowSearch">
+                                        <SongRow
+                                           songName={song.name}
+                                        />
+                            </div>
+                        ))}    
+                    <div className="playlistCreate">
+                          <div className="playlistCreateText" onClick={fetchSearchData}>
+                            <h1>Buscar mais músicas</h1>
+                          </div>
+                      </div>
+                </nav>
         </div>
     );
 }

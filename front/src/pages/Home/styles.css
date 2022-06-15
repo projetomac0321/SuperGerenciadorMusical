@@ -82,3 +82,15 @@ div.headerMid {
    border: none;
    outline: none;
 }
+
+.songsSearch {
+    margin: 20px 30px 0px -30px;
+    overflow: hidden;
+    overflow-y: scroll;
+    height: 60vh;
+}
+
+.hide {
+    visibility: hidden;
+    opacity: 0;
+}
