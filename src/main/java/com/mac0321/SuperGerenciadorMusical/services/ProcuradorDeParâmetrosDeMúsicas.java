@@ -12,7 +12,7 @@ public class ProcuradorDeParâmetrosDeMúsicas extends ServiçosDoAplicativo {
 
 	private GetAudioFeaturesForSeveralTracksRequest getAudioFeaturesForSeveralTracksRequest;
 	
-	ProcuradorDeParâmetrosDeMúsicas(String accessToken) {
+	public ProcuradorDeParâmetrosDeMúsicas(String accessToken) {
 		super(accessToken);
 	}
 

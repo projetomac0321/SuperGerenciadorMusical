@@ -7,19 +7,18 @@ import org.apache.hc.core5.http.ParseException;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 import se.michaelthelin.spotify.requests.data.playlists.ChangePlaylistsDetailsRequest;
 
-public class ModificadorDeInformaçõesDaPlaylist extends ServiçosDoAplicativo implements ServiçoDeConfiguraçãoDePlaylist {
+public class ModificadorDeInformaçõesDaPlaylist extends ServiçosDoAplicativo {
 
 	private ChangePlaylistsDetailsRequest changePlaylistsDetailsRequest;
 	
-	ModificadorDeInformaçõesDaPlaylist(String accessToken) {
+	public ModificadorDeInformaçõesDaPlaylist(String accessToken) {
 		super(accessToken);
 	}
 
 	public int executaServiço(String playlistID, String nome_da_playlist, boolean serColaborativa, boolean serPública, String descrição) {
 		int sucesso = 0;
 		try {
-			changePlaylistsDetailsRequest = spotifyApi.changePlaylistsDetails(playlistID).name(nome_da_playlist).public_(serPública)
-					.collaborative(serColaborativa).description(descrição).build();
+			changePlaylistsDetailsRequest = spotifyApi.changePlaylistsDetails(playlistID).name(nome_da_playlist).collaborative(serColaborativa).public_(serPública).description(descrição).build();
 			changePlaylistsDetailsRequest.execute();
 			sucesso = 1;
 		    System.out.println("Playlist modificada com sucesso!");

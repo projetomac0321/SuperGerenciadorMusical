@@ -5,7 +5,6 @@ import java.io.IOException;
 import org.apache.hc.core5.http.ParseException;
 
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
-import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 import se.michaelthelin.spotify.model_objects.specification.Paging;
 import se.michaelthelin.spotify.model_objects.specification.PlaylistSimplified;
 import se.michaelthelin.spotify.requests.data.search.simplified.SearchPlaylistsRequest;
@@ -14,12 +13,12 @@ public class BuscadorDePlaylistsPúblicas extends ServiçosDoAplicativo implemen
 	
 	private SearchPlaylistsRequest searchPlaylistsRequest;
 	
-	BuscadorDePlaylistsPúblicas(String accessToken) {
+	public BuscadorDePlaylistsPúblicas(String accessToken) {
 		super(accessToken);
 	}
 
 	@Override
-	public AbstractModelObject executaServiço(String tagDeProcura, int offset) {
+	public Paging<PlaylistSimplified> executaServiço(String tagDeProcura, int offset) {
     	Paging<PlaylistSimplified> playlists_públicas = null;
 	    try {
 	    	searchPlaylistsRequest = this.spotifyApi.searchPlaylists(tagDeProcura).limit(50).offset(offset).build();

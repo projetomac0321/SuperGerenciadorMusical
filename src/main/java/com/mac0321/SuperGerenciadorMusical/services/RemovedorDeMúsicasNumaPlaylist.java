@@ -5,7 +5,6 @@ import java.io.IOException;
 import org.apache.hc.core5.http.ParseException;
 
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
-import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 import se.michaelthelin.spotify.model_objects.special.SnapshotResult;
 import se.michaelthelin.spotify.requests.data.playlists.RemoveItemsFromPlaylistRequest;
 
@@ -20,7 +19,7 @@ public class RemovedorDeMúsicasNumaPlaylist extends ServiçosDoAplicativo imple
 	}
 	
 	@Override
-	public AbstractModelObject executaServiço(String playlistID, String uris[]) {
+	public SnapshotResult executaServiço(String playlistID, String uris[]) {
 		SnapshotResult snapshot_playlist_id = null;
 		try {
 	    	removeItemsFromPlaylistRequest = spotifyApi.removeItemsFromPlaylist(playlistID, this.geradorDeJson.urisParaJsonArray(uris)).build();

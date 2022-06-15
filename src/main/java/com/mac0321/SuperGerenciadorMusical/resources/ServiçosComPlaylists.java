@@ -48,9 +48,10 @@ public class ServiçosComPlaylists {
 		
 		criadorDePlaylists = new CriadorDePlaylist(autenticador.getTokenUsuario());
 		Playlist playlistCriada;
-		playlistCriada = (Playlist) this.criadorDePlaylists.executaServiço(playlist.getName(), 
-																playlist.getIsCollaborative(), 
-															    playlist.getIsPublicAccess(), playlist.getDescription());
+		playlistCriada = this.criadorDePlaylists.executaServiço(playlist.getName(), 
+														playlist.getIsCollaborative(),
+														playlist.getIsPublicAccess(),
+														playlist.getDescription());
 		
 		if(playlistCriada == null) {
 			return new ResponseEntity<Playlist>(playlistCriada, HttpStatus.BAD_GATEWAY);

@@ -40,7 +40,7 @@ public class Autenticador {
 	 
 	 public URI autorizacaoUsuario(){
 		final AuthorizationCodeUriRequest requisicaoDePermissao = acessoApi.authorizationCodeUri()
-				.scope("playlist-modify-private playlist-modify-public")	
+				.scope("playlist-modify-private playlist-modify-public playlist-read-private playlist-read-collaborative")	
 				.show_dialog(true)
 				.build();
 			

@@ -5,7 +5,6 @@ import java.io.IOException;
 import org.apache.hc.core5.http.ParseException;
 
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
-import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 import se.michaelthelin.spotify.model_objects.specification.Paging;
 import se.michaelthelin.spotify.model_objects.specification.TrackSimplified;
 import se.michaelthelin.spotify.requests.data.albums.GetAlbumsTracksRequest;
@@ -14,12 +13,12 @@ public class BuscadorDeMúsicasDoÁlbum extends ServiçosDoAplicativo implements
 
 	private GetAlbumsTracksRequest getAlbumsTracksRequest;
 	
-	BuscadorDeMúsicasDoÁlbum(String accessToken) {
+	public BuscadorDeMúsicasDoÁlbum(String accessToken) {
 		super(accessToken);
 	}
 
 	@Override
-	public AbstractModelObject executaServiço(String tagDeProcura, int offset){
+	public Paging<TrackSimplified> executaServiço(String tagDeProcura, int offset){
 		Paging<TrackSimplified> músicas_do_álbum = null;
 		try {
 			getAlbumsTracksRequest = this.spotifyApi.getAlbumsTracks(tagDeProcura).limit(50).offset(offset).build();

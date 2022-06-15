@@ -5,7 +5,6 @@ import java.io.IOException;
 import org.apache.hc.core5.http.ParseException;
 
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
-import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 import se.michaelthelin.spotify.model_objects.specification.Paging;
 import se.michaelthelin.spotify.model_objects.specification.Track;
 import se.michaelthelin.spotify.requests.data.search.simplified.SearchTracksRequest;
@@ -18,9 +17,8 @@ public class BuscadorDeMúsicasPorTag extends ServiçosDoAplicativo implements S
 		super(accessToken);
 	}
 	
-	//include external: filter???
 	@Override
-	public AbstractModelObject executaServiço(String tagDeProcura, int offset) {
+	public Paging<Track> executaServiço(String tagDeProcura, int offset) {
 		Paging<Track> músicas_buscadas = null;
 		try {
 			searchTracksRequest = spotifyApi.searchTracks(tagDeProcura).limit(50).offset(offset).build();
