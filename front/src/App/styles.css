@@ -25,8 +25,8 @@
 }
 
 
-#searchSongsLink, #createLink, #listLink {
-    color: var(--text);
+#searchSongsLink, #searchAlbumsLink, #createLink, #listLink {
+    color: var(--text2);
     height: 100%;
     cursor: pointer;
     transition: 350ms color ease-in;
@@ -35,11 +35,11 @@
     margin-bottom: 30px;
 }
 
-#searchSongsLink:hover, #createLink:hover, #listLink:hover {
+#searchSongsLink:hover, #searchAlbumsLink:hover, #createLink:hover, #listLink:hover {
     color: var(--hover);
 }
 
-#searchSongsLink.active, #createLink.active, #listLink.active {
+#searchSongsLink.active, #searchAlbumsLink.active, #createLink.active, #listLink.active {
     color: var(--hover);
 }
 

@@ -2,7 +2,7 @@ import React from 'react';
 import './styles.css';
 import { Outlet, NavLink } from 'react-router-dom';
 import Logo from '../images/gm.png';
-import { FiList, FiPlusSquare } from 'react-icons/fi';
+import { FiList, FiPlusSquare, FiSearch } from 'react-icons/fi';
 
 export function App() { 
     return (
@@ -19,8 +19,15 @@ export function App() {
                     <NavLink id="searchSongsLink"
                              className="link"      
                              to="/searchsongs">
-                        <FiList className="symbol"/> 
+                        <FiSearch className="symbol"/> 
                         Procurar Músicas
+                    </NavLink>
+
+                    <NavLink id="searchAlbumsLink"
+                             className="link"      
+                             to="/searchalbums">
+                        <FiSearch className="symbol"/> 
+                        Procurar Álbuns
                     </NavLink>
 
                     <NavLink id="listLink"

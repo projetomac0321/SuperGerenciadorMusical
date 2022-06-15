@@ -10,6 +10,7 @@ body, input, button {
 
 :root{
     --text: #555555;
+    --text2: #BCBCBC;
     --hover: #FFFFFF;
     --background: #151515;
     --black: #000000;
