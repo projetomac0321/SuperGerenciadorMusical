@@ -14,12 +14,12 @@ public class BuscadorDeMúsicasDaPlaylist extends ServiçosDoAplicativo implemen
 
 	GetPlaylistsItemsRequest getPlaylistsItemsRequest;
 
-	BuscadorDeMúsicasDaPlaylist(String accessToken) {
+	public BuscadorDeMúsicasDaPlaylist(String accessToken) {
 		super(accessToken);
 	}
 
 	@Override
-	public AbstractModelObject executaServiço(String tagDeProcura, int offset) {
+	public Paging<PlaylistTrack> executaServiço(String tagDeProcura, int offset) {
 		Paging<PlaylistTrack> músicas_da_playlist = null;
 		try {
 			getPlaylistsItemsRequest = this.spotifyApi.getPlaylistsItems(tagDeProcura).limit(50).offset(offset).build();

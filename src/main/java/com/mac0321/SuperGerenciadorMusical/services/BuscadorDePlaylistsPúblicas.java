@@ -14,12 +14,12 @@ public class BuscadorDePlaylistsPúblicas extends ServiçosDoAplicativo implemen
 	
 	private SearchPlaylistsRequest searchPlaylistsRequest;
 	
-	BuscadorDePlaylistsPúblicas(String accessToken) {
+	public BuscadorDePlaylistsPúblicas(String accessToken) {
 		super(accessToken);
 	}
 
 	@Override
-	public AbstractModelObject executaServiço(String tagDeProcura, int offset) {
+	public Paging<PlaylistSimplified> executaServiço(String tagDeProcura, int offset) {
     	Paging<PlaylistSimplified> playlists_públicas = null;
 	    try {
 	    	searchPlaylistsRequest = this.spotifyApi.searchPlaylists(tagDeProcura).limit(50).offset(offset).build();
