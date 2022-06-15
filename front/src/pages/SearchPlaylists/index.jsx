@@ -3,7 +3,7 @@ import './styles.css';
 import { FiSearch } from 'react-icons/fi';
 import axios from 'axios';
 
-export function SearchAlbums(){
+export function SearchPlaylists(){
     const [searchInput, setSearchInput] = useState("");
     
     const [data, setData] = useState([]); 
@@ -18,7 +18,7 @@ export function SearchAlbums(){
         const fetchSearchData = () => {
           if(searchInput != "")
           {
-              axios.get(`http://localhost:8080/buscar-musicas/buscar-album?tagAlbum=${searchInput}&offset=${offset}`).then(res => {
+              axios.get(`http://localhost:8080/buscar-musicas/buscar-playlist-public?tagPlaylist=${searchInput}&offset=${offset}`).then(res => {
                   setData(res.data);
                 }).catch(err => console.log(err.message));
               setOffset(offset + 50);
@@ -38,7 +38,7 @@ export function SearchAlbums(){
                             <div className="headerMid">
                                 <input
                                 id="searchInput"
-                                placeholder="Busque um álbum"
+                                placeholder="Busque uma música"
                                 type="text"
                                 onChange={(e) => setSearchInput(e.target.value)}
                                 />
@@ -67,7 +67,7 @@ export function SearchAlbums(){
                         ))}    
                     <div className="playlistCreate">
                           <div className="playlistCreateText" onClick={fetchSearchData}>
-                            <h1>Buscar mais álbuns</h1>
+                            <h1>Buscar mais playlists</h1>
                           </div>
                       </div>
                 </nav>

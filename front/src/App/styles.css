@@ -25,7 +25,7 @@
 }
 
 
-#searchSongsLink, #searchAlbumsLink, #createLink, #listLink {
+.link {
     color: var(--text2);
     height: 100%;
     cursor: pointer;
@@ -33,13 +33,15 @@
     display: flex;
     align-items: center;
     margin-bottom: 30px;
+    text-decoration: none;
+    font-size: 22px;
 }
 
-#searchSongsLink:hover, #searchAlbumsLink:hover, #createLink:hover, #listLink:hover {
+.link:hover {
     color: var(--hover);
 }
 
-#searchSongsLink.active, #searchAlbumsLink.active, #createLink.active, #listLink.active {
+.link.active {
     color: var(--hover);
 }
 
@@ -51,11 +53,6 @@
 
 .links {
     margin-left: 30px;
-}
-
-.link {
-    text-decoration: none;
-    font-size: 22px;
 }
 
 .body {
