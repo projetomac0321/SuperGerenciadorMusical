@@ -41,7 +41,7 @@ export function SelectPlaylist(){
                             </div>
                       <FiCheck className="checkIcon" onClick={e => { e.preventDefault(); handleClick(playlist.id); 
                             setTimeout(function(){
-                              window.location.href = `http://localhost:3000/listplaylists/playlist_${playlist.id}`;}, 1000);
+                              window.location.href = `http://localhost:3000/listplaylists/playlist_${playlist.id}`;}, 1200);
                             }}
                       />
                 </div>

@@ -9,7 +9,6 @@ import { App } from './App';
 import { ListPlaylists } from './pages/ListPlaylists';
 import { Playlist } from './pages/Playlist';
 import { CreatePlaylists } from './pages/CreatePlaylists';
-import { Song } from './pages/Song';
 import { InitialPage } from './pages/InitialPage';
 import { SelectPlaylist } from './pages/SelectPlaylist';
 import { SearchAlbums } from './pages/SearchAlbums';
@@ -28,7 +27,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
             <Route path="searchsongs/selectplaylist_:songUri" element={<SelectPlaylist />}/>
           <Route path="listplaylists" element={<ListPlaylists />}/>
             <Route path="listplaylists/playlist_:playlistId" element={<Playlist />}/>
-              <Route path="listplaylists/playlist_:playlistId/musica_:songId" element={<Song />}/>
           <Route path="createplaylists" element={<CreatePlaylists />}/>
       </Route>
           <Route

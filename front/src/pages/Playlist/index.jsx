@@ -12,13 +12,9 @@ export function Playlist(){
         const [playlistSongs, setPlaylistSongs] = useState([]);
 
         const getPlaylistInfo = () => {
-          axios.get("http://localhost:8080/playlists/listar?offset=0").then(res => {
-            for(var i = 0; i < res.data.length; i = i + 1)
-              if(res.data[i].id == playlistId)
-              {
-                setPlaylistSongs(res.data[i].tracks.items);
-                setPlaylistName(res.data[i].name);
-              }
+          axios.get(`http://localhost:8080/buscar-musicas/obter-playlist?idDaPlaylist=${playlistId}`).then(res => {
+            setPlaylistName(res.data.name);
+            setPlaylistSongs(res.data.tracks.items);
           }).catch(err => console.log(err.message));
         }
 
@@ -45,7 +41,7 @@ export function Playlist(){
                           </div>
                           <FiTrash2 className="trashIcon" onClick={e => { e.preventDefault(); handleClick(song.track.uri);
                         setTimeout(function(){
-                          getPlaylistInfo();}, 500);
+                          getPlaylistInfo();}, 1000);
                         }}
                     />
               </div>
