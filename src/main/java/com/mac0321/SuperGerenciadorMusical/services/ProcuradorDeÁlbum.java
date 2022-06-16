@@ -12,7 +12,7 @@ public class ProcuradorDeÁlbum extends ServiçosDoAplicativo implements Serviç
 
 	private GetAlbumRequest getAlbumRequest;
 	
-	ProcuradorDeÁlbum(String accessToken) {
+	public ProcuradorDeÁlbum(String accessToken) {
 		super(accessToken);
 	}
 

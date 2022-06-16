@@ -14,7 +14,9 @@ import com.mac0321.SuperGerenciadorMusical.services.BuscadorDeMúsicasDoÁlbum;
 import com.mac0321.SuperGerenciadorMusical.services.BuscadorDeMúsicasPorTag;
 import com.mac0321.SuperGerenciadorMusical.services.BuscadorDePlaylistsPúblicas;
 import com.mac0321.SuperGerenciadorMusical.services.BuscadorDeÁlbuns;
+import com.mac0321.SuperGerenciadorMusical.services.ProcuradorDeÁlbum;
 
+import se.michaelthelin.spotify.model_objects.specification.Album;
 import se.michaelthelin.spotify.model_objects.specification.AlbumSimplified;
 import se.michaelthelin.spotify.model_objects.specification.Paging;
 import se.michaelthelin.spotify.model_objects.specification.PlaylistSimplified;
@@ -32,6 +34,7 @@ public class GerenciadorDeBuscasDeMúsicas {
 	private BuscadorDePlaylistsPúblicas buscadorDePlaylistsPublicas;
 	private BuscadorDeMúsicasDoÁlbum buscadorDeMusicasDoAlbum;
 	private BuscadorDeMúsicasDaPlaylist buscadorDeMusicasDaPlaylist;
+	private ProcuradorDeÁlbum procuradorDeAlbum;
 
 	@GetMapping("/buscar-por-query")
 	private ResponseEntity<Track[]> listarMusicasPorQuery(@RequestParam String query, @RequestParam int offset) {
@@ -47,6 +50,13 @@ public class GerenciadorDeBuscasDeMúsicas {
 		Paging<AlbumSimplified> pagingDeAlbuns;
 		pagingDeAlbuns = buscadorDeAlbuns.executaServiço(tagAlbum, offset);
 		return new ResponseEntity<AlbumSimplified[]>(pagingDeAlbuns.getItems(), HttpStatus.OK);
+	}
+	
+	@GetMapping("/obter-album")
+	private ResponseEntity<Album> obterAlbum (@RequestParam String idDoAlbum) {
+		procuradorDeAlbum = new ProcuradorDeÁlbum(autenticador.getTokenUsuario());
+		Album album = procuradorDeAlbum.executaServiço(idDoAlbum);
+		return new ResponseEntity<Album>(album, HttpStatus.OK);
 	}
 	
 	@GetMapping("/buscar-playlist-public")
