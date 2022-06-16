@@ -93,20 +93,3 @@ div.headerMid {
 .playlistRowText:hover{
     cursor:pointer;
 }
-
-.plus {
-    align-items: center;
-    display: flex;
-}
-
-.plus .divider {
-    height: 100%;
-    width: 3px;
-    align-self: flex-start;
-    background-color: var(--black);
-    margin-right: 10px;
-}
-
-.plusIcon {
-    cursor: pointer;
-}

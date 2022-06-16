@@ -1,18 +1,19 @@
 .listHeader {
-    margin-top: 80px;
+    margin-top: -30px;
     margin-left: 100px;
     margin-right: 80px;
+    display: flex;
 }
 
 .listHeader h1 {
     font-size: 32px;
-    margin-bottom: 8px;
+    margin-left: 20px;
 }
 
 .listDivider {
     color: var(--white);
+    margin: 10px 100px 0px 100px;
 }
-
 .list {
     margin-top: 20px;
     margin-left: 100px;
@@ -36,4 +37,9 @@
 
 .navLink {
     text-decoration: none;
+}
+
+.image {
+    height: 200px;
+    width: 200px;
 }

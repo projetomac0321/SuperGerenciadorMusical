@@ -90,10 +90,6 @@ div.headerMid {
     color: var(--gray);
 }
 
-.songRowText:hover{
-    cursor:pointer;
-}
-
 .plus {
     align-items: center;
     display: flex;

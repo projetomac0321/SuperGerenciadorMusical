@@ -50,11 +50,11 @@ export function SelectPlaylist(){
 
     return(
       <div className="container">
-              <div className="listHeader">
+              <div className="selectlistHeader">
               <h1> Selecione a playlist para adicionar a música </h1>
-              <hr className="listDivider"/>
+              <hr className="selectlistDivider"/>
               </div>
-              <div className="playlists">
+              <div className="selectplaylists">
                 <GetPlaylists/>
               </div>
         </div>

@@ -56,12 +56,12 @@ export function ListPlaylists(){
 
     return(
       <div className="container">
-        <div className="listHeader">
+        <div className="listPlaylistsHeader">
           <h1> Playlists</h1>
-          <hr className="listDivider"/>
+          <hr className="listPlaylistsDivider"/>
         </div>
 
-        <div className="list">
+        <div className="listPlaylists">
               <nav
               className="bodyPlaylists"
             >

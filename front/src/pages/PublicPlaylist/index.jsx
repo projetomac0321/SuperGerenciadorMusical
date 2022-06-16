@@ -4,11 +4,14 @@ import { GoBack } from '../../components/GoBack';
 import axios from 'axios';
 import { NavLink, Outlet } from 'react-router-dom';
 import { FiPlus } from 'react-icons/fi';
+import NullPlaylistImage from '../../images/NullPlaylistImage.png';
 
 export function PublicPlaylist(){
   const playlistId = window.location.href.split("_").pop();
 
   const [playlistName, setPlaylistName] = useState("");
+  const [playlistImage, setPlaylistImage] = useState("");
+
   function GetSongs(){
         const [playlistSongs, setPlaylistSongs] = useState([]);
 
@@ -16,6 +19,9 @@ export function PublicPlaylist(){
           axios.get(`http://localhost:8080/buscar-musicas/obter-playlist?idDaPlaylist=${playlistId}`).then(res => {
             setPlaylistName(res.data.name);
             setPlaylistSongs(res.data.tracks.items);
+            if(res.data.images[0] != null)
+             setPlaylistImage(res.data.images[0].url);
+            else setPlaylistImage(NullPlaylistImage);
           }).catch(err => console.log(err.message));
         }
 
@@ -51,9 +57,10 @@ export function PublicPlaylist(){
       <div className="container">
                    <GoBack place="/searchplaylists"/>
         <div className="listHeader">
+          <img className="image" src={playlistImage} alt="playlist image" />
           <h1> {playlistName} </h1>
-          <hr className="listDivider"/>
         </div>
+          <hr className="listDivider"/>
         <div className="list">
                <nav
               className="bodySongs"

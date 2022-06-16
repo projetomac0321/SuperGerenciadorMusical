@@ -40,22 +40,22 @@
     cursor: pointer;
 }
 
-.listHeader {
+.selectlistHeader {
     margin-top: 80px;
     margin-left: 100px;
     margin-right: 80px;
 }
 
-.listHeader h1 {
+.selectlistHeader h1 {
     font-size: 32px;
     margin-bottom: 8px;
 }
 
-.listDivider {
+.selectlistDivider {
     color: var(--white);
 }
 
-.playlists {
+.selectplaylists {
     margin-left: 100px;
     margin-top: 20px;
 }

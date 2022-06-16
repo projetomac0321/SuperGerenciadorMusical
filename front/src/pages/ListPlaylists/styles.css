@@ -1,19 +1,19 @@
-.listHeader {
+.listPlaylistsHeader {
     margin-top: 80px;
     margin-left: 100px;
     margin-right: 80px;
 }
 
-.listHeader h1 {
+.listPlaylistsHeader h1 {
     font-size: 22px;
     margin-bottom: 8px;
 }
 
-.listDivider {
+.listPlaylistsDivider {
     color: var(--white);
 }
 
-.list {
+.listPlaylists {
     margin-top: 20px;
     margin-left: 100px;
  }
