@@ -7,6 +7,7 @@ import org.apache.hc.core5.http.ParseException;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 import se.michaelthelin.spotify.model_objects.specification.Paging;
 import se.michaelthelin.spotify.model_objects.specification.Track;
+import se.michaelthelin.spotify.model_objects.specification.TrackSimplified;
 import se.michaelthelin.spotify.requests.data.search.simplified.SearchTracksRequest;
 
 public class BuscadorDeMúsicasPorTag extends ServiçosDoAplicativo implements ServiçoDeBusca{
@@ -26,7 +27,7 @@ public class BuscadorDeMúsicasPorTag extends ServiçosDoAplicativo implements S
 			System.out.println("Músicas buscadas com sucesso!");
 		} 
 		catch (IOException | SpotifyWebApiException | ParseException exception) {
-			System.out.println("Não foi possível buscar as músicas desejadas");
+			System.out.println("Não foi possível buscar as músicas desejadas" + exception);
 		}
 		return músicas_buscadas;
 	}

@@ -2,8 +2,7 @@ import React from 'react';
 import './styles.css';
 import { Outlet, NavLink } from 'react-router-dom';
 import Logo from '../images/gm.png';
-import { FiList, FiPlusSquare } from 'react-icons/fi';
-import { AiFillHome } from "react-icons/ai";
+import { FiList, FiPlusSquare, FiMusic, FiBook, FiBookOpen } from 'react-icons/fi';
 
 export function App() { 
     return (
@@ -17,11 +16,25 @@ export function App() {
                     <hr className="divider"/>
 
                 <nav className="links">                      
-                    <NavLink id="homeLink"
+                    <NavLink id="searchSongsLink"
                              className="link"      
-                             to="/home">
-                        <AiFillHome className="symbol"/> 
-                        Home
+                             to="/searchsongs">
+                        <FiMusic className="symbol"/> 
+                        Procurar Músicas
+                    </NavLink>
+
+                    <NavLink id="searchAlbumsLink"
+                             className="link"      
+                             to="/searchalbums">
+                        <FiBook className="symbol"/> 
+                        Procurar Álbuns
+                    </NavLink>
+
+                    <NavLink id="searchPlaylistsLink"
+                             className="link"      
+                             to="/searchplaylists">
+                        <FiBookOpen className="symbol"/> 
+                        Procurar Playlists
                     </NavLink>
 
                     <NavLink id="listLink"
