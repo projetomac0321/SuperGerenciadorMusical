@@ -44,7 +44,7 @@ div.headerMid {
    outline: none;
 }
 
-.songsSearch {
+.playlistsSearch {
     margin: 20px 30px 0px -30px;
     overflow: hidden;
     overflow-y: scroll;
@@ -56,7 +56,7 @@ div.headerMid {
     opacity: 0;
 }
 
-.songRow {
+.playlistRow {
     margin-left: 20px;
     padding: 20px;
     display: flex;
@@ -66,31 +66,31 @@ div.headerMid {
     justify-content: space-between;
 }
 
-.songInfo {
+.playlistInfo {
     display: flex;
     align-items: center;
 }
 
-.songRow img {
+.playlistRow img {
     height: 50px;
 }
 
-.songRow:hover {
+.playlistRow:hover {
     background-color: var(--rowHover);
     opacity: 0.8;
 }
 
-.songRowText {
+.playlistRowText {
     margin-left: 20px;
 }
 
-.songRowText p{
+.playlistRowText p{
     font-size: 14px;
     margin: 3px;
     color: var(--gray);
 }
 
-.songRowText:hover{
+.playlistRowText:hover{
     cursor:pointer;
 }
 
