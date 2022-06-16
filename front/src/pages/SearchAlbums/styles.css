@@ -89,3 +89,8 @@ div.headerMid {
     margin: 3px;
     color: var(--gray);
 }
+
+.elementImage {
+    width: 40px;
+    height: 40px;
+}

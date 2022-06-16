@@ -93,3 +93,8 @@ div.headerMid {
 .playlistRowText:hover{
     cursor:pointer;
 }
+
+.elementImage {
+    width: 40px;
+    height: 40px;
+}

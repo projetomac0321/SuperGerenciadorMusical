@@ -58,6 +58,7 @@ export function SearchAlbums(){
                             <div className="playlistRowSearch">
                                         <div className="playlistRow">
                                             <div className="playlistInfo">
+                                                <img className="elementImage" src={result.images[0].url} alt="" />
                                                 <div className="playlistRowText" onClick={e => { e.preventDefault(); setTimeout(function(){
                                             window.location.href = `http://localhost:3000/searchalbums/album_${result.id}`;}, 100);
                                             }}>

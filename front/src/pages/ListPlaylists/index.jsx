@@ -3,6 +3,7 @@ import './styles.css';
 import { FiTrash2, FiPlus } from 'react-icons/fi';
 import { Outlet, NavLink } from 'react-router-dom';
 import axios from 'axios';
+import NullPlaylistImage from '../../images/NullPlaylistImage.png';
 
 export function ListPlaylists(){
   
@@ -34,6 +35,8 @@ export function ListPlaylists(){
          return (
            <div className="playlistRow"
                 key={playlist.id}>
+                  <div className="playlistInfo">
+                     <img className="elementImage" src={playlist.images[0] != null ? playlist.images[0].url : NullPlaylistImage} alt="" />
                   <NavLink
                     className="navLink"
                     to={`/listplaylists/playlist_${playlist.id}`}
@@ -42,6 +45,7 @@ export function ListPlaylists(){
                             <h1>{playlist.name}</h1>
                         </div>
                   </NavLink>
+                  </div>
                   <FiTrash2 className="trashIcon" onClick={e => { e.preventDefault(); handleClick(playlist.id);
                         setTimeout(function(){
                           fetchUserData();}, 500);
