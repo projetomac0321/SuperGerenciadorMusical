@@ -36,10 +36,13 @@ export function SelectPlaylist(){
              return (
                <div className="playlistRow"
                     key={playlist.id}>
-                            <div className="playlistRowText">
+                          <div className="playlistRowName">
                                 <h1>{playlist.name}</h1>
                             </div>
-                      <FiCheck className="trashIcon" onClick={e => { e.preventDefault(); handleClick(playlist.id)}}
+                      <FiCheck className="checkIcon" onClick={e => { e.preventDefault(); handleClick(playlist.id); 
+                            setTimeout(function(){
+                              window.location.href = `http://localhost:3000/listplaylists/playlist_${playlist.id}`;}, 1200);
+                            }}
                       />
                 </div>
     

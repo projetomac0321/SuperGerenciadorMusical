@@ -16,21 +16,22 @@
     opacity: 0.8;
 }
 
-.playlistRowText {
+.playlistRowName {
     margin-left: 20px;
 }
 
-.playlistRowText h1{
+.playlistRowName h1{
     color: var(--white);
 }
 
-.playlistRowText:hover{
-    cursor:pointer;
-}
 
 .listaDePlaylists {
     margin: 150px 30px 0px -30px;
     overflow: hidden;
     overflow-y: scroll;
     height: 60vh;
+}
+
+.checkIcon {
+    cursor: pointer;
 }

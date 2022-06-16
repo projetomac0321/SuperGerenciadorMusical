@@ -1,0 +1,39 @@
+.listHeader {
+    margin-top: 80px;
+    margin-left: 100px;
+    margin-right: 80px;
+}
+
+.listHeader h1 {
+    font-size: 32px;
+    margin-bottom: 8px;
+}
+
+.listDivider {
+    color: var(--white);
+}
+
+.list {
+    margin-top: 20px;
+    margin-left: 100px;
+ }
+
+.bodySongs {
+    margin: 20px 30px 0px -30px;
+    overflow: hidden;
+    overflow-y: scroll;
+    height: 60vh;
+}
+
+.songRow {
+    margin-bottom: 30px;
+    align-items: center;
+}
+
+.songRowText h1{
+    color: var(--white);
+}
+
+.navLink {
+    text-decoration: none;
+}
