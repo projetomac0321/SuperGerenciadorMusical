@@ -8,7 +8,7 @@ import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 import se.michaelthelin.spotify.model_objects.specification.Playlist;
 import se.michaelthelin.spotify.requests.data.playlists.GetPlaylistRequest;
 
-public class ProcuradorDePlaylist extends ServiçosDoAplicativo {
+public class ProcuradorDePlaylist extends ServiçosDoAplicativo implements ServiçoDeProcuraÚnica {
 
 	private GetPlaylistRequest getPlaylistRequest;
 
@@ -16,17 +16,18 @@ public class ProcuradorDePlaylist extends ServiçosDoAplicativo {
 		super(accessToken);
 	}
 
-	  public Playlist executaServiço(String playlistID) {
-		  Playlist playlist_desejada = null;
-		  try {
-			  getPlaylistRequest = spotifyApi.getPlaylist(playlistID).build();
-			  playlist_desejada = getPlaylistRequest.execute();
-	
-		      System.out.println("PLaylist obtida com sucesso!");
-		    } catch (NullPointerException| IOException | SpotifyWebApiException | ParseException exception) {
-		      System.out.println("Não foi possível obter a playlist");
-		    }
-		  return playlist_desejada;
-	  }
+	@Override
+	public Playlist executaServiço(String id) {
+		Playlist playlist_desejada = null;
+		try {
+			getPlaylistRequest = spotifyApi.getPlaylist(id).build();
+			playlist_desejada = getPlaylistRequest.execute();
+			System.out.println("PLaylist obtida com sucesso!");
+		} 
+		catch (NullPointerException| IOException | SpotifyWebApiException | ParseException exception) {
+			System.out.println("Não foi possível obter a playlist");
+		}
+		return playlist_desejada;
+	}
 
 }
