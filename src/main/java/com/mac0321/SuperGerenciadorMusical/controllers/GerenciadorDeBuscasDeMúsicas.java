@@ -1,4 +1,4 @@
-package com.mac0321.SuperGerenciadorMusical.resources;
+package com.mac0321.SuperGerenciadorMusical.controllers;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,11 +14,13 @@ import com.mac0321.SuperGerenciadorMusical.services.BuscadorDeMúsicasDoÁlbum;
 import com.mac0321.SuperGerenciadorMusical.services.BuscadorDeMúsicasPorTag;
 import com.mac0321.SuperGerenciadorMusical.services.BuscadorDePlaylistsPúblicas;
 import com.mac0321.SuperGerenciadorMusical.services.BuscadorDeÁlbuns;
+import com.mac0321.SuperGerenciadorMusical.services.ProcuradorDeParâmetrosDeMúsicas;
 import com.mac0321.SuperGerenciadorMusical.services.ProcuradorDePlaylist;
 import com.mac0321.SuperGerenciadorMusical.services.ProcuradorDeÁlbum;
 
 import se.michaelthelin.spotify.model_objects.specification.Album;
 import se.michaelthelin.spotify.model_objects.specification.AlbumSimplified;
+import se.michaelthelin.spotify.model_objects.specification.AudioFeatures;
 import se.michaelthelin.spotify.model_objects.specification.Paging;
 import se.michaelthelin.spotify.model_objects.specification.Playlist;
 import se.michaelthelin.spotify.model_objects.specification.PlaylistSimplified;
@@ -38,6 +40,7 @@ public class GerenciadorDeBuscasDeMúsicas {
 	private BuscadorDeMúsicasDaPlaylist buscadorDeMusicasDaPlaylist;
 	private ProcuradorDeÁlbum procuradorDeAlbum;
 	private ProcuradorDePlaylist procuradorDePlaylist;
+	private ProcuradorDeParâmetrosDeMúsicas procuradorDeParametrosDeMusicas;
 
 	@GetMapping("/buscar-por-query")
 	private ResponseEntity<Track[]> listarMusicasPorQuery(@RequestParam String query, @RequestParam int offset) {
@@ -78,10 +81,10 @@ public class GerenciadorDeBuscasDeMúsicas {
 	}
 	
 	@GetMapping("/listar-musicas-do-album")
-	private ResponseEntity<TrackSimplified[]> listarMusicasDoAlbum (@RequestParam String idlbum, @RequestParam int offset) {
+	private ResponseEntity<TrackSimplified[]> listarMusicasDoAlbum (@RequestParam String idAlbum, @RequestParam int offset) {
 		buscadorDeMusicasDoAlbum = new BuscadorDeMúsicasDoÁlbum(autenticador.getTokenUsuario());
 		Paging<TrackSimplified> pagingDeTrackSimplified;
-		pagingDeTrackSimplified = buscadorDeMusicasDoAlbum.executaServiço(tagMusica, offset);
+		pagingDeTrackSimplified = buscadorDeMusicasDoAlbum.executaServiço(idAlbum, offset);
 		return new ResponseEntity<TrackSimplified[]>(pagingDeTrackSimplified.getItems(), HttpStatus.OK);
 	}
 	
@@ -89,8 +92,14 @@ public class GerenciadorDeBuscasDeMúsicas {
 	private ResponseEntity<PlaylistTrack[]> listarMusicasDaPlaylist (@RequestParam String idPlaylist, @RequestParam int offset) {
 		buscadorDeMusicasDaPlaylist = new BuscadorDeMúsicasDaPlaylist(autenticador.getTokenUsuario());
 		Paging<PlaylistTrack> pagingDePlaylistTrack;
-		pagingDePlaylistTrack = buscadorDeMusicasDaPlaylist.executaServiço(tagMusica, offset);
+		pagingDePlaylistTrack = buscadorDeMusicasDaPlaylist.executaServiço(idPlaylist, offset);
 		return new ResponseEntity<PlaylistTrack[]>(pagingDePlaylistTrack.getItems(), HttpStatus.OK);
 	}
 	
+	@GetMapping("/obter-parametros-das-musicas")
+	private ResponseEntity<AudioFeatures[]> parametrosDasMusicas (@RequestParam String[] idsDasMusicas) {
+		procuradorDeParametrosDeMusicas = new ProcuradorDeParâmetrosDeMúsicas(autenticador.getTokenUsuario());
+		AudioFeatures[] audioFeatures = procuradorDeParametrosDeMusicas.executaServiço(idsDasMusicas);
+		return new ResponseEntity<AudioFeatures[]>(audioFeatures, HttpStatus.OK);
+	}
 }

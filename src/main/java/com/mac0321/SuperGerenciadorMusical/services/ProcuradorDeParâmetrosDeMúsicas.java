@@ -16,7 +16,7 @@ public class ProcuradorDeParâmetrosDeMúsicas extends ServiçosDoAplicativo {
 		super(accessToken);
 	}
 
-	public  AudioFeatures [] executaServiço(String [] ids_das_músicas) {
+	public AudioFeatures[] executaServiço(String[] ids_das_músicas) {
 		AudioFeatures[] paramêtros_das_músicas = null;	
 		try {
 			getAudioFeaturesForSeveralTracksRequest = this.spotifyApi.getAudioFeaturesForSeveralTracks(ids_das_músicas).build();
