@@ -43,7 +43,10 @@ export function Playlist(){
                           <div className="songRowText">
                               <h1>{song.track.name}</h1>
                           </div>
-                    <FiTrash2 className="trashIcon" onClick={e => { e.preventDefault(); handleClick(song.track.uri)}}
+                          <FiTrash2 className="trashIcon" onClick={e => { e.preventDefault(); handleClick(song.track.uri);
+                        setTimeout(function(){
+                          getPlaylistInfo();}, 500);
+                        }}
                     />
               </div>
             )

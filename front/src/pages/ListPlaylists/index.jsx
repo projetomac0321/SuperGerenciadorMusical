@@ -42,7 +42,10 @@ export function ListPlaylists(){
                             <h1>{playlist.name}</h1>
                         </div>
                   </NavLink>
-                  <FiTrash2 className="trashIcon" onClick={e => { e.preventDefault(); handleClick(playlist.id)}}
+                  <FiTrash2 className="trashIcon" onClick={e => { e.preventDefault(); handleClick(playlist.id);
+                        setTimeout(function(){
+                          fetchUserData();}, 500);
+                        }}
                   />
             </div>
 
