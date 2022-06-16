@@ -77,16 +77,16 @@ public class GerenciadorDeBuscasDeMúsicas {
 		return new ResponseEntity<PlaylistSimplified[]>(pagingDePlaylists.getItems(), HttpStatus.OK);
 	}
 	
-	@GetMapping("/buscar-musica-no-album")
-	private ResponseEntity<TrackSimplified[]> listarMusicasDoAlbum (@RequestParam String tagMusica, @RequestParam int offset) {
+	@GetMapping("/listar-musicas-do-album")
+	private ResponseEntity<TrackSimplified[]> listarMusicasDoAlbum (@RequestParam String idlbum, @RequestParam int offset) {
 		buscadorDeMusicasDoAlbum = new BuscadorDeMúsicasDoÁlbum(autenticador.getTokenUsuario());
 		Paging<TrackSimplified> pagingDeTrackSimplified;
 		pagingDeTrackSimplified = buscadorDeMusicasDoAlbum.executaServiço(tagMusica, offset);
 		return new ResponseEntity<TrackSimplified[]>(pagingDeTrackSimplified.getItems(), HttpStatus.OK);
 	}
 	
-	@GetMapping("/buscar-musica-na-playlist")
-	private ResponseEntity<PlaylistTrack[]> listarMusicasDaPlaylist (@RequestParam String tagMusica, @RequestParam int offset) {
+	@GetMapping("/listar-musicas-da-playlist")
+	private ResponseEntity<PlaylistTrack[]> listarMusicasDaPlaylist (@RequestParam String idPlaylist, @RequestParam int offset) {
 		buscadorDeMusicasDaPlaylist = new BuscadorDeMúsicasDaPlaylist(autenticador.getTokenUsuario());
 		Paging<PlaylistTrack> pagingDePlaylistTrack;
 		pagingDePlaylistTrack = buscadorDeMusicasDaPlaylist.executaServiço(tagMusica, offset);
