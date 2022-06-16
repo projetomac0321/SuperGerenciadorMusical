@@ -24,7 +24,7 @@ public class ProcuradorDeÁlbum extends ServiçosDoAplicativo implements Serviç
 			album_desejado = getAlbumRequest.execute();
 			System.out.println("Álbum obtido com sucesso!");
 		}
-		catch (IOException | SpotifyWebApiException | ParseException exception) {
+		catch (NullPointerException | IOException | SpotifyWebApiException | ParseException exception) {
 			System.out.println("Impossível de obter o álbum");
 	    }
 		return album_desejado;
