@@ -14,11 +14,13 @@ import com.mac0321.SuperGerenciadorMusical.services.BuscadorDeMúsicasDoÁlbum;
 import com.mac0321.SuperGerenciadorMusical.services.BuscadorDeMúsicasPorTag;
 import com.mac0321.SuperGerenciadorMusical.services.BuscadorDePlaylistsPúblicas;
 import com.mac0321.SuperGerenciadorMusical.services.BuscadorDeÁlbuns;
+import com.mac0321.SuperGerenciadorMusical.services.ProcuradorDePlaylist;
 import com.mac0321.SuperGerenciadorMusical.services.ProcuradorDeÁlbum;
 
 import se.michaelthelin.spotify.model_objects.specification.Album;
 import se.michaelthelin.spotify.model_objects.specification.AlbumSimplified;
 import se.michaelthelin.spotify.model_objects.specification.Paging;
+import se.michaelthelin.spotify.model_objects.specification.Playlist;
 import se.michaelthelin.spotify.model_objects.specification.PlaylistSimplified;
 import se.michaelthelin.spotify.model_objects.specification.PlaylistTrack;
 import se.michaelthelin.spotify.model_objects.specification.Track;
@@ -35,6 +37,7 @@ public class GerenciadorDeBuscasDeMúsicas {
 	private BuscadorDeMúsicasDoÁlbum buscadorDeMusicasDoAlbum;
 	private BuscadorDeMúsicasDaPlaylist buscadorDeMusicasDaPlaylist;
 	private ProcuradorDeÁlbum procuradorDeAlbum;
+	private ProcuradorDePlaylist procuradorDePlaylist;
 
 	@GetMapping("/buscar-por-query")
 	private ResponseEntity<Track[]> listarMusicasPorQuery(@RequestParam String query, @RequestParam int offset) {
@@ -57,6 +60,13 @@ public class GerenciadorDeBuscasDeMúsicas {
 		procuradorDeAlbum = new ProcuradorDeÁlbum(autenticador.getTokenUsuario());
 		Album album = procuradorDeAlbum.executaServiço(idDoAlbum);
 		return new ResponseEntity<Album>(album, HttpStatus.OK);
+	}
+	
+	@GetMapping("/obter-playlist")
+	private ResponseEntity<Playlist> obterPlaylist (@RequestParam String idDaPlaylist) {
+		procuradorDePlaylist = new ProcuradorDePlaylist(autenticador.getTokenUsuario());
+		Playlist playlist = procuradorDePlaylist.executaServiço(idDaPlaylist);
+		return new ResponseEntity<Playlist>(playlist, HttpStatus.OK);
 	}
 	
 	@GetMapping("/buscar-playlist-public")
