@@ -5,37 +5,37 @@ import axios from 'axios';
 import { NavLink, Outlet } from 'react-router-dom';
 import { FiPlus } from 'react-icons/fi';
 
-export function Album(){
-  const albumId = window.location.href.split("_").pop();
+export function PublicPlaylist(){
+  const playlistId = window.location.href.split("_").pop();
 
-  const [albumName, setAlbumName] = useState("");
+  const [playlistName, setPlaylistName] = useState("");
   function GetSongs(){
-        const [albumSongs, setAlbumSongs] = useState([]);
+        const [playlistSongs, setPlaylistSongs] = useState([]);
 
-        const getAlbumInfo = () => {
-          axios.get(`http://localhost:8080/buscar-musicas/obter-album?idDoAlbum=${albumId}`).then(res => {
-            setAlbumName(res.data.name);
-            setAlbumSongs(res.data.tracks.items);
+        const getPlaylistInfo = () => {
+          axios.get(`http://localhost:8080/buscar-musicas/obter-playlist?idDaPlaylist=${playlistId}`).then(res => {
+            setPlaylistName(res.data.name);
+            setPlaylistSongs(res.data.tracks.items);
           }).catch(err => console.log(err.message));
         }
 
         useEffect(() => {
-          getAlbumInfo();
+          getPlaylistInfo();
         }, []);
 
         return(
-          albumSongs.map((song) => {
+          playlistSongs.map((song) => {
             return (
               <div className="songRow">
                           <div className="songRowText">
-                              <h1>{song.name}</h1>
+                              <h1>{song.track.name}</h1>
                           </div>
                           <div className="plus">
                                             <div className="divider">
                                             </div>
                                             <NavLink
                                                     className="navLink"
-                                                    to={`/selectplaylist_${song.uri}`}
+                                                    to={`/selectplaylist_${song.track.uri}`}
                                                 >
                                                     <FiPlus className="plusIcon"/>
                                                 </NavLink>
@@ -49,9 +49,9 @@ export function Album(){
 
     return(
       <div className="container">
-                   <GoBack place="/searchalbums"/>
+                   <GoBack place="/searchplaylists"/>
         <div className="listHeader">
-          <h1> {albumName} </h1>
+          <h1> {playlistName} </h1>
           <hr className="listDivider"/>
         </div>
         <div className="list">

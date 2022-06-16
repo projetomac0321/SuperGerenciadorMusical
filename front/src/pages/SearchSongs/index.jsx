@@ -68,7 +68,7 @@ export function SearchSongs(){
                                             </div>
                                             <NavLink
                                                     className="navLink"
-                                                    to={`/searchsongs/selectplaylist_${result.uri}`}
+                                                    to={`/selectplaylist_${result.uri}`}
                                                 >
                                                     <FiPlus className="plusIcon"/>
                                                 </NavLink>

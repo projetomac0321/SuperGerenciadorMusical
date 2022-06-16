@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './styles.css';
-import { FiCheck } from 'react-icons/fi';
 
 export function SelectPlaylist(){
     const songUri = window.location.href.split("_").pop();
@@ -36,14 +35,12 @@ export function SelectPlaylist(){
              return (
                <div className="playlistRow"
                     key={playlist.id}>
-                          <div className="playlistRowName">
-                                <h1>{playlist.name}</h1>
-                            </div>
-                      <FiCheck className="checkIcon" onClick={e => { e.preventDefault(); handleClick(playlist.id); 
+                          <div className="playlistRowName" onClick={e => { e.preventDefault(); handleClick(playlist.id); 
                             setTimeout(function(){
                               window.location.href = `http://localhost:3000/listplaylists/playlist_${playlist.id}`;}, 1200);
-                            }}
-                      />
+                            }}>
+                                <h1>{playlist.name}</h1>
+                            </div>
                 </div>
     
              )
@@ -52,10 +49,14 @@ export function SelectPlaylist(){
         }
 
     return(
-        <div>
-            <div className="listaDePlaylists">
+      <div className="container">
+              <div className="listHeader">
+              <h1> Selecione a playlist para adicionar a música </h1>
+              <hr className="listDivider"/>
+              </div>
+              <div className="playlists">
                 <GetPlaylists/>
-            </div>
+              </div>
         </div>
     )
 }

@@ -38,7 +38,7 @@ export function SearchPlaylists(){
                             <div className="headerMid">
                                 <input
                                 id="searchInput"
-                                placeholder="Busque uma música"
+                                placeholder="Busque uma playlist pública"
                                 type="text"
                                 onChange={(e) => setSearchInput(e.target.value)}
                                 />
@@ -53,12 +53,14 @@ export function SearchPlaylists(){
                             </div>
 
                 </div>
-                <nav className={searching ? "songsSearch" : "hide songsSearch"}>
+                <nav className={searching ? "playlistsSearch" : "hide playlistsSearch"}>
                         {data.map((result) => ( 
-                            <div className="songRowSearch">
-                                        <div className="songRow">
-                                            <div className="songInfo">
-                                                <div className="songRowText">
+                            <div className="playlistRowSearch">
+                                        <div className="playlistRow">
+                                            <div className="playlistInfo">
+                                                <div className="playlistRowText" onClick={e => { e.preventDefault(); setTimeout(function(){
+                                            window.location.href = `http://localhost:3000/searchplaylists/playlist_${result.id}`;}, 100);
+                                            }}>
                                                     <h1>{result.name}</h1>
                                                 </div>
                                             </div>

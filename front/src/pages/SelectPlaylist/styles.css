@@ -24,6 +24,10 @@
     color: var(--white);
 }
 
+.playlistRowName:hover {
+    cursor: pointer;
+}
+
 
 .listaDePlaylists {
     margin: 150px 30px 0px -30px;
@@ -34,4 +38,24 @@
 
 .checkIcon {
     cursor: pointer;
+}
+
+.listHeader {
+    margin-top: 80px;
+    margin-left: 100px;
+    margin-right: 80px;
+}
+
+.listHeader h1 {
+    font-size: 32px;
+    margin-bottom: 8px;
+}
+
+.listDivider {
+    color: var(--white);
+}
+
+.playlists {
+    margin-left: 100px;
+    margin-top: 20px;
 }
