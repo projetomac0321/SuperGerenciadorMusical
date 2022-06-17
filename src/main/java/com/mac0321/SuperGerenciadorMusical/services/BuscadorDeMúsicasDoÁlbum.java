@@ -21,10 +21,11 @@ public class BuscadorDeMúsicasDoÁlbum extends ServiçosDoAplicativo implements
 	public Paging<TrackSimplified> executaServiço(String tagDeProcura, int offset){
 		Paging<TrackSimplified> músicas_do_álbum = null;
 		try {
-			getAlbumsTracksRequest = this.spotifyApi.getAlbumsTracks(tagDeProcura).limit(50).offset(offset).build();
-			músicas_do_álbum = getAlbumsTracksRequest.execute();
+			this.getAlbumsTracksRequest = this.spotifyApi.getAlbumsTracks(tagDeProcura).limit(50).offset(offset).build();
+			músicas_do_álbum = this.getAlbumsTracksRequest.execute();
+			System.out.println("Músicas do álbum obtidas com sucesso!");
 		} 
-		catch (IOException | SpotifyWebApiException | ParseException exception) {
+		catch (NullPointerException |IOException | SpotifyWebApiException | ParseException exception) {
 			System.out.println("Erro ao obter as músicas do álbum!");
 		}
 		return músicas_do_álbum;

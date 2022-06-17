@@ -8,7 +8,7 @@ import se.michaelthelin.spotify.SpotifyApi;
 public abstract class ServiçosDoAplicativo {
 
 	protected final SpotifyApi spotifyApi;
-	ServiçosDoAplicativo(String accessToken){
+	public ServiçosDoAplicativo(String accessToken){
 		spotifyApi = new SpotifyApi.Builder().setAccessToken(accessToken).build();
 	}
 

@@ -23,7 +23,7 @@ public class UsuárioAtual extends ServiçosDoAplicativo {
 			 user = getCurrentUsersProfileRequest.execute();
 			 System.out.println("Usuário atual obtido com sucesso!");
 		 } 
-		 catch (IOException | SpotifyWebApiException | ParseException exception) {
+		 catch (NullPointerException | IOException | SpotifyWebApiException | ParseException exception) {
 			System.out.println("Não foi possível encontrar o usuário atualmente logado");
 		 }
 		 return user;

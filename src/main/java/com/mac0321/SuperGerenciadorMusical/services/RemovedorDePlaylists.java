@@ -22,8 +22,8 @@ public class RemovedorDePlaylists extends ServiçosDoAplicativo {
 	public int executaServiço(String playlistID) {
 		int sucesso = 0;
 	    try {
-	    	unfollowPlaylistRequest = spotifyApi.unfollowPlaylist(this.userID, playlistID).build();
-	    	unfollowPlaylistRequest.execute();
+	    	this.unfollowPlaylistRequest = this.spotifyApi.unfollowPlaylist(this.userID, playlistID).build();
+	    	this.unfollowPlaylistRequest.execute();
 	    	sucesso = 1;
 	    	System.out.println("Playlist removida com sucesso!");
 		} 

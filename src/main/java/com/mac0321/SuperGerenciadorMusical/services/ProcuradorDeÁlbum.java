@@ -20,12 +20,12 @@ public class ProcuradorDeÁlbum extends ServiçosDoAplicativo implements Serviç
 	public Album executaServiço(String id) {
 		Album album_desejado = null;
 		try {
-			getAlbumRequest = spotifyApi.getAlbum(id).build();
-			album_desejado = getAlbumRequest.execute();
+			this.getAlbumRequest = this.spotifyApi.getAlbum(id).build();
+			album_desejado = this.getAlbumRequest.execute();
 			System.out.println("Álbum obtido com sucesso!");
 		}
 		catch (NullPointerException | IOException | SpotifyWebApiException | ParseException exception) {
-			System.out.println("Impossível de obter o álbum");
+			System.out.println("Impossível de obter o álbum!");
 	    }
 		return album_desejado;
 	}

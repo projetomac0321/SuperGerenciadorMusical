@@ -21,11 +21,11 @@ public class BuscadorDeMúsicasDaPlaylist extends ServiçosDoAplicativo implemen
 	public Paging<PlaylistTrack> executaServiço(String tagDeProcura, int offset) {
 		Paging<PlaylistTrack> músicas_da_playlist = null;
 		try {
-			getPlaylistsItemsRequest = this.spotifyApi.getPlaylistsItems(tagDeProcura).limit(50).offset(offset).build();
-			músicas_da_playlist = getPlaylistsItemsRequest.execute();
+			this.getPlaylistsItemsRequest = this.spotifyApi.getPlaylistsItems(tagDeProcura).limit(50).offset(offset).build();
+			músicas_da_playlist = this.getPlaylistsItemsRequest.execute();
 			System.out.println("Músicas da playlist buscadas com sucesso!");
 		} 
-		catch (IOException | SpotifyWebApiException | ParseException exception) {
+		catch (NullPointerException |IOException | SpotifyWebApiException | ParseException exception) {
 			System.out.println("Impossível de buscar as músicas da playlist");
 		}
 		return músicas_da_playlist;

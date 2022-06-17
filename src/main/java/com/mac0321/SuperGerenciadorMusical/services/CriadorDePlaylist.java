@@ -22,12 +22,12 @@ public class CriadorDePlaylist extends ServiçosDoAplicativo {
 	public Playlist executaServiço(String nome_da_playlist, boolean serColaborativa, boolean serPública, String descrição) {
 		Playlist nova_playlist = null;
 	    try {
-	    	createPlaylistRequest = spotifyApi.createPlaylist(this.userID, nome_da_playlist).collaborative(serColaborativa).public_(serPública).description(descrição).build();
-	        nova_playlist = createPlaylistRequest.execute();
-	        System.out.println("A playlist foi criada com sucesso.");
+	    	this.createPlaylistRequest = this.spotifyApi.createPlaylist(this.userID, nome_da_playlist).collaborative(serColaborativa).public_(serPública).description(descrição).build();
+	        nova_playlist = this.createPlaylistRequest.execute();
+	        System.out.println("A playlist foi criada com sucesso!");
 	    }
-	    catch (IOException | SpotifyWebApiException | ParseException exception) {
-	    	System.out.println("Não foi possível criar a playlist");
+	    catch (NullPointerException | IOException | SpotifyWebApiException | ParseException exception) {
+	    	System.out.println("Não foi possível criar a playlist!");
 	    }
 	    return nova_playlist;
 	}

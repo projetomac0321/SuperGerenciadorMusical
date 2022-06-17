@@ -21,8 +21,8 @@ public class ProcuradorDePlaylistsDoUsuárioAtual extends ServiçosDoAplicativo 
 	public Paging<PlaylistSimplified> executaServiço(int offset) {
 		Paging<PlaylistSimplified> playlists_do_usuário = null;
 		try {
-			getListOfCurrentUsersPlaylistsRequest = spotifyApi.getListOfCurrentUsersPlaylists().limit(50).offset(offset).build();
-			playlists_do_usuário = getListOfCurrentUsersPlaylistsRequest.execute();
+			this.getListOfCurrentUsersPlaylistsRequest = this.spotifyApi.getListOfCurrentUsersPlaylists().limit(50).offset(offset).build();
+			playlists_do_usuário = this.getListOfCurrentUsersPlaylistsRequest.execute();
 			System.out.println("Playlists do usuário obtidas com sucesso!");
 	    }
 		catch (NullPointerException | IOException | SpotifyWebApiException | ParseException exception) {

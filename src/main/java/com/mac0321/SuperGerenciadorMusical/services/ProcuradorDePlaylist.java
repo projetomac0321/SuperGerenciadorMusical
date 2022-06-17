@@ -20,8 +20,8 @@ public class ProcuradorDePlaylist extends ServiçosDoAplicativo implements Servi
 	public Playlist executaServiço(String id) {
 		Playlist playlist_desejada = null;
 		try {
-			getPlaylistRequest = spotifyApi.getPlaylist(id).build();
-			playlist_desejada = getPlaylistRequest.execute();
+			this.getPlaylistRequest = this.spotifyApi.getPlaylist(id).build();
+			playlist_desejada = this.getPlaylistRequest.execute();
 			System.out.println("PLaylist obtida com sucesso!");
 		} 
 		catch (NullPointerException| IOException | SpotifyWebApiException | ParseException exception) {

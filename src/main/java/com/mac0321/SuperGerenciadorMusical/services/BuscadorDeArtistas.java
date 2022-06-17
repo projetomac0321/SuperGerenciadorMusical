@@ -21,12 +21,12 @@ public class BuscadorDeArtistas extends ServiçosDoAplicativo implements Serviç
 	public Paging<Artist> executaServiço(String tagDeProcura, int offset) {
 		Paging<Artist> artistas_buscados = null;
 		try {
-			searchArtistsRequest = spotifyApi.searchArtists(tagDeProcura).limit(50).offset(offset).build();
-			artistas_buscados = searchArtistsRequest.execute();
+			this.searchArtistsRequest = this.spotifyApi.searchArtists(tagDeProcura).limit(50).offset(offset).build();
+			artistas_buscados = this.searchArtistsRequest.execute();
 			System.out.println("Álbuns obtidos com sucesso!");
 		}
 		catch (NullPointerException| IOException | SpotifyWebApiException | ParseException exception) {
-			System.out.println("Não foi possível obter os álbuns");
+			System.out.println("Não foi possível obter os álbuns!");
 		}
 		return artistas_buscados;
 	}

@@ -22,8 +22,8 @@ public class RemovedorDeMúsicasNumaPlaylist extends ServiçosDoAplicativo imple
 	public SnapshotResult executaServiço(String playlistID, String uris[]) {
 		SnapshotResult snapshot_playlist_id = null;
 		try {
-	    	removeItemsFromPlaylistRequest = spotifyApi.removeItemsFromPlaylist(playlistID, this.geradorDeJson.urisParaJsonArray(uris)).build();
-	    	snapshot_playlist_id = removeItemsFromPlaylistRequest.execute();
+	    	this.removeItemsFromPlaylistRequest = this.spotifyApi.removeItemsFromPlaylist(playlistID, this.geradorDeJson.urisParaJsonArray(uris)).build();
+	    	snapshot_playlist_id = this.removeItemsFromPlaylistRequest.execute();
 	    	System.out.println("Músicas removidas com sucesso da playlist");
 	    } 
 	    catch (NullPointerException | IOException | SpotifyWebApiException | ParseException exception) {

@@ -22,10 +22,11 @@ public class BuscadorDePlaylistsPúblicas extends ServiçosDoAplicativo implemen
     	Paging<PlaylistSimplified> playlists_públicas = null;
 	    try {
 	    	searchPlaylistsRequest = this.spotifyApi.searchPlaylists(tagDeProcura).limit(50).offset(offset).build();
-	    	playlists_públicas = searchPlaylistsRequest.execute();
+	    	playlists_públicas = this.searchPlaylistsRequest.execute();
+	    	System.out.println("Playlists buscadas com sucesso!");
 	    } 
-	    catch (IOException | SpotifyWebApiException | ParseException exception) {
-	      System.out.println("Impossível de buscar mais playlists");
+	    catch (NullPointerException | IOException | SpotifyWebApiException | ParseException exception) {
+	      System.out.println("Impossível de buscar mais playlists!");
 	    }
 	    return playlists_públicas;
 	}

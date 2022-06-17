@@ -23,8 +23,8 @@ public class ProcuradorDeTopMúsicasDoArtista extends ServiçosDoAplicativo {
 	public Track[] executaServiço(String id) {
 		Track[] músicas_do_autor = null;
 		try {
-			getArtistsTopTracksRequest = spotifyApi.getArtistsTopTracks(id, countryCode).build();
-			músicas_do_autor = getArtistsTopTracksRequest.execute();
+			this.getArtistsTopTracksRequest = this.spotifyApi.getArtistsTopTracks(id, countryCode).build();
+			músicas_do_autor = this.getArtistsTopTracksRequest.execute();
 			System.out.println("Músicas do artista obtidas com sucesso");
 		}
 		catch (NullPointerException| IOException | SpotifyWebApiException | ParseException exception) {

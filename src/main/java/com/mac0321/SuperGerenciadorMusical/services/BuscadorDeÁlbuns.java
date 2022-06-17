@@ -21,10 +21,11 @@ public class BuscadorDeÁlbuns extends ServiçosDoAplicativo implements Serviço
 	public Paging<AlbumSimplified> executaServiço(String tagDeProcura, int offset) {
 		Paging<AlbumSimplified> album = null;
 	    try {
-	    	searchAlbumsRequest = this.spotifyApi.searchAlbums(tagDeProcura).limit(50).offset(offset).build();
-	    	album = searchAlbumsRequest.execute();
+	    	this.searchAlbumsRequest = this.spotifyApi.searchAlbums(tagDeProcura).limit(50).offset(offset).build();
+	    	album = this.searchAlbumsRequest.execute();
+	    	System.out.println("Álbuns buscados com sucesso!");
 	    } 
-	    catch (IOException | SpotifyWebApiException | ParseException exception) {
+	    catch (NullPointerException |IOException | SpotifyWebApiException | ParseException exception) {
 	    	System.out.println("Impossível de buscar os álbuns ");
 	    }
 	    return album;

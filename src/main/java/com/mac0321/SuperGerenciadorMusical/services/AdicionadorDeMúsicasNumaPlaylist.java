@@ -20,8 +20,8 @@ public class AdicionadorDeMúsicasNumaPlaylist extends ServiçosDoAplicativo imp
 	public SnapshotResult executaServiço(String playlistID, String uris[]) {
 		SnapshotResult snapshot_playlist_id = null;
 		try {
-			addItemsToPlaylistRequest = spotifyApi.addItemsToPlaylist(playlistID, uris).build();
-			snapshot_playlist_id = addItemsToPlaylistRequest.execute();
+			this.addItemsToPlaylistRequest = this.spotifyApi.addItemsToPlaylist(playlistID, uris).build();
+			snapshot_playlist_id = this.addItemsToPlaylistRequest.execute();
 			System.out.println("Músicas adicionadas na playlist!");
 	    } 
 		catch (NullPointerException | IOException | SpotifyWebApiException | ParseException exception) {

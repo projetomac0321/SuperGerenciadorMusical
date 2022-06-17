@@ -19,11 +19,12 @@ public class ProcuradorDeParâmetrosDeMúsicas extends ServiçosDoAplicativo {
 	public AudioFeatures[] executaServiço(String[] ids_das_músicas) {
 		AudioFeatures[] paramêtros_das_músicas = null;	
 		try {
-			getAudioFeaturesForSeveralTracksRequest = this.spotifyApi.getAudioFeaturesForSeveralTracks(ids_das_músicas).build();
-			paramêtros_das_músicas = getAudioFeaturesForSeveralTracksRequest.execute();
+			this.getAudioFeaturesForSeveralTracksRequest = this.spotifyApi.getAudioFeaturesForSeveralTracks(ids_das_músicas).build();
+			paramêtros_das_músicas = this.getAudioFeaturesForSeveralTracksRequest.execute();
+			System.out.println("Parâmetros das músicas obtidos com sucesso!");
 		} 
-		catch(IOException | SpotifyWebApiException | ParseException exception) {
-			System.out.println("Impossível de buscar os parâmetros das músicas");
+		catch(NullPointerException | IOException | SpotifyWebApiException | ParseException exception) {
+			System.out.println("Impossível de buscar os parâmetros das músicas!");
 		}
 		return paramêtros_das_músicas;
 	}
