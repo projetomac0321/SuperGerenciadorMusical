@@ -44,7 +44,7 @@ div.headerMid {
    outline: none;
 }
 
-.songsSearch {
+.artistsSearch {
     margin: 20px 30px 0px -30px;
     overflow: hidden;
     overflow-y: scroll;
@@ -56,7 +56,7 @@ div.headerMid {
     opacity: 0;
 }
 
-.songRow {
+.artistRow {
     margin-left: 20px;
     padding: 20px;
     display: flex;
@@ -66,38 +66,35 @@ div.headerMid {
     justify-content: space-between;
 }
 
-.songInfo {
+.artistInfo {
     display: flex;
     align-items: center;
 }
 
-.songRow img {
+.artistRow img {
     height: 50px;
 }
 
-.songRow:hover {
+.artistRow:hover {
     background-color: var(--rowHover);
     opacity: 0.8;
 }
 
-.songRowText {
+.artistRowText {
     margin-left: 20px;
-    display: flex;
 }
 
-.plus {
-    align-items: center;
-    display: flex;
+.artistRowText p{
+    font-size: 14px;
+    margin: 3px;
+    color: var(--gray);
 }
 
-.plus .divider {
-    height: 100%;
-    width: 3px;
-    align-self: flex-start;
-    background-color: var(--black);
-    margin-right: 10px;
+.artistRowText:hover{
+    cursor:pointer;
 }
 
-.plusIcon {
-    cursor: pointer;
+.elementImage {
+    width: 40px;
+    height: 40px;
 }

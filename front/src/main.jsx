@@ -16,6 +16,8 @@ import { SearchPlaylists } from './pages/SearchPlaylists';
 import { SearchSongs } from './pages/SearchSongs';
 import { Album } from './pages/Album';
 import { PublicPlaylist } from './pages/PublicPlaylist';
+import { SearchArtists } from './pages/SearchArtists';
+import { Artist } from './pages/Artist';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -28,6 +30,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
             <Route path="searchalbums/album_:albumId" element={<Album />}/>
           <Route path="searchplaylists" element={<SearchPlaylists />}/>
             <Route path="searchplaylists/playlist_:playlistId" element={<PublicPlaylist />}/>
+          <Route path="searchartists" element={<SearchArtists />}/> 
+            <Route path="searchartists/artist_:artistId" element={<Artist />}/> 
           <Route path="selectplaylist_:songUri" element={<SelectPlaylist />}/>
           <Route path="listplaylists" element={<ListPlaylists />}/>
             <Route path="listplaylists/playlist_:playlistId" element={<Playlist />}/>

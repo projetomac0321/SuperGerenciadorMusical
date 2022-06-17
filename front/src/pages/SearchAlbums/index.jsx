@@ -27,7 +27,6 @@ export function SearchAlbums(){
           else 
           {
             handleSearch(false);
-            setOffset(0);
           }
         }
 
@@ -40,7 +39,7 @@ export function SearchAlbums(){
                                 id="searchInput"
                                 placeholder="Busque um álbum"
                                 type="text"
-                                onChange={(e) => setSearchInput(e.target.value)}
+                                onChange={(e) => {setSearchInput(e.target.value); setOffset(0)}}
                                 />
                                 
                             </div>

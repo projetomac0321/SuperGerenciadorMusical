@@ -2,7 +2,10 @@ import React from 'react';
 import './styles.css';
 import { Outlet, NavLink } from 'react-router-dom';
 import Logo from '../images/gm.png';
-import { FiList, FiPlusSquare, FiMusic, FiBook, FiBookOpen } from 'react-icons/fi';
+import { FiList, FiPlusSquare, 
+         FiMusic, FiBook, 
+         FiBookOpen, FiEdit3 
+       } from 'react-icons/fi';
 
 export function App() { 
     return (
@@ -35,6 +38,13 @@ export function App() {
                              to="/searchplaylists">
                         <FiBookOpen className="symbol"/> 
                         Procurar Playlists
+                    </NavLink>
+
+                    <NavLink id="searchArtistsLink"
+                             className="link"      
+                             to="/searchartists">
+                        <FiEdit3 className="symbol"/> 
+                        Procurar Artistas
                     </NavLink>
 
                     <NavLink id="listLink"
