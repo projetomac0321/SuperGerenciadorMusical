@@ -59,7 +59,10 @@ export function SearchSongs(){
                                         <div className="songRow">
                                             <div className="songInfo">
                                                 <div className="songRowText">
+                                                    <NavLink className="navLink"
+                                                             to={`/song_${result.id}`}>
                                                     <h1>{result.name}</h1>
+                                                             </NavLink>
                                                 </div>
                                             </div>
                                             <div className="plus">

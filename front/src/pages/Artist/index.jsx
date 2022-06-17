@@ -38,7 +38,10 @@ export function Artist(){
             return (
               <div className="songRow" key={song.id}>
                           <div className="songRowText">
+                          <NavLink className="navLink"
+                                  to={`/song_${song.id}`}>
                               <h1>{song.name}</h1>
+                              </NavLink>
                           </div>
                           <div className="plus">
                                             <div className="divider">

@@ -18,3 +18,11 @@
     height: 200px;
     width: 200px;
 }
+
+.textElement {
+    display: block;
+}
+
+.textElement h3 {
+    margin: 20px 0px 0px 10px;
+}

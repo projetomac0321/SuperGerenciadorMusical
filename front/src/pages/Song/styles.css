@@ -1,0 +1,11 @@
+.addSong {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0px 600px 0px 50px;
+}
+
+.addSong:hover{
+    cursor: pointer;
+    color: var(--gray);
+}

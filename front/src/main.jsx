@@ -18,6 +18,7 @@ import { Album } from './pages/Album';
 import { PublicPlaylist } from './pages/PublicPlaylist';
 import { SearchArtists } from './pages/SearchArtists';
 import { Artist } from './pages/Artist';
+import { Song } from './pages/Song';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -25,6 +26,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <Routes>
       <Route path="/login" element={<InitialPage />}/>
       <Route path="/" element={<App />}>
+          <Route path="song_:songId" element={<Song />}/>
           <Route path="searchsongs" element={<SearchSongs />}/>
           <Route path="searchalbums" element={<SearchAlbums />}/>
             <Route path="searchalbums/album_:albumId" element={<Album />}/>

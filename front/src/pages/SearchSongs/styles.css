@@ -101,3 +101,7 @@ div.headerMid {
 .plusIcon {
     cursor: pointer;
 }
+
+.navLink h1 {
+    cursor: pointer;
+}

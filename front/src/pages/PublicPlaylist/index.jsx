@@ -33,7 +33,10 @@ export function PublicPlaylist(){
             return (
               <div className="songRow" key={song.track.id}>
                           <div className="songRowText">
+                          <NavLink className="navLink"
+                                   to={`/song_${song.track.id}`}>
                               <h1>{song.track.name}</h1>
+                              </NavLink>
                           </div>
                           <div className="plus">
                                             <div className="divider">

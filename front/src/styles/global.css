@@ -34,6 +34,13 @@ body, input, button {
     color: var(--white);
 }
 
+.songRowText p {
+    color: var(--white);
+    margin-left: 20px;
+    font-size: 15px;
+    margin-top: 6px;
+}
+
 .navLink {
     text-decoration: none;
 }
