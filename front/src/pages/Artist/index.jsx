@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import './styles.css';
-import { GoBack } from '../../components/GoBack';
 import axios from 'axios';
 import { NavLink, Outlet } from 'react-router-dom';
 import { FiPlus } from 'react-icons/fi';
+import { ElementStructure } from '../../components/ElementStructure';
+import NullArtistImage from '../../images/NullArtistImage.png';
 
 export function Artist(){
   const artistId = window.location.href.split("_").pop();
@@ -47,12 +47,12 @@ export function Artist(){
       }
 
     return(
-      <div className="container">
-                   <GoBack place="/searchartists"/>
-        <div className="listHeader">
-          <h1> Músicas do(a) Artista </h1>
-        </div>
-          <hr className="listDivider"/>
+      <div>
+        <ElementStructure
+            goBack="/searchartists"
+            elementImage={NullArtistImage}
+            elementName="Músicas do(a) Artista"
+        />
         <div className="list">
                <nav
               className="bodySongs"

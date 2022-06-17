@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import './styles.css';
 import { FiTrash2 } from 'react-icons/fi';
-import { GoBack } from '../../components/GoBack';
 import axios from 'axios';
 import NullPlaylistImage from '../../images/NullPlaylistImage.png';
+import { ElementStructure } from '../../components/ElementStructure';
 
 export function Playlist(){
   const playlistId = window.location.href.split("_").pop();
@@ -58,13 +57,12 @@ export function Playlist(){
       }
 
     return(
-       <div className="container">
-                   <GoBack place="/listplaylists"/>
-        <div className="listHeader">
-          <img className="image" src={playlistImage} alt="playlist image" />
-          <h1> {playlistName} </h1>
-        </div>
-          <hr className="listDivider"/>
+     <div>
+        <ElementStructure
+           goBack="/listplaylists"
+           elementImage={playlistImage}
+           elementName={playlistName}
+        />
         <div className="list">
                <nav
               className="bodySongs"

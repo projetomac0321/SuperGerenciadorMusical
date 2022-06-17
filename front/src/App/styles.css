@@ -19,12 +19,6 @@
     margin: 70px 70px 45px;
 }
 
-.divider {
-    margin-bottom: 40px;
-    color: var(--text);
-}
-
-
 .link {
     color: var(--text2);
     height: 100%;

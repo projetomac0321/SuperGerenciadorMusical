@@ -36,6 +36,9 @@ export function CreatePlaylists(){
             publicAccess: !checkPrivacy,
             description: "",
           }).catch(err => console.log(err.message));
+        setTimeout(function(){
+            window.location.href = "http://localhost:3000/listplaylists";}, 1200);
+           
         }
 
     return(

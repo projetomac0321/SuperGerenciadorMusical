@@ -41,7 +41,7 @@ export function ListPlaylists(){
                     className="navLink"
                     to={`/listplaylists/playlist_${playlist.id}`}
                   >
-                        <div className="playlistRowText">
+                        <div className="playlistRowName">
                             <h1>{playlist.name}</h1>
                         </div>
                   </NavLink>

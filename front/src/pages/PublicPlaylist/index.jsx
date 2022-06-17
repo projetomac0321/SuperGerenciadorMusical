@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import './styles.css';
-import { GoBack } from '../../components/GoBack';
 import axios from 'axios';
 import { NavLink, Outlet } from 'react-router-dom';
 import { FiPlus } from 'react-icons/fi';
 import NullPlaylistImage from '../../images/NullPlaylistImage.png';
+import { ElementStructure } from '../../components/ElementStructure';
 
 export function PublicPlaylist(){
   const playlistId = window.location.href.split("_").pop();
@@ -54,13 +53,12 @@ export function PublicPlaylist(){
       }
 
     return(
-      <div className="container">
-                   <GoBack place="/searchplaylists"/>
-        <div className="listHeader">
-          <img className="image" src={playlistImage} alt="playlist image" />
-          <h1> {playlistName} </h1>
-        </div>
-          <hr className="listDivider"/>
+      <div>
+        <ElementStructure
+          goBack="/searchplaylists"
+          elementImage={playlistImage}
+          elementName={playlistName}
+        />
         <div className="list">
                <nav
               className="bodySongs"

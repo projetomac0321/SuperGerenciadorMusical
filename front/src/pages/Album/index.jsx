@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import './styles.css';
-import { GoBack } from '../../components/GoBack';
 import axios from 'axios';
 import { NavLink, Outlet } from 'react-router-dom';
 import { FiPlus } from 'react-icons/fi';
+import { ElementStructure } from '../../components/ElementStructure';
+import NullPlaylistImage from '../../images/NullPlaylistImage.png';
 
 export function Album(){
   const albumId = window.location.href.split("_").pop();
@@ -18,7 +18,8 @@ export function Album(){
           axios.get(`http://localhost:8080/buscar-musicas/obter-album?idDoAlbum=${albumId}`).then(res => {
             setAlbumName(res.data.name);
             setAlbumSongs(res.data.tracks.items);
-            setAlbumImage(res.data.images[0].url);
+            if(res.data.images[0] != null) setAlbumImage(res.data.images[0].url);
+            else setAlbumImage(NullPlaylistImage);
           }).catch(err => console.log(err.message));
         }
 
@@ -51,13 +52,12 @@ export function Album(){
       }
 
     return(
-      <div className="container">
-                   <GoBack place="/searchalbums"/>
-        <div className="listHeader">
-          <img className="image" src={albumImage} alt="album image" />
-          <h1> {albumName} </h1>
-        </div>
-          <hr className="listDivider"/>
+      <div>
+          <ElementStructure
+             goBack="/searchalbums"
+             elementImage={albumImage}
+             elementName={albumName}
+          />
         <div className="list">
                <nav
               className="bodySongs"

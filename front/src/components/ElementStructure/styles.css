@@ -1,0 +1,20 @@
+.listHeader {
+    margin-left: 100px;
+    margin-right: 80px;
+    display: flex;
+}
+
+.listHeader h1 {
+    font-size: 32px;
+    margin-left: 20px;
+}
+
+.listDivider {
+    color: var(--white);
+    margin: 10px 100px 0px 100px;
+}
+
+.image {
+    height: 200px;
+    width: 200px;
+}

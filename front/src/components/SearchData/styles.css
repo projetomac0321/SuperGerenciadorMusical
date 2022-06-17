@@ -1,24 +1,27 @@
-.home {
+.searchData {
     margin-top: 200px;
     margin-left: 100px;
 }
 
-.bodyHeader {
-    margin-top: -200px;
-}
-
-.header {
+.searchDataHeader {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 0px 600px 30px 200px;
+    margin: -200px 600px 30px 200px;
 }
 
-div.headerMid {
+.headerInput {
     flex: 0.4;
     background-color: var(--white);
     padding: 10px 30px;
     border-radius: 30px;
+}
+
+.headerInput input {
+    border: none;
+    outline: none;
+    height: 40px;
+    color: var(--text);
 }
 
 .buttonSearch button {
@@ -35,16 +38,7 @@ div.headerMid {
     color: var(--text);
 }
 
-.headerMid input {
-   margin-right: 300px;
-   color: var(--text);
-   width: 100%;
-   height: 40px; 
-   border: none;
-   outline: none;
-}
-
-.artistsSearch {
+.elementsSearch {
     margin: 20px 30px 0px -30px;
     overflow: hidden;
     overflow-y: scroll;
@@ -56,7 +50,7 @@ div.headerMid {
     opacity: 0;
 }
 
-.artistRow {
+.elementRow {
     margin-left: 20px;
     padding: 20px;
     display: flex;
@@ -66,32 +60,32 @@ div.headerMid {
     justify-content: space-between;
 }
 
-.artistInfo {
+.elementInfo {
     display: flex;
     align-items: center;
 }
 
-.artistRow img {
+.elementRow img {
     height: 50px;
 }
 
-.artistRow:hover {
+.elementRow:hover {
     background-color: var(--rowHover);
     opacity: 0.8;
 }
 
-.artistRowText {
+.elementRowText {
     margin-left: 20px;
 }
 
-.artistRowText p{
+.elementRowText:hover {
+    cursor: pointer;
+}
+
+.elementRowText p{
     font-size: 14px;
     margin: 3px;
     color: var(--gray);
-}
-
-.artistRowText:hover{
-    cursor:pointer;
 }
 
 .elementImage {
