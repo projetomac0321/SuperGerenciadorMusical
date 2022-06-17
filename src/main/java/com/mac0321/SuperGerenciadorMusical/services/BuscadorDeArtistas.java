@@ -13,7 +13,7 @@ public class BuscadorDeArtistas extends ServiçosDoAplicativo implements Serviç
 
 	private SearchArtistsRequest searchArtistsRequest;
 	
-	BuscadorDeArtistas(String accessToken) {
+	public BuscadorDeArtistas(String accessToken) {
 		super(accessToken);
 	}
 
