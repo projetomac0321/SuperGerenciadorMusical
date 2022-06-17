@@ -15,6 +15,7 @@ import com.mac0321.SuperGerenciadorMusical.services.BuscadorDeMúsicasDoÁlbum;
 import com.mac0321.SuperGerenciadorMusical.services.BuscadorDeMúsicasPorTag;
 import com.mac0321.SuperGerenciadorMusical.services.BuscadorDePlaylistsPúblicas;
 import com.mac0321.SuperGerenciadorMusical.services.BuscadorDeÁlbuns;
+import com.mac0321.SuperGerenciadorMusical.services.ProcuradorDeArtista;
 import com.mac0321.SuperGerenciadorMusical.services.ProcuradorDeMúsicas;
 import com.mac0321.SuperGerenciadorMusical.services.ProcuradorDeParâmetrosDeMúsicas;
 import com.mac0321.SuperGerenciadorMusical.services.ProcuradorDePlaylist;
@@ -48,6 +49,7 @@ public class GerenciadorDeBuscasDeMúsicas {
 	private BuscadorDeArtistas buscadorDeArtistas;
 	private ProcuradorDeTopMúsicasDoArtista procuradorDeTopMusicasDoArtista;
 	private ProcuradorDeMúsicas procuradorDeMusicas;
+	private ProcuradorDeArtista procuradorDeArtista;
 
 	@GetMapping("/buscar-por-query")
 	private ResponseEntity<Track[]> listarMusicasPorQuery(@RequestParam String query, @RequestParam int offset) {
@@ -99,6 +101,12 @@ public class GerenciadorDeBuscasDeMúsicas {
 	private ResponseEntity<Track[]> obterMusicas (@RequestParam String[] idsDasMusicas) {
 		procuradorDeMusicas= new ProcuradorDeMúsicas(autenticador.getTokenUsuario());
 		return new ResponseEntity<Track[]>(procuradorDeMusicas.executaServiço(idsDasMusicas), HttpStatus.OK);
+	}
+	
+	@GetMapping("/obter-artista")
+	private ResponseEntity<Artist> obterArtista (@RequestParam String idDoArtista) {
+		procuradorDeArtista = new ProcuradorDeArtista(autenticador.getTokenUsuario());
+		return new ResponseEntity<Artist>(procuradorDeArtista.executaServiço(idDoArtista), HttpStatus.OK);
 	}
 	
 	@GetMapping("/listar-musicas-do-album")

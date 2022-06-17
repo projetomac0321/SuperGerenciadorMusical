@@ -5,7 +5,6 @@ import java.io.IOException;
 import org.apache.hc.core5.http.ParseException;
 
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
-import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 import se.michaelthelin.spotify.model_objects.specification.Artist;
 import se.michaelthelin.spotify.requests.data.artists.GetArtistRequest;
 
@@ -18,7 +17,7 @@ public class ProcuradorDeArtista extends ServiçosDoAplicativo implements Servi�
 	}
 
 	@Override
-	public AbstractModelObject executaServiço(String id) {
+	public Artist executaServiço(String id) {
 		Artist artista = null;
 		try {
 			getArtistRequest = spotifyApi.getArtist(id).build();
