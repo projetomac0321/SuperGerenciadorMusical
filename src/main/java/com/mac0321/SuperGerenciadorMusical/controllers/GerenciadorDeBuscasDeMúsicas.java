@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mac0321.SuperGerenciadorMusical.services.Autenticador;
+import com.mac0321.SuperGerenciadorMusical.services.BuscadorDeArtistas;
 import com.mac0321.SuperGerenciadorMusical.services.BuscadorDeMúsicasDaPlaylist;
 import com.mac0321.SuperGerenciadorMusical.services.BuscadorDeMúsicasDoÁlbum;
 import com.mac0321.SuperGerenciadorMusical.services.BuscadorDeMúsicasPorTag;
@@ -16,10 +17,12 @@ import com.mac0321.SuperGerenciadorMusical.services.BuscadorDePlaylistsPúblicas
 import com.mac0321.SuperGerenciadorMusical.services.BuscadorDeÁlbuns;
 import com.mac0321.SuperGerenciadorMusical.services.ProcuradorDeParâmetrosDeMúsicas;
 import com.mac0321.SuperGerenciadorMusical.services.ProcuradorDePlaylist;
+import com.mac0321.SuperGerenciadorMusical.services.ProcuradorDeTopMúsicasDoArtista;
 import com.mac0321.SuperGerenciadorMusical.services.ProcuradorDeÁlbum;
 
 import se.michaelthelin.spotify.model_objects.specification.Album;
 import se.michaelthelin.spotify.model_objects.specification.AlbumSimplified;
+import se.michaelthelin.spotify.model_objects.specification.Artist;
 import se.michaelthelin.spotify.model_objects.specification.AudioFeatures;
 import se.michaelthelin.spotify.model_objects.specification.Paging;
 import se.michaelthelin.spotify.model_objects.specification.Playlist;
@@ -41,6 +44,8 @@ public class GerenciadorDeBuscasDeMúsicas {
 	private ProcuradorDeÁlbum procuradorDeAlbum;
 	private ProcuradorDePlaylist procuradorDePlaylist;
 	private ProcuradorDeParâmetrosDeMúsicas procuradorDeParametrosDeMusicas;
+	private BuscadorDeArtistas buscadorDeArtistas;
+	private ProcuradorDeTopMúsicasDoArtista procuradorDeTopMusicasDoArtista;
 
 	@GetMapping("/buscar-por-query")
 	private ResponseEntity<Track[]> listarMusicasPorQuery(@RequestParam String query, @RequestParam int offset) {
@@ -58,6 +63,22 @@ public class GerenciadorDeBuscasDeMúsicas {
 		return new ResponseEntity<AlbumSimplified[]>(pagingDeAlbuns.getItems(), HttpStatus.OK);
 	}
 	
+	@GetMapping("/buscar-playlist-public")
+	private ResponseEntity<PlaylistSimplified[]> listarPlylistsPublicas (@RequestParam String tagPlaylist, @RequestParam int offset) {
+		buscadorDePlaylistsPublicas = new BuscadorDePlaylistsPúblicas(autenticador.getTokenUsuario());
+		Paging<PlaylistSimplified> pagingDePlaylists;
+		pagingDePlaylists = buscadorDePlaylistsPublicas.executaServiço(tagPlaylist, offset);
+		return new ResponseEntity<PlaylistSimplified[]>(pagingDePlaylists.getItems(), HttpStatus.OK);
+	}
+	
+	@GetMapping("/buscar-artista")
+	private ResponseEntity<Artist[]> listarArtistas (@RequestParam String tagArtista, @RequestParam int offset) {
+		buscadorDeArtistas = new BuscadorDeArtistas(autenticador.getTokenUsuario());
+		Paging<Artist> pagingDeArtistas;
+		pagingDeArtistas = buscadorDeArtistas.executaServiço(tagArtista, offset);
+		return new ResponseEntity<Artist[]>(pagingDeArtistas.getItems(), HttpStatus.OK);
+	}
+	
 	@GetMapping("/obter-album")
 	private ResponseEntity<Album> obterAlbum (@RequestParam String idDoAlbum) {
 		procuradorDeAlbum = new ProcuradorDeÁlbum(autenticador.getTokenUsuario());
@@ -70,14 +91,6 @@ public class GerenciadorDeBuscasDeMúsicas {
 		procuradorDePlaylist = new ProcuradorDePlaylist(autenticador.getTokenUsuario());
 		Playlist playlist = procuradorDePlaylist.executaServiço(idDaPlaylist);
 		return new ResponseEntity<Playlist>(playlist, HttpStatus.OK);
-	}
-	
-	@GetMapping("/buscar-playlist-public")
-	private ResponseEntity<PlaylistSimplified[]> listarPlylistsPublicas (@RequestParam String tagPlaylist, @RequestParam int offset) {
-		buscadorDePlaylistsPublicas = new BuscadorDePlaylistsPúblicas(autenticador.getTokenUsuario());
-		Paging<PlaylistSimplified> pagingDePlaylists;
-		pagingDePlaylists = buscadorDePlaylistsPublicas.executaServiço(tagPlaylist, offset);
-		return new ResponseEntity<PlaylistSimplified[]>(pagingDePlaylists.getItems(), HttpStatus.OK);
 	}
 	
 	@GetMapping("/listar-musicas-do-album")
@@ -96,10 +109,17 @@ public class GerenciadorDeBuscasDeMúsicas {
 		return new ResponseEntity<PlaylistTrack[]>(pagingDePlaylistTrack.getItems(), HttpStatus.OK);
 	}
 	
+	@GetMapping("/listar-top-musicas-do-artista")
+	private ResponseEntity<Track[]> listarTopMusicasDoArtista (@RequestParam String idArtista) {
+		procuradorDeTopMusicasDoArtista = new ProcuradorDeTopMúsicasDoArtista (autenticador.getTokenUsuario());
+		return new ResponseEntity<Track[]>(procuradorDeTopMusicasDoArtista.executaServiço(idArtista), HttpStatus.OK);
+	}
+	
 	@GetMapping("/obter-parametros-das-musicas")
 	private ResponseEntity<AudioFeatures[]> parametrosDasMusicas (@RequestParam String[] idsDasMusicas) {
 		procuradorDeParametrosDeMusicas = new ProcuradorDeParâmetrosDeMúsicas(autenticador.getTokenUsuario());
 		AudioFeatures[] audioFeatures = procuradorDeParametrosDeMusicas.executaServiço(idsDasMusicas);
 		return new ResponseEntity<AudioFeatures[]>(audioFeatures, HttpStatus.OK);
 	}
+	
 }

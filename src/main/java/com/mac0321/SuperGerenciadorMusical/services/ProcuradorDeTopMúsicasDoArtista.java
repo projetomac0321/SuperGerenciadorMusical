@@ -15,7 +15,7 @@ public class ProcuradorDeTopMúsicasDoArtista extends ServiçosDoAplicativo {
 	private GetArtistsTopTracksRequest getArtistsTopTracksRequest;
 	private CountryCode countryCode;
 	
-	ProcuradorDeTopMúsicasDoArtista(String accessToken) {
+	public ProcuradorDeTopMúsicasDoArtista(String accessToken) {
 		super(accessToken);
 		countryCode = CountryCode.BR;
 	}
