@@ -30,7 +30,7 @@ export function Album(){
         return(
           albumSongs.map((song) => {
             return (
-              <div className="songRow">
+              <div className="songRow" key={song.id}>
                           <div className="songRowText">
                               <h1>{song.name}</h1>
                           </div>
@@ -60,7 +60,7 @@ export function Album(){
           />
         <div className="list">
                <nav
-              className="bodySongs"
+              className="navScroll"
             >
                <GetSongs/>
             </nav>

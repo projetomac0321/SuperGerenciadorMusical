@@ -21,6 +21,7 @@
     border: none;
     outline: none;
     height: 40px;
+    width: 300px;
     color: var(--text);
 }
 

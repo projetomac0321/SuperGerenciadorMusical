@@ -51,7 +51,7 @@ export function SearchData({ getRoute, getParamName, navRoute, text, hasImage, n
                 </div>
                 <nav className={searching ? "elementsSearch" : "hide elementsSearch"}>
                         {data.map((result) => ( 
-                            <div className="elementRowSearch">
+                            <div className="elementRowSearch" key={result.id}>
                                         <div className="elementRow">
                                             <div className="elementInfo">
                                                 { hasImage? 

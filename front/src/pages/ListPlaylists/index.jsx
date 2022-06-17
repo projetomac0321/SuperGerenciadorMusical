@@ -67,7 +67,7 @@ export function ListPlaylists(){
 
         <div className="listPlaylists">
               <nav
-              className="bodyPlaylists"
+              className="navScroll"
             >
               <GetPlaylists />
               

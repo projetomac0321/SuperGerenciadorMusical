@@ -55,7 +55,7 @@ export function SearchSongs(){
                 </div>
                 <nav className={searching ? "songsSearch" : "hide songsSearch"}>
                         {data.map((result) => ( 
-                            <div className="songRowSearch">
+                            <div className="songRowSearch" key={result.id}>
                                         <div className="songRow">
                                             <div className="songInfo">
                                                 <div className="songRowText">

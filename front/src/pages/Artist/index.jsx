@@ -8,24 +8,35 @@ import NullArtistImage from '../../images/NullArtistImage.png';
 export function Artist(){
   const artistId = window.location.href.split("_").pop();
 
+  const [artistName, setArtistName] = useState("");
+  const [artistImage, setArtistImage] = useState("");
+
   function GetSongs(){
         const [artistSongs, setArtistSongs] = useState([]);
 
-        const getArtistInfo = () => {
+        const getArtistSongs = () => {
           axios.get(`http://localhost:8080/buscar-musicas/listar-top-musicas-do-artista?idArtista=${artistId}`).then(res => {
             setArtistSongs(res.data);
-            console.log(res.data);
+          }).catch(err => console.log(err.message));
+        }
+
+        const getArtistInfo = () => {
+          axios.get(`http://localhost:8080/buscar-musicas/obter-artista?idDoArtista=${artistId}`).then(res => {
+            if(res.data.images[0] != null) setArtistImage(res.data.images[0].url);
+            else setArtistImage(NullArtistImage);
+            setArtistName(res.data.name);
           }).catch(err => console.log(err.message));
         }
 
         useEffect(() => {
+          getArtistSongs();
           getArtistInfo();
         }, []);
 
         return(
           artistSongs.map((song) => {
             return (
-              <div className="songRow">
+              <div className="songRow" key={song.id}>
                           <div className="songRowText">
                               <h1>{song.name}</h1>
                           </div>
@@ -50,12 +61,12 @@ export function Artist(){
       <div>
         <ElementStructure
             goBack="/searchartists"
-            elementImage={NullArtistImage}
-            elementName="Músicas do(a) Artista"
+            elementImage={artistImage}
+            elementName={artistName}
         />
         <div className="list">
                <nav
-              className="bodySongs"
+              className="navScroll"
             >
                <GetSongs/>
             </nav>

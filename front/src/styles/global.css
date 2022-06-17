@@ -18,7 +18,7 @@ body, input, button {
     margin-left: 100px;
  }
 
-.bodySongs {
+.navScroll {
     margin: 20px 30px 0px -30px;
     overflow: hidden;
     overflow-y: scroll;
@@ -36,13 +36,6 @@ body, input, button {
 
 .navLink {
     text-decoration: none;
-}
-
-.bodyPlaylists {
-    margin: 20px 30px 0px -30px;
-    overflow: hidden;
-    overflow-y: scroll;
-    height: 60vh;
 }
 
 .playlistRow {

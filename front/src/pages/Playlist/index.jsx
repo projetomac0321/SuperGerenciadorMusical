@@ -40,7 +40,7 @@ export function Playlist(){
         return(
           playlistSongs.map((song) => {
             return (
-              <div className="songRow">
+              <div className="songRow" key={song.track.id}>
                           <div className="songRowText">
                               <h1>{song.track.name}</h1>
                           </div>
@@ -65,7 +65,7 @@ export function Playlist(){
         />
         <div className="list">
                <nav
-              className="bodySongs"
+              className="navScroll"
             >
                <GetSongs/>
             </nav>

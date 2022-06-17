@@ -54,7 +54,7 @@ export function SelectPlaylist(){
               <h1> Selecione a playlist para adicionar a música </h1>
               <hr className="selectlistDivider"/>
               </div>
-              <nav className="bodyPlaylists selectPlaylists">
+              <nav className="navScroll selectPlaylists">
                 <GetPlaylists/>
               </nav>
         </div>
