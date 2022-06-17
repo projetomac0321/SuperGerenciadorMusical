@@ -82,6 +82,11 @@ div.headerMid {
 
 .songRowText {
     margin-left: 20px;
+    display: flex;
+}
+
+.songRowText h1{
+    margin-right: 15px;
 }
 
 .songRowText p{
