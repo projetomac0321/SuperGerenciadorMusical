@@ -16,6 +16,7 @@ public class OrdenadorDeMúsicasDeUmaPlaylist extends ServiçosDoAplicativo {
 		super(accessToken);
 	}
 
+	// Inutilizado
 	public SnapshotResult executaServiço(String playlistID, int índice_de_início, int número_de_músicas, int índice_posterior) {
 		SnapshotResult snapshot_playlist_id = null;
 	    try {

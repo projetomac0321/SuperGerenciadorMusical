@@ -15,6 +15,7 @@ public class ModificadorDeInformaçõesDaPlaylist extends ServiçosDoAplicativo 
 		super(accessToken);
 	}
 
+	// Inutilizado
 	public int executaServiço(String playlistID, String nome_da_playlist, boolean serColaborativa, boolean serPública, String descrição) {
 		int sucesso = 0;
 		try {
