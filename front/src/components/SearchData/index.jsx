@@ -21,7 +21,8 @@ export function SearchData({ getRoute, getParamName, navRoute, text, hasImage, n
               axios.get(`http://localhost:8080/buscar-musicas/${getRoute}?${getParamName}=${searchInput}&offset=${offset}`).then(res => {
                   setData(res.data);
                   if(res.data.length == 0) {
-                    alert("Nenhum elemento encontrado. Por favor tente novamente com outro parâmetro de busca.");
+                    if(offset != 0) alert("Nenhum novo elemento encontrado. Todos os elementos foram passados para esse parâmetro de busca.");
+                    else alert("Nenhum elemento encontrado. Por favor tente novamente com outro parâmetro de busca.");
                     window.location.href = "http://localhost:3000/";
                 }
                 }).catch(err => {

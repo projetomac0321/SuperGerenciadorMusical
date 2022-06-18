@@ -21,12 +21,6 @@ export function Song(){
             setSongUri(res.data[0].uri);
             setAlbumImage(res.data[0].album.images[0].url);
           }).catch(err => {
-            if(err.message == "res.data[0].album is undefined" ||
-            err.message == "res.data[0].album.images[0] is undefined") 
-            {
-              setAlbumImage(NullPlaylistImage);
-              setComment("");
-            }
             if(err.response) {
               alert("Tente novamente. Falha na resposta, erro de status code " + err.response.status); 
               window.location.href = "http://localhost:3000/";}
@@ -34,8 +28,13 @@ export function Song(){
               alert("Tente novamente mais tarde. A requisição foi feita, mas nenhuma resposta foi obtida");
               window.location.href = "http://localhost:3000/";}
             else {
-              alert("Tente novamente mais tarde. Erro na configuração da requisição.");
-              window.location.href = "http://localhost:3000/";}
+              if(err.message == "res.data[0].album is undefined" ||
+              err.message == "res.data[0].album.images[0] is undefined") setAlbumImage(NullPlaylistImage);
+              else {
+                alert("Tente novamente mais tarde. Erro na configuração da requisição.");
+                window.location.href = "http://localhost:3000/";
+              }
+              }
             });
         }
 

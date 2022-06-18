@@ -4,6 +4,7 @@ import axios from 'axios';
 import { ElementStructure } from '../../components/ElementStructure';
 import { ParameterButton } from '../../components/ParameterButton';
 import { NavLink, Outlet } from 'react-router-dom';
+import NullPlaylistImage from '../../images/NullPlaylistImage.png';
 
 export function ParameterTable(){
     const [playlistId, trash] = window.location.href.split("_").pop().split("/");
@@ -15,19 +16,20 @@ export function ParameterTable(){
           const getPlaylistInfo = () => {
             axios.get(`http://localhost:8080/buscar-musicas/obter-playlist?idDaPlaylist=${playlistId}`).then(res => {
               setPlaylistName(res.data.name);
-              if(res.data.images[0] != null)
-               setPlaylistImage(res.data.images[0].url);
-              else setPlaylistImage(NullPlaylistImage);
+              setPlaylistImage(res.data.images[0].url);
             }).catch(err => {
               if(err.response) {
                 alert("Tente novamente. Falha na resposta, erro de status code " + err.response.status); 
                 window.location.href = "http://localhost:3000/";}
-              else if(err.request){
-                alert("Tente novamente mais tarde. A requisição foi feita, mas nenhuma resposta foi obtida");
-                window.location.href = "http://localhost:3000/";}
-              else {
-                alert("Tente novamente mais tarde. Erro na configuração da requisição.");
-                window.location.href = "http://localhost:3000/";}
+                else if(err.request){
+                  alert("Tente novamente mais tarde. A requisição foi feita, mas nenhuma resposta foi obtida");
+                  window.location.href = "http://localhost:3000/";}
+                  else {
+                    if(err.message == "res.data.images[0] is undefined") setPlaylistImage(NullPlaylistImage);
+                    else {
+                      alert("Tente novamente mais tarde. Erro na configuração da requisição.");
+                      window.location.href = "http://localhost:3000/";}
+                    }
             });
           }
   
