@@ -1,4 +1,4 @@
-package com.mac0321.SuperGerenciadorMusical.services;
+package com.mac0321.SuperGerenciadorMusical.controllers;
 
 public class ModeloDeRequisiçãoPlaylists {
 	private String playlistID;

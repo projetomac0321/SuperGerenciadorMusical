@@ -1,4 +1,4 @@
-package com.mac0321.SuperGerenciadorMusical.services;
+package com.mac0321.SuperGerenciadorMusical.controllers;
 
 import java.io.IOException;
 import java.net.URI;

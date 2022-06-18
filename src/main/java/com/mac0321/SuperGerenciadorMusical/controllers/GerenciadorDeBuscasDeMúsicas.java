@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.mac0321.SuperGerenciadorMusical.services.Autenticador;
 import com.mac0321.SuperGerenciadorMusical.services.BuscadorDeArtistas;
 import com.mac0321.SuperGerenciadorMusical.services.BuscadorDeMúsicasDaPlaylist;
 import com.mac0321.SuperGerenciadorMusical.services.BuscadorDeMúsicasDoÁlbum;
