@@ -1,0 +1,27 @@
+.parametersButtons {
+    display: flex;
+    margin: -40px 60px 20px 130px;
+    overflow: hidden;
+    overflow-x: scroll;
+    width: 60vw;
+}
+
+.link {
+    color: var(--text2);
+    height: 100%;
+    cursor: pointer;
+    transition: 350ms color ease-in;
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    text-decoration: none;
+    font-size: 22px;
+}
+
+.link:hover {
+    color: var(--hover);
+}
+
+.link.active {
+    color: var(--hover);
+}

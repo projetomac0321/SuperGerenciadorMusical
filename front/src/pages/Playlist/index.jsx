@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { FiTrash2 } from 'react-icons/fi';
+import { FiFileText, FiTrash2 } from 'react-icons/fi';
 import axios from 'axios';
 import NullPlaylistImage from '../../images/NullPlaylistImage.png';
 import { ElementStructure } from '../../components/ElementStructure';
+import { NavLink, Outlet } from 'react-router-dom';
 
 export function Playlist(){
   const playlistId = window.location.href.split("_").pop();
@@ -63,13 +64,20 @@ export function Playlist(){
            elementImage={playlistImage}
            elementName={playlistName}
         />
+               <NavLink className="link containerLink"
+                        to={`/parametertable/playlist_${playlistId}`}
+                >
+                   <FiFileText/>
+                   <h3> Mostrar parâmetros</h3>
+                </NavLink>
         <div className="list">
                <nav
               className="navScroll"
-            >
+              >
                <GetSongs/>
             </nav>
         </div>
+          <Outlet/>
       </div>
     );
 }
