@@ -13,7 +13,6 @@ export function Song(){
   const [songName, setSongName] = useState("");
   const [songUri, setSongUri] = useState("");
   const [albumImage, setAlbumImage] = useState("");
-  const [comment, setComment] = useState("");
 
   function GetParameters(){
         const getSongInfo = () => {
@@ -21,11 +20,22 @@ export function Song(){
             setSongName(res.data[0].name);
             setSongUri(res.data[0].uri);
             setAlbumImage(res.data[0].album.images[0].url);
-            setComment("(Imagem do álbum)");
-          }).catch(err => {if(err.message == "res.data[0].album is undefined" ||
+          }).catch(err => {
+            if(err.message == "res.data[0].album is undefined" ||
             err.message == "res.data[0].album.images[0] is undefined") 
-               setAlbumImage(NullPlaylistImage);
-               setComment("");
+            {
+              setAlbumImage(NullPlaylistImage);
+              setComment("");
+            }
+            if(err.response) {
+              alert("Tente novamente. Falha na resposta, erro de status code " + err.response.status); 
+              window.location.href = "http://localhost:3000/";}
+            else if(err.request){
+              alert("Tente novamente mais tarde. A requisição foi feita, mas nenhuma resposta foi obtida");
+              window.location.href = "http://localhost:3000/";}
+            else {
+              alert("Tente novamente mais tarde. Erro na configuração da requisição.");
+              window.location.href = "http://localhost:3000/";}
             });
         }
 
@@ -35,7 +45,17 @@ export function Song(){
             axios.get(`http://localhost:8080/buscar-musicas/obter-parametros-das-musicas?idsDasMusicas=${[songId]}`)
             .then(res => {
                 setParameters(res.data[0]);
-            }).catch(err => console.log(err.message));
+            }).catch(err => {
+              if(err.response) {
+                alert("Tente novamente. Falha na resposta, erro de status code " + err.response.status); 
+                window.location.href = "http://localhost:3000/";}
+              else if(err.request){
+                alert("Tente novamente mais tarde. A requisição foi feita, mas nenhuma resposta foi obtida");
+                window.location.href = "http://localhost:3000/";}
+              else {
+                alert("Tente novamente mais tarde. Erro na configuração da requisição.");
+                window.location.href = "http://localhost:3000/";}
+            });
         }
 
 
@@ -78,7 +98,6 @@ export function Song(){
         <ElementStructure
            elementImage={albumImage}
            elementName={songName}
-           comment={comment}
         />
                <GetParameters/>
                <Outlet/>

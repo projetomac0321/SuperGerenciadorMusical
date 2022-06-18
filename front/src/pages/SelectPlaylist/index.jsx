@@ -12,7 +12,17 @@ export function SelectPlaylist(){
         const fetchUserData = () => {
           axios.get("http://localhost:8080/playlists/listar?offset=0").then(res => {
             setPlaylists(res.data);
-          }).catch(err => console.log(err.message));
+          }).catch(err => {
+            if(err.response) {
+              alert("Tente novamente. Falha na resposta, erro de status code " + err.response.status); 
+              window.location.href = "http://localhost:3000/";}
+            else if(err.request){
+              alert("Tente novamente mais tarde. A requisição foi feita, mas nenhuma resposta foi obtida");
+              window.location.href = "http://localhost:3000/";}
+            else {
+              alert("Tente novamente mais tarde. Erro na configuração da requisição.");
+              window.location.href = "http://localhost:3000/";}
+          });
         }
         
         useEffect(() => {
@@ -23,7 +33,17 @@ export function SelectPlaylist(){
             axios.post("http://localhost:8080/playlists/adicionar-musicas", {
                  playlistID: playlistId,
                  uris: [songUri],
-            }).catch(err => console.log(err.message));
+            }).catch(err => {
+              if(err.response) {
+                alert("Tente novamente. Falha na resposta, erro de status code " + err.response.status); 
+                window.location.href = "http://localhost:3000/";}
+              else if(err.request){
+                alert("Tente novamente mais tarde. A requisição foi feita, mas nenhuma resposta foi obtida");
+                window.location.href = "http://localhost:3000/";}
+              else {
+                alert("Tente novamente mais tarde. Erro na configuração da requisição.");
+                window.location.href = "http://localhost:3000/";}
+            });
         }
     
         function handleClick(playlistId) {
@@ -51,7 +71,7 @@ export function SelectPlaylist(){
     return(
       <div className="container">
               <div className="selectlistHeader">
-              <h1> Selecione a playlist para adicionar a música </h1>
+              <h1> Selecione a playlist </h1>
               <hr className="selectlistDivider"/>
               </div>
               <nav className="navScroll selectPlaylists">

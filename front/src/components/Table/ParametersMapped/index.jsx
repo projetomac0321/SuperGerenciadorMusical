@@ -17,7 +17,8 @@ export function ParametersMapped({ songsIds, parameterName, title }){
                 }
                 setParameters(parameters);
                 setShow(true);
-        }).catch(err => {console.log(err.message), setShow(false)});
+        }).catch(err => {
+            setShow(false)});
        }
 
         useEffect(() => {

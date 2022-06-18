@@ -20,8 +20,17 @@ export function Playlist(){
             setPlaylistSongs(res.data.tracks.items);
              setPlaylistImage(res.data.images[0].url);
           }).catch(err => 
-            {if (err.message == "res.data.images[0] is undefined") setArtistImage(NullPlaylistImage);
-             else console.log(err.message)});
+            { if (err.message == "res.data.images[0] is undefined") setArtistImage(NullPlaylistImage);
+              if(err.response) {
+                alert("Tente novamente. Falha na resposta, erro de status code " + err.response.status); 
+                window.location.href = "http://localhost:3000/";}
+              else if(err.request){
+                alert("Tente novamente mais tarde. A requisição foi feita, mas nenhuma resposta foi obtida");
+                window.location.href = "http://localhost:3000/";}
+              else {
+                alert("Tente novamente mais tarde. Erro na configuração da requisição.");
+                window.location.href = "http://localhost:3000/";}
+            });
         }
 
         useEffect(() => {
@@ -31,7 +40,17 @@ export function Playlist(){
         const removeSong = (songUri) => {
           axios.delete(`http://localhost:8080/playlists/remover-musicas?uris=${[songUri]}&playlistID=${playlistId}`,{
           })
-          .catch(err => console.log(err.message));
+          .catch(err => {
+            if(err.response) {
+              alert("Tente novamente. Falha na resposta, erro de status code " + err.response.status); 
+              window.location.href = "http://localhost:3000/";}
+            else if(err.request){
+              alert("Tente novamente mais tarde. A requisição foi feita, mas nenhuma resposta foi obtida");
+              window.location.href = "http://localhost:3000/";}
+            else {
+              alert("Tente novamente mais tarde. Erro na configuração da requisição.");
+              window.location.href = "http://localhost:3000/";}
+          });
        }
    
        function handleClick(songUri) {
