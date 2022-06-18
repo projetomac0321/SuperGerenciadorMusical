@@ -31,7 +31,7 @@ public class OrdenadorDeMúsicasPorParâmetro {
 		int i = ini - 1;
 		int j;
 		for (j = ini; j <= fim; j++)
-			if (parâmetro[j].compareTo(pivo) <= 0){
+			if (parâmetro[j].compareTo(pivo) >= 0){
 				i = i + 1;
 				if (j != i) {
 					this.trocadorDeElementos.trocar(parâmetro, i, j);

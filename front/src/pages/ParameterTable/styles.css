@@ -27,7 +27,3 @@
 .linkTable:hover {
     color: var(--hover);
 }
-
-.linkTable.active {
-    color: var(--hover);
-}
