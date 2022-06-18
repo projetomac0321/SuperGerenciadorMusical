@@ -21,7 +21,10 @@ export function SearchSongs(){
           {
               axios.get(`http://localhost:8080/buscar-musicas/buscar-por-query?query=${searchInput}&offset=${offset}`).then(res => {
                   setData(res.data);
-                  if(res.data.length == 0) console.log('oi');
+                  if(res.data.length == 0) {
+                      alert("Nenhum elemento encontrado. Por favor tente novamente com outro parâmetro de busca.");
+                      window.location.href = "http://localhost:3000/";
+                  }
                 }).catch(err => {
                     if(err.response) {
                       alert("Tente novamente. Falha na resposta, erro de status code " + err.response.status); 

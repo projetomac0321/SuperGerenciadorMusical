@@ -20,6 +20,10 @@ export function SearchData({ getRoute, getParamName, navRoute, text, hasImage, n
           {
               axios.get(`http://localhost:8080/buscar-musicas/${getRoute}?${getParamName}=${searchInput}&offset=${offset}`).then(res => {
                   setData(res.data);
+                  if(res.data.length == 0) {
+                    alert("Nenhum elemento encontrado. Por favor tente novamente com outro parâmetro de busca.");
+                    window.location.href = "http://localhost:3000/";
+                }
                 }).catch(err => {
                     if(err.response) {
                       alert("Tente novamente. Falha na resposta, erro de status code " + err.response.status); 
@@ -67,7 +71,7 @@ export function SearchData({ getRoute, getParamName, navRoute, text, hasImage, n
                                                 { hasImage? 
                                                 <img className="elementImage" src={
                                                     result.images[0] != null ? result.images[0].url : nullImage
-                                                } alt="" /> : <p>Teste</p>}
+                                                } alt="" /> : null}
                                                 <div className="elementRowText" onClick={e => { e.preventDefault(); setTimeout(function(){
                                             window.location.href = `http://localhost:3000/${navRoute}_${result.id}`;}, 100);
                                             }}>
