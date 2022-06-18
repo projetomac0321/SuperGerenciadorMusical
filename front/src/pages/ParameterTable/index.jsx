@@ -66,22 +66,17 @@ export function ParameterTable(){
                         to={`/parametertable/playlist_${playlistId}/key`}>
                   <ParameterButton name="Key"/>
                 </NavLink>
+                </div>
+                <div className="secondLine">
                 <NavLink 
                         className="linkTable"      
                         to={`/parametertable/playlist_${playlistId}/liveness`}>
                   <ParameterButton name="Liveness"/>
                 </NavLink>
-            </div>
-            <div className="secondLine">
                 <NavLink 
                         className="linkTable"      
                         to={`/parametertable/playlist_${playlistId}/loudness`}>
                   <ParameterButton name="Loudness"/>
-                </NavLink>
-                <NavLink 
-                        className="linkTable"      
-                        to={`/parametertable/playlist_${playlistId}/mode`}>
-                  <ParameterButton name="Mode"/>
                 </NavLink>
                 <NavLink 
                         className="linkTable"      

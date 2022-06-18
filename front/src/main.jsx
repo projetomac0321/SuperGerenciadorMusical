@@ -6,21 +6,34 @@ import { BrowserRouter,
 import './styles/global.css';
 
 import { App } from './App';
-import { ListPlaylists } from './pages/ListPlaylists';
-import { Playlist } from './pages/Playlist';
-import { CreatePlaylists } from './pages/CreatePlaylists';
 import { InitialPage } from './pages/InitialPage';
-import { SelectPlaylist } from './pages/SelectPlaylist';
+import { ListPlaylists } from './pages/ListPlaylists';
+import { CreatePlaylists } from './pages/CreatePlaylists';
+import { SearchSongs } from './pages/SearchSongs';
 import { SearchAlbums } from './pages/SearchAlbums';
 import { SearchPlaylists } from './pages/SearchPlaylists';
-import { SearchSongs } from './pages/SearchSongs';
+import { SearchArtists } from './pages/SearchArtists';
+
+import { Playlist } from './pages/Playlist';
 import { Album } from './pages/Album';
 import { PublicPlaylist } from './pages/PublicPlaylist';
-import { SearchArtists } from './pages/SearchArtists';
 import { Artist } from './pages/Artist';
+import { SelectPlaylist } from './pages/SelectPlaylist';
 import { Song } from './pages/Song';
+
 import { ParameterTable } from './pages/ParameterTable';
 import { Acousticness } from './pages/Parameters/Acousticness';
+import { Danceability } from './pages/Parameters/Danceability';
+import { DurationMs } from './pages/Parameters/DurationMs';
+import { Energy } from './pages/Parameters/Energy';
+import { Instrumentalness } from './pages/Parameters/Instrumentalness';
+import { Key } from './pages/Parameters/Key';
+import { Liveness } from './pages/Parameters/Liveness';
+import { Loudness } from './pages/Parameters/Loudness';
+import { Speechiness } from './pages/Parameters/Speechiness';
+import { Tempo } from './pages/Parameters/Tempo';
+import { TimeSignature } from './pages/Parameters/TimeSignature';
+import { Valence } from './pages/Parameters/Valence';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -42,6 +55,17 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           <Route path="createplaylists" element={<CreatePlaylists />}/>
           <Route path="parametertable/playlist_:playlistId/" element={<ParameterTable />}>
             <Route path="acousticness" element={<Acousticness />}/>
+            <Route path="danceability" element={<Danceability />}/>
+            <Route path="durationMs" element={<DurationMs />}/>
+            <Route path="energy" element={<Energy />}/>
+            <Route path="instrumentalness" element={<Instrumentalness />}/>
+            <Route path="key" element={<Key />}/>
+            <Route path="liveness" element={<Liveness />}/>
+            <Route path="loudness" element={<Loudness />}/>
+            <Route path="speechiness" element={<Speechiness />}/>
+            <Route path="tempo" element={<Tempo />}/>
+            <Route path="timeSignature" element={<TimeSignature />}/>
+            <Route path="valence" element={<Valence />}/>
           </Route>  
       </Route>
           <Route

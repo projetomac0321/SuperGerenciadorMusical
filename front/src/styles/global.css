@@ -37,6 +37,11 @@ body, input, button {
     align-items: center;
 }
 
+.songRow:hover {
+    background-color: var(--rowHover);
+    opacity: 0.8;
+}
+
 .songRowText h1{
     color: var(--white);
 }
@@ -46,6 +51,17 @@ body, input, button {
     margin-left: 20px;
     font-size: 15px;
     margin-top: 6px;
+}
+
+.parameterRow {
+    margin-bottom: 14px;
+    height: 80px;
+    align-items: center;
+    margin-left: 100px;
+}
+
+.parameterRowText h1{
+    color: var(--white);
 }
 
 .navLink {
@@ -90,6 +106,44 @@ body, input, button {
 
 .containerLink h3 {
     margin-left: 20px;
+}
+
+.tabela {
+    display:flex;
+}
+
+.columnSongs {
+    display: block;
+}
+
+.columnParameter {
+    display: block;
+    margin-top: 0px;
+    margin-right: 130px;
+    margin-left: 80px;
+}
+
+.tableTitle{
+    margin-left: 130px;
+    font-size: 20px;
+}
+
+.tableTitleParameter{
+    margin-left: 100px;
+    font-size: 20px;
+    margin-bottom: 18px;
+}
+
+.tableHeader{
+    display:flex;
+}
+
+.tableNav {
+    margin: 0px 300px 0px 100px;
+}
+
+.tableElementText {
+   font-size: 20px;
 }
 
 :root{

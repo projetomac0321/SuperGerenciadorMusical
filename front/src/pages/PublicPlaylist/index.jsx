@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { NavLink, Outlet } from 'react-router-dom';
-import { FiPlus } from 'react-icons/fi';
+import { FiPlus, FiFileText } from 'react-icons/fi';
 import NullPlaylistImage from '../../images/NullPlaylistImage.png';
 import { ElementStructure } from '../../components/ElementStructure';
 
@@ -62,6 +62,12 @@ export function PublicPlaylist(){
           elementImage={playlistImage}
           elementName={playlistName}
         />
+        <NavLink className="link containerLink"
+                        to={`/parametertable/playlist_${playlistId}`}
+                >
+                   <FiFileText/>
+                   <h3> Mostrar parâmetros</h3>
+                </NavLink>
         <div className="list">
                <nav
               className="navScroll"

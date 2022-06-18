@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { FullTable } from '../../../components/Table/FullTable';
 
-export function Acousticness(){
+export function Speechiness(){
     const [playlistId, trash] = window.location.href.split("_").pop().split("/");
 
     const [songsIds, setSongsIds] = useState([]);
@@ -30,7 +30,7 @@ export function Acousticness(){
                 let length = (res.data.length <= 50 ? res.data.length : 50);
                 for(var i = 0; i < length; i += 1)
                 {
-                  parameters[i] = res.data[i].acousticness;
+                  parameters[i] = res.data[i].speechiness;
                 }
                 setParameters(parameters);
             }).catch(err => console.log(err.message));
@@ -59,7 +59,7 @@ export function Acousticness(){
               let length = (res.data.length <= 50 ? res.data.length : 50);
               for(var i = 0; i < length; i += 1)
               {
-                parameters[i] = res.data[i].acousticness;
+                parameters[i] = res.data[i].speechiness;
               }
               setParameters(parameters);
           }).catch(err => console.log(err.message));
@@ -71,7 +71,7 @@ export function Acousticness(){
 
         return(
           <FullTable
-             parameterName="Acousticness"
+             parameterName="Speechiness"
              parameters={parameters}
              playlistSongs={playlistSongs}
           />
