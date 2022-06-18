@@ -156,6 +156,34 @@ body, input, button {
     opacity: 0;
 }
 
+.elementCreate {
+    margin-left: 20px;
+    padding: 20px;
+    display: flex;
+    color: var(--white);
+    margin-right: 100px;
+    width: 1200px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.elementCreate:hover {
+    background-color: var(--rowHover);
+    opacity: 0.8;
+}
+
+.elementCreateText {
+    margin-left: 20px;
+}
+
+.elementCreateText h1{
+    color: var(--gray);
+}
+
+.elementCreateText:hover{
+    cursor: pointer;
+}
+
 :root{
     --text: #555555;
     --text2: #BCBCBC;

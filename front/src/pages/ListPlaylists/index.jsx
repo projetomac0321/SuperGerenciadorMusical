@@ -71,12 +71,12 @@ export function ListPlaylists(){
             >
               <GetPlaylists />
               
-              <div className="playlistCreate">
+              <div className="elementCreate">
                             <NavLink
                                       className="navLink"
                                       to="/createplaylists"
                                     >
-                          <div className="playlistCreateText">
+                          <div className="elementCreateText">
                             <h1>Criar Playlist</h1>
                           </div>
                             </NavLink> 

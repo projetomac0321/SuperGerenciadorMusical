@@ -70,7 +70,7 @@ export function PublicPlaylist(){
                 </NavLink>
         <div className="list">
                <nav
-              className="navScroll"
+              className="navScrollSmall"
             >
                <GetSongs/>
             </nav>

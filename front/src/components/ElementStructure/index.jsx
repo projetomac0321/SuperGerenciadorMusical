@@ -5,8 +5,8 @@ import { GoBack } from '../GoBack';
 export function ElementStructure({elementImage, elementName, goBack, comment}){
     return(
       <div>
-                   <GoBack place={goBack}/>
-        <div className="listHeader">
+                   {goBack != null ? <GoBack place={goBack}/> : null}
+        <div className={goBack != null ? "listHeader" : "listHeader lowerTop"}>
           <img className="image" src={elementImage} alt="" />
           <div className="textElement">
             <h1> {elementName} </h1>

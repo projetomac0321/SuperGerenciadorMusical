@@ -78,8 +78,8 @@ export function SearchSongs(){
                                         </div>
                             </div>
                         ))}    
-                    <div className="playlistCreate">
-                          <div className="playlistCreateText" onClick={fetchSearchData}>
+                    <div className="elementCreate">
+                          <div className="elementCreateText" onClick={fetchSearchData}>
                             <h1>Buscar mais músicas</h1>
                           </div>
                       </div>

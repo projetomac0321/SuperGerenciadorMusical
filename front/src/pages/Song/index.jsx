@@ -76,7 +76,6 @@ export function Song(){
     return(
      <div>
         <ElementStructure
-           goBack="/searchSongs"
            elementImage={albumImage}
            elementName={songName}
            comment={comment}

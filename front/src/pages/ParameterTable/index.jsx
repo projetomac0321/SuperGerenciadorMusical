@@ -29,7 +29,6 @@ export function ParameterTable(){
       return(
        <div>
           <ElementStructure
-             goBack={`/listplaylists/playlist_${playlistId}`}
              elementImage={playlistImage}
              elementName={playlistName}
           />

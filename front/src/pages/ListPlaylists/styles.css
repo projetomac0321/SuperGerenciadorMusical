@@ -27,34 +27,6 @@
     cursor: pointer;
 }
 
-.playlistCreate {
-    margin-left: 20px;
-    padding: 20px;
-    display: flex;
-    color: var(--white);
-    margin-right: 100px;
-    width: 1200px;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.playlistCreate:hover {
-    background-color: var(--rowHover);
-    opacity: 0.8;
-}
-
-.playlistCreateText {
-    margin-left: 20px;
-}
-
-.playlistCreateText h1{
-    color: var(--gray);
-}
-
-.playlistCreateText:hover{
-    cursor: pointer;
-}
-
 .plusIcon {
     cursor: pointer;
     color: var(--gray);

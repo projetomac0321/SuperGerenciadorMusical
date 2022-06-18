@@ -72,7 +72,7 @@ export function Playlist(){
                 </NavLink>
         <div className="list">
                <nav
-              className="navScroll"
+              className="navScrollSmall"
               >
                <GetSongs/>
             </nav>
