@@ -18,10 +18,10 @@ export function PublicPlaylist(){
           axios.get(`http://localhost:8080/buscar-musicas/obter-playlist?idDaPlaylist=${playlistId}`).then(res => {
             setPlaylistName(res.data.name);
             setPlaylistSongs(res.data.tracks.items);
-            if(res.data.images[0] != null)
-             setPlaylistImage(res.data.images[0].url);
-            else setPlaylistImage(NullPlaylistImage);
-          }).catch(err => console.log(err.message));
+            setPlaylistImage(res.data.images[0].url);
+          }).catch(err => 
+            {if (err.message == "res.data.images[0] is undefined") setArtistImage(NullPlaylistImage);
+             else console.log(err.message)});
         }
 
         useEffect(() => {

@@ -22,10 +22,11 @@ export function Artist(){
 
         const getArtistInfo = () => {
           axios.get(`http://localhost:8080/buscar-musicas/obter-artista?idDoArtista=${artistId}`).then(res => {
-            if(res.data.images[0] != null) setArtistImage(res.data.images[0].url);
-            else setArtistImage(NullArtistImage);
+            setArtistImage(res.data.images[0].url);
             setArtistName(res.data.name);
-          }).catch(err => console.log(err.message));
+          }).catch(err => 
+            {if (err.message == "res.data.images[0] is undefined") setArtistImage(NullArtistImage);
+             else console.log(err.message)});
         }
 
         useEffect(() => {

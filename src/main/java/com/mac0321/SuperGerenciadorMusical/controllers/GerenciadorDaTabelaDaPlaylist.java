@@ -21,8 +21,8 @@ public class GerenciadorDaTabelaDaPlaylist {
 	private ProcuradorDeMúsicas procuradorDeMusicas;
 	private Autenticador autenticador = Autenticador.criarAutenticador();
 	
-	@GetMapping("/ordenar-por-paramaetro")
-	private <T extends Comparable<T>> ResponseEntity<Track[]> listarMusicasOrdenadasPorParametro(T[] parametro, String[] ids) {
+	@GetMapping("/ordenar-por-parametro")
+	private ResponseEntity<Track[]> listarMusicasOrdenadasPorParametro(Float[] parametro, String[] ids) {
 		Track[] listaDeMusicasOrdenada;
 		ordenadorDeMusicasPorParametro = new OrdenadorDeMúsicasPorParâmetro();
 		procuradorDeMusicas = new ProcuradorDeMúsicas(autenticador.getTokenUsuario());

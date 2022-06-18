@@ -18,9 +18,10 @@ export function Album(){
           axios.get(`http://localhost:8080/buscar-musicas/obter-album?idDoAlbum=${albumId}`).then(res => {
             setAlbumName(res.data.name);
             setAlbumSongs(res.data.tracks.items);
-            if(res.data.images[0] != null) setAlbumImage(res.data.images[0].url);
-            else setAlbumImage(NullPlaylistImage);
-          }).catch(err => console.log(err.message));
+            setAlbumImage(res.data.images[0].url);
+          }).catch(err => 
+            {if (err.message == "res.data.images[0] is undefined") setArtistImage(NullPlaylistImage);
+             else console.log(err.message)});
         }
 
         useEffect(() => {

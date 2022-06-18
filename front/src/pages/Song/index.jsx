@@ -20,18 +20,13 @@ export function Song(){
           axios.get(`http://localhost:8080/buscar-musicas/obter-musicas?idsDasMusicas=${[songId]}`).then(res => {
             setSongName(res.data[0].name);
             setSongUri(res.data[0].uri);
-            if(res.data[0].album != null &&
-               res.data[0].album.images[0] != null) 
-               {
-                setAlbumImage(res.data[0].album.images[0].url);
-                setComment("(Imagem do álbum)");
-               }
-            else 
-            {
-              setAlbumImage(NullPlaylistImage);
-              setComment("");
-            }   
-          }).catch(err => console.log(err.message));
+            setAlbumImage(res.data[0].album.images[0].url);
+            setComment("(Imagem do álbum)");
+          }).catch(err => {if(err.message == "res.data[0].album is undefined" ||
+            err.message == "res.data[0].album.images[0] is undefined") 
+               setAlbumImage(NullPlaylistImage);
+               setComment("");
+            });
         }
 
         const [parameters, setParameters] = useState([]);

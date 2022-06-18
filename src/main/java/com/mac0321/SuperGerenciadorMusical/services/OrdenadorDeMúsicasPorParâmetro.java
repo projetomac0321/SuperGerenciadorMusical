@@ -2,14 +2,14 @@ package com.mac0321.SuperGerenciadorMusical.services;
 
 public class OrdenadorDeMúsicasPorParâmetro {
 
-	private TrocadorDeElementos trocadorDeElementos;
+	private TrocadorDeElementos trocadorDeElementos = new TrocadorDeElementos();
 
 	public <T extends Comparable<T>> String[] ordenaMúsicas(T[] parâmetro, String [] ids) {
 		try {
 			this.quickSort(parâmetro, 0, parâmetro.length - 1, ids);
 		}
 		catch(NullPointerException exceção) {
-			System.out.println("Ordenação falhou!");
+			System.out.println("Ordenação falhou.");
 		}
 		return ids;
 	}

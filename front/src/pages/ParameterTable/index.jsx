@@ -34,73 +34,77 @@ export function ParameterTable(){
              elementName={playlistName}
           />
           <GetData/>
-          <nav className="parametersButtons">
+          <div className="parametersButtons">
+            <div className="firstLine">
                 <NavLink 
-                        className="link"      
+                        className="linkTable"      
                         to={`/parametertable/playlist_${playlistId}/acousticness`}>
                   <ParameterButton name="Acousticness"/>
                 </NavLink>
                 <NavLink 
-                        className="link"      
+                        className="linkTable"      
                         to={`/parametertable/playlist_${playlistId}/danceability`}>
                   <ParameterButton name="Danceability"/>
                 </NavLink>
                 <NavLink 
-                        className="link"      
+                        className="linkTable"      
                         to={`/parametertable/playlist_${playlistId}/durationMs`}>
                   <ParameterButton name="DurationMs"/>
                 </NavLink>
                 <NavLink 
-                        className="link"      
+                        className="linkTable"      
                         to={`/parametertable/playlist_${playlistId}/energy`}>
                   <ParameterButton name="Energy"/>
                 </NavLink>
                 <NavLink 
-                        className="link"      
+                        className="linkTable"      
                         to={`/parametertable/playlist_${playlistId}/instrumentalness`}>
                   <ParameterButton name="Instrumentalness"/>
                 </NavLink>
                 <NavLink 
-                        className="link"      
+                        className="linkTable"      
                         to={`/parametertable/playlist_${playlistId}/key`}>
                   <ParameterButton name="Key"/>
                 </NavLink>
                 <NavLink 
-                        className="link"      
+                        className="linkTable"      
                         to={`/parametertable/playlist_${playlistId}/liveness`}>
                   <ParameterButton name="Liveness"/>
                 </NavLink>
+            </div>
+            <div className="secondLine">
                 <NavLink 
-                        className="link"      
+                        className="linkTable"      
                         to={`/parametertable/playlist_${playlistId}/loudness`}>
                   <ParameterButton name="Loudness"/>
                 </NavLink>
                 <NavLink 
-                        className="link"      
+                        className="linkTable"      
                         to={`/parametertable/playlist_${playlistId}/mode`}>
                   <ParameterButton name="Mode"/>
                 </NavLink>
                 <NavLink 
-                        className="link"      
+                        className="linkTable"      
                         to={`/parametertable/playlist_${playlistId}/speechiness`}>
                   <ParameterButton name="Speechiness"/>
                 </NavLink>
                 <NavLink 
-                        className="link"      
+                        className="linkTable"      
                         to={`/parametertable/playlist_${playlistId}/timeSignature`}>
                   <ParameterButton name="TimeSignature"/>
                 </NavLink>
                 <NavLink 
-                        className="link"      
+                        className="linkTable"      
                         to={`/parametertable/playlist_${playlistId}/tempo`}>
                   <ParameterButton name="Tempo"/>
                 </NavLink>
                 <NavLink 
-                        className="link"      
+                        className="linkTable"      
                         to={`/parametertable/playlist_${playlistId}/valence`}>
                   <ParameterButton name="Valence"/>
                 </NavLink>
-          </nav>
+            </div>
+          </div>
           <Outlet/>
         </div>
       );
