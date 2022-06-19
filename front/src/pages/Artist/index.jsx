@@ -15,13 +15,13 @@ export function Artist(){
         const [artistSongs, setArtistSongs] = useState([]);
 
         const getArtistSongs = () => {
-          axios.get(`http://localhost:8080/buscar-musicas/listar-top-musicas-do-artista?idArtista=${artistId}`).then(res => {
+          axios.get(`http://localhost:8080/listar-musicas/listar-top-musicas-do-artista?idArtista=${artistId}`).then(res => {
             setArtistSongs(res.data);
           }).catch(err => console.log(err.message));
         }
 
         const getArtistInfo = () => {
-          axios.get(`http://localhost:8080/buscar-musicas/obter-artista?idDoArtista=${artistId}`).then(res => {
+          axios.get(`http://localhost:8080/buscar-por-id/obter-artista?idDoArtista=${artistId}`).then(res => {
             setArtistName(res.data.name);
             setArtistImage(res.data.images[0].url);
           }).catch(err => 

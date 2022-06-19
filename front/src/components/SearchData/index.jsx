@@ -18,7 +18,7 @@ export function SearchData({ getRoute, getParamName, navRoute, text, hasImage, n
         const fetchSearchData = () => {
           if(searchInput != "")
           {
-              axios.get(`http://localhost:8080/buscar-musicas/${getRoute}?${getParamName}=${searchInput}&offset=${offset}`).then(res => {
+              axios.get(`http://localhost:8080/buscar-por-tag/${getRoute}?${getParamName}=${searchInput}&offset=${offset}`).then(res => {
                   setData(res.data);
                   if(res.data.length == 0) {
                     if(offset != 0) alert("Nenhum novo elemento encontrado. Todos os elementos foram passados para esse parâmetro de busca.");

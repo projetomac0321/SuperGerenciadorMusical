@@ -15,7 +15,7 @@ export function PublicPlaylist(){
         const [playlistSongs, setPlaylistSongs] = useState([]);
 
         const getPlaylistInfo = () => {
-          axios.get(`http://localhost:8080/buscar-musicas/obter-playlist?idDaPlaylist=${playlistId}`).then(res => {
+          axios.get(`http://localhost:8080/buscar-por-id/obter-playlist?idDaPlaylist=${playlistId}`).then(res => {
             setPlaylistName(res.data.name);
             setPlaylistSongs(res.data.tracks.items);
             setPlaylistImage(res.data.images[0].url);

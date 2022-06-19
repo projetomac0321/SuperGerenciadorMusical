@@ -19,7 +19,7 @@ export function SearchSongs(){
         const fetchSearchData = () => {
           if(searchInput != "")
           {
-              axios.get(`http://localhost:8080/buscar-musicas/buscar-por-query?query=${searchInput}&offset=${offset}`).then(res => {
+              axios.get(`http://localhost:8080/buscar-por-tag/buscar-por-query?query=${searchInput}&offset=${offset}`).then(res => {
                   setData(res.data);
                   if(res.data.length == 0) {
                     if(offset != 0) alert("Nenhum novo elemento encontrado. Todos os elementos foram passados para esse parâmetro de busca.");
