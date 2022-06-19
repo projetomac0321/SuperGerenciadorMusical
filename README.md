@@ -55,7 +55,7 @@ A fim de corresponder o controle de versionamento por meio do git do nosso proje
 ## Observações
 
 1. Por utilizarmos acentuação em algumas classes, atributos e métodos, optamos por usar a Codificação UTF-16 padrão do Java.
-2. O Procedimento de: o usuário abrir a aba "http://localhost:3000/login" para autenticar, e após isso, o mesmo ir para a aba "http://localhost:3000/login" para iniciar a execução dos serviços da aplicação, será alterado para a próxima entrega, planejamos fazer com que esse direcionamento seja automático.
+2. O Procedimento de o usuário abrir a aba "http://localhost:3000/login" para autenticar, e após isso, o mesmo ir para a aba "http://localhost:3000/login" para iniciar a execução dos serviços da aplicação, será alterado para a próxima entrega, planejamos fazer com que esse direcionamento seja automático.
 
 ## Desenvolvedores
 
