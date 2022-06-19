@@ -1,4 +1,4 @@
-package com.mac0321.SuperGerenciadorMusical.services;
+package com.mac0321.SuperGerenciadorMusical.models.services;
 
 import java.io.IOException;
 
@@ -8,7 +8,7 @@ import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 import se.michaelthelin.spotify.model_objects.specification.Playlist;
 import se.michaelthelin.spotify.requests.data.playlists.CreatePlaylistRequest;
 
-public class CriadorDePlaylist extends ServiçosDoAplicativo {
+public class CriadorDePlaylist extends ServiçoSpotify {
 	
 	private CreatePlaylistRequest createPlaylistRequest;
 	private String userID = null;

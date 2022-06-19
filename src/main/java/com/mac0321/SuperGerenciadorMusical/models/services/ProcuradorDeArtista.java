@@ -1,4 +1,4 @@
-package com.mac0321.SuperGerenciadorMusical.services;
+package com.mac0321.SuperGerenciadorMusical.models.services;
 
 import java.io.IOException;
 
@@ -8,7 +8,7 @@ import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 import se.michaelthelin.spotify.model_objects.specification.Artist;
 import se.michaelthelin.spotify.requests.data.artists.GetArtistRequest;
 
-public class ProcuradorDeArtista extends ServiçosDoAplicativo implements ServiçoDeProcuraÚnica {
+public class ProcuradorDeArtista extends ServiçoSpotify implements ServiçoDeProcuraÚnica {
 
 	private GetArtistRequest getArtistRequest;
 	

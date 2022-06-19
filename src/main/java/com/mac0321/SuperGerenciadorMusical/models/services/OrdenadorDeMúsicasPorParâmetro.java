@@ -1,6 +1,6 @@
-package com.mac0321.SuperGerenciadorMusical.services;
+package com.mac0321.SuperGerenciadorMusical.models.services;
 
-public class OrdenadorDeMúsicasPorParâmetro {
+public class OrdenadorDeMúsicasPorParâmetro extends ServiçosDoAplicativo {
 
 	private TrocadorDeElementos trocadorDeElementos = new TrocadorDeElementos();
 

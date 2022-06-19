@@ -1,4 +1,4 @@
-package com.mac0321.SuperGerenciadorMusical.services;
+package com.mac0321.SuperGerenciadorMusical.models.services;
 
 import java.io.IOException;
 
@@ -10,7 +10,7 @@ import se.michaelthelin.spotify.model_objects.specification.PlaylistSimplified;
 import se.michaelthelin.spotify.requests.data.playlists.GetListOfCurrentUsersPlaylistsRequest;
 
 
-public class ProcuradorDePlaylistsDoUsuárioAtual extends ServiçosDoAplicativo {
+public class ProcuradorDePlaylistsDoUsuárioAtual extends ServiçoSpotify {
 	
 	private GetListOfCurrentUsersPlaylistsRequest getListOfCurrentUsersPlaylistsRequest;
 	

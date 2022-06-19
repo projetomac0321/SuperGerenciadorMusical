@@ -1,4 +1,4 @@
-package com.mac0321.SuperGerenciadorMusical.services;
+package com.mac0321.SuperGerenciadorMusical.models.services;
 
 import java.io.IOException;
 
@@ -9,7 +9,7 @@ import se.michaelthelin.spotify.model_objects.special.SnapshotResult;
 import se.michaelthelin.spotify.requests.data.playlists.RemoveItemsFromPlaylistRequest;
 
 
-public class RemovedorDeMúsicasNumaPlaylist extends ServiçosDoAplicativo implements ServiçoDeModificaçãoDeMúsicasDeUmaPlaylist {
+public class RemovedorDeMúsicasNumaPlaylist extends ServiçoSpotify implements ServiçoDeModificaçãoDeMúsicasDeUmaPlaylist {
 	
 	private RemoveItemsFromPlaylistRequest removeItemsFromPlaylistRequest;
 	private GeradorDeJson geradorDeJson = new GeradorDeJson();

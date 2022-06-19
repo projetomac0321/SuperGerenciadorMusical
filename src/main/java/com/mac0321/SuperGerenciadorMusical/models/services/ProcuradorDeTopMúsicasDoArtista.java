@@ -1,4 +1,4 @@
-package com.mac0321.SuperGerenciadorMusical.services;
+package com.mac0321.SuperGerenciadorMusical.models.services;
 
 import java.io.IOException;
 
@@ -10,7 +10,7 @@ import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 import se.michaelthelin.spotify.model_objects.specification.Track;
 import se.michaelthelin.spotify.requests.data.artists.GetArtistsTopTracksRequest;
 
-public class ProcuradorDeTopMúsicasDoArtista extends ServiçosDoAplicativo {
+public class ProcuradorDeTopMúsicasDoArtista extends ServiçoSpotify {
 
 	private GetArtistsTopTracksRequest getArtistsTopTracksRequest;
 	private CountryCode countryCode;

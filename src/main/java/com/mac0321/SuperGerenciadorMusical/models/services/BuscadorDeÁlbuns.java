@@ -1,4 +1,4 @@
-package com.mac0321.SuperGerenciadorMusical.services;
+package com.mac0321.SuperGerenciadorMusical.models.services;
 
 import java.io.IOException;
 
@@ -9,7 +9,7 @@ import se.michaelthelin.spotify.model_objects.specification.AlbumSimplified;
 import se.michaelthelin.spotify.model_objects.specification.Paging;
 import se.michaelthelin.spotify.requests.data.search.simplified.SearchAlbumsRequest;
 
-public class BuscadorDeÁlbuns extends ServiçosDoAplicativo implements ServiçoDeBusca {
+public class BuscadorDeÁlbuns extends ServiçoSpotify implements ServiçoDeBusca {
 
 	private SearchAlbumsRequest searchAlbumsRequest;
 

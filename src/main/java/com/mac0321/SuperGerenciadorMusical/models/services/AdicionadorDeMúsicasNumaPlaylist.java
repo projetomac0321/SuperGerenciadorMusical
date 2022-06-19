@@ -1,4 +1,4 @@
-package com.mac0321.SuperGerenciadorMusical.services;
+package com.mac0321.SuperGerenciadorMusical.models.services;
 
 import java.io.IOException;
 
@@ -8,7 +8,7 @@ import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 import se.michaelthelin.spotify.model_objects.special.SnapshotResult;
 import se.michaelthelin.spotify.requests.data.playlists.AddItemsToPlaylistRequest;
 
-public class AdicionadorDeMúsicasNumaPlaylist extends ServiçosDoAplicativo implements ServiçoDeModificaçãoDeMúsicasDeUmaPlaylist {
+public class AdicionadorDeMúsicasNumaPlaylist extends ServiçoSpotify implements ServiçoDeModificaçãoDeMúsicasDeUmaPlaylist {
 	
 	private AddItemsToPlaylistRequest addItemsToPlaylistRequest;
 

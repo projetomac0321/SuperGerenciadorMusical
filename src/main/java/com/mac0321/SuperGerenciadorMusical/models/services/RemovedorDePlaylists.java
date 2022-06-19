@@ -1,4 +1,4 @@
-package com.mac0321.SuperGerenciadorMusical.services;
+package com.mac0321.SuperGerenciadorMusical.models.services;
 
 import java.io.IOException;
 
@@ -8,7 +8,7 @@ import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 import se.michaelthelin.spotify.requests.data.follow.legacy.UnfollowPlaylistRequest;
 
 
-public class RemovedorDePlaylists extends ServiçosDoAplicativo {
+public class RemovedorDePlaylists extends ServiçoSpotify {
 	
 	private UnfollowPlaylistRequest unfollowPlaylistRequest;
 	private String userID = null;
