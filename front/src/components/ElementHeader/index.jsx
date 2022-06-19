@@ -4,7 +4,7 @@ import { GoBack } from '../GoBack';
 
 export function ElementHeader({elementImage, elementName, goBack}){
     return(
-      <div>
+      <div className="container">
                    {goBack != null ? <GoBack place={goBack}/> : null}
         <div className={goBack != null ? "listHeader" : "listHeader lowerTop"}>
           <img className="image" src={elementImage} alt="" />

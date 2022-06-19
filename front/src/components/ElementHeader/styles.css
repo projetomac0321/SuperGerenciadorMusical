@@ -30,3 +30,7 @@
 .lowerTop {
     margin-top: 50px;
 }
+
+.container {
+    height: 25vh;
+}

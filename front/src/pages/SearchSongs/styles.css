@@ -62,7 +62,7 @@ div.headerMid {
     display: flex;
     color: var(--white);
     margin-right: 100px;
-    width: 1200px;
+    width: 60vw;
     justify-content: space-between;
 }
 
