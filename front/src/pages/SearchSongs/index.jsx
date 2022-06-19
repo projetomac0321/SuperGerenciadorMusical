@@ -76,7 +76,9 @@ export function SearchSongs(){
                                                 <div className="songRowText">
                                                     <NavLink className="navLink"
                                                              to={`/song_${result.id}`}>
-                                                    <h1>{result.name}</h1>
+                                                    <h1>{result.name.substring(0,37)}
+                                                       {result.name.length > 37 ? "..." : null}
+                                                    </h1>
                                                              </NavLink>
                                                 </div>
                                             </div>

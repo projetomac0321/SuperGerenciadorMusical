@@ -184,6 +184,11 @@ body, input, button {
     cursor: pointer;
 }
 
+.plusIcon {
+    cursor: pointer;
+    color: var(--gray);
+} 
+
 :root{
     --text: #555555;
     --text2: #BCBCBC;

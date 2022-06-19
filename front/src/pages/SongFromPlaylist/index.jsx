@@ -4,21 +4,17 @@ import './styles.css';
 import NullPlaylistImage from '../../images/NullPlaylistImage.png';
 import { ElementHeader } from '../../components/ElementHeader';
 import { Parameter } from '../../components/Parameter';
-import { Outlet, NavLink } from 'react-router-dom';
-import { FiPlus } from 'react-icons/fi';
 
-export function Song(){
-  const songId = window.location.href.split("_").pop();
+export function SongFromPlaylist(){
+  const [playlistId, songId] = window.location.href.split("_").pop().split("/");
 
   const [songName, setSongName] = useState("");
-  const [songUri, setSongUri] = useState("");
   const [albumImage, setAlbumImage] = useState("");
 
   function GetParameters(){
         const getSongInfo = () => {
           axios.get(`http://localhost:8080/buscar-musicas/obter-musicas?idsDasMusicas=${[songId]}`).then(res => {
             setSongName(res.data[0].name);
-            setSongUri(res.data[0].uri);
             setAlbumImage(res.data[0].album.images[0].url);
           }).catch(err => {
             if(err.response) {
@@ -79,13 +75,6 @@ export function Song(){
                   <Parameter name="TimeSignature" value={parameters.timeSignature}/>
                   <Parameter name="Tempo" value={parameters.tempo}/>
                   <Parameter name="Valence" value={parameters.valence}/>
-                  <NavLink
-                     className="navLink addSong"
-                     to={`/selectplaylist_${songUri}`}
-                  >
-                     <h1 className="addSongText"> Adicionar música </h1>
-                     <FiPlus className="plusIcon"/>
-                 </NavLink>
             </nav>
           </div>
         )
@@ -97,9 +86,9 @@ export function Song(){
         <ElementHeader
            elementImage={albumImage}
            elementName={songName}
+           goBack={`/listplaylists/playlist_${playlistId}`}
         />
                <GetParameters/>
-               <Outlet/>
       </div>
     );
 }

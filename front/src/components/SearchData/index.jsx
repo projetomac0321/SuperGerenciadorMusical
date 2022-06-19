@@ -76,7 +76,9 @@ export function SearchData({ getRoute, getParamName, navRoute, text, hasImage, n
                                                 <div className="elementRowText" onClick={e => { e.preventDefault(); setTimeout(function(){
                                             window.location.href = `http://localhost:3000/${navRoute}_${result.id}`;}, 100);
                                             }}>
-                                                    <h1>{result.name}</h1>
+                                                    <h1>{result.name.substring(0,37)}
+                                                       {result.name.length > 37 ? "..." : null}
+                                                    </h1>
                                                 </div>
                                             </div>
                                         </div>

@@ -27,11 +27,6 @@
     cursor: pointer;
 }
 
-.plusIcon {
-    cursor: pointer;
-    color: var(--gray);
-} 
-
 .navLink {
     text-decoration-line: none;
     cursor: default;

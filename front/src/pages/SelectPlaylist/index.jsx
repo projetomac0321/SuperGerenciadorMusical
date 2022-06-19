@@ -59,7 +59,9 @@ export function SelectPlaylist(){
                             setTimeout(function(){
                               window.location.href = `http://localhost:3000/listplaylists/playlist_${playlist.id}`;}, 1200);
                             }}>
-                                <h1>{playlist.name}</h1>
+                                <h1>{playlist.name.substring(0,37)}
+                                    {playlist.name.length > 37 ? "..." : null}
+                                </h1>
                             </div>
                 </div>
     

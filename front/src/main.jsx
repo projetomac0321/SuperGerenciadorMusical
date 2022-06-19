@@ -20,6 +20,7 @@ import { PublicPlaylist } from './pages/PublicPlaylist';
 import { Artist } from './pages/Artist';
 import { SelectPlaylist } from './pages/SelectPlaylist';
 import { Song } from './pages/Song';
+import { SongFromPlaylist } from './pages/SongFromPlaylist';
 
 import { ParameterTable } from './pages/ParameterTable';
 import { Acousticness } from './pages/Parameters/Acousticness';
@@ -52,6 +53,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           <Route path="selectplaylist_:songUri" element={<SelectPlaylist />}/>
           <Route path="listplaylists" element={<ListPlaylists />}/>
             <Route path="listplaylists/playlist_:playlistId" element={<Playlist />}/>
+               <Route path="listplaylists/playlistsong_:playlistId/:songId" element={<SongFromPlaylist />}/>
           <Route path="createplaylists" element={<CreatePlaylists />}/>
           <Route path="parametertable/playlist_:playlistId/" element={<ParameterTable />}>
             <Route path="acousticness" element={<Acousticness />}/>

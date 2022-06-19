@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { NavLink, Outlet } from 'react-router-dom';
 import { FiPlus } from 'react-icons/fi';
-import { ElementStructure } from '../../components/ElementStructure';
+import { ElementHeader } from '../../components/ElementHeader';
 import NullArtistImage from '../../images/NullArtistImage.png';
 
 export function Artist(){
@@ -53,7 +53,9 @@ export function Artist(){
                           <div className="songRowText">
                           <NavLink className="navLink"
                                   to={`/song_${song.id}`}>
-                              <h1>{song.name}</h1>
+                              <h1>{song.name.substring(0,37)}
+                                  {song.name.length > 37 ? "..." : null}
+                              </h1>
                               </NavLink>
                           </div>
                           <div className="plus">
@@ -75,7 +77,7 @@ export function Artist(){
 
     return(
       <div>
-        <ElementStructure
+        <ElementHeader
             goBack="/searchartists"
             elementImage={artistImage}
             elementName={artistName}

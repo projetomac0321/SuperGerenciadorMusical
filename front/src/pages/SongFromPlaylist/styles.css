@@ -5,10 +5,7 @@
     margin: 0px 600px 0px 50px;
 }
 
-.addSongText:hover{
+.addSong:hover{
     cursor: pointer;
-}
-
-.addSongText {
-   color: var(--text);
+    color: var(--gray);
 }

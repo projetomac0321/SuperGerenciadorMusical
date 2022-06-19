@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { FiFileText, FiTrash2 } from 'react-icons/fi';
 import axios from 'axios';
 import NullPlaylistImage from '../../images/NullPlaylistImage.png';
-import { ElementStructure } from '../../components/ElementStructure';
+import { ElementHeader } from '../../components/ElementHeader';
 import { NavLink, Outlet } from 'react-router-dom';
 
 export function Playlist(){
@@ -65,7 +65,12 @@ export function Playlist(){
             return (
               <div className="songRow" key={song.track.id}>
                           <div className="songRowText">
-                              <h1>{song.track.name}</h1>
+                          <NavLink className="navLink"
+                                   to={`/listplaylists/playlistsong_${playlistId}/${song.track.id}`}>
+                                <h1>{song.track.name.substring(0,37)}
+                                        {song.track.name.length > 37 ? "..." : null}
+                                    </h1>
+                          </NavLink>
                           </div>
                           <FiTrash2 className="trashIcon" onClick={e => { e.preventDefault(); handleClick(song.track.uri);
                         setTimeout(function(){
@@ -81,7 +86,7 @@ export function Playlist(){
 
     return(
      <div>
-        <ElementStructure
+        <ElementHeader
            goBack="/listplaylists"
            elementImage={playlistImage}
            elementName={playlistName}

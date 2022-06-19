@@ -3,7 +3,7 @@ import axios from 'axios';
 import { FullTable } from '../../../components/Table/FullTable';
 
 export function Fetch({ parameterName, title }){
-    const [playlistId, trash] = window.location.href.split("_").pop().split("/");
+    const playlistId = window.location.href.split("_").pop().split("/")[0];
 
     const [songsIds, setSongsIds] = useState([]);
   function GetSongs(){

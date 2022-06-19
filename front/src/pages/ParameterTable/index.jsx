@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import './styles.css';
 import axios from 'axios';
-import { ElementStructure } from '../../components/ElementStructure';
+import { ElementHeader } from '../../components/ElementHeader';
 import { ParameterButton } from '../../components/ParameterButton';
 import { NavLink, Outlet } from 'react-router-dom';
 import NullPlaylistImage from '../../images/NullPlaylistImage.png';
 
 export function ParameterTable(){
-    const [playlistId, trash] = window.location.href.split("_").pop().split("/");
+    const playlistId = window.location.href.split("_").pop().split("/")[0];
 
     const [playlistName, setPlaylistName] = useState("");
     const [playlistImage, setPlaylistImage] = useState("");
@@ -40,7 +40,7 @@ export function ParameterTable(){
   
       return(
        <div>
-          <ElementStructure
+          <ElementHeader
              elementImage={playlistImage}
              elementName={playlistName}
           />

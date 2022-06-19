@@ -62,7 +62,9 @@ export function ListPlaylists(){
                     to={`/listplaylists/playlist_${playlist.id}`}
                   >
                         <div className="playlistRowName">
-                            <h1>{playlist.name}</h1>
+                        <h1>{playlist.name.substring(0,37)}
+                            {playlist.name.length > 37 ? "..." : null}
+                        </h1>
                         </div>
                   </NavLink>
                   </div>
