@@ -13,7 +13,7 @@ export function SongFromPlaylist(){
 
   function GetParameters(){
         const getSongInfo = () => {
-          axios.get(`http://localhost:8080/buscar-musicas/obter-musicas?idsDasMusicas=${[songId]}`).then(res => {
+          axios.get(`http://localhost:8080/buscar-por-id/obter-musicas?idsDasMusicas=${[songId]}`).then(res => {
             setSongName(res.data[0].name);
             setAlbumImage(res.data[0].album.images[0].url);
           }).catch(err => {
@@ -37,7 +37,7 @@ export function SongFromPlaylist(){
         const [parameters, setParameters] = useState([]);
 
         const getSongParameters = () => {
-            axios.get(`http://localhost:8080/buscar-musicas/obter-parametros-das-musicas?idsDasMusicas=${[songId]}`)
+            axios.get(`http://localhost:8080/parametros/obter-parametros-das-musicas?idsDasMusicas=${[songId]}`)
             .then(res => {
                 setParameters(res.data[0]);
             }).catch(err => {
