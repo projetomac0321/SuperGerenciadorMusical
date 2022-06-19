@@ -17,7 +17,7 @@ import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 @CrossOrigin(origins = "http://localhost:3000/")
 @RestController
 @RequestMapping(value = "/autenticacao")
-public class GerenciadorDeAutenticação {
+public class ControladorDeAutenticação {
 	Autenticador autenticador = Autenticador.criarAutenticador();
 	
 	@GetMapping("/iniciar")
