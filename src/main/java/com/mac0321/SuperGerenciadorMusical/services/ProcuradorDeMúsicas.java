@@ -10,7 +10,7 @@ import se.michaelthelin.spotify.requests.data.tracks.GetSeveralTracksRequest;
 
 public class ProcuradorDeMúsicas extends ServiçosDoAplicativo {
 	
-	private  GetSeveralTracksRequest getSeveralTracksRequest;
+	private GetSeveralTracksRequest getSeveralTracksRequest;
 	
 	public ProcuradorDeMúsicas(String accessToken) {
 		super(accessToken);
