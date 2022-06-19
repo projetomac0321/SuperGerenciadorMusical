@@ -6,6 +6,7 @@ import java.util.List;
 import se.michaelthelin.spotify.model_objects.specification.Track;
 import se.michaelthelin.spotify.model_objects.specification.Paging;
 
+// Serviço
 public class FiltradorDeMúsicasPorTag {
 
 	BuscadorDeMúsicasPorTag buscadorDeMúsicasPorTag;
@@ -16,13 +17,13 @@ public class FiltradorDeMúsicasPorTag {
 		 geradorDeArray = new GeradorDeArray();
 	 }
 	
-	public Track[] filtra(String tagDeProcura) {
+	public Track[] filtra(String tagDeProcura, int offset_max) {
 		List<Track[]> músicas_buscadas = new ArrayList<>();
 		Paging<Track> músicas_buscadas_intermediário;
 		int offset, tamanho = 0;
 		try {
 			músicas_buscadas_intermediário = this.buscadorDeMúsicasPorTag.executaServiço(tagDeProcura, 0);
-			for(offset = 50; offset > 1000 || músicas_buscadas_intermediário.getTotal() == 0; offset = offset + 50) {
+			for(offset = 50; offset > offset_max || músicas_buscadas_intermediário.getTotal() == 0; offset = offset + 50) {
 				tamanho += músicas_buscadas_intermediário.getTotal();
 				músicas_buscadas.add(músicas_buscadas_intermediário.getItems());
 				músicas_buscadas_intermediário = this.buscadorDeMúsicasPorTag.executaServiço(tagDeProcura, offset);

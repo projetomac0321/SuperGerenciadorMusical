@@ -6,30 +6,27 @@ import java.util.List;
 import se.michaelthelin.spotify.model_objects.specification.AudioFeatures;
 import se.michaelthelin.spotify.model_objects.specification.Track;
 
+// Serviço
 public class FiltradorDeMúsicasPorIntervalo {
 
 	 ProcuradorDeParâmetrosDeMúsicas procuradorDeParâmetrosDeMúsicas;
 	 GeradorDeArray geradorDeArray;
 	 MapeamentoDosParâmetros mapeamentoDosParâmetros;
-	 GeradorDeIdsDasMúsicasDoUsuárioAtual geradorDeIdsDasMúsicasDoUsuárioAtual;
 	 ProcuradorDeMúsicas procuradorDeMúsicas;
 	
 	 public FiltradorDeMúsicasPorIntervalo(String accessToken) {
 		 this.procuradorDeParâmetrosDeMúsicas = new ProcuradorDeParâmetrosDeMúsicas(accessToken);
-		 this.geradorDeIdsDasMúsicasDoUsuárioAtual = new GeradorDeIdsDasMúsicasDoUsuárioAtual(accessToken);
 		 this.procuradorDeMúsicas = new ProcuradorDeMúsicas(accessToken);
 		 this.geradorDeArray = new GeradorDeArray();
 		 this.mapeamentoDosParâmetros = new MapeamentoDosParâmetros();
 	 }
 	 
-	public Track[] filtra(Float[] intervalos_de_busca, int[] índices_dos_intervalos){
+	public Track[] filtra(Float[] intervalos_de_busca, int[] índices_dos_intervalos, String[] ids){
 		 AudioFeatures[] parâmetros;
-		 String[] ids;
 		 Float[] parâmetro_desejado;
 		 Track[] músicas_filtradas = null;
 		 int contador, contador2;
-		 try {			
-			 ids = this.geradorDeIdsDasMúsicasDoUsuárioAtual.obtem_ids();
+		 try {		
 			 for(contador = 0; contador < intervalos_de_busca.length; contador = contador + 2) {
 				 parâmetros = this.procuradorDeParâmetrosDeMúsicas.executaServiço(ids);
 				 parâmetro_desejado = new Float[parâmetros.length];
