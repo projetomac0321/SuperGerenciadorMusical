@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './styles.css';
 import NullPlaylistImage from '../../images/NullPlaylistImage.png';
 import { ElementHeader } from '../../components/ElementHeader';
 import { Parameter } from '../../components/Parameter';
@@ -79,13 +78,22 @@ export function Song(){
                   <Parameter name="TimeSignature" value={parameters.timeSignature}/>
                   <Parameter name="Tempo" value={parameters.tempo}/>
                   <Parameter name="Valence" value={parameters.valence}/>
-                  <NavLink
-                     className="navLink addSong"
-                     to={`/selectplaylist_${songUri}`}
-                  >
-                     <h1 className="addSongText"> Adicionar música </h1>
-                     <FiPlus className="plusIcon"/>
-                 </NavLink>
+                     <div className="elementCreate">
+                            <NavLink
+                                      className="navLink"
+                                      to={`/selectplaylist_${songUri}`}
+                                    >
+                          <div className="elementCreateText">
+                            <h1>Adicionar música</h1>
+                          </div>
+                            </NavLink> 
+                          <NavLink
+                                        className="navLink"
+                                        to={`/selectplaylist_${songUri}`}
+                                      >
+                                  <FiPlus className="plusIcon"/>
+                          </NavLink>
+                      </div>
             </nav>
           </div>
         )

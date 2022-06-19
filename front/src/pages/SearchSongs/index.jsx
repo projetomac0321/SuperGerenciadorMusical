@@ -68,12 +68,12 @@ export function SearchSongs(){
                             </div>
 
                 </div>
-                <nav className={searching ? "songsSearch" : "hide songsSearch"}>
+                <nav className={searching ? "elementsSearch" : "hide elementsSearch"}>
                         {data.map((result) => ( 
-                            <div className="songRowSearch" key={result.id}>
-                                        <div className="songRow">
-                                            <div className="songInfo">
-                                                <div className="songRowText">
+                            <div className="elementRowSearch" key={result.id}>
+                                        <div className="elementRow">
+                                            <div className="elementInfo">
+                                                <div className="elementRowTextInteract">
                                                     <NavLink className="navLink"
                                                              to={`/song_${result.id}`}>
                                                     <h1>{result.name.substring(0,37)}
@@ -83,8 +83,6 @@ export function SearchSongs(){
                                                 </div>
                                             </div>
                                             <div className="plus">
-                                            <div className="divider">
-                                            </div>
                                             <NavLink
                                                     className="navLink"
                                                     to={`/selectplaylist_${result.uri}`}

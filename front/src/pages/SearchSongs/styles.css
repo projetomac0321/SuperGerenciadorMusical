@@ -44,64 +44,6 @@ div.headerMid {
    outline: none;
 }
 
-.songsSearch {
-    margin: 20px 30px 0px -30px;
-    overflow: hidden;
-    overflow-y: scroll;
-    height: 60vh;
-}
-
-.hide {
-    visibility: hidden;
-    opacity: 0;
-}
-
-.songRow {
-    margin-left: 20px;
-    padding: 20px;
-    display: flex;
-    color: var(--white);
-    margin-right: 100px;
-    width: 60vw;
-    justify-content: space-between;
-}
-
-.songInfo {
-    display: flex;
-    align-items: center;
-}
-
-.songRow img {
-    height: 50px;
-}
-
-.songRow:hover {
-    background-color: var(--rowHover);
-    opacity: 0.8;
-}
-
-.songRowText {
-    margin-left: 20px;
-    display: flex;
-}
-
-.plus {
-    align-items: center;
-    display: flex;
-}
-
-.plus .divider {
-    height: 100%;
-    width: 3px;
-    align-self: flex-start;
-    background-color: var(--black);
-    margin-right: 10px;
-}
-
-.plusIcon {
-    cursor: pointer;
-}
-
 .navLink h1 {
     cursor: pointer;
 }

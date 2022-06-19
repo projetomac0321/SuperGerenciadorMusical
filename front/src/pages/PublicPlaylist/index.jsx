@@ -43,8 +43,8 @@ export function PublicPlaylist(){
         return(
           playlistSongs.map((song) => {
             return (
-              <div className="songRow" key={song.track.id}>
-                          <div className="songRowText">
+              <div className="elementRow" key={song.track.id}>
+                          <div className="elementRowTextInteract">
                           <NavLink className="navLink"
                                    to={`/song_${song.track.id}`}>
                                <h1>{song.track.name.substring(0,37)}
@@ -53,15 +53,13 @@ export function PublicPlaylist(){
                               </NavLink>
                           </div>
                           <div className="plus">
-                                            <div className="divider">
-                                            </div>
                                             <NavLink
                                                     className="navLink"
                                                     to={`/selectplaylist_${song.track.uri}`}
                                                 >
                                                     <FiPlus className="plusIcon"/>
                                                 </NavLink>
-                                            </div>
+                          </div>
               </div>
             )
           }

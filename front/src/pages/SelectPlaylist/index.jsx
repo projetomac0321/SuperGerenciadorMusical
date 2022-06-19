@@ -53,9 +53,9 @@ export function SelectPlaylist(){
         return (
           playlists.map((playlist) => {
              return (
-               <div className="playlistRow"
+               <div className="elementRow"
                     key={playlist.id}>
-                          <div className="playlistRowName" onClick={e => { e.preventDefault(); handleClick(playlist.id); 
+                          <div className="elementRowTextInteract" onClick={e => { e.preventDefault(); handleClick(playlist.id); 
                             setTimeout(function(){
                               window.location.href = `http://localhost:3000/listplaylists/playlist_${playlist.id}`;}, 1200);
                             }}>

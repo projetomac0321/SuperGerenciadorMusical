@@ -42,8 +42,8 @@ export function Album(){
         return(
           albumSongs.map((song) => {
             return (
-              <div className="songRow" key={song.id}>
-                          <div className="songRowText">
+              <div className="elementRow" key={song.id}>
+                          <div className="elementRowTextInteract">
                           <NavLink className="navLink"
                                   to={`/song_${song.id}`}>
                               <h1>{song.name.substring(0,37)}
@@ -52,15 +52,13 @@ export function Album(){
                                </NavLink>
                           </div>
                           <div className="plus">
-                                            <div className="divider">
-                                            </div>
                                             <NavLink
                                                     className="navLink"
                                                     to={`/selectplaylist_${song.uri}`}
                                                 >
                                                     <FiPlus className="plusIcon"/>
                                                 </NavLink>
-                                            </div>
+                          </div>
               </div>
             )
           }

@@ -63,8 +63,8 @@ export function Playlist(){
         return(
           playlistSongs.map((song) => {
             return (
-              <div className="songRow" key={song.track.id}>
-                          <div className="songRowText">
+              <div className="elementRow" key={song.track.id}>
+                          <div className="elementRowTextInteract">
                           <NavLink className="navLink"
                                    to={`/listplaylists/playlistsong_${playlistId}/${song.track.id}`}>
                                 <h1>{song.track.name.substring(0,37)}

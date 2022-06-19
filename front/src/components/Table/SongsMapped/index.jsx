@@ -8,8 +8,8 @@ export function SongsMapped({ playlistSongs }){
                             </div> 
                 {playlistSongs.map((song) => {
                     return (
-                    <div className="songRow" key={song.id}>
-                                <div className="songRowText">
+                    <div className="elementRow" key={song.id}>
+                                <div className="elementRowText">
                                     <h1 className="tableElementText">{song.name.substring(0, 37)} 
                                        {song.name.length > 37 ? "..." : null}
                                     </h1>

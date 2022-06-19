@@ -53,15 +53,15 @@ export function ListPlaylists(){
     return (
       playlists.map((playlist) => {
          return (
-           <div className="playlistRow"
+           <div className="elementRow"
                 key={playlist.id}>
-                  <div className="playlistInfo">
+                  <div className="elementInfo">
                      <img className="elementImage" src={playlist.images[0] != null ? playlist.images[0].url : NullPlaylistImage} alt="" />
                   <NavLink
                     className="navLink"
                     to={`/listplaylists/playlist_${playlist.id}`}
                   >
-                        <div className="playlistRowName">
+                        <div className="elementRowTextInteract">
                         <h1>{playlist.name.substring(0,37)}
                             {playlist.name.length > 37 ? "..." : null}
                         </h1>
