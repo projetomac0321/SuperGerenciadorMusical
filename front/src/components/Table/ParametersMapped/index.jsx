@@ -5,10 +5,10 @@ export function ParametersMapped({ songsIds, parameterName, title }){
     const [parameters, setParameters] = useState([]);
     const [show, setShow] = useState(false);
 
-    function ParametersSort(){
+    function ParametersSorted(){
           
-        const sortParameters = () => {
-            axios.get(`http://localhost:8080/buscar-musicas/obter-parametros-das-musicas?idsDasMusicas=${songsIds}`)
+        const getParameters = () => {
+            axios.get(`http://localhost:8080/parametros/obter-parametros-das-musicas?idsDasMusicas=${songsIds}`)
             .then(res => {
                 let length = (res.data.length <= 50 ? res.data.length : 50);
                 for(var i = 0; i < length; i += 1)
@@ -22,7 +22,7 @@ export function ParametersMapped({ songsIds, parameterName, title }){
        }
 
         useEffect(() => {
-             sortParameters();
+             getParameters();
           }, []);
 
 
@@ -46,6 +46,6 @@ export function ParametersMapped({ songsIds, parameterName, title }){
     }
 
     return(
-        <ParametersSort/>
+        <ParametersSorted/>
     );
 }

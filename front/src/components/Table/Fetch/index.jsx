@@ -11,14 +11,14 @@ export function Fetch({ parameterName, title }){
         const [parameters, setParameters] = useState([]);
 
         const getPlaylistInfo = () => {
-          axios.get(`http://localhost:8080/buscar-musicas/obter-playlist?idDaPlaylist=${playlistId}`).then(res => {
+          axios.get(`http://localhost:8080/buscar-por-id/obter-playlist?idDaPlaylist=${playlistId}`).then(res => {
             let length = (res.data.tracks.total <= 50 ? res.data.tracks.total : 50);
             for(var i = 0; i < length; i += 1)
               {
                 songsIds[i] = res.data.tracks.items[i].track.id;
               }
               setSongsIds(songsIds);
-              axios.get(`http://localhost:8080/buscar-musicas/obter-parametros-das-musicas?idsDasMusicas=${songsIds}`)
+              axios.get(`http://localhost:8080/parametros/obter-parametros-das-musicas?idsDasMusicas=${songsIds}`)
               .then(res => {
                   let length = (res.data.length <= 50 ? res.data.length : 50);
                   for(var i = 0; i < length; i += 1)
@@ -26,7 +26,7 @@ export function Fetch({ parameterName, title }){
                     parameters[i] = res.data[i][parameterName];
                   }
                   setParameters(parameters);
-                  axios.get(`http://localhost:8080/tabela-da-playlist/ordenar-por-parametro?parametro=${parameters}&ids=${songsIds}`)
+                  axios.get(`http://localhost:8080/parametros/ordenar-por-parametro?parametro=${parameters}&ids=${songsIds}`)
                   .then(res => {
                       setPlaylistSongs(res.data);
                     let length = (res.data.length <= 50 ? res.data.length : 50);

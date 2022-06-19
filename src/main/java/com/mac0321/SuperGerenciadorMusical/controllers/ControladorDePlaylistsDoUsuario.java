@@ -31,7 +31,7 @@ import se.michaelthelin.spotify.model_objects.special.SnapshotResult;
 @CrossOrigin(origins = "http://localhost:3000/")
 @RestController
 @RequestMapping(value = "/playlists")
-public class ServiçosComPlaylists {
+public class ControladorDePlaylistsDoUsuario {
 	private Autenticador autenticador = Autenticador.criarAutenticador();
 	private CriadorDePlaylist criadorDePlaylists;
 	private ProcuradorDePlaylistsDoUsuárioAtual listadorDePlaylistsUsuarioAtual;

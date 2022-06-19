@@ -15,7 +15,7 @@ export function Album(){
         const [albumSongs, setAlbumSongs] = useState([]);
 
         const getAlbumInfo = () => {
-          axios.get(`http://localhost:8080/buscar-musicas/obter-album?idDoAlbum=${albumId}`).then(res => {
+          axios.get(`http://localhost:8080/buscar-por-id/obter-album?idDoAlbum=${albumId}`).then(res => {
             setAlbumName(res.data.name);
             setAlbumSongs(res.data.tracks.items);
             setAlbumImage(res.data.images[0].url);

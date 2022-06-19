@@ -14,7 +14,7 @@ export function ParameterTable(){
   
     function GetData(){
           const getPlaylistInfo = () => {
-            axios.get(`http://localhost:8080/buscar-musicas/obter-playlist?idDaPlaylist=${playlistId}`).then(res => {
+            axios.get(`http://localhost:8080/buscar-por-id/obter-playlist?idDaPlaylist=${playlistId}`).then(res => {
               setPlaylistName(res.data.name);
               setPlaylistImage(res.data.images[0].url);
             }).catch(err => {
