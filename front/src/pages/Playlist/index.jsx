@@ -4,6 +4,7 @@ import axios from 'axios';
 import NullPlaylistImage from '../../images/NullPlaylistImage.png';
 import { ElementHeader } from '../../components/ElementHeader';
 import { NavLink, Outlet } from 'react-router-dom';
+import { MapArtists } from '../../components/MapArtists';
 
 export function Playlist(){
   const playlistId = window.location.href.split("_").pop();
@@ -64,13 +65,28 @@ export function Playlist(){
           playlistSongs.map((song) => {
             return (
               <div className="elementRow" key={song.track.id}>
-                          <div className="elementRowTextInteract">
-                          <NavLink className="navLink"
-                                   to={`/listplaylists/playlistsong_${playlistId}/${song.track.id}`}>
-                                <h1>{song.track.name.substring(0,37)}
-                                        {song.track.name.length > 37 ? "..." : null}
-                                    </h1>
-                          </NavLink>
+                          <div className="inBlock">
+                              <div className="elementRowTextInteract">
+                              <NavLink className="navLink"
+                                      to={`/listplaylists/playlistsong_${playlistId}/${song.track.id}`}>
+                                    <h1>{song.track.name.substring(0,37)}
+                                            {song.track.name.length > 37 ? "..." : null}
+                                        </h1>
+                              </NavLink>
+                              </div>
+                              <div className="inLine">
+                                    <MapArtists 
+                                      artists={song.track.artists.length > 3 ? [song.track.artists[0], song.track.artists[1], song.track.artists[2]] 
+                                              : song.track.artists}
+                                    />
+                                    {song.track.artists.length > 3 ? <h3 className="elementInLine"> ... </h3> : null}
+                                    <h3> - </h3>
+                                    <h3 className="elementInLine"> {song.track.album.releaseDate.split("-")[0]}</h3>
+                                    <h3> - </h3>
+                                    <h3 className="elementInLine"> {(Math.floor(song.track.durationMs/60000)).toFixed(0)}:
+                                                                  {((song.track.durationMs / 1000) % 60).toFixed(0) < 10 ? 0 : null} 
+                                                                  {((song.track.durationMs / 1000) % 60).toFixed(0)}</h3>
+                              </div>
                           </div>
                           <FiTrash2 className="trashIcon" onClick={e => { e.preventDefault(); handleClick(song.track.uri);
                         setTimeout(function(){

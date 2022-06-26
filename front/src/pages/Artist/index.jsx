@@ -4,7 +4,7 @@ import { NavLink, Outlet } from 'react-router-dom';
 import { FiPlus } from 'react-icons/fi';
 import { ElementHeader } from '../../components/ElementHeader';
 import NullArtistImage from '../../images/NullArtistImage.png';
-
+import { MapArtists } from '../../components/MapArtists';
 export function Artist(){
   const artistId = window.location.href.split("_").pop();
 
@@ -64,13 +64,28 @@ export function Artist(){
           artistSongs.map((song) => {
             return (
               <div className="elementRow" key={song.id}>
-                          <div className="elementRowTextInteract">
-                          <NavLink className="navLink"
-                                  to={`/song_${song.id}`}>
-                              <h1>{song.name.substring(0,37)}
-                                  {song.name.length > 37 ? "..." : null}
-                              </h1>
-                              </NavLink>
+                        <div className="inBlock">
+                              <div className="elementRowTextInteract">
+                              <NavLink className="navLink"
+                                      to={`/song_${song.id}`}>
+                                  <h1>{song.name.substring(0,37)}
+                                      {song.name.length > 37 ? "..." : null}
+                                  </h1>
+                                  </NavLink>
+                              </div>
+                              <div className="inLine">
+                                        <MapArtists 
+                                          artists={song.artists.length > 3 ? [song.artists[0], song.artists[1], song.artists[2]] 
+                                                  : song.artists}
+                                        />
+                                        {song.artists.length > 3 ? <h3 className="elementInLine"> ... </h3> : null}
+                                        <h3> - </h3>
+                                        <h3 className="elementInLine"> {song.album.releaseDate.split("-")[0]}</h3>
+                                        <h3> - </h3>
+                                        <h3 className="elementInLine"> {(Math.floor(song.durationMs/60000)).toFixed(0)}:
+                                                                      {((song.durationMs / 1000) % 60).toFixed(0) < 10 ? 0 : null} 
+                                                                      {((song.durationMs / 1000) % 60).toFixed(0)}</h3>
+                                      </div>
                           </div>
                           <div className="plus">
                                             <NavLink

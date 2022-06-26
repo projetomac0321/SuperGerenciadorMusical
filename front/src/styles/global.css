@@ -192,6 +192,18 @@ body, input, button {
     display: flex;
 }
 
+.inBlock {
+    display: block;
+}
+
+.inLine {
+    display:flex;
+ }
+
+ .elementInLine {
+    margin: 0px 15px 0px 20px;
+}
+ 
 :root{
     --text: #555555;
     --text2: #BCBCBC;
