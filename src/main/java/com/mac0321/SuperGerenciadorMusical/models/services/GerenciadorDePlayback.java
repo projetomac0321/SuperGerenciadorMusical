@@ -21,7 +21,7 @@ public class GerenciadorDePlayback extends ServiçoSpotify {
 		try {
 			spotifyApi
 			.startResumeUsersPlayback()
-			.uris(JsonParser.parseString(uriDaMúsica).getAsJsonArray())
+			.uris(JsonParser.parseString("[" + "\"" + uriDaMúsica + "\"]").getAsJsonArray())
 			.build()
 			.execute();
 		} catch (IOException | SpotifyWebApiException | ParseException e) {
