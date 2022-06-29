@@ -20,4 +20,9 @@ public class GeradorDeJson {
 	    return jsonArray;
 	}
 	
+	public JsonArray uriParaJsonArray(String uri) {
+		String[] array = new String[1];
+		array[0] = uri;
+		return this.urisParaJsonArray(array);
+	}
 }
