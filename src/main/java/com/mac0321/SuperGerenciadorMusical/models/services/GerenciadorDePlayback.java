@@ -25,7 +25,7 @@ public class GerenciadorDePlayback extends ServiçoSpotify {
 			.build()
 			.execute();
 		} catch (IOException | SpotifyWebApiException | ParseException e) {
-			System.out.println("Error: " + e.getCause().getMessage());
+			System.out.println("Error: " + e.getMessage());
 		} 
 	}
 	
