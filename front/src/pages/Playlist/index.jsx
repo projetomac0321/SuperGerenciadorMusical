@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FiFileText, FiTrash2 } from 'react-icons/fi';
+import { FiFileText, FiPlay, FiTrash2 } from 'react-icons/fi';
 import axios from 'axios';
 import NullPlaylistImage from '../../images/NullPlaylistImage.png';
 import { ElementHeader } from '../../components/ElementHeader';
@@ -57,22 +57,35 @@ export function Playlist(){
           });
        }
    
-       function handleClick(songUri) {
+       function handleRemove(songUri) {
          removeSong(songUri);   
+       }
+
+       const playSong = (songUri) => {
+        axios.post(`http://localhost:8080/playback/criar-playback?uriDaMusica=${songUri}`)
+        .catch(err => {
+          console.log(err)
+        });
+       }
+
+       function handlePlay(songUri) {
+         playSong(songUri);
        }
 
         return(
           playlistSongs.map((song) => {
             return (
               <div className="elementRow" key={song.track.id}>
+                   <div className="leftSide">
+                          <FiPlay className="playIcon" onClick={e => { e.preventDefault(); handlePlay(song.track.uri)}}/>
                           <div className="inBlock">
                               <div className="elementRowTextInteract">
-                              <NavLink className="navLink"
-                                      to={`/listplaylists/playlistsong_${playlistId}/${song.track.id}`}>
-                                    <h1>{song.track.name.substring(0,37)}
-                                            {song.track.name.length > 37 ? "..." : null}
-                                        </h1>
-                              </NavLink>
+                                <NavLink className="navLink"
+                                        to={`/listplaylists/playlistsong_${playlistId}/${song.track.id}`}>
+                                      <h1>{song.track.name.substring(0,37)}
+                                              {song.track.name.length > 37 ? "..." : null}
+                                          </h1>
+                                </NavLink>
                               </div>
                               <div className="inLine">
                                     <MapArtists 
@@ -88,7 +101,8 @@ export function Playlist(){
                                                                   {((song.track.durationMs / 1000) % 60).toFixed(0)}</h3>
                               </div>
                           </div>
-                          <FiTrash2 className="trashIcon" onClick={e => { e.preventDefault(); handleClick(song.track.uri);
+                   </div>
+                          <FiTrash2 className="trashIcon" onClick={e => { e.preventDefault(); handleRemove(song.track.uri);
                         setTimeout(function(){
                           getPlaylistInfo();}, 1000);
                         }}

@@ -203,7 +203,16 @@ body, input, button {
  .elementInLine {
     margin: 0px 15px 0px 20px;
 }
- 
+
+.leftSide {
+    align-items: center;
+    display: flex;
+}
+
+.playIcon {
+    cursor: pointer;
+}
+
 :root{
     --text: #555555;
     --text2: #BCBCBC;
