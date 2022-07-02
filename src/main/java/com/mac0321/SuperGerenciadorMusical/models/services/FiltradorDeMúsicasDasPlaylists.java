@@ -19,7 +19,7 @@ public class FiltradorDeMúsicasDasPlaylists extends ServiçosDoAplicativo {
 	public Track[] filtra(String tagDeProcura, Float[] intervalos_de_busca, int[] índices_dos_intervalos) {
 		Track[] músicas_buscadas_por_tag, músicas_buscadas_por_intervalo, músicas_filtradas;
 		String[] ids;
-		músicas_buscadas_por_tag = this.filtradorDeMúsicasPorTag.filtra(tagDeProcura, 1000);
+		músicas_buscadas_por_tag = this.filtradorDeMúsicasPorTag.filtra(tagDeProcura, 0, 1000);
 		ids = this.geradorDeIdsDasMúsicasDoUsuárioAtual.obtem_ids();
 		músicas_buscadas_por_intervalo = this.filtradorDeMúsicasPorIntervalo.filtra(intervalos_de_busca, índices_dos_intervalos, ids);
 		músicas_filtradas = this.comparadorDeArraysDeMúsicas.compara(músicas_buscadas_por_tag, músicas_buscadas_por_intervalo);
