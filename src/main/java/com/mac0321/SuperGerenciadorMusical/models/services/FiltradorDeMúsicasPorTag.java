@@ -11,7 +11,7 @@ public class FiltradorDeMúsicasPorTag extends ServiçosDoAplicativo {
 	BuscadorDeMúsicasPorTag buscadorDeMúsicasPorTag;
 	GeradorDeArray geradorDeArray;
 	
-	FiltradorDeMúsicasPorTag(String accessToken) {
+	public FiltradorDeMúsicasPorTag(String accessToken) {
 		 this.buscadorDeMúsicasPorTag = new BuscadorDeMúsicasPorTag(accessToken);
 		 geradorDeArray = new GeradorDeArray();
 	 }
