@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mac0321.SuperGerenciadorMusical.models.entities.Autenticador;
+import com.mac0321.SuperGerenciadorMusical.models.entities.ModeloDeRequisicaoPlayback;
 import com.mac0321.SuperGerenciadorMusical.models.services.GerenciadorDePlayback;
 
 @CrossOrigin(origins = "http://localhost:3000/")
@@ -19,9 +20,9 @@ public class ControladorDePlayback {
 	GerenciadorDePlayback gerenciadorDePlayback;
 	
 	@PostMapping("/criar-playback")
-	private ResponseEntity<String> iniciarPlayback (@RequestBody String uriDaMusica) {
+	private ResponseEntity<String> iniciarPlayback (@RequestBody ModeloDeRequisicaoPlayback musica) {
 		gerenciadorDePlayback = new GerenciadorDePlayback(autenticador.getTokenUsuario());
-		gerenciadorDePlayback.iniciarPlayback(uriDaMusica);
+		gerenciadorDePlayback.iniciarPlayback(musica.getUriDaMusica());
 		return new ResponseEntity<String>("Playback criado com sucesso", HttpStatus.OK);
 	}
 	

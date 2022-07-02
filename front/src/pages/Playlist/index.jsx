@@ -62,7 +62,9 @@ export function Playlist(){
        }
 
        const playSong = (songUri) => {
-        axios.post(`http://localhost:8080/playback/criar-playback?uriDaMusica=${songUri}`)
+        axios.post("http://localhost:8080/playback/criar-playback", {
+          uriDaMusica: songUri
+        })
         .catch(err => {
           console.log(err)
         });
