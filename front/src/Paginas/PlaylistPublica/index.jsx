@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { NavLink, Outlet } from 'react-router-dom';
-import { FiPlus, FiFileText } from 'react-icons/fi';
+import { FiPlus, FiFileText, FiPlay } from 'react-icons/fi';
 import NullPlaylistImage from '../../Imagens/NullPlaylistImage.png';
 import { ApresentacaoDoElemento } from '../../Componentes/ApresentacaoDoElemento';
 import { MapearMusica } from '../../Componentes/MapearMusica';
@@ -36,6 +36,8 @@ export function PlaylistPublica(){
           playlistSongs.map((song) => {
             return (
               <div className="elementRow" key={song.track.id}>
+                <div className="inLine">
+                        <FiPlay className="playIcon"/>
                           <MapearMusica
                              link={`/song_${song.track.id}`}
                              name={song.track.name}
@@ -45,6 +47,7 @@ export function PlaylistPublica(){
                              releaseDate={song.track.album.releaseDate}
                              durationMs={song.track.durationMs}
                           />
+                </div>
                           <div className="plus">
                                             <NavLink
                                                     className="navLink"

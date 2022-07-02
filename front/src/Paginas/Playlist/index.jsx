@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FiFileText, FiTrash2 } from 'react-icons/fi';
+import { FiFileText, FiTrash2, FiPlay } from 'react-icons/fi';
 import axios from 'axios';
 import NullPlaylistImage from '../../Imagens/NullPlaylistImage.png';
 import { ApresentacaoDoElemento } from '../../Componentes/ApresentacaoDoElemento';
@@ -48,6 +48,8 @@ export function Playlist(){
           playlistSongs.map((song) => {
             return (
               <div className="elementRow" key={song.track.id}>
+                <div className="inLine">
+                        <FiPlay className="playIcon"/>
                           <MapearMusica
                              link={`/listplaylists/playlistsong_${playlistId}/${song.track.id}`}
                              name={song.track.name}
@@ -57,6 +59,7 @@ export function Playlist(){
                              releaseDate={song.track.album.releaseDate}
                              durationMs={song.track.durationMs}
                           />
+                </div>
                           <FiTrash2 className="trashIcon" onClick={e => { e.preventDefault(); gerenciaClick(song.track.uri);
                         setTimeout(function(){
                           recebeInformacaoDaPlaylist();}, 1000);

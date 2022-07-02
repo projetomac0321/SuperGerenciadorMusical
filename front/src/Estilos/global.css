@@ -203,6 +203,11 @@ body, input, button {
  .elementInLine {
     margin: 0px 15px 0px 20px;
 }
+
+.playIcon {
+    margin-top: 15px;
+    cursor: pointer;
+}
  
 :root{
     --text: #555555;
