@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.mac0321.SuperGerenciadorMusical.models.entities.Autenticador;
 import com.mac0321.SuperGerenciadorMusical.models.services.FiltradorDeMúsicasDasPlaylists;
 import com.mac0321.SuperGerenciadorMusical.models.services.FiltradorDeMúsicasPorIntervalo;
-import com.mac0321.SuperGerenciadorMusical.models.services.FiltradorDeMúsicasPorTag;
+import com.mac0321.SuperGerenciadorMusical.models.services.BuscadorMúltiploDeMúsicasPorTag;
 
 import se.michaelthelin.spotify.model_objects.specification.Track;
 
@@ -20,7 +20,7 @@ import se.michaelthelin.spotify.model_objects.specification.Track;
 @RequestMapping(value = "/filtragem")
 public class ControladorDeFiltragem {
 	private Autenticador autenticador = Autenticador.criarAutenticador();
-	private FiltradorDeMúsicasPorTag filtradorDeMúsicasPorTag;
+	private BuscadorMúltiploDeMúsicasPorTag buscadorMúltiploDeMúsicasPorTag;
 	private FiltradorDeMúsicasPorIntervalo filtradorDeMúsicasPorIntervalo;
 	private FiltradorDeMúsicasDasPlaylists filtradorDeMúsicasDasPlaylists;
 	
@@ -31,8 +31,8 @@ public class ControladorDeFiltragem {
 		Track[] músicasFiltradasPorTag;
 		Track[] músicasFiltradasPorFiltros;
 		filtradorDeMúsicasPorIntervalo = new FiltradorDeMúsicasPorIntervalo(autenticador.getTokenUsuario());
-		filtradorDeMúsicasPorTag = new FiltradorDeMúsicasPorTag(autenticador.getTokenUsuario());
-		músicasFiltradasPorTag = filtradorDeMúsicasPorTag.filtra(tagDeProcura, offset_min, offset_max);
+		buscadorMúltiploDeMúsicasPorTag = new BuscadorMúltiploDeMúsicasPorTag(autenticador.getTokenUsuario());
+		músicasFiltradasPorTag = buscadorMúltiploDeMúsicasPorTag.filtra(tagDeProcura, offset_min, offset_max);
 		String[] ids_músicas = new String[músicasFiltradasPorTag.length];
 		for (int i=0; i < músicasFiltradasPorTag.length; i++)
 			ids_músicas[i] = músicasFiltradasPorTag[i].getId();

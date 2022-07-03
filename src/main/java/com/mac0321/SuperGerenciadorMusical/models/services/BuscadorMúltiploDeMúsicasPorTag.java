@@ -6,12 +6,12 @@ import java.util.List;
 import se.michaelthelin.spotify.model_objects.specification.Track;
 import se.michaelthelin.spotify.model_objects.specification.Paging;
 
-public class FiltradorDeMúsicasPorTag extends ServiçosDoAplicativo {
+public class BuscadorMúltiploDeMúsicasPorTag extends ServiçosDoAplicativo {
 
 	BuscadorDeMúsicasPorTag buscadorDeMúsicasPorTag;
 	GeradorDeArray geradorDeArray;
 	
-	public FiltradorDeMúsicasPorTag(String accessToken) {
+	public BuscadorMúltiploDeMúsicasPorTag(String accessToken) {
 		 this.buscadorDeMúsicasPorTag = new BuscadorDeMúsicasPorTag(accessToken);
 		 geradorDeArray = new GeradorDeArray();
 	 }
@@ -29,7 +29,7 @@ public class FiltradorDeMúsicasPorTag extends ServiçosDoAplicativo {
 			} while(offset < offset_max);
 		}
 		catch(NullPointerException exceção) {
-			System.out.println("Impossível de obter as músicas filtradas por tag!");
+			System.out.println("Impossível de obter busca múltipla de músicas por tag!");
 		}
 		return this.geradorDeArray.listTrackParaArray(músicas_buscadas, tamanho);
 	}

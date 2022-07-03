@@ -4,25 +4,31 @@ import se.michaelthelin.spotify.model_objects.specification.Track;
 
 public class FiltradorDeMúsicasDasPlaylists extends ServiçosDoAplicativo {
 
-	 FiltradorDeMúsicasPorTag filtradorDeMúsicasPorTag;
 	 GeradorDeIdsDasMúsicasDoUsuárioAtual geradorDeIdsDasMúsicasDoUsuárioAtual;
 	 FiltradorDeMúsicasPorIntervalo filtradorDeMúsicasPorIntervalo;
-	 ComparadorDeArraysDeMúsicas comparadorDeArraysDeMúsicas;
+	 FiltradorDeMúsicasPorNome filtradorDeMúsicasPorNome;
 	 
 	 public FiltradorDeMúsicasDasPlaylists(String accessToken) {
-		 this.filtradorDeMúsicasPorTag = new  FiltradorDeMúsicasPorTag(accessToken);
 		 this.geradorDeIdsDasMúsicasDoUsuárioAtual = new GeradorDeIdsDasMúsicasDoUsuárioAtual(accessToken);
 		 this.filtradorDeMúsicasPorIntervalo = new FiltradorDeMúsicasPorIntervalo(accessToken);
-		 this.comparadorDeArraysDeMúsicas= new ComparadorDeArraysDeMúsicas();
+		 this.filtradorDeMúsicasPorNome = new FiltradorDeMúsicasPorNome(accessToken);
 	 }
 	
 	public Track[] filtra(String tagDeProcura, Float[] intervalos_de_busca, int[] índices_dos_intervalos) {
-		Track[] músicas_buscadas_por_tag, músicas_buscadas_por_intervalo, músicas_filtradas;
+		Track[] músicas_filtradas_por_nome, músicas_filtradas = null;
 		String[] ids;
-		músicas_buscadas_por_tag = this.filtradorDeMúsicasPorTag.filtra(tagDeProcura, 0, 1000);
-		ids = this.geradorDeIdsDasMúsicasDoUsuárioAtual.obtem_ids();
-		músicas_buscadas_por_intervalo = this.filtradorDeMúsicasPorIntervalo.filtra(intervalos_de_busca, índices_dos_intervalos, ids);
-		músicas_filtradas = this.comparadorDeArraysDeMúsicas.compara(músicas_buscadas_por_tag, músicas_buscadas_por_intervalo);
+		int contador;
+		try{
+			ids = this.geradorDeIdsDasMúsicasDoUsuárioAtual.obtem_ids();
+			músicas_filtradas_por_nome = this.filtradorDeMúsicasPorNome.filtra(ids, tagDeProcura);
+			ids = new String[músicas_filtradas_por_nome.length];
+			for(contador = 0; contador < músicas_filtradas_por_nome.length; contador ++)
+				ids[contador] = músicas_filtradas_por_nome[contador].getId();
+			músicas_filtradas = this.filtradorDeMúsicasPorIntervalo.filtra(intervalos_de_busca, índices_dos_intervalos, ids);
+		}
+		catch(NullPointerException exceção) {
+			System.out.println("Filtragem das músicas das playlists falhou!");
+		}
 		return músicas_filtradas;
 	}
 }
