@@ -7,11 +7,11 @@ import se.michaelthelin.spotify.model_objects.specification.Paging;
 import se.michaelthelin.spotify.model_objects.specification.Playlist;
 import se.michaelthelin.spotify.model_objects.specification.PlaylistSimplified;
 
-public class GeradorDeIdsDasMúsicasDoUsuárioAtual extends ServiçosDoAplicativo{
+public class GeradorDeIdsDasMúsicasDoUsuárioAtual {
 
-	 ProcuradorDePlaylistsDoUsuárioAtual procuradorDePlaylistsDoUsuárioAtual;
-	 ProcuradorDePlaylist procuradorDePlaylist;
-	 GeradorDeArray geradorDeArray;
+	 private ProcuradorDePlaylistsDoUsuárioAtual procuradorDePlaylistsDoUsuárioAtual;
+	 private ProcuradorDePlaylist procuradorDePlaylist;
+	 private GeradorDeArray geradorDeArray;
 	 
 	 GeradorDeIdsDasMúsicasDoUsuárioAtual(String accessToken){
 		 this.procuradorDePlaylistsDoUsuárioAtual = new ProcuradorDePlaylistsDoUsuárioAtual(accessToken);

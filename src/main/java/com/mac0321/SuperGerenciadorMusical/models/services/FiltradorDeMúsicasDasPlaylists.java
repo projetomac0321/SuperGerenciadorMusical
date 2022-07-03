@@ -4,15 +4,15 @@ import se.michaelthelin.spotify.model_objects.specification.Track;
 
 public class FiltradorDeMúsicasDasPlaylists extends ServiçosDoAplicativo {
 
-	 GeradorDeIdsDasMúsicasDoUsuárioAtual geradorDeIdsDasMúsicasDoUsuárioAtual;
-	 FiltradorDeMúsicasPorIntervalo filtradorDeMúsicasPorIntervalo;
-	 FiltradorDeMúsicasPorNome filtradorDeMúsicasPorNome;
+	private GeradorDeIdsDasMúsicasDoUsuárioAtual geradorDeIdsDasMúsicasDoUsuárioAtual;
+	private FiltradorDeMúsicasPorIntervalo filtradorDeMúsicasPorIntervalo;	
+	private FiltradorDeMúsicasPorNome filtradorDeMúsicasPorNome;
 	 
-	 public FiltradorDeMúsicasDasPlaylists(String accessToken) {
-		 this.geradorDeIdsDasMúsicasDoUsuárioAtual = new GeradorDeIdsDasMúsicasDoUsuárioAtual(accessToken);
-		 this.filtradorDeMúsicasPorIntervalo = new FiltradorDeMúsicasPorIntervalo(accessToken);
-		 this.filtradorDeMúsicasPorNome = new FiltradorDeMúsicasPorNome(accessToken);
-	 }
+	public FiltradorDeMúsicasDasPlaylists(String accessToken) {
+		this.geradorDeIdsDasMúsicasDoUsuárioAtual = new GeradorDeIdsDasMúsicasDoUsuárioAtual(accessToken);
+		this.filtradorDeMúsicasPorIntervalo = new FiltradorDeMúsicasPorIntervalo(accessToken);
+		this.filtradorDeMúsicasPorNome = new FiltradorDeMúsicasPorNome(accessToken);
+	}
 	
 	public Track[] filtra(String tagDeProcura, Float[] intervalos_de_busca, int[] índices_dos_intervalos) {
 		Track[] músicas_filtradas_por_nome, músicas_filtradas = null;

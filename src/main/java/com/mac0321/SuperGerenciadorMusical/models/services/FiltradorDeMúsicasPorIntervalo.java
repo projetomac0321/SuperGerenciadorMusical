@@ -6,12 +6,12 @@ import java.util.List;
 import se.michaelthelin.spotify.model_objects.specification.AudioFeatures;
 import se.michaelthelin.spotify.model_objects.specification.Track;
 
-public class FiltradorDeMúsicasPorIntervalo extends ServiçosDoAplicativo {
+public class FiltradorDeMúsicasPorIntervalo {
 
-	 ProcuradorDeParâmetrosDeMúsicas procuradorDeParâmetrosDeMúsicas;
-	 GeradorDeArray geradorDeArray;
-	 MapeamentoDosParâmetros mapeamentoDosParâmetros;
-	 ProcuradorDeMúsicas procuradorDeMúsicas;
+	 private ProcuradorDeParâmetrosDeMúsicas procuradorDeParâmetrosDeMúsicas;
+	 private GeradorDeArray geradorDeArray;
+	 private MapeamentoDosParâmetros mapeamentoDosParâmetros;
+	 private ProcuradorDeMúsicas procuradorDeMúsicas;
 	
 	 public FiltradorDeMúsicasPorIntervalo(String accessToken) {
 		 this.procuradorDeParâmetrosDeMúsicas = new ProcuradorDeParâmetrosDeMúsicas(accessToken);

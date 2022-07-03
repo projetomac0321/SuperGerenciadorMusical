@@ -10,8 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.mac0321.SuperGerenciadorMusical.models.entities.Autenticador;
 import com.mac0321.SuperGerenciadorMusical.models.services.FiltradorDeMúsicasDasPlaylists;
-import com.mac0321.SuperGerenciadorMusical.models.services.FiltradorDeMúsicasPorIntervalo;
-import com.mac0321.SuperGerenciadorMusical.models.services.BuscadorMúltiploDeMúsicasPorTag;
+import com.mac0321.SuperGerenciadorMusical.models.services.FiltradorDeBuscasDeMúsicas;
 
 import se.michaelthelin.spotify.model_objects.specification.Track;
 
@@ -20,24 +19,17 @@ import se.michaelthelin.spotify.model_objects.specification.Track;
 @RequestMapping(value = "/filtragem")
 public class ControladorDeFiltragem {
 	private Autenticador autenticador = Autenticador.criarAutenticador();
-	private BuscadorMúltiploDeMúsicasPorTag buscadorMúltiploDeMúsicasPorTag;
-	private FiltradorDeMúsicasPorIntervalo filtradorDeMúsicasPorIntervalo;
+	private FiltradorDeBuscasDeMúsicas filtradorDeBuscasDeMúsicas;
 	private FiltradorDeMúsicasDasPlaylists filtradorDeMúsicasDasPlaylists;
 	
 	@GetMapping("/musicas")
 	private ResponseEntity<Track[]> FiltrarMúsicas (@RequestParam String tagDeProcura, @RequestParam int offset_min, 
 													@RequestParam int offset_max, @RequestParam int[] indicesDosFiltros, 
 													@RequestParam Float[] valoresMaxMinPorFiltro) {
-		Track[] músicasFiltradasPorTag;
-		Track[] músicasFiltradasPorFiltros;
-		filtradorDeMúsicasPorIntervalo = new FiltradorDeMúsicasPorIntervalo(autenticador.getTokenUsuario());
-		buscadorMúltiploDeMúsicasPorTag = new BuscadorMúltiploDeMúsicasPorTag(autenticador.getTokenUsuario());
-		músicasFiltradasPorTag = buscadorMúltiploDeMúsicasPorTag.filtra(tagDeProcura, offset_min, offset_max);
-		String[] ids_músicas = new String[músicasFiltradasPorTag.length];
-		for (int i=0; i < músicasFiltradasPorTag.length; i++)
-			ids_músicas[i] = músicasFiltradasPorTag[i].getId();
-		músicasFiltradasPorFiltros = filtradorDeMúsicasPorIntervalo.filtra(valoresMaxMinPorFiltro, indicesDosFiltros, ids_músicas);
-		return new ResponseEntity<Track[]>(músicasFiltradasPorFiltros, HttpStatus.OK);
+		Track[] músicas;
+		filtradorDeBuscasDeMúsicas = new FiltradorDeBuscasDeMúsicas(autenticador.getTokenUsuario());
+		músicas = filtradorDeBuscasDeMúsicas.executaServiço(tagDeProcura, offset_min, offset_max, indicesDosFiltros, valoresMaxMinPorFiltro);
+		return new ResponseEntity<Track[]>(músicas, HttpStatus.OK);
 	}
 	
 	@GetMapping("/musicas-na-playlist")
