@@ -49,7 +49,7 @@ public class FiltradorDeMúsicasPorIntervalo extends ServiçosDoAplicativo {
 		 for(contador = 0; contador < parâmetro_das_músicas.length; contador ++)
 			 if(parâmetro_das_músicas[contador].compareTo(mínimo) >= 0 && parâmetro_das_músicas[contador].compareTo(máximo) <= 0)
 				 ids_filtrados.add(ids[contador]);
-		 return this.geradorDeArray.listParaArray(ids_filtrados);
+		 return this.geradorDeArray.listStringParaArray(ids_filtrados);
 	 }
 	 
 	 

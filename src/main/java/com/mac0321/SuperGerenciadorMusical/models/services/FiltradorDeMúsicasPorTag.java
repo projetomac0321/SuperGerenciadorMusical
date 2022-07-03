@@ -19,20 +19,18 @@ public class FiltradorDeMúsicasPorTag extends ServiçosDoAplicativo {
 	public Track[] filtra(String tagDeProcura, int offset_min, int offset_max) {
 		List<Track[]> músicas_buscadas = new ArrayList<>();
 		Paging<Track> músicas_buscadas_intermediário;
-		int offset, tamanho = 0;
+		int offset = offset_min + 50, tamanho = 0;
 		try {
-			músicas_buscadas_intermediário = this.buscadorDeMúsicasPorTag.executaServiço(tagDeProcura, offset_min);
-			músicas_buscadas.add(músicas_buscadas_intermediário.getItems());
-			tamanho += músicas_buscadas_intermediário.getItems().length;
-			for(offset = offset_min + 50; offset < offset_max || músicas_buscadas_intermediário.getTotal() == 0; offset = offset + 50) {
-				tamanho += músicas_buscadas_intermediário.getItems().length;
-				músicas_buscadas_intermediário = this.buscadorDeMúsicasPorTag.executaServiço(tagDeProcura, offset);
+			do {
+				músicas_buscadas_intermediário = this.buscadorDeMúsicasPorTag.executaServiço(tagDeProcura, offset_min);
 				músicas_buscadas.add(músicas_buscadas_intermediário.getItems());
-			}
+				tamanho += músicas_buscadas_intermediário.getItems().length;
+				offset = offset + 50;
+			} while(offset < offset_max);
 		}
 		catch(NullPointerException exceção) {
 			System.out.println("Impossível de obter as músicas filtradas por tag!");
 		}
-		return this.geradorDeArray.listParaArray(músicas_buscadas, tamanho);
+		return this.geradorDeArray.listTrackParaArray(músicas_buscadas, tamanho);
 	}
 }

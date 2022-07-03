@@ -33,7 +33,7 @@ public class GeradorDeIdsDasMúsicasDoUsuárioAtual extends ServiçosDoAplicativ
 					 ids_das_músicas_das_playlists.add(playlist.getTracks().getItems()[contador2].getTrack().getId());
 			 }
 		 }
-		 return this.geradorDeArray.listParaArray(ids_das_músicas_das_playlists);
+		 return this.geradorDeArray.listStringParaArray(ids_das_músicas_das_playlists);
 	 }
 	 
 }

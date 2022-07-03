@@ -21,6 +21,6 @@ public class ComparadorDeArraysDeMúsicas {
 		catch(NullPointerException exceção) {
 			System.out.println("Impossível de comparar as músicas");
 		}
-		return this.geradorDeArray.listParaArray(músicas_idênticas);
+		return this.geradorDeArray.listTrackParaArray(músicas_idênticas);
 	}
 }
