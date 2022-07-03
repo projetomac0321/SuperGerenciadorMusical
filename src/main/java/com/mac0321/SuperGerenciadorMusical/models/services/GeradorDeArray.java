@@ -2,6 +2,7 @@ package com.mac0321.SuperGerenciadorMusical.models.services;
 
 import java.util.List;
 
+import se.michaelthelin.spotify.model_objects.specification.Paging;
 import se.michaelthelin.spotify.model_objects.specification.Track;
 
 public class GeradorDeArray {
@@ -19,6 +20,13 @@ public class GeradorDeArray {
 		int contador;
 		for(contador = 0; contador < lista.size(); contador ++)
 			array[contador] = lista.get(contador);
+		return array;
+	}
+	public Track[] pagingTrackParaArray(Paging<Track> paging) {
+		Track[] array = new Track[paging.getItems().length];
+		int contador;
+		for(contador = 0; contador < array.length; contador ++)
+			array[contador] = paging.getItems()[contador];
 		return array;
 	}
 	

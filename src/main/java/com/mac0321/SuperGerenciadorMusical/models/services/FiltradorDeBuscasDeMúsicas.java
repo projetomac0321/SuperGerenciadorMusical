@@ -4,17 +4,19 @@ import se.michaelthelin.spotify.model_objects.specification.Track;
 
 public class FiltradorDeBuscasDeMúsicas extends ServiçosDoAplicativo {
 	
-	private BuscadorMúltiploDeMúsicasPorTag buscadorMúltiploDeMúsicasPorTag;
+	private BuscadorDeMúsicasPorTag buscadorDeMúsicasPorTag;
 	private FiltradorDeMúsicasPorIntervalo filtradorDeMúsicasPorIntervalo;
+	private GeradorDeArray geradorDeArray;
 	
 	public FiltradorDeBuscasDeMúsicas(String accessToken) {
 		filtradorDeMúsicasPorIntervalo = new FiltradorDeMúsicasPorIntervalo(accessToken);
-		buscadorMúltiploDeMúsicasPorTag = new BuscadorMúltiploDeMúsicasPorTag(accessToken);
+		buscadorDeMúsicasPorTag = new BuscadorDeMúsicasPorTag(accessToken);
+		geradorDeArray = new GeradorDeArray();
 	}
 	
-	public Track[] executaServiço(String tagDeProcura, int offset_min, int offset_max, int[] indicesDosFiltros, Float[] valoresMaxMinPorFiltro) {
+	public Track[] executaServiço(String tagDeProcura, int offset, int[] indicesDosFiltros, Float[] valoresMaxMinPorFiltro) {
 		Track[] músicasFiltradasPorTag, músicasFiltradasPorFiltros;
-		músicasFiltradasPorTag = buscadorMúltiploDeMúsicasPorTag.filtra(tagDeProcura, offset_min, offset_max);
+		músicasFiltradasPorTag = this.geradorDeArray.pagingTrackParaArray(this.buscadorDeMúsicasPorTag.executaServiço(tagDeProcura, offset));
 		String[] ids_músicas = new String[músicasFiltradasPorTag.length];
 		for (int i=0; i < músicasFiltradasPorTag.length; i++)
 			ids_músicas[i] = músicasFiltradasPorTag[i].getId();

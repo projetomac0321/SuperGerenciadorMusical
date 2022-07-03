@@ -23,12 +23,12 @@ public class ControladorDeFiltragem {
 	private FiltradorDeMúsicasDasPlaylists filtradorDeMúsicasDasPlaylists;
 	
 	@GetMapping("/musicas")
-	private ResponseEntity<Track[]> FiltrarMúsicas (@RequestParam String tagDeProcura, @RequestParam int offset_min, 
-													@RequestParam int offset_max, @RequestParam int[] indicesDosFiltros, 
+	private ResponseEntity<Track[]> FiltrarMúsicas (@RequestParam String tagDeProcura, @RequestParam int offset,
+													@RequestParam int[] indicesDosFiltros, 
 													@RequestParam Float[] valoresMaxMinPorFiltro) {
 		Track[] músicas;
 		filtradorDeBuscasDeMúsicas = new FiltradorDeBuscasDeMúsicas(autenticador.getTokenUsuario());
-		músicas = filtradorDeBuscasDeMúsicas.executaServiço(tagDeProcura, offset_min, offset_max, indicesDosFiltros, valoresMaxMinPorFiltro);
+		músicas = filtradorDeBuscasDeMúsicas.executaServiço(tagDeProcura, offset, indicesDosFiltros, valoresMaxMinPorFiltro);
 		return new ResponseEntity<Track[]>(músicas, HttpStatus.OK);
 	}
 	
