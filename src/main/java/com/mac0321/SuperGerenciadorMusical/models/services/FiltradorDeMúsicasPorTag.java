@@ -19,10 +19,10 @@ public class FiltradorDeMúsicasPorTag extends ServiçosDoAplicativo {
 	public Track[] filtra(String tagDeProcura, int offset_min, int offset_max) {
 		List<Track[]> músicas_buscadas = new ArrayList<>();
 		Paging<Track> músicas_buscadas_intermediário;
-		int offset = offset_min + 50, tamanho = 0;
+		int offset = offset_min, tamanho = 0;
 		try {
 			do {
-				músicas_buscadas_intermediário = this.buscadorDeMúsicasPorTag.executaServiço(tagDeProcura, offset_min);
+				músicas_buscadas_intermediário = this.buscadorDeMúsicasPorTag.executaServiço(tagDeProcura, offset);
 				músicas_buscadas.add(músicas_buscadas_intermediário.getItems());
 				tamanho += músicas_buscadas_intermediário.getItems().length;
 				offset = offset + 50;

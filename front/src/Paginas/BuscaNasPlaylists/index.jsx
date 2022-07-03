@@ -4,7 +4,7 @@ import './styles.css';
 import { TratamentoDeErro } from '../../Componentes/TratamentoDeErro';
 
 export function BuscaNasPlaylists(){
-    const [array, setArray] = useState(["1.0", "0.0", "1.0", "0.0", "120000", "0", "1.0", "0.0", "1.0", "0,0", "11", "-1", "0.0", "1.0", "0", "-60", "1", "0", "1.0", "0.0", "100.0", "0", "7", "3", "1.0", "0.0"]);
+    const [array, setArray] = useState(["-1.0", "1.1", "-1.0", "2.0", "-0.2", "1200000", "-1.0", "1.1", "-1.0", "1.1", "-1.1", "11.1", "-1.0", "1.1", "-60.1", "-1", "-1", "1.2", "-1.0", "1.1", "-1", "10000.1", "-0.5", "7.5", "-1.0", "1.2"]);
     const [searchValue, setSearchValue] = useState("");
 
     function gerenciaBusca(){
@@ -20,8 +20,14 @@ export function BuscaNasPlaylists(){
     }
 
     return(
-    <nav className="inBlock navScroll containerSearch">
-                        <input placeholder="Parâmetro de busca" type="text" onChange={(e) => {setSearchValue(e.target.value)}} />
+        <div className="inBlock">
+                        <input className="stringInput" placeholder="Parâmetro de busca" type="text" onChange={(e) => {setSearchValue(e.target.value)}} />
+                        <button className="buttonSearchInPlaylists" onClick={e => {e.preventDefault(); gerenciaBusca()}}>
+                                <div className="busca">
+                                            <h1>Buscar</h1>
+                                </div>
+                        </button>
+    <nav className="navScrollSmall containerSearch">
                         <h1>Acústica </h1>
                         <hr/>
                     <div className="inLine">
@@ -101,11 +107,7 @@ export function BuscaNasPlaylists(){
                         <input className="maxOrMinInput" placeholder="Máximo" type="text" maxLength={5} onChange={(e) => {array[24] = e.target.value; setArray(array)}} />
                     </div>
 
-            <button onClick={e => {e.preventDefault(); gerenciaBusca()}}>
-                    <div className="busca">
-                                <h1>Buscar</h1>
-                    </div>
-            </button>
     </nav>
+    </div>
     );
 }

@@ -14,8 +14,8 @@ public class ComparadorDeArraysDeMúsicas {
 		int contador, contador2;
 		try {
 			for(contador = 0; contador < músicas1.length; contador ++)
-				for(contador2 = 0; contador2 < músicas2.length; contador ++)
-					if(músicas1[contador].getId().equals(músicas2[contador2].getId()))
+				for(contador2 = 0; contador2 < músicas2.length; contador2 ++)
+					if(músicas1[contador].getId().compareTo(músicas2[contador2].getId()) == 0)
 						músicas_idênticas.add(músicas1[contador]);
 		}
 		catch(NullPointerException exceção) {
