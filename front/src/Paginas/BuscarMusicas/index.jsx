@@ -42,7 +42,22 @@ export function BuscarMusicas(){
     return(
         <div className="home">
             <div className="bodyHeader">
-                            <div className="header show">
+                                <div className="filter">
+                                    <h1> Filtros: </h1>
+                                      <NavLink className="navLink filterButton"
+                                                             to={"/searchsongs/tonalidade"}>
+                                         <h2>Tonalidade</h2>
+                                       </NavLink>
+                                       <NavLink className="navLink filterButton"
+                                                             to={"/searchsongs/modo"}>
+                                         <h2>Modo</h2>
+                                       </NavLink>
+                                       <NavLink className="navLink filterButton"
+                                                             to={"/searchsongs/compasso"}>
+                                         <h2>Compasso</h2>
+                                       </NavLink>
+                                </div>
+                            <div className="header">
                             <div className="headerMid">
                                 <input
                                 id="searchInput"
@@ -50,16 +65,15 @@ export function BuscarMusicas(){
                                 type="text"
                                 onChange={(e) => {setSearchInput(e.target.value); setOffset(0)}}
                                 />
-                                
                             </div>
 
-                            <div className="buttonSearch">
-                                <button onClick={buscarDadosDaPesquisa}>
-                                    <FiSearch className="icon"/>
-                                </button>
-                            </div>
-                            </div>
+                                <div className="buttonSearch">
+                                    <button onClick={buscarDadosDaPesquisa}>
+                                        <FiSearch className="icon"/>
+                                    </button>
+                                </div>
 
+                            </div>
                 </div>
                 <nav className={searching ? "elementsSearch" : "hide elementsSearch"}>
                         {data.map((result) => ( 
@@ -91,8 +105,8 @@ export function BuscarMusicas(){
                             <h1>Buscar mais músicas</h1>
                           </div>
                       </div>
-                </nav>
-                        <Outlet/>
+                </nav>    
+                    <Outlet/>
         </div>
     );
 }

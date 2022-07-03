@@ -1,9 +1,9 @@
 import React from 'react';
 import { Buscar } from '../../../Componentes/Tabela/Buscar';
 
-export function Chave(){
+export function Compasso(){
     return(
-      <Buscar parameterName="key" title="Key"/>
+      <Buscar parameterName="timeSignature" title="TimeSignature"/>
     )
 
 }

@@ -22,10 +22,12 @@ public class FiltradorDeMúsicasPorTag extends ServiçosDoAplicativo {
 		int offset, tamanho = 0;
 		try {
 			músicas_buscadas_intermediário = this.buscadorDeMúsicasPorTag.executaServiço(tagDeProcura, offset_min);
-			for(offset = offset_min + 50; offset > offset_max || músicas_buscadas_intermediário.getTotal() == 0; offset = offset + 50) {
-				tamanho += músicas_buscadas_intermediário.getTotal();
-				músicas_buscadas.add(músicas_buscadas_intermediário.getItems());
+			músicas_buscadas.add(músicas_buscadas_intermediário.getItems());
+			tamanho += músicas_buscadas_intermediário.getItems().length;
+			for(offset = offset_min + 50; offset < offset_max || músicas_buscadas_intermediário.getTotal() == 0; offset = offset + 50) {
+				tamanho += músicas_buscadas_intermediário.getItems().length;
 				músicas_buscadas_intermediário = this.buscadorDeMúsicasPorTag.executaServiço(tagDeProcura, offset);
+				músicas_buscadas.add(músicas_buscadas_intermediário.getItems());
 			}
 		}
 		catch(NullPointerException exceção) {

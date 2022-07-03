@@ -1,9 +1,9 @@
 import React from 'react';
 import { Buscar } from '../../../Componentes/Tabela/Buscar';
 
-export function MarcacaoDeTempo(){
+export function Tonalidade(){
     return(
-      <Buscar parameterName="timeSignature" title="TimeSignature"/>
+      <Buscar parameterName="key" title="Key"/>
     )
 
 }

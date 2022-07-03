@@ -208,7 +208,38 @@ body, input, button {
     margin-top: 15px;
     cursor: pointer;
 }
- 
+
+.parametersButtons {
+    display: block;
+    margin: -40px 60px 70px 130px;
+}
+
+.linkTable {
+    color: var(--text2);
+    height: 30px;
+    width: 120px;
+    cursor: pointer;
+    transition: 350ms color ease-in;
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    text-decoration: none;
+    font-size: 22px;
+}
+
+.linkTable:hover {
+    color: var(--hover);
+}
+
+.maxOrMinInput {
+    width: 63px;
+    height: 30px;
+    margin: 10px 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+
 :root{
     --text: #555555;
     --text2: #BCBCBC;

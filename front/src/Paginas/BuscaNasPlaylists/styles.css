@@ -1,0 +1,31 @@
+.busca {
+    margin-left: 0px;
+    display: flex;
+    width: 100px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.inLine button:hover {
+    background-color: var(--rowHover);
+    opacity: 0.8;
+}
+
+.busca h1{
+    font-size: 20px;
+    color: var(--white);
+    margin-left: 15px;
+}
+
+.inLine button {
+  width: 100px;
+  height: 40px;
+  margin-top: 70px;
+  cursor: pointer;
+  background-color: var(--sidebarColor);
+  border-radius: 20px;
+}
+
+.containerSearch {
+    padding: 100px;
+}

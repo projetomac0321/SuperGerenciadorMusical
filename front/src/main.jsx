@@ -28,13 +28,17 @@ import { Danceabilidade } from './Paginas/Parametros/Danceabilidade';
 import { DuracaoMs } from './Paginas/Parametros/DuracaoMs';
 import { Energia } from './Paginas/Parametros/Energia';
 import { Instrumentalidade } from './Paginas/Parametros/Instrumentalidade';
-import { Chave } from './Paginas/Parametros/Chave';
-import { Vivacidade } from './Paginas/Parametros/Vivacidade';
+import { Tonalidade } from './Paginas/Parametros/Tonalidade';
+import { AoVivo } from './Paginas/Parametros/AoVivo';
 import { Volume } from './Paginas/Parametros/Volume';
 import { Fala } from './Paginas/Parametros/Fala';
 import { Tempo } from './Paginas/Parametros/Tempo';
-import { MarcacaoDeTempo } from './Paginas/Parametros/MarcacaoDeTempo';
+import { Compasso } from './Paginas/Parametros/Compasso';
 import { Valencia } from './Paginas/Parametros/Valencia';
+
+import { BuscarPorCompasso } from './Paginas/FiltragemDeBusca/BuscarPorCompasso';
+
+import { BuscaNasPlaylists } from './Paginas/BuscaNasPlaylists';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -61,14 +65,16 @@ ReactDOM.createRoot(document.getElementById('root')).render(
             <Route path="durationMs" element={<DuracaoMs />}/>
             <Route path="energy" element={<Energia />}/>
             <Route path="instrumentalness" element={<Instrumentalidade/>}/>
-            <Route path="key" element={<Chave />}/>
-            <Route path="liveness" element={<Vivacidade/>}/>
+            <Route path="key" element={<Tonalidade />}/>
+            <Route path="liveness" element={<AoVivo/>}/>
             <Route path="loudness" element={<Volume />}/>
             <Route path="speechiness" element={<Fala />}/>
             <Route path="tempo" element={<Tempo />}/>
-            <Route path="timeSignature" element={<MarcacaoDeTempo />}/>
+            <Route path="timeSignature" element={<Compasso />}/>
             <Route path="valence" element={<Valencia />}/>
-          </Route>  
+          </Route> 
+          <Route path="searchsongs/compasso" element={<BuscarPorCompasso />}/> 
+          <Route path="buscar-nas-playlists" element={<BuscaNasPlaylists />}/>
       </Route>
           <Route
             path="*"

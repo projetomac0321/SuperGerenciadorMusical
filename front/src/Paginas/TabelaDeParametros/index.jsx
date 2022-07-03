@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import './styles.css';
 import axios from 'axios';
 import { ApresentacaoDoElemento } from '../../Componentes/ApresentacaoDoElemento';
 import { BotaoDoParametro } from '../../Componentes/BotaoDoParametro';
@@ -37,7 +36,7 @@ export function TabelaDeParametros(){
           />
           <RecebeDados/>
           <div className="parametersButtons">
-            <div className="firstLine">
+            <div className="inLine">
                 <NavLink 
                         className="linkTable"      
                         to={`/parametertable/playlist_${playlistId}/acousticness`}>
@@ -69,7 +68,7 @@ export function TabelaDeParametros(){
                   <BotaoDoParametro name="Key"/>
                 </NavLink>
                 </div>
-                <div className="secondLine">
+                <div className="inLine">
                 <NavLink 
                         className="linkTable"      
                         to={`/parametertable/playlist_${playlistId}/liveness`}>
