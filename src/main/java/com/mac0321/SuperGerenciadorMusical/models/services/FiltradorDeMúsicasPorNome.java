@@ -22,7 +22,7 @@ public class FiltradorDeMúsicasPorNome {
 		 try {
 			 músicas = this.procuradorDeMúsicas.executaServiço(ids);
 			 for(contador = 0; contador < músicas.length; contador ++)
-				 if(músicas[contador].getName().compareTo(nome) == 0)
+				 if(músicas[contador].getName().toLowerCase().contains(nome.toLowerCase()))
 					 músicas_filtradas.add(músicas[contador]);
 		}
 		catch(NullPointerException exceção) {
