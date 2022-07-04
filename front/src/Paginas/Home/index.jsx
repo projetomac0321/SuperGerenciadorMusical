@@ -28,7 +28,7 @@ export function Home() {
         carousel.current.scrollLeft += carousel.current.offsetWidth;
     }
     
-    /*function getCode (){
+    function getCode (){
         const routePath = useLocation().search;
         const code = new URLSearchParams(routePath).get('code');
         console.log(routePath);
@@ -46,9 +46,9 @@ export function Home() {
               alert("Tente novamente mais tarde. Erro na configuração da requisição.");
               window.location.href = "http://localhost:3000/";}
           });
-    };*/
+    };
     return (   
-        //getCode(),
+        getCode(),
         <div className="page">
             <div className="sidebar">
                 <nav className='toMenu'>
