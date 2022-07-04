@@ -18,7 +18,7 @@ export function BuscarMusicasFiltradas({indices, valoresMaxMinPorFiltro}){
         const buscaDadosDePesquisa = () => {
           if(searchInput != "")
           {
-              axios.get(`http://localhost:8080/filtragem/musicas?tagDeProcura=${searchInput}&offset_min=${offset}&offset_max=${offset + 50}&indicesDosFiltros=${indices}&valoresMaxMinPorFiltro=${valoresMaxMinPorFiltro}`).then(res => {
+              axios.get(`http://localhost:8080/filtragem/musicas?tagDeProcura=${searchInput}&offset=${offset}&indicesDosFiltros=${indices}&valoresMaxMinPorFiltro=${valoresMaxMinPorFiltro}`).then(res => {
                   console.log(res.data);
                   if(res.data.length == 0) {
                     if(offset != 0) alert("Nenhum novo elemento encontrado. Todos os elementos foram passados para esse parâmetro de busca.");

@@ -4,8 +4,8 @@ import { BuscarMusicasFiltradas } from '../../../Componentes/BuscarMusicasFiltra
 export function BuscarPorCompasso(){
     return(
        <div> 
-            <BuscarMusicasFiltradas indices={[7]}
-                valoresMaxMinPorFiltro={[0, 2]}
+            <BuscarMusicasFiltradas indices={[12]}
+                valoresMaxMinPorFiltro={[3, 7]}
               />  
         </div>
     );
