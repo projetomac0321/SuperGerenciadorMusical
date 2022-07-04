@@ -6,12 +6,10 @@
     border-right: 1px solid var(--text);
     height: 100vh;
     flex: 0.2;
-    background-color: var(--sidebarColor);
-
+    background-image: linear-gradient(180deg, var(--sidebarColor), green);
     color: var(--text);
     min-width: 358px;
 }
-
 .sidebarLogo {
     margin-right:auto;
     height: 200px;
@@ -40,20 +38,23 @@
 }
 
 .symbol {
-    height: 22px;
-    width: 22px;
+    height: 7%;
+    width: 7%;
     margin-right: 10px;
 }
-
 .links {
-    margin-left: 30px;
+    margin-left: 10%;
 }
 
 .body {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     flex: 0.8;
-    background: linear-gradient(var(--background), var(--black));
-    height: 100vh;
+    background-image: linear-gradient(180deg, rgb(35, 63, 36), green);
+    height: 100vh;   
     color: var(--white);
-    padding: 30px;
-    min-width: 1000px;
+    min-width: 30%;
+}
+
+.contentBody {
+    margin: 5px;
 }
