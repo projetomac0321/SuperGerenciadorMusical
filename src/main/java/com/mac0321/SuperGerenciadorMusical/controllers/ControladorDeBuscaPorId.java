@@ -54,4 +54,10 @@ public class ControladorDeBuscaPorId {
 		procuradorDeArtista = new ProcuradorDeArtista(autenticador.getTokenUsuario());
 		return new ResponseEntity<Artist>(procuradorDeArtista.executaServiço(idDoArtista), HttpStatus.OK);
 	}
+	
+	@GetMapping("/obter-musica-com-market")
+	private ResponseEntity<Track> obterMusicaComMarket (@RequestParam String idDaMusica) {
+		procuradorDeMusicas= new ProcuradorDeMúsicas(autenticador.getTokenUsuario());
+		return new ResponseEntity<Track>(procuradorDeMusicas.executaServiço(idDaMusica), HttpStatus.OK);
+	}
 }
