@@ -32,12 +32,26 @@ export function PlaylistPublica(){
           recebeInformacaoDaPlaylist();
         }, []);
 
+        const recebePreview = (songId) => {
+          axios.get(`http://localhost:8080/buscar-por-id/obter-musica-com-market?idDaMusica=${songId}`).then(res => {
+            if(res.data.previewUrl != null) window.open(res.data.previewUrl);
+            else alert("A música não permite preview.");
+          }).catch(err => 
+            { 
+              TratamentoDeErro(err);
+            });
+        }
+  
+         function gerenciaPreview(songId) {
+            recebePreview(songId);
+         }
+
         return(
           playlistSongs.map((song) => {
             return (
               <div className="elementRow" key={song.track.id}>
                 <div className="inLine">
-                     {song.track.isPlayable != null ? <FiPlay className="playIcon"/> : null}
+                          <FiPlay className="playIcon" onClick={e => { e.preventDefault(); gerenciaPreview(song.track.id)}}/>
                           <MapearMusica
                              link={`/song_${song.track.id}`}
                              name={song.track.name}
