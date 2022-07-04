@@ -4,16 +4,22 @@ import java.io.IOException;
 
 import org.apache.hc.core5.http.ParseException;
 
+import com.neovisionaries.i18n.CountryCode;
+
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 import se.michaelthelin.spotify.model_objects.specification.Track;
 import se.michaelthelin.spotify.requests.data.tracks.GetSeveralTracksRequest;
+import se.michaelthelin.spotify.requests.data.tracks.GetTrackRequest;
 
 public class ProcuradorDeMúsicas extends ServiçoSpotify {
 	
 	private GetSeveralTracksRequest getSeveralTracksRequest;
+	private GetTrackRequest getTrackRequest;
+	private CountryCode countryCode;
 	
 	public ProcuradorDeMúsicas(String accessToken) {
 		super(accessToken);
+		this.countryCode = CountryCode.BR;
 	}
 
 	public Track[] executaServiço(String ids[]) {
@@ -28,5 +34,17 @@ public class ProcuradorDeMúsicas extends ServiçoSpotify {
 		}
 		return músicas;
 	}
-	  
+
+	public Track executaServiço(String id) {
+		Track música = null;
+		try {
+			this.getTrackRequest = spotifyApi.getTrack(id).market(this.countryCode).build();
+			música = this.getTrackRequest.execute();
+			System.out.println("Música obtida com sucesso!");
+	    } 
+		catch (NullPointerException | IOException | SpotifyWebApiException | ParseException exception) {
+			System.out.println("Não foi possível obter a música");
+	    }
+		return música;
+	  }
 }
