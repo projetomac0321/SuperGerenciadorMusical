@@ -1,12 +1,13 @@
 import React from 'react';
-import { BuscarMusicasFiltradas } from '../../../Componentes/BuscarMusicasFiltradas';
+import { FiltroNaBuscaDeMusicas } from '../../../Componentes/FiltroNaBuscaDeMusicas';
 
 export function BuscarPorCompasso(){
     return(
-       <div> 
-            <BuscarMusicasFiltradas indices={[12]}
-                valoresMaxMinPorFiltro={[3, 7]}
-              />  
-        </div>
+       <FiltroNaBuscaDeMusicas
+          name="Compasso"
+          index={12}
+          min={3}
+          max={7}
+       />
     );
 }

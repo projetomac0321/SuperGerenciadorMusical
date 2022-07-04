@@ -37,6 +37,8 @@ import { Compasso } from './Paginas/Parametros/Compasso';
 import { Valencia } from './Paginas/Parametros/Valencia';
 
 import { BuscarPorCompasso } from './Paginas/FiltragemDeBusca/BuscarPorCompasso';
+import { BuscarPorModo } from './Paginas/FiltragemDeBusca/BuscarPorModo';
+import { BuscarPorTonalidade } from './Paginas/FiltragemDeBusca/BuscarPorTonalidade';
 
 import { BuscaNasPlaylists } from './Paginas/BuscaNasPlaylists';
 
@@ -74,6 +76,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
             <Route path="valence" element={<Valencia />}/>
           </Route> 
           <Route path="searchsongs/compasso" element={<BuscarPorCompasso />}/> 
+          <Route path="searchsongs/modo" element={<BuscarPorModo />}/> 
+          <Route path="searchsongs/tonalidade" element={<BuscarPorTonalidade />}/> 
           <Route path="buscar-nas-playlists" element={<BuscaNasPlaylists />}/>
       </Route>
           <Route

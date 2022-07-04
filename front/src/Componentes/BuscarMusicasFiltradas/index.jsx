@@ -2,9 +2,12 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { FiSearch } from 'react-icons/fi';
 import { TratamentoDeErro } from '../TratamentoDeErro';
+import { NavLink, Outlet } from 'react-router-dom';
 
-export function BuscarMusicasFiltradas({indices, valoresMaxMinPorFiltro}){
+export function BuscarMusicasFiltradas({indices, name, min, max}){
     const [searchInput, setSearchInput] = useState("");
+    const [minimo, setMinimo] = useState(min);
+    const [maximo, setMaximo] = useState(max);
     
     const [data, setData] = useState([]); 
     const [searching, setSearching] = useState(false);
@@ -18,8 +21,8 @@ export function BuscarMusicasFiltradas({indices, valoresMaxMinPorFiltro}){
         const buscaDadosDePesquisa = () => {
           if(searchInput != "")
           {
-              axios.get(`http://localhost:8080/filtragem/musicas?tagDeProcura=${searchInput}&offset=${offset}&indicesDosFiltros=${indices}&valoresMaxMinPorFiltro=${valoresMaxMinPorFiltro}`).then(res => {
-                  console.log(res.data);
+              axios.get(`http://localhost:8080/filtragem/musicas?tagDeProcura=${searchInput}&offset=${offset}&indicesDosFiltros=${indices}&valoresMaxMinPorFiltro=${minimo},${maximo}`).then(res => {
+                  setData(res.data);
                   if(res.data.length == 0) {
                     if(offset != 0) alert("Nenhum novo elemento encontrado. Todos os elementos foram passados para esse parâmetro de busca.");
                     else alert("Nenhum elemento encontrado. Por favor tente novamente com outro parâmetro de busca.");
@@ -38,6 +41,11 @@ export function BuscarMusicasFiltradas({indices, valoresMaxMinPorFiltro}){
         }
 
     return(
+        <div className="inBlock">
+            <div className="inLine centralizeFilters">
+                <h1> {name}: </h1>
+                <input className="maxOrMinInput" placeholder="Valor" type="number" maxLength={5} onChange={(e) => {setMinimo(parseFloat(e.target.value) - 0.2); setMaximo(parseFloat(e.target.value) + 0.2); setOffset(0)}} />
+            </div> 
         <div className="searchData">
             <div className="searchDataHeader">
                             <div className="headerInput">
@@ -61,17 +69,11 @@ export function BuscarMusicasFiltradas({indices, valoresMaxMinPorFiltro}){
                             <div className="elementRowSearch" key={result.id}>
                                         <div className="elementRow">
                                             <div className="elementInfo">
-                                                { hasImage? 
-                                                <img className="elementImage" src={
-                                                    result.images[0] != null ? result.images[0].url : nullImage
-                                                } alt="" /> : null}
-                                                <div className="elementRowTextInteract" onClick={e => { e.preventDefault(); setTimeout(function(){
-                                            window.location.href = `http://localhost:3000/${navRoute}_${result.id}`;}, 100);
-                                            }}>
+                                                <NavLink className="elementRowTextInteract" to={`/song_${result.id}`}>
                                                     <h1>{result.name.substring(0,37)}
                                                        {result.name.length > 37 ? "..." : null}
                                                     </h1>
-                                                </div>
+                                                </NavLink>
                                             </div>
                                         </div>
                             </div>
@@ -82,6 +84,8 @@ export function BuscarMusicasFiltradas({indices, valoresMaxMinPorFiltro}){
                           </div>
                       </div>
                 </nav>
+                 <Outlet/>
+        </div>
         </div>
     );
 }
