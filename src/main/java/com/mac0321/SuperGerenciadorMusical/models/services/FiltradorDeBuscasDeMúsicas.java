@@ -23,8 +23,8 @@ public class FiltradorDeBuscasDeMúsicas extends ServiçosDoAplicativo {
 		String[] ids;
 		int contador, contador2, tamanho = 0;
 		try {
-			for(contador = offset; contador < offset + 200; contador = contador + 50) {
-				músicasFiltradas = this.geradorDeArray.pagingTrackParaArray(this.buscadorDeMúsicasPorTag.executaServiço(tagDeProcura, offset));
+			for(contador = offset; contador < offset + 100; contador = contador + 50) {
+				músicasFiltradas = this.geradorDeArray.pagingTrackParaArray(this.buscadorDeMúsicasPorTag.executaServiço(tagDeProcura, contador));
 				ids = new String[músicasFiltradas.length];
 				for (contador2 = 0; contador2 < músicasFiltradas.length; contador2 ++)
 					ids[contador2] = músicasFiltradas[contador2].getId();

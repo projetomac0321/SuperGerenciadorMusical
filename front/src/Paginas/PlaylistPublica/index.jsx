@@ -37,7 +37,7 @@ export function PlaylistPublica(){
             return (
               <div className="elementRow" key={song.track.id}>
                 <div className="inLine">
-                        <FiPlay className="playIcon"/>
+                     {song.track.isPlayable != null ? <FiPlay className="playIcon"/> : null}
                           <MapearMusica
                              link={`/song_${song.track.id}`}
                              name={song.track.name}

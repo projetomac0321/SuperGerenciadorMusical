@@ -31,7 +31,7 @@ export function BuscarMusicasFiltradas({indices, name, min, max}){
                 }).catch(err => {
                     TratamentoDeErro(err);
                   });
-              setOffset(offset + 50);
+              setOffset(offset + 100);
               gerenciaPesquisa(true);  
           }
           else 
