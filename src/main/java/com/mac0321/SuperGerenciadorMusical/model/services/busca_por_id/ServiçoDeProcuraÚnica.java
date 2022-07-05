@@ -1,4 +1,4 @@
-package com.mac0321.SuperGerenciadorMusical.models.services;
+package com.mac0321.SuperGerenciadorMusical.model.services.busca_por_id;
 
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 

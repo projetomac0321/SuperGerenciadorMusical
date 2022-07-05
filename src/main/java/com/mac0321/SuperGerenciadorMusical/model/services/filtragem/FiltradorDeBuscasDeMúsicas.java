@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.mac0321.SuperGerenciadorMusical.model.services.busca_por_tag.BuscadorDeMúsicasPorTag;
-import com.mac0321.SuperGerenciadorMusical.models.services.GeradorDeArray;
 import com.mac0321.SuperGerenciadorMusical.models.services.ServiçosDoAplicativo;
 
 import se.michaelthelin.spotify.model_objects.specification.Track;

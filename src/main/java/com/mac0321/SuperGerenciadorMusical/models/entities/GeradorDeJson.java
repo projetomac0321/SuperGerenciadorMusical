@@ -1,4 +1,4 @@
-package com.mac0321.SuperGerenciadorMusical.models.services;
+package com.mac0321.SuperGerenciadorMusical.models.entities;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonParser;

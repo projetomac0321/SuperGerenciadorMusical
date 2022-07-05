@@ -4,8 +4,7 @@ import java.io.IOException;
 
 import org.apache.hc.core5.http.ParseException;
 
-import com.mac0321.SuperGerenciadorMusical.models.services.GeradorDeJson;
-import com.mac0321.SuperGerenciadorMusical.models.services.ServiçoDeModificaçãoDeMúsicasDeUmaPlaylist;
+import com.mac0321.SuperGerenciadorMusical.models.entities.GeradorDeJson;
 import com.mac0321.SuperGerenciadorMusical.models.services.ServiçoSpotify;
 
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;

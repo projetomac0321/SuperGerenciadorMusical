@@ -1,7 +1,6 @@
 package com.mac0321.SuperGerenciadorMusical.model.services.parametros;
 
 import com.mac0321.SuperGerenciadorMusical.models.services.ServiçosDoAplicativo;
-import com.mac0321.SuperGerenciadorMusical.models.services.TrocadorDeElementos;
 
 public class OrdenadorDeMúsicasPorParâmetro extends ServiçosDoAplicativo {
 

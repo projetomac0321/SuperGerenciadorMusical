@@ -6,7 +6,6 @@ import java.util.List;
 import com.mac0321.SuperGerenciadorMusical.model.services.busca_por_id.ProcuradorDeMúsicas;
 import com.mac0321.SuperGerenciadorMusical.model.services.parametros.MapeamentoDosParâmetros;
 import com.mac0321.SuperGerenciadorMusical.model.services.parametros.ProcuradorDeParâmetrosDeMúsicas;
-import com.mac0321.SuperGerenciadorMusical.models.services.GeradorDeArray;
 
 import se.michaelthelin.spotify.model_objects.specification.AudioFeatures;
 import se.michaelthelin.spotify.model_objects.specification.Track;
