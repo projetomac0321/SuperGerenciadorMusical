@@ -4,6 +4,7 @@
 1. **[Descrição](#Descrção)**
     1. **[Requisito 1](#Requisito-1)**
     2. **[Requisitos 2 e 3](#Requisitos-2-e-3)**
+    3. **[Requisitos 4, 5 e 6](#Requisitos-4,-5-e-6)**
 2. **[Execução do Sistema](#Execução-do-Sistema)**
     1. **[Pré-configurações para o frontend](#Pré-configurações-para-o-frontend)**
     2. **[Passos para a execução](#Passos-para-a-execução)**
@@ -28,6 +29,13 @@ Para mais informações sobre o processo de autenticação implementado pelo nos
 
 Nosso sistema permite a busca de músicas por vários critérios, título, autor, nome do álbum e nome de playlists públicas do spotify, também permite a busca de álbuns e playlists públicas, que ao se clicar, mostra-se todas as músicas daquela playlist pública ou álbum (e permite que cada uma delas seja inserida em uma das playlists do usuário). Além disso, para cada resultado de uma busca de música ele apresenta uma visão detalhada, oferecendo uma série de parâmetros sobre a música, incluindo dançável, energia, andamento (tempo), força (loudness), fala (speechiness), instrumental, ao vivo, acústica. Por fim, para uma determinada playlist do usuário, todas essas informações são mostradas na forma de uma tabela e o usuário poderá ordenar essa tabela por cada um desses parâmetros segundo o seu gosto.
 
+### Requisitos 4, 5 e 6
+
+Para cada resultado de uma busca, o sistema permitie uma visão detalhada das músicas oferecendo uma série de parâmetros sobre a música, incluindo dançável, energia, andamento (tempo), força (loudness), fala (speechiness), instrumental, ao vivo, acústica.  Dada uma determinada playlist, todas essas informações são mostradas na forma de uma tabela e o usuário pode ordenar essa tabela por cada um desses parâmetros segundo o seu gosto. 
+Ao se mostrar um álbum ou playlist, mostra-se as imagens a ele associadas. Ao se mostrar uma playlist, mostra-se todas as informações disponíveis sobre cada um das músicas (título, artistas, ano, duração), e também, é possível ouvir o início da música.
+Permite ao usuário filtrar as buscas por músicas em uma determinada tonalidade, determinado modo (maior ou menor) e determinada fórmula de compasso (3/4, 4/4, 5/4, 6/8). 
+Além disso, o usuário é capaz de realizar uma busca dentro de todas as playlists que ele criou usando um critério baseado nos parâmetros de análise do áudio das músicas (dançável, acústica, energia, etc.).
+
 ## Execução do Sistema
 
 Nossa aplicação é dividida em frontend e backend, o nosso backend é implementado utilizando o framework Spring Boot, com a linguagem Java, já o nosso frontend é implementado utilizando a biblioteca React com a linguagem Javascript. 
@@ -48,14 +56,16 @@ A fim de corresponder o controle de versionamento por meio do git do nosso proje
 1. Pré-configurações e execução da aplicação
 2. Detalhando a Jornada do Usuário
 3. Arquitetura e Padrão de Projeto
-4. Organização do frontend
-5. Controllers
-6. Models e Services
+4. Autenticação
+5. Organização do frontend
+6. Controllers
+7. Models e Services
+
+Os tópicos da documentação que abordam a terceira entrega, isto é, requisitos 4, 5 e 6 são: 2.6, 2.7, 2.8, 2.9, 6, e (informe os do 7 sid)
 
 ## Observações
 
 1. Por utilizarmos acentuação em algumas classes, atributos e métodos, optamos por usar a Codificação UTF-16 padrão do Java.
-2. O Procedimento de o usuário abrir a aba "http://localhost:3000/login" para autenticar, e após isso, o mesmo ir para a aba "http://localhost:3000" para iniciar a execução dos serviços da aplicação, será alterado para a próxima entrega, planejamos fazer com que esse direcionamento seja automático.
 
 ## Desenvolvedores
 
