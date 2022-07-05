@@ -67,7 +67,7 @@ export function Playlist(){
                           <MapearMusica
                              link={`/listplaylists/playlistsong_${playlistId}/${song.track.id}`}
                              name={song.track.name}
-                             nameLength={song.track.artists.length}
+                             nameLength={song.track.name.length}
                              artistsLength={song.track.artists.length}
                              artists={song.track.artists}
                              releaseDate={song.track.album.releaseDate}

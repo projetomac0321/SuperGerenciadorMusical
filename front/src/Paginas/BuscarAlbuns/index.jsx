@@ -2,7 +2,7 @@ import React from 'react';
 import { BuscarDados } from '../../Componentes/BuscarDados';
 import NullPlaylistImage from '../../Imagens/NullPlaylistImage.png';
 
-export function BuscarAlbums(){
+export function BuscarAlbuns(){
     return(
         <div>
             <BuscarDados
