@@ -1,7 +1,10 @@
-package com.mac0321.SuperGerenciadorMusical.models.services;
+package com.mac0321.SuperGerenciadorMusical.model.services.filtragem;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import com.mac0321.SuperGerenciadorMusical.model.services.busca_por_id.ProcuradorDeMúsicas;
+import com.mac0321.SuperGerenciadorMusical.models.services.GeradorDeArray;
 
 import se.michaelthelin.spotify.model_objects.specification.Track;
 
@@ -10,7 +13,7 @@ public class FiltradorDeMúsicasPorNome {
 	 private ProcuradorDeMúsicas procuradorDeMúsicas;
 	 private GeradorDeArray geradorDeArray;
 	
-	 FiltradorDeMúsicasPorNome(String accessToken){
+	 public FiltradorDeMúsicasPorNome(String accessToken){
 		 this.procuradorDeMúsicas = new ProcuradorDeMúsicas(accessToken);
 		 this.geradorDeArray = new GeradorDeArray();
 	 }

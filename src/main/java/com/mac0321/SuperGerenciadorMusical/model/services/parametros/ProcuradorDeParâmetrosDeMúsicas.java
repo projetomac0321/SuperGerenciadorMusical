@@ -1,8 +1,10 @@
-package com.mac0321.SuperGerenciadorMusical.models.services;
+package com.mac0321.SuperGerenciadorMusical.model.services.parametros;
 
 import java.io.IOException;
 
 import org.apache.hc.core5.http.ParseException;
+
+import com.mac0321.SuperGerenciadorMusical.models.services.ServiçoSpotify;
 
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 import se.michaelthelin.spotify.model_objects.specification.AudioFeatures;

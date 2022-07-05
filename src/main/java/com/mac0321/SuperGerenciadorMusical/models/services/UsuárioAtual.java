@@ -12,7 +12,7 @@ public class UsuárioAtual extends ServiçoSpotify {
 	
 	 private GetCurrentUsersProfileRequest getCurrentUsersProfileRequest;
 
-	 UsuárioAtual(String accessToken){
+	 public UsuárioAtual(String accessToken){
 		 super(accessToken);
 	 }
 	 

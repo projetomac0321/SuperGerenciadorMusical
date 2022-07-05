@@ -1,4 +1,7 @@
-package com.mac0321.SuperGerenciadorMusical.models.services;
+package com.mac0321.SuperGerenciadorMusical.model.services.filtragem;
+
+import com.mac0321.SuperGerenciadorMusical.models.services.GeradorDeIdsDasMúsicasDoUsuárioAtual;
+import com.mac0321.SuperGerenciadorMusical.models.services.ServiçosDoAplicativo;
 
 import se.michaelthelin.spotify.model_objects.specification.Track;
 
