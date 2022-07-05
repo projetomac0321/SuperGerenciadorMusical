@@ -1,4 +1,4 @@
-package com.mac0321.SuperGerenciadorMusical.model.services.listagem_musicas;
+package com.mac0321.SuperGerenciadorMusical.model.services.busca.listagem_musicas;
 
 import java.io.IOException;
 

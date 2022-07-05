@@ -3,7 +3,7 @@ package com.mac0321.SuperGerenciadorMusical.model.services.filtragem;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.mac0321.SuperGerenciadorMusical.model.services.busca_por_id.ProcuradorDeMúsicas;
+import com.mac0321.SuperGerenciadorMusical.model.services.busca.busca_por_id.ProcuradorDeMúsicas;
 
 import se.michaelthelin.spotify.model_objects.specification.Track;
 

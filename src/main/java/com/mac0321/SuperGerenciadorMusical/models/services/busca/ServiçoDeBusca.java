@@ -1,4 +1,4 @@
-package com.mac0321.SuperGerenciadorMusical.model.services.busca_por_tag;
+package com.mac0321.SuperGerenciadorMusical.models.services.busca;
 
 import se.michaelthelin.spotify.model_objects.AbstractModelObject;
 

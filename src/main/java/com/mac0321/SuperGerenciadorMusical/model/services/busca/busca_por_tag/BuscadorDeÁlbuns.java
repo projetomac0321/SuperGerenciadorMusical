@@ -1,10 +1,11 @@
-package com.mac0321.SuperGerenciadorMusical.model.services.busca_por_tag;
+package com.mac0321.SuperGerenciadorMusical.model.services.busca.busca_por_tag;
 
 import java.io.IOException;
 
 import org.apache.hc.core5.http.ParseException;
 
 import com.mac0321.SuperGerenciadorMusical.models.services.ServiçoSpotify;
+import com.mac0321.SuperGerenciadorMusical.models.services.busca.ServiçoDeBusca;
 
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 import se.michaelthelin.spotify.model_objects.specification.AlbumSimplified;

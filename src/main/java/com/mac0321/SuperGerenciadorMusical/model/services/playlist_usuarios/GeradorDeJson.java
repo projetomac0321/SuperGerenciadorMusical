@@ -1,4 +1,4 @@
-package com.mac0321.SuperGerenciadorMusical.models.entities;
+package com.mac0321.SuperGerenciadorMusical.model.services.playlist_usuarios;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonParser;

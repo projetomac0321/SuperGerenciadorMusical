@@ -1,4 +1,4 @@
-package com.mac0321.SuperGerenciadorMusical.model.services.parametros;
+package com.mac0321.SuperGerenciadorMusical.model.services.filtragem;
 
 import java.util.HashMap;
 

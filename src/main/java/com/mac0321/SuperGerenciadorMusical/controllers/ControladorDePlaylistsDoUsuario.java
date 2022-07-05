@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.mac0321.SuperGerenciadorMusical.model.services.busca_por_id.ProcuradorDePlaylist;
+import com.mac0321.SuperGerenciadorMusical.model.services.busca.busca_por_id.ProcuradorDePlaylist;
 import com.mac0321.SuperGerenciadorMusical.model.services.playlist_usuarios.AdicionadorDeMúsicasNumaPlaylist;
 import com.mac0321.SuperGerenciadorMusical.model.services.playlist_usuarios.CriadorDePlaylist;
 import com.mac0321.SuperGerenciadorMusical.model.services.playlist_usuarios.ProcuradorDePlaylistsDoUsuárioAtual;
