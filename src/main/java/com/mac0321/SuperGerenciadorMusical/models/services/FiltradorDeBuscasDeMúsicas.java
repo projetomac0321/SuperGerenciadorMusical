@@ -22,20 +22,20 @@ public class FiltradorDeBuscasDeMúsicas extends ServiçosDoAplicativo {
 		List<Track[]> lista_de_músicas_filtradas = new ArrayList<>();
 		String[] ids;
 		int contador, contador2, tamanho = 0;
-		try {
 			for(contador = offset; contador < offset + 100; contador = contador + 50) {
-				músicasFiltradas = this.geradorDeArray.pagingTrackParaArray(this.buscadorDeMúsicasPorTag.executaServiço(tagDeProcura, contador));
-				ids = new String[músicasFiltradas.length];
-				for (contador2 = 0; contador2 < músicasFiltradas.length; contador2 ++)
-					ids[contador2] = músicasFiltradas[contador2].getId();
-				lista_de_músicas_filtradas.add(this.filtradorDeMúsicasPorIntervalo.filtra(valoresMaxMinPorFiltro, indicesDosFiltros, ids));
-				tamanho += lista_de_músicas_filtradas.get((contador - offset)/50).length;
+				try {
+					músicasFiltradas = this.geradorDeArray.pagingTrackParaArray(this.buscadorDeMúsicasPorTag.executaServiço(tagDeProcura, contador));
+					ids = new String[músicasFiltradas.length];
+					for (contador2 = 0; contador2 < músicasFiltradas.length; contador2 ++)
+						ids[contador2] = músicasFiltradas[contador2].getId();
+					lista_de_músicas_filtradas.add(this.filtradorDeMúsicasPorIntervalo.filtra(valoresMaxMinPorFiltro, indicesDosFiltros, ids));
+					tamanho += lista_de_músicas_filtradas.get((contador - offset)/50).length;
+				}
+				catch(NullPointerException exceção) {
+					System.out.println("Impossível de filtrar as músicas por nome e parâmetro!");
+				}
+				músicasFiltradas = this.geradorDeArray.listTrackParaArray(lista_de_músicas_filtradas, tamanho);
 			}
-			músicasFiltradas = this.geradorDeArray.listTrackParaArray(lista_de_músicas_filtradas, tamanho);
-		}
-		catch(NullPointerException exceção) {
-			System.out.println("Impossível de filtrar as músicas por nome e parâmetro!");
-		}
 		return músicasFiltradas;
 	}
 }

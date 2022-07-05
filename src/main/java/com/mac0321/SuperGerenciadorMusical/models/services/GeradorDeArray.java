@@ -31,13 +31,19 @@ public class GeradorDeArray {
 	}
 	
 	public Track[] listTrackParaArray(List<Track[]> lista, int tamanho) {
-		Track[] array = new Track[tamanho];
+		Track[] array = null;
 		int contador, contador2 = 0;
-		for(Track[] músicas: lista) {
-			for(contador = 0; contador < músicas.length; contador ++) {
-				array[contador2] = músicas[contador];
-				contador2 ++;
+		try {
+			array = new Track[tamanho];
+			for(Track[] músicas: lista) {
+				for(contador = 0; contador < músicas.length; contador ++) {
+					array[contador2] = músicas[contador];
+					contador2 ++;
+				}
 			}
+		}
+		catch(NullPointerException exceção) {
+			System.out.println("Impossível converter Track para array!");
 		}
 		return array;
 	}

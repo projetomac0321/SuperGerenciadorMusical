@@ -6,8 +6,8 @@ import { NavLink, Outlet } from 'react-router-dom';
 
 export function BuscarMusicasFiltradas({indices, name, min, max}){
     const [searchInput, setSearchInput] = useState("");
-    const [minimo, setMinimo] = useState(min);
-    const [maximo, setMaximo] = useState(max);
+    const [minimo, setMinimo] = useState(min - 0.2);
+    const [maximo, setMaximo] = useState(max + 0.2);
     
     const [data, setData] = useState([]); 
     const [searching, setSearching] = useState(false);
@@ -19,6 +19,12 @@ export function BuscarMusicasFiltradas({indices, name, min, max}){
     const [offset, setOffset] = useState(0);
     
         const buscaDadosDePesquisa = () => {
+          if(minimo < min - 0.2 || maximo > max + 0.2) 
+          {
+              alert("Valor de filtragem inválido.");
+              window.location.href = "http://localhost:3000/";
+          }
+
           if(searchInput != "")
           {
               axios.get(`http://localhost:8080/filtragem/musicas?tagDeProcura=${searchInput}&offset=${offset}&indicesDosFiltros=${indices}&valoresMaxMinPorFiltro=${minimo},${maximo}`).then(res => {
@@ -44,7 +50,7 @@ export function BuscarMusicasFiltradas({indices, name, min, max}){
         <div className="inBlock">
             <div className="inLine centralizeFilters">
                 <h1> {name}: </h1>
-                <input className="maxOrMinInput" placeholder="Valor" type="number" maxLength={5} onChange={(e) => {setMinimo(parseFloat(e.target.value) - 0.2); setMaximo(parseFloat(e.target.value) + 0.2); setOffset(0)}} />
+                <input className="maxOrMinInput" placeholder="Valor" type="number" maxLength={5} onChange={(e) => {e.preventDefault(); setMinimo(parseFloat(e.target.value) - 0.2); setMaximo(parseFloat(e.target.value) + 0.2); setOffset(0)}} />
             </div> 
         <div className="searchData">
             <div className="searchDataHeader">
