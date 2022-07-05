@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.mac0321.SuperGerenciadorMusical.model.services.busca_por_id.ProcuradorDeMúsicas;
+import com.mac0321.SuperGerenciadorMusical.model.services.parametros.OrdenadorDeMúsicasPorParâmetro;
+import com.mac0321.SuperGerenciadorMusical.model.services.parametros.ProcuradorDeParâmetrosDeMúsicas;
 import com.mac0321.SuperGerenciadorMusical.models.entities.Autenticador;
-import com.mac0321.SuperGerenciadorMusical.models.services.OrdenadorDeMúsicasPorParâmetro;
-import com.mac0321.SuperGerenciadorMusical.models.services.ProcuradorDeMúsicas;
-import com.mac0321.SuperGerenciadorMusical.models.services.ProcuradorDeParâmetrosDeMúsicas;
 
 import se.michaelthelin.spotify.model_objects.specification.AudioFeatures;
 import se.michaelthelin.spotify.model_objects.specification.Track;
