@@ -16,7 +16,7 @@ public class FiltradorDeMúsicasDasPlaylists extends ServiçosDoAplicativo {
 		this.filtradorDeMúsicasPorNome = new FiltradorDeMúsicasPorNome(accessToken);
 	}
 	
-	public Track[] filtra(String tagDeProcura, Float[] intervalos_de_busca, int[] índices_dos_intervalos) {
+	public Track[] executaServiço(String tagDeProcura, Float[] intervalos_de_busca, int[] índices_dos_intervalos) {
 		Track[] músicas_filtradas_por_nome, músicas_filtradas = null;
 		String[] ids;
 		int contador;

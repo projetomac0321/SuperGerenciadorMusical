@@ -12,7 +12,7 @@ import se.michaelthelin.spotify.model_objects.specification.Track;
 import se.michaelthelin.spotify.requests.data.tracks.GetSeveralTracksRequest;
 import se.michaelthelin.spotify.requests.data.tracks.GetTrackRequest;
 
-public class ProcuradorDeMúsicas extends ServiçoSpotify {
+public class ProcuradorDeMúsicas extends ServiçoSpotify implements ServiçoDeProcuraÚnica{
 	
 	private GetSeveralTracksRequest getSeveralTracksRequest;
 	private GetTrackRequest getTrackRequest;
@@ -35,7 +35,8 @@ public class ProcuradorDeMúsicas extends ServiçoSpotify {
 		}
 		return músicas;
 	}
-
+	
+	@Override
 	public Track executaServiço(String id) {
 		Track música = null;
 		try {

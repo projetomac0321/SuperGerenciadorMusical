@@ -27,6 +27,6 @@ public class MapeamentoDosParâmetros {
 	public float valor_do_mapa(int índice) {
 		if(índice > 0 && índice < 14)
 			return this.mapa.get(índice);
-		return -1;
+		return -100000;
 	}
 }

@@ -25,20 +25,20 @@ public class ControladorDeFiltragem {
 	@GetMapping("/musicas")
 	private ResponseEntity<Track[]> FiltrarMúsicas (@RequestParam String tagDeProcura, @RequestParam int offset,
 													@RequestParam int[] indicesDosFiltros, 
-													@RequestParam Float[] valoresMaxMinPorFiltro) {
+													@RequestParam Float[] valoresMinMaxPorFiltro) {
 		Track[] músicas;
 		filtradorDeBuscasDeMúsicas = new FiltradorDeBuscasDeMúsicas(autenticador.getTokenUsuario());
-		músicas = filtradorDeBuscasDeMúsicas.executaServiço(tagDeProcura, offset, indicesDosFiltros, valoresMaxMinPorFiltro);
+		músicas = filtradorDeBuscasDeMúsicas.executaServiço(tagDeProcura, offset, indicesDosFiltros, valoresMinMaxPorFiltro);
 		return new ResponseEntity<Track[]>(músicas, HttpStatus.OK);
 	}
 	
 	@GetMapping("/musicas-na-playlist")
 	private ResponseEntity<Track[]> filtrarMúsicasNaPlaylist (@RequestParam String tagDeProcura, 
-															  @RequestParam Float[] valoresMaxMinPorFiltro,
+															  @RequestParam Float[] valoresMinMaxPorFiltro,
 															  @RequestParam int[] indicesDosFiltros) {
 		Track[] músicas;
 		filtradorDeMúsicasDasPlaylists = new FiltradorDeMúsicasDasPlaylists(autenticador.getTokenUsuario());
-		músicas = filtradorDeMúsicasDasPlaylists.filtra(tagDeProcura, valoresMaxMinPorFiltro, indicesDosFiltros);
+		músicas = filtradorDeMúsicasDasPlaylists.executaServiço(tagDeProcura, valoresMinMaxPorFiltro, indicesDosFiltros);
 		return new ResponseEntity<Track[]>(músicas, HttpStatus.OK);
 	}
 	

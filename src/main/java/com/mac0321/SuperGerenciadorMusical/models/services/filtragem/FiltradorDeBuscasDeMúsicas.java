@@ -20,7 +20,7 @@ public class FiltradorDeBuscasDeMúsicas extends ServiçosDoAplicativo {
 		geradorDeArray = new GeradorDeArray();
 	}
 	
-	public Track[] executaServiço(String tagDeProcura, int offset, int[] indicesDosFiltros, Float[] valoresMaxMinPorFiltro) {
+	public Track[] executaServiço(String tagDeProcura, int offset, int[] indicesDosFiltros, Float[] valoresMinMaxPorFiltro) {
 		Track[] músicasFiltradas = null;
 		List<Track[]> lista_de_músicas_filtradas = new ArrayList<>();
 		String[] ids;
@@ -31,7 +31,7 @@ public class FiltradorDeBuscasDeMúsicas extends ServiçosDoAplicativo {
 					ids = new String[músicasFiltradas.length];
 					for (contador2 = 0; contador2 < músicasFiltradas.length; contador2 ++)
 						ids[contador2] = músicasFiltradas[contador2].getId();
-					lista_de_músicas_filtradas.add(this.filtradorDeMúsicasPorIntervalo.filtra(valoresMaxMinPorFiltro, indicesDosFiltros, ids));
+					lista_de_músicas_filtradas.add(this.filtradorDeMúsicasPorIntervalo.filtra(valoresMinMaxPorFiltro, indicesDosFiltros, ids));
 					tamanho += lista_de_músicas_filtradas.get((contador - offset)/50).length;
 				}
 				catch(NullPointerException exceção) {
