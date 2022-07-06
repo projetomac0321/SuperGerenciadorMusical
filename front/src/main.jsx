@@ -12,7 +12,7 @@ import { PaginaInicial } from './Paginas/PaginaInicial';
 import { ListarPlaylists } from './Paginas/ListarPlaylists';
 import { CriarPlaylist } from './Paginas/CriarPlaylist';
 import { BuscarMusicas } from './Paginas/BuscarMusicas';
-import { BuscarAlbums } from './Paginas/BuscarAlbums';
+import { BuscarAlbuns } from './Paginas/BuscarAlbuns';
 import { BuscarPlaylists } from './Paginas/BuscarPlaylists';
 import { BuscarArtistas } from './Paginas/BuscarArtistas';
 
@@ -54,7 +54,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           <Route path="confirmalogin" element={<ConfirmaLogin />}/>
           <Route path="home" element={<Home />}/>
           <Route path="searchsongs" element={<BuscarMusicas />}/>
-          <Route path="searchalbums" element={<BuscarAlbums />}/>
+          <Route path="searchalbums" element={<BuscarAlbuns />}/>
             <Route path="searchalbums/album_:albumId" element={<Album />}/>
           <Route path="searchplaylists" element={<BuscarPlaylists />}/>
             <Route path="searchplaylists/playlist_:playlistId" element={<PlaylistPublica />}/>

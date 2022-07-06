@@ -23,9 +23,9 @@ export function BuscarMusicas(){
               axios.get(`http://localhost:8080/buscar-por-tag/buscar-por-query?query=${searchInput}&offset=${offset}`).then(res => {
                   setData(res.data);
                   if(res.data.length == 0) {
-                    if(offset != 0) alert("Nenhum novo elemento encontrado. Todos os elementos foram passados para esse parâmetro de busca.");
-                    else alert("Nenhum elemento encontrado. Por favor tente novamente com outro parâmetro de busca.");
-                    window.location.href = "http://localhost:3000/";
+                    {(offset != 0)? alert("Nenhum novo elemento encontrado. Todos os elementos foram passados para esse parâmetro de busca.") :
+                    alert("Nenhum elemento encontrado. Por favor tente novamente com outro parâmetro de busca.");
+                    window.location.href = "http://localhost:3000/";}
                 }
                 }).catch(err => {
                     TratamentoDeErro(err);

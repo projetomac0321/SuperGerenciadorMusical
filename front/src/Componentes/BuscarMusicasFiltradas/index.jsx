@@ -6,8 +6,8 @@ import { NavLink, Outlet } from 'react-router-dom';
 
 export function BuscarMusicasFiltradas({indices, name, min, max}){
     const [searchInput, setSearchInput] = useState("");
-    const [minimo, setMinimo] = useState(min);
-    const [maximo, setMaximo] = useState(max);
+    const [minimo, setMinimo] = useState(min - 0.2);
+    const [maximo, setMaximo] = useState(max + 0.2);
     
     const [data, setData] = useState([]); 
     const [searching, setSearching] = useState(false);
@@ -19,33 +19,34 @@ export function BuscarMusicasFiltradas({indices, name, min, max}){
     const [offset, setOffset] = useState(0);
     
         const buscaDadosDePesquisa = () => {
-          if(searchInput != "")
+          if((minimo < min - 0.2 || maximo > max + 0.2) || ((minimo + 0.2) != Math.floor(minimo + 0.2))) 
           {
-              axios.get(`http://localhost:8080/filtragem/musicas?tagDeProcura=${searchInput}&offset=${offset}&indicesDosFiltros=${indices}&valoresMaxMinPorFiltro=${minimo},${maximo}`).then(res => {
-                  setData(res.data);
-                  if(res.data.length == 0) {
-                    if(offset != 0) alert("Nenhum novo elemento encontrado. Todos os elementos foram passados para esse parâmetro de busca.");
-                    else alert("Nenhum elemento encontrado. Por favor tente novamente com outro parâmetro de busca.");
-                    window.location.href = "http://localhost:3000/";
+              alert("Valor de filtragem inválido.");
+              window.location.href = "http://localhost:3000/";
+          }
+
+          {(searchInput != "") ?
+              [axios.get(`http://localhost:8080/filtragem/musicas?tagDeProcura=${searchInput}&offset=${offset}&indicesDosFiltros=${indices}&valoresMaxMinPorFiltro=${minimo},${maximo}`).then(res => {
+                  if(res.data[0] != null) setData(res.data);
+                  if(res.data.length == 0 || res.data[0] == null) {
+                    {offset != 0 ? alert("Nenhum novo elemento encontrado. Todos os elementos foram passados para esse parâmetro de busca.")
+                    : alert("Nenhum elemento encontrado. Por favor tente novamente com outro parâmetro de busca.");
+                    window.location.href = "http://localhost:3000/";}
                 }
                 }).catch(err => {
                     TratamentoDeErro(err);
-                  });
-              setOffset(offset + 50);
-              gerenciaPesquisa(true);  
-          }
-          else 
-          {
-            gerenciaPesquisa(false);
-          }
+                  }),
+              setOffset(offset + 100),
+              gerenciaPesquisa(true)]
+          : 
+            gerenciaPesquisa(false);}
         }
 
     return(
         <div className="inBlock">
             <div className="inLine centralizeFilters">
                 <h1> {name}: </h1>
-                <input className="maxOrMinInput" placeholder="Valor" type="number" maxLength={5} onChange={(e) => {setMinimo(parseFloat(e.target.value) - 0.2); setMaximo(parseFloat(e.target.value) + 0.2); setOffset(0)}} />
-            
+                <input className="maxOrMinInput" placeholder="Valor" type="number" maxLength={5} onChange={(e) => {e.preventDefault(); setMinimo(parseFloat(e.target.value) - 0.2); setMaximo(parseFloat(e.target.value) + 0.2); setOffset(0)}} />
             </div> 
         <div className="searchData">
             <div className="searchDataHeader">

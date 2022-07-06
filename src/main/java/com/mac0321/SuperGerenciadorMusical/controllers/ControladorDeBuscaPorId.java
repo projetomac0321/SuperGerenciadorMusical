@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mac0321.SuperGerenciadorMusical.models.entities.Autenticador;
-import com.mac0321.SuperGerenciadorMusical.models.services.ProcuradorDeArtista;
-import com.mac0321.SuperGerenciadorMusical.models.services.ProcuradorDeMúsicas;
-import com.mac0321.SuperGerenciadorMusical.models.services.ProcuradorDePlaylist;
-import com.mac0321.SuperGerenciadorMusical.models.services.ProcuradorDeÁlbum;
+import com.mac0321.SuperGerenciadorMusical.models.services.busca.busca_por_id.ProcuradorDeArtista;
+import com.mac0321.SuperGerenciadorMusical.models.services.busca.busca_por_id.ProcuradorDeMúsicas;
+import com.mac0321.SuperGerenciadorMusical.models.services.busca.busca_por_id.ProcuradorDePlaylist;
+import com.mac0321.SuperGerenciadorMusical.models.services.busca.busca_por_id.ProcuradorDeÁlbum;
 
 import se.michaelthelin.spotify.model_objects.specification.Album;
 import se.michaelthelin.spotify.model_objects.specification.Artist;
@@ -53,5 +53,11 @@ public class ControladorDeBuscaPorId {
 	private ResponseEntity<Artist> obterArtista (@RequestParam String idDoArtista) {
 		procuradorDeArtista = new ProcuradorDeArtista(autenticador.getTokenUsuario());
 		return new ResponseEntity<Artist>(procuradorDeArtista.executaServiço(idDoArtista), HttpStatus.OK);
+	}
+	
+	@GetMapping("/obter-musica-com-market")
+	private ResponseEntity<Track> obterMusicaComMarket (@RequestParam String idDaMusica) {
+		procuradorDeMusicas= new ProcuradorDeMúsicas(autenticador.getTokenUsuario());
+		return new ResponseEntity<Track>(procuradorDeMusicas.executaServiço(idDaMusica), HttpStatus.OK);
 	}
 }
