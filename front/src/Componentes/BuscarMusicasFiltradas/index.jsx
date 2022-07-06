@@ -45,6 +45,7 @@ export function BuscarMusicasFiltradas({indices, name, min, max}){
             <div className="inLine centralizeFilters">
                 <h1> {name}: </h1>
                 <input className="maxOrMinInput" placeholder="Valor" type="number" maxLength={5} onChange={(e) => {setMinimo(parseFloat(e.target.value) - 0.2); setMaximo(parseFloat(e.target.value) + 0.2); setOffset(0)}} />
+            
             </div> 
         <div className="searchData">
             <div className="searchDataHeader">

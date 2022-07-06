@@ -1,13 +1,13 @@
 import {React} from 'react';
 import './styles.css';
 import { Outlet, NavLink } from 'react-router-dom';
-import Logo from '../images/gm.png';
+import Logo from '../imagens/gm.png';
 import { FiList, FiPlusSquare, 
          FiMusic, FiBook, 
          FiBookOpen, FiEdit3
        } from 'react-icons/fi';
-export function App() { 
-    
+export function Pagina() { 
+        
     return (
         <div className="page">
                <div className="sidebar">

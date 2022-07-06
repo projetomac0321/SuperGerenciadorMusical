@@ -81,8 +81,11 @@ button:hover {
 }
 
 button {
-  width: 400px;
+  width: 370px;
   margin-top: 70px;
   cursor: pointer;
   background-color: var(--sidebarColor);
+  font-size: 30px;
+  color: white;
 }
+

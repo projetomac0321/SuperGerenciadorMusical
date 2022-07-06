@@ -6,6 +6,8 @@ import { BrowserRouter,
 import './Estilos/global.css';
 
 import { Pagina } from './Pagina';
+import { Home } from './Paginas/Home';
+import { ConfirmaLogin } from './Paginas/ConfirmaLogin';
 import { PaginaInicial } from './Paginas/PaginaInicial';
 import { ListarPlaylists } from './Paginas/ListarPlaylists';
 import { CriarPlaylist } from './Paginas/CriarPlaylist';
@@ -49,6 +51,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <Route path="/login" element={<PaginaInicial />}/>
       <Route path="/" element={<Pagina />}>
           <Route path="song_:songId" element={<Musica />}/>
+          <Route path="confirmalogin" element={<ConfirmaLogin />}/>
+          <Route path="home" element={<Home />}/>
           <Route path="searchsongs" element={<BuscarMusicas />}/>
           <Route path="searchalbums" element={<BuscarAlbums />}/>
             <Route path="searchalbums/album_:albumId" element={<Album />}/>

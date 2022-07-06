@@ -1,55 +1,3 @@
-.page {
-    display: flex;
-}
-
-.sidebar {
-    border-right: 1px solid var(--text);
-    height: 100vh;
-    flex: 0.2;
-    background-color: var(--sidebarColor);
-
-    color: var(--text);
-    min-width: 358px;
-}
-.colorir{
-    background-image: linear-gradient(180deg, var(--sidebarColor), green);
-}
-.sidebarLogo {
-    margin-right:auto;
-    height: 200px;
-    width: 200px;
-    margin: 70px 70px 45px;
-}
-
-.link {
-    color: var(--text2);
-    height: 100%;
-    cursor: pointer;
-    transition: 350ms color ease-in;
-    display: flex;
-    align-items: center;
-    margin-bottom: 30px;
-    text-decoration: none;
-    font-size: 22px;
-}
-
-.link:hover {
-    color: var(--hover);
-}
-
-.link.active {
-    color: var(--hover);
-}
-
-.symbol {
-    height: 7%;
-    width: 7%;
-    margin-right: 10px;
-}
-.links {
-    margin-left: 10%;
-}
-
 .body {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     flex: 0.8;
@@ -61,7 +9,8 @@
 
 .infosContent{
     flex: 0.8;
-    margin: 10%;
+    min-width: 450px;
+    min-height: 520px;
 }
 
 .infosContent .carousel{
@@ -74,7 +23,6 @@
     display: none;
 }
 .infosContent .carousel .item{
-    position: relative;
     background-color: transparent;
     width: 50%;
     text-align: center;
@@ -82,9 +30,9 @@
 }
 
 .infosContent .carousel .item .image img{
-    width: 100%;
-    height: 100%;
-    margin-left: 100%;
+    width: 450px;
+    height: 300px;
+    margin-left: 35%;
     position: relative;
     flex-direction: column;
 }
@@ -92,11 +40,15 @@
 .infosContent .carousel .item .info{
     position: relative;
     flex-direction: column;
+    
+    margin-left: 8%;
+    margin-right: 8%;
 }
 
 .infosContent .carousel .item .info span{
     color: white;
     border-radius: 10px;
+    position: relative;
 }
 
 .infosContent .carousel .item .info span .name{
@@ -120,8 +72,8 @@
 }
 
 .infosContent .buttons img{
-    width: 10%;
-    height: 10%;
+    width: 45px;
+    height: 35px;
 }
 
 .infosContent .buttons button:first-child img{
@@ -129,7 +81,8 @@
 }
 
 h1{
-    margin-top: 5%;
+    margin-top: 4%;
+    margin-left: 5%;
     text-align: center;
 }
 

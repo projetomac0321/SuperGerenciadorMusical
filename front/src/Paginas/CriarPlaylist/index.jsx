@@ -81,7 +81,7 @@ export function CriarPlaylist(){
                         <button onClick={criaPlaylist}>
                     <div className="createPlaylist">
                             <div className="createPlaylistText">
-                                <h1>Criar Playlist</h1>
+                                <h4>Criar Playlist</h4>
                             </div>
                                     <FiPlus className="plus"/>
                     </div>

@@ -4,7 +4,10 @@
 }
 
 .bodyHeader {
-    margin-top: -200px;
+    margin-top: -180px;
+    margin-left: -160px;
+    min-width: 450px;
+    min-height: 240px;
 }
 
 .header {
@@ -22,9 +25,10 @@ div.headerMid {
 }
 
 .buttonSearch button {
-    height: 30px;
+    height: 40px;
     width: 50px;
-    border-radius: 15px;
+    border-radius: 30px;
+    margin-left: 7px;
     margin-top: 0px;
 }
 
@@ -39,7 +43,7 @@ div.headerMid {
    margin-right: 300px;
    color: var(--text);
    width: 100%;
-   height: 40px; 
+   height: 10px; 
    border: none;
    outline: none;
 }
@@ -66,7 +70,7 @@ div.headerMid {
     height: 100%;
     width: 100%;
     border-radius: 20px;
-    background-color: var(--text);
+    background-color: #E0FFFF;
     align-items: center;
     border-width: 1px;
     border-color: var(--white);

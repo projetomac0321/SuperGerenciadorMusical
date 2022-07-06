@@ -6,9 +6,9 @@
     border-right: 1px solid var(--text);
     height: 100vh;
     flex: 0.2;
-    background-image: linear-gradient(180deg, var(--sidebarColor), green);
+    background-image: linear-gradient(180deg, var(--sidebarColor), rgb(26, 78, 26));
     color: var(--text);
-    min-width: 358px;
+    min-width: 20%;
 }
 .sidebarLogo {
     margin-right:auto;
@@ -49,10 +49,11 @@
 .body {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     flex: 0.8;
-    background-image: linear-gradient(180deg, rgb(35, 63, 36), green);
-    height: 100vh;   
+    background-image: linear-gradient(180deg, rgb(35, 63, 36), green);   
     color: var(--white);
-    min-width: 30%;
+    
+    min-width: 450px;
+    min-height: 520px;
 }
 
 .contentBody {

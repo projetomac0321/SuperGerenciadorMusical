@@ -23,7 +23,7 @@ public class Autenticador {
 	
 	private Autenticador() {
 		redirectUri = SpotifyHttpManager.
-				makeUri("http://localhost:3000/home");
+				makeUri("http://localhost:3000/confirmalogin");
 		acessoApi = new SpotifyApi.Builder()
 				.setClientId("de6b441011e14346add6404c00b1bed0")
 				.setClientSecret("0d222f0e5aef494c83bd133abbb22903")
@@ -49,6 +49,7 @@ public class Autenticador {
 	}
 	 
 	public void requisitaTokenAcesso(String code) throws ParseException, SpotifyWebApiException, IOException {
+		System.out.println("tenta com" + code);
 		AuthorizationCodeRequest requisicaoDoCodigo = acessoApi.authorizationCode(code).build();
 		AuthorizationCodeCredentials credenciaisDeAcessoProntas  = requisicaoDoCodigo.execute();
 		setTokens(credenciaisDeAcessoProntas.getRefreshToken(), credenciaisDeAcessoProntas.getAccessToken());
