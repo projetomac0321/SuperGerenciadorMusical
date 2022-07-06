@@ -1,7 +1,7 @@
 import {React} from 'react';
 import './styles.css';
 import { Outlet, NavLink } from 'react-router-dom';
-import Logo from '../imagens/gm.png';
+import Logo from '../Imagens/gm.png';
 import { FiList, FiPlusSquare, 
          FiMusic, FiBook, 
          FiBookOpen, FiEdit3

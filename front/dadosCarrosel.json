@@ -1,22 +1,22 @@
 [
   {
     "id": "1",
-    "image":  "/src/imagens/spring.png",
+    "image":  "/src/Imagens/spring.png",
     "text": "Com o auxílio do SpingBot podemos configurar o projeto facilmente, incluindo um servidor para fazer requisições web de forma independente."
   },
   {
     "id": "2",
-    "image": "/src/imagens/react.png",
+    "image": "/src/Imagens/react.png",
     "text": "Utilizando essa biblioteca JavaScript podemos facilmente desenvolver aplicações de forma nativa."
   },
   {
     "id": "3",
-    "image":  "/src/imagens/filtro.png",
+    "image":  "/src/Imagens/filtro.png",
     "text": "Aqui você encontra todas as músicas que quiser, utilizando nossos filtros personalizados com base em nomes, autores, datas e muito mais!!"
   },
   {
     "id": "4",
-    "image":  "/src/imagens/spotifyLogocapa.png",
+    "image":  "/src/Imagens/spotifyLogocapa.png",
     "text": "Conectados ao Spotify temos acesso a características específicas de cada música, deixando a experiência do usuario muito mais completa!"
   }
 ]

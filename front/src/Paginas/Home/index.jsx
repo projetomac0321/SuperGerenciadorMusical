@@ -1,7 +1,7 @@
 import {React, useRef, useState, useEffect} from 'react';
 import './styles.css';
 import { Outlet} from 'react-router-dom';
-import Seta from '../../imagens/setaDireita.png';
+import Seta from '../../Imagens/setaDireita.png';
 
 export function Home() { 
     const [data, setData] = useState([]);
