@@ -74,6 +74,7 @@
 .infosContent .buttons img{
     width: 45px;
     height: 35px;
+    opacity: 0.7;
 }
 
 .infosContent .buttons button:first-child img{

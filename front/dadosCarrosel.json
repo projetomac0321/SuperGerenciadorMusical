@@ -18,5 +18,15 @@
     "id": "4",
     "image":  "/src/Imagens/spotifyLogocapa.png",
     "text": "Conectados ao Spotify temos acesso a características específicas de cada música, deixando a experiência do usuario muito mais completa!"
+  },
+  {
+    "id": "5",
+    "image":  "/src/Imagens/gitlab.png",
+    "text": "Acesse nosso repositorio para encontrar nosso código fonte e entender mais sobre o projeto. Também é possível ver a documentação, clicando no link abaixo",
+    "link": "https://gitlab.com/m10482/supergerenciadormusical",
+    "nomelink": "Repositorio",
+    "link2": "https://docs.google.com/document/d/1IW7ZMq1d8scBn-OfgPjWqXJbe4cQyIel8hTTSq5h5Q8/edit#",
+    "nomelink2": "Documentacao"
+    
   }
 ]

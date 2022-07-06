@@ -52,7 +52,7 @@ export function CriarPlaylist(){
                 <div className="form">
                     <input
                         id="nameInput"
-                        placeholder="Busque uma música/playlist"
+                        placeholder="Digite o nome da playlist que deseja criar..."
                         type="text"
                         onChange={(e) => setPlaylist(e.target.value)}
                         />

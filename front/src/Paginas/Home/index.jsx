@@ -12,6 +12,9 @@ export function Home() {
         .then((response)=>response.json())
         .then(setData);
     }, []);
+    function abrePag(link){
+        window.open(link, '_blank');
+    }
 
     if(!data || !data.length) return null;
     const handleLeftClick = (e) =>{
@@ -33,7 +36,7 @@ export function Home() {
                 <div className='infosContent'>
                     <div className='carousel' ref={carousel}>
                         {data.map((item) => {
-                        const {id, image, text} = item;
+                        const {id, image, text, link, nomelink, link2, nomelink2, link3, nomelink3} = item;
                             return(
                                 <div className='item' key={id}>
                                     <div className = 'image'>
@@ -46,8 +49,17 @@ export function Home() {
                                         <br></br>
                                         <br></br>
                                         <br></br>
-                                        <br></br>{text}                               
+                                        <br></br>{text}  
+                                        <br></br>
+                                        <br></br>
+                                        <a href={link}>{nomelink}</a>
+                                        <br></br>
+                                        <a href={link2}>{nomelink2}</a>                    
+                                        <br></br>
+                                        <a href={link2}>{nomelink3}</a>
+                                        <br></br>
                                         </span>
+                                           
                                     </div>
                                 </div>
                             );
