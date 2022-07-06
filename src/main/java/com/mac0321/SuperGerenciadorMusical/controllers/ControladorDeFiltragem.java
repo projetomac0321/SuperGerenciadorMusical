@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.mac0321.SuperGerenciadorMusical.model.services.filtragem.FiltradorDeBuscasDeMúsicas;
-import com.mac0321.SuperGerenciadorMusical.model.services.filtragem.FiltradorDeMúsicasDasPlaylists;
 import com.mac0321.SuperGerenciadorMusical.models.entities.Autenticador;
+import com.mac0321.SuperGerenciadorMusical.models.services.filtragem.FiltradorDeBuscasDeMúsicas;
+import com.mac0321.SuperGerenciadorMusical.models.services.filtragem.FiltradorDeMúsicasDasPlaylists;
 
 import se.michaelthelin.spotify.model_objects.specification.Track;
 

@@ -16,14 +16,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.mac0321.SuperGerenciadorMusical.model.services.busca.busca_por_id.ProcuradorDePlaylist;
-import com.mac0321.SuperGerenciadorMusical.model.services.playlist_usuarios.AdicionadorDeMúsicasNumaPlaylist;
-import com.mac0321.SuperGerenciadorMusical.model.services.playlist_usuarios.CriadorDePlaylist;
-import com.mac0321.SuperGerenciadorMusical.model.services.playlist_usuarios.ProcuradorDePlaylistsDoUsuárioAtual;
-import com.mac0321.SuperGerenciadorMusical.model.services.playlist_usuarios.RemovedorDeMúsicasNumaPlaylist;
-import com.mac0321.SuperGerenciadorMusical.model.services.playlist_usuarios.RemovedorDePlaylists;
 import com.mac0321.SuperGerenciadorMusical.models.entities.Autenticador;
 import com.mac0321.SuperGerenciadorMusical.models.entities.ModeloDeRequisiçãoPlaylists;
+import com.mac0321.SuperGerenciadorMusical.models.services.busca.busca_por_id.ProcuradorDePlaylist;
+import com.mac0321.SuperGerenciadorMusical.models.services.playlist_usuarios.AdicionadorDeMúsicasNumaPlaylist;
+import com.mac0321.SuperGerenciadorMusical.models.services.playlist_usuarios.CriadorDePlaylist;
+import com.mac0321.SuperGerenciadorMusical.models.services.playlist_usuarios.ProcuradorDePlaylistsDoUsuárioAtual;
+import com.mac0321.SuperGerenciadorMusical.models.services.playlist_usuarios.RemovedorDeMúsicasNumaPlaylist;
+import com.mac0321.SuperGerenciadorMusical.models.services.playlist_usuarios.RemovedorDePlaylists;
 
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 import se.michaelthelin.spotify.model_objects.specification.Playlist;
