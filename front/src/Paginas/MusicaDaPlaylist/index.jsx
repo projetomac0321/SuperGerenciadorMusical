@@ -16,8 +16,8 @@ export function MusicaDaPlaylist(){
         const recebeInformacaoDaMusica = () => {
           axios.get(`http://localhost:8080/buscar-por-id/obter-musicas?idsDasMusicas=${[songId]}`).then(res => {
             setSongName(res.data[0].name);
-            if(res.data[0].album == null || res.data[0].album.images.length != 0) setAlbumImage(res.data[0].album.images[0].url);
-            else setAlbumImage(NullPlaylistImage);
+            {(res.data[0].album == null || res.data[0].album.images.length != 0)? setAlbumImage(res.data[0].album.images[0].url):
+            setAlbumImage(NullPlaylistImage);}
           }).catch(err => {
              TratamentoDeErro(err);
             });

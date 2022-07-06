@@ -36,8 +36,7 @@ export function BuscaNasPlaylists(){
     function buscaMusicasFiltradas(){
         axios.get(`http://localhost:8080/filtragem/musicas-na-playlist?tagDeProcura=${searchValue}&valoresMaxMinPorFiltro=${array}&indicesDosFiltros=1,2,3,4,5,6,7,8,9,10,11,12,13`)
         .then(res => {
-            if(res.data != "") setData(res.data);
-            else alert("Nenhuma música foi encontrada com esses parâmetros.");
+            {(res.data != "") ? setData(res.data) : alert("Nenhuma música foi encontrada com esses parâmetros.");}
         })
         .catch(err =>
             {

@@ -16,8 +16,8 @@ export function TabelaDeParametros(){
           const recebeInformacoesDaPlaylist = () => {
             axios.get(`http://localhost:8080/buscar-por-id/obter-playlist?idDaPlaylist=${playlistId}`).then(res => {
               setPlaylistName(res.data.name);
-              if(res.data.images.length != 0) setPlaylistImage(res.data.images[0].url);
-              else setPlaylistImage(NullPlaylistImage);
+              {(res.data.images.length != 0)? setPlaylistImage(res.data.images[0].url):
+              setPlaylistImage(NullPlaylistImage);}
             }).catch(err => {
               TratamentoDeErro(err);
             });

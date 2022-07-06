@@ -19,31 +19,27 @@ export function BuscarMusicasFiltradas({indices, name, min, max}){
     const [offset, setOffset] = useState(0);
     
         const buscaDadosDePesquisa = () => {
-          if(minimo < min - 0.2 || maximo > max + 0.2) 
+          if((minimo < min - 0.2 || maximo > max + 0.2) || ((minimo + 0.2) != Math.floor(minimo + 0.2))) 
           {
               alert("Valor de filtragem inválido.");
               window.location.href = "http://localhost:3000/";
           }
 
-          if(searchInput != "")
-          {
-              axios.get(`http://localhost:8080/filtragem/musicas?tagDeProcura=${searchInput}&offset=${offset}&indicesDosFiltros=${indices}&valoresMaxMinPorFiltro=${minimo},${maximo}`).then(res => {
-                  setData(res.data);
-                  if(res.data.length == 0) {
-                    if(offset != 0) alert("Nenhum novo elemento encontrado. Todos os elementos foram passados para esse parâmetro de busca.");
-                    else alert("Nenhum elemento encontrado. Por favor tente novamente com outro parâmetro de busca.");
-                    window.location.href = "http://localhost:3000/";
+          {(searchInput != "") ?
+              [axios.get(`http://localhost:8080/filtragem/musicas?tagDeProcura=${searchInput}&offset=${offset}&indicesDosFiltros=${indices}&valoresMaxMinPorFiltro=${minimo},${maximo}`).then(res => {
+                  if(res.data[0] != null) setData(res.data);
+                  if(res.data.length == 0 || res.data[0] == null) {
+                    {offset != 0 ? alert("Nenhum novo elemento encontrado. Todos os elementos foram passados para esse parâmetro de busca.")
+                    : alert("Nenhum elemento encontrado. Por favor tente novamente com outro parâmetro de busca.");
+                    window.location.href = "http://localhost:3000/";}
                 }
                 }).catch(err => {
                     TratamentoDeErro(err);
-                  });
-              setOffset(offset + 100);
-              gerenciaPesquisa(true);  
-          }
-          else 
-          {
-            gerenciaPesquisa(false);
-          }
+                  }),
+              setOffset(offset + 100),
+              gerenciaPesquisa(true)]
+          : 
+            gerenciaPesquisa(false);}
         }
 
     return(
