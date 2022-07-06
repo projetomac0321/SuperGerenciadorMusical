@@ -46,7 +46,7 @@ Para executar o frontend, é necessária a utilização do npm, a versão utiliz
 
 ### Passos para a execução
 Execute o backend, executando o arquivo SuperGerenciadorMusicalApplication.java como Spring Boot App, feito isso, rode o seguinte comando npm run dev na pasta supergerenciadormusical/front para executar o frontend. 
-Feito isso, abra o navegador e siga para “http://localhost:3000/login”. Nessa aba ocorre a autenticação, terminada a autenticação, por fim, abra uma nova aba e vá para  http://localhost:3000/, onde todos os serviços da aplicação podem ser realizados.
+Feito isso, abra o navegador e siga para “http://localhost:3000/login”. Nessa aba ocorre a autenticação, terminada a autenticação, por fim, você será redirecionado para http://localhost:3000/home, onde todos os serviços da aplicação podem ser realizados.
 Para mais informações consulte os tópicos 1.1, 1.2 e 2.1 da documentação.
 
 ## Documentação
