@@ -23,7 +23,7 @@ public class Autenticador {
 	
 	private Autenticador() {
 		redirectUri = SpotifyHttpManager.
-				makeUri("http://localhost:8080/autenticacao/finaliza");
+				makeUri("http://localhost:3000/confirmalogin");
 		acessoApi = new SpotifyApi.Builder()
 				.setClientId("de6b441011e14346add6404c00b1bed0")
 				.setClientSecret("0d222f0e5aef494c83bd133abbb22903")
